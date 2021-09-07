@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hr.zoki.fitness;
+package zoki.fitness;
+
+import zoki.fitness.Util.HibernateSession;
 
 /**
  *
@@ -11,6 +13,10 @@ package hr.zoki.fitness;
  */
 public class Start {
     
-    // HibernateSessionPocetniInsert.odradiPosao();
+    public static void main(String[] args) {
+        HibernateSession.odradiPosao();
+    }
+    
+    
     
 }

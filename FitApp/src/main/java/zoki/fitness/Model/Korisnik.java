@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hr.zoki.fitness.Model;
+package zoki.fitness.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,8 +15,7 @@ import javax.persistence.Id;
 @Entity
 public class Korisnik extends Entitet{
     
-         
-    	private int sifra;
+    	
 	private String nadimak;
 	private String lozinka;
 	private String email;
@@ -26,13 +25,7 @@ public class Korisnik extends Entitet{
 	private int dob;
 	private boolean spol;
 
-    public int getSifra() {
-        return sifra;
-    }
 
-    public void setSifra(int sifra) {
-        this.sifra = sifra;
-    }
 
     public String getNadimak() {
         return nadimak;

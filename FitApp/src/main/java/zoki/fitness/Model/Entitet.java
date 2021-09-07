@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hr.zoki.fitness.Model;
+package zoki.fitness.Model;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,14 +19,16 @@ public abstract class Entitet {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long sifta;
+    private Long sifra;
 
-    public Long getSifta() {
-        return sifta;
+    public Long getSifra() {
+        return sifra;
     }
 
-    public void setSifta(Long sifta) {
-        this.sifta = sifta;
+    public void setSifra(Long sifra) {
+        this.sifra = sifra;
     }
+
+
     
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hr.zoki.fitness.Model;
+package zoki.fitness.Model;
 
 import javax.persistence.MappedSuperclass;
 
@@ -12,7 +12,7 @@ import javax.persistence.MappedSuperclass;
  * @author PC
  */
 @MappedSuperclass
-public abstract class MakroNutrijenti {
+public abstract class MakroNutrijenti extends Entitet {
         
     	private int kolicina;
 	private int kalorije;

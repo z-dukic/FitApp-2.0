@@ -10,7 +10,7 @@
     <session-factory>
         <!-- JDBC Database connection settings -->
         <property name="connection.driver_class">org.mariadb.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mariadb://localhost:3306/edunovajp24_hib</property>
+        <property name="connection.url">jdbc:mariadb://localhost:3306/zokifitness_hib</property>
         <property name="connection.username">edunova</property>
         <property name="connection.password">edunova</property>
         <!-- JDBC connection pool settings ... using built-in test pool -->
@@ -40,14 +40,22 @@
         <property name="hibernate.dbcp.maxIdle">10</property>
         <property name="hibernate.dbcp.minIdle">5</property>
         <property name="hibernate.dbcp.maxWaitMillis">-1</property>
-
         
+        
+        <mapping class="zoki.fitness.Model.Aktivnosti" />
+        <mapping class="zoki.fitness.Model.Hrana" />
+        <mapping class="zoki.fitness.Model.Korisnik" />
+        <mapping class="zoki.fitness.Model.Recept" />
+        <mapping class="zoki.fitness.Model.Dnevnik" />
+        
+
+        <!-- 
          <mapping class="edunova.jp24.model.Polaznik" />
          <mapping class="edunova.jp24.model.Predavac" />
          <mapping class="edunova.jp24.model.Smjer" />
          <mapping class="edunova.jp24.model.Grupa" />
 
-        <!-- Ovdje navodimo mapirane klase
+        Ovdje navodimo mapirane klase
         Učenje mapiranja
         <mapping class="edunova.jp24.vjezbanjemapiranje.osnovno.Racunalo" />  
         

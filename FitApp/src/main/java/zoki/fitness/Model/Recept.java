@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hr.zoki.fitness.Model;
+package zoki.fitness.Model;
 
 import javax.persistence.Entity;
 
@@ -13,7 +13,7 @@ import javax.persistence.Entity;
  */
 
 @Entity
-public class Recept extends Entitet {
+public class Recept extends MakroNutrijenti {
     
     
     private String nazivRecepta;
