@@ -7,7 +7,6 @@ package zoki.fitness.Model;
 
 import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 /**
