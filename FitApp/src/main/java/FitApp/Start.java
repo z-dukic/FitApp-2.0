@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package zoki.fitness;
+package FitApp;
 
-import zoki.fitness.Util.HibernateSession;
+import FitApp.Util.HibernateSession;
 
 /**
  *

@@ -3,30 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package zoki.fitness.Util;
+package FitApp.Util;
 
 /**
  *
  * @author PC
  */
 public class ControllerException extends Exception {
-    
-    
+
     private String poruka;
 
-    
-    public ControllerException(String poruka, String message) {
+    public ControllerException(String poruka) {
         super();
         this.poruka = poruka;
     }
 
-    
     public String getPoruka() {
         return poruka;
     }
-    
-    
-    
 
-    
 }

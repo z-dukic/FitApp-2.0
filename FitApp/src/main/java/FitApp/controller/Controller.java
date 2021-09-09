@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package zoki.fitness.controller;
+package FitApp.controller;
 
 import java.util.List;
 import org.hibernate.Session;
-import zoki.fitness.Util.ControllerException;
-import zoki.fitness.Util.HibernateUtil;
+import FitApp.Util.ControllerException;
+import FitApp.Util.HibernateUtil;
 
 /**
  *
@@ -41,13 +41,14 @@ public abstract class Controller<T> {
         this.entitet = entitet;
     }
 
-    //Kontrola kod novih entiteta
+    //Novi entitet
     public T create() throws ControllerException {
         kontrolaCreate();
         save();
         return entitet;
     }
 
+    //Update postojecih entiteta
     public T update() throws ControllerException {
         kontrolaUpdate();
         save();

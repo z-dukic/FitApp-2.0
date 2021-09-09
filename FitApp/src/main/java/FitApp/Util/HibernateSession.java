@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package zoki.fitness.Util;
+package FitApp.Util;
 
 import com.github.javafaker.Faker;
-import zoki.fitness.Model.Aktivnosti;
-import zoki.fitness.Model.Hrana;
+import FitApp.Model.Aktivnosti;
+import FitApp.Model.Hrana;
 import java.util.List;
 import org.hibernate.Session;
 

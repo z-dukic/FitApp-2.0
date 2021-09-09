@@ -42,34 +42,12 @@
         <property name="hibernate.dbcp.maxWaitMillis">-1</property>
         
         
-        <mapping class="zoki.fitness.Model.Aktivnosti" />
-        <mapping class="zoki.fitness.Model.Hrana" />
-        <mapping class="zoki.fitness.Model.Korisnik" />
-        <mapping class="zoki.fitness.Model.Recept" />
-        <mapping class="zoki.fitness.Model.Dnevnik" />
+        <mapping class="FitApp.Model.Aktivnosti" />
+        <mapping class="FitApp.Model.Hrana" />
+        <mapping class="FitApp.Model.Korisnik" />
+        <mapping class="FitApp.Model.Recept" />
+        <mapping class="FitApp.Model.Dnevnik" />
         
 
-        <!-- 
-         <mapping class="edunova.jp24.model.Polaznik" />
-         <mapping class="edunova.jp24.model.Predavac" />
-         <mapping class="edunova.jp24.model.Smjer" />
-         <mapping class="edunova.jp24.model.Grupa" />
-
-        Ovdje navodimo mapirane klase
-        Učenje mapiranja
-        <mapping class="edunova.jp24.vjezbanjemapiranje.osnovno.Racunalo" />  
-        
-        <mapping class="edunova.jp24.vjezbanjemapiranje.prilagodeno.Mobitel" />
-        
-        <mapping class="edunova.jp24.vjezbanjemapiranje.nasljedivanje.Automobil" />
-        <mapping class="edunova.jp24.vjezbanjemapiranje.nasljedivanje.Bicikl" />
-       
-        <mapping class="edunova.jp24.vjezbanjemapiranje.vezavisenapremajedan.Grad" />
-         <mapping class="edunova.jp24.vjezbanjemapiranje.vezavisenapremajedan.Igrac" />
-         
-         <mapping class="edunova.jp24.vjezbanjemapiranje.vezavisenapremavise.Slika" />
-         <mapping class="edunova.jp24.vjezbanjemapiranje.vezavisenapremavise.Oznaka" />
-         
-                  -->
     </session-factory>
 </hibernate-configuration>
