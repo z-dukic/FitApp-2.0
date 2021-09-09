@@ -21,7 +21,7 @@ public abstract class HranaController extends Controller<Hrana> {
         return session.createQuery("from Hrana").list();
     }
 
-    //Kontrola hrane (kolicina, ime itd.)
+    //Kreiranje hrane
     @Override
     protected void kontrolaCreate() throws ControllerException {
         kontrolaImenaHrane();
@@ -29,7 +29,7 @@ public abstract class HranaController extends Controller<Hrana> {
 
     }
 
-    //Kontrola hrane pri updateu
+    //Update hrane
     @Override
     protected void kontrolaUpdate() throws ControllerException {
         kontrolaImenaHrane();
@@ -37,6 +37,7 @@ public abstract class HranaController extends Controller<Hrana> {
 
     }
 
+    //Brisanje hrane
     @Override
     protected void kontrolaDelete() throws ControllerException {
 
