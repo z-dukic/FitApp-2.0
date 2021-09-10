@@ -59,5 +59,5 @@ public abstract class HranaController extends Controller<Hrana> {
         
     
     }
-
+ 
 }
