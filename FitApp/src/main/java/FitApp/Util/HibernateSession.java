@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FitApp.Util;
+package fitapp.util;
 
 import com.github.javafaker.Faker;
-import FitApp.Model.Aktivnosti;
-import FitApp.Model.Hrana;
+import fitapp.model.Aktivnosti;
+import fitapp.model.Hrana;
 import java.util.List;
 import org.hibernate.Session;
 

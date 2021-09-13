@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FitApp.controller;
+package fitapp.controller;
 
-import FitApp.Model.Aktivnosti;
-import FitApp.Util.ControllerException;
+import fitapp.model.Aktivnosti;
+import fitapp.util.ControllerException;
 import java.util.List;
 
 /**

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FitApp;
+package fitapp;
 
-import FitApp.Util.HibernateSession;
+import fitapp.util.HibernateSession;
 
 /**
  *

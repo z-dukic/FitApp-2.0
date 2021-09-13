@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FitApp.controller;
+package fitapp.controller;
 
-import FitApp.Model.Korisnik;
-import FitApp.Util.ControllerException;
+import fitapp.model.Korisnik;
+import fitapp.util.ControllerException;
 import java.util.List;
 
 /**
@@ -33,6 +33,13 @@ public class KorisnikController extends Controller<Korisnik> {
 
     @Override
     protected void kontrolaUpdate() throws ControllerException {
+        kontrolaNadimka();
+        kontrolaTezine();
+        kontrolaEmaila();
+        kontrolaVisine();
+        kontrolaZeljeneTezine();
+        kontrolaDatumaRodenja();
+        kontrolaSpola();
     }
 
     @Override
@@ -47,6 +54,14 @@ public class KorisnikController extends Controller<Korisnik> {
         }
         if (entitet.getNadimak().trim().length() < 6 || entitet.getNadimak().trim().length() < 20) {
             throw new ControllerException("Vaš nadimak može biti minimalno dugačak 5 znakova, a maksimalno 20.");
+        }
+
+        //Pregledava sve korisnike, ako postoji odbije
+        List<Korisnik> sviKorisnici = read();
+        for (Korisnik k : sviKorisnici) {
+            if (k.getNadimak().equals(entitet.getNadimak())) {
+                throw new ControllerException("Naziv već postoji");
+            }
         }
 
     }

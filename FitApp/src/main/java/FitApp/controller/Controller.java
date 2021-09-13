@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FitApp.controller;
+package fitapp.controller;
 
 import java.util.List;
 import org.hibernate.Session;
-import FitApp.Util.ControllerException;
-import FitApp.Util.HibernateUtil;
+import fitapp.util.ControllerException;
+import fitapp.util.HibernateUtil;
 
 /**
  *
@@ -17,8 +17,11 @@ import FitApp.Util.HibernateUtil;
 public abstract class Controller<T> {
 
     protected Session session;
+
+    //Vrsta klase
     protected T entitet;
 
+    //(C(R)UD
     public abstract List<T> read();
 
     protected abstract void kontrolaCreate() throws ControllerException;
@@ -42,6 +45,7 @@ public abstract class Controller<T> {
     }
 
     //Novi entitet
+    //(C)RUD
     public T create() throws ControllerException {
         kontrolaCreate();
         save();
@@ -49,6 +53,7 @@ public abstract class Controller<T> {
     }
 
     //Update postojecih entiteta
+    //CR(U)D
     public T update() throws ControllerException {
         kontrolaUpdate();
         save();
@@ -56,6 +61,7 @@ public abstract class Controller<T> {
     }
 
     //Brisanje entiteta
+    //CRU(D)
     public void delete() throws ControllerException {
         session.beginTransaction();
         session.delete(entitet);

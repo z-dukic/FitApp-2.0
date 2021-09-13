@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FitApp.controller;
+package fitapp.controller;
 
-import FitApp.Model.Hrana;
-import FitApp.Util.ControllerException;
+import fitapp.model.Hrana;
+import fitapp.util.ControllerException;
 import java.util.List;
 
 /**
@@ -45,19 +45,18 @@ public abstract class HranaController extends Controller<Hrana> {
 
     //Dodati ime hrane je obavezno
     private void kontrolaImenaHrane() throws ControllerException {
-               if(entitet.getImeHrane()==null || entitet.getImeHrane().trim().length()==0){
-           throw new ControllerException("Dodati ime hrane je obavezno.");
-    }
-               
+        if (entitet.getImeHrane() == null || entitet.getImeHrane().trim().length() == 0) {
+            throw new ControllerException("Dodati ime hrane je obavezno.");
+        }
+
     }
 
     //Nemoguce dodati vise od 1000g
-    private void kontrolaKolicinaHrane()throws ControllerException {
-        if(entitet.getKolicina()>1000){
+    private void kontrolaKolicinaHrane() throws ControllerException {
+        if (entitet.getKolicina() > 1000) {
             throw new ControllerException("Količina hrane ne može biti veća od 1000g (odnosno 1kg).");
         }
-        
-    
+
     }
- 
+
 }
