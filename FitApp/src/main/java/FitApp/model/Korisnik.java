@@ -13,19 +13,16 @@ import javax.persistence.Id;
  * @author PC
  */
 @Entity
-public class Korisnik extends Entitet{
-    
-    	
-	private String nadimak;
-	private String lozinka;
-	private String email;
-	private int visina;
-	private int tezina;
-	private int zeljenaTezina;
-	private int dob;
-	private boolean spol;
+public class Korisnik extends Entitet {
 
-
+    private String nadimak;
+    private String lozinka;
+    private String email;
+    private int visina;
+    private int tezina;
+    private int zeljenaTezina;
+    private int dob;
+    private String spol;
 
     public String getNadimak() {
         return nadimak;
@@ -83,14 +80,14 @@ public class Korisnik extends Entitet{
         this.dob = dob;
     }
 
-    public boolean isSpol() {
+    public String getSpol() {
         return spol;
     }
 
-    public void setSpol(boolean spol) {
+    public void setSpol(String spol) {
         this.spol = spol;
     }
-        
-        
+
     
+
 }

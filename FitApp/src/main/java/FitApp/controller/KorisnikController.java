@@ -8,6 +8,8 @@ package fitapp.controller;
 import fitapp.model.Korisnik;
 import fitapp.util.ControllerException;
 import java.util.List;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 
 /**
  *
@@ -24,7 +26,7 @@ public class KorisnikController extends Controller<Korisnik> {
     protected void kontrolaCreate() throws ControllerException {
         kontrolaNadimka();
         kontrolaTezine();
-        kontrolaEmaila();
+        // kontrolaEmaila(); to-do kad završim view
         kontrolaVisine();
         kontrolaZeljeneTezine();
         kontrolaDatumaRodenja();
@@ -35,7 +37,7 @@ public class KorisnikController extends Controller<Korisnik> {
     protected void kontrolaUpdate() throws ControllerException {
         kontrolaNadimka();
         kontrolaTezine();
-        kontrolaEmaila();
+        // kontrolaEmaila(); to-do kad završim view
         kontrolaVisine();
         kontrolaZeljeneTezine();
         kontrolaDatumaRodenja();
@@ -75,8 +77,16 @@ public class KorisnikController extends Controller<Korisnik> {
         //System.out.println("Ukoliko je vaša težina manja od 40kg ili veća 200kg molim Vas da kontaktirate nasu sluzbu za korisnike na " + kontakt); //todo
     }
 
-    private void kontrolaEmaila() throws ControllerException {
-        //email validator
+    //Kontrola e-maila
+    public static boolean kontrolaEmaila(String email) throws ControllerException {
+        boolean result = true;
+        try {
+            InternetAddress emailAddr = new InternetAddress(email);
+            emailAddr.validate();
+        } catch (AddressException ex) {
+            result = false;
+        }
+        return result;
 
     }
 
@@ -105,8 +115,12 @@ public class KorisnikController extends Controller<Korisnik> {
 
     }
 
+    //Kontrola spola
     private void kontrolaSpola() throws ControllerException {
-        //todo
+
+        if (entitet.getSpol() == "m" || entitet.getSpol() == "f") {
+            throw new ControllerException("Možete samo izabrati (m) za muški spol i (f) za ženski spol");
+        }
 
     }
 

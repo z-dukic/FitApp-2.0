@@ -11,13 +11,12 @@ import javax.persistence.Entity;
  *
  * @author PC
  */
-
 @Entity
 public class Aktivnosti extends Entitet {
-    
+
     private String imeAktivnosti;
-	private int potroseneKalorijePoSatu;
-	private int vrijemeTrajanjaUMinutama;
+    private int potroseneKalorijePoSatu;
+    private int vrijemeTrajanjaUMinutama;
 
     public String getImeAktivnosti() {
         return imeAktivnosti;
@@ -42,7 +41,5 @@ public class Aktivnosti extends Entitet {
     public void setVrijemeTrajanjaUMinutama(int vrijemeTrajanjaUMinutama) {
         this.vrijemeTrajanjaUMinutama = vrijemeTrajanjaUMinutama;
     }
-    
-        
-        
+
 }

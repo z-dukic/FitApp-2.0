@@ -16,7 +16,7 @@ import javax.persistence.MappedSuperclass;
  */
 @MappedSuperclass
 public abstract class Entitet {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long sifra;
@@ -29,6 +29,4 @@ public abstract class Entitet {
         this.sifra = sifra;
     }
 
-
-    
 }

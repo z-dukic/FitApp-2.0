@@ -11,11 +11,10 @@ import javax.persistence.Entity;
  *
  * @author PC
  */
-
 @Entity
-public class Hrana extends MakroNutrijenti{
-        
-    	private String imeHrane;
+public class Hrana extends MakroNutrijenti {
+
+    private String imeHrane;
 
     public String getImeHrane() {
         return imeHrane;
@@ -24,8 +23,5 @@ public class Hrana extends MakroNutrijenti{
     public void setImeHrane(String imeHrane) {
         this.imeHrane = imeHrane;
     }
-	
-        
-        
-    
+
 }
