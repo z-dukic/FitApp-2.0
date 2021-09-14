@@ -5,7 +5,7 @@
  */
 package fitapp.controller;
 
-import fitapp.model.Aktivnosti;
+import fitapp.model.Aktivnost;
 import fitapp.util.ControllerException;
 import java.util.List;
 
@@ -13,11 +13,11 @@ import java.util.List;
  *
  * @author PC
  */
-public abstract class AktivnostiController extends Controller<Aktivnosti> {
+public abstract class AktivnostiController extends Controller<Aktivnost> {
 
     //Izlistanje svih aktivnosti
     @Override
-    public List<Aktivnosti> read() {
+    public List<Aktivnost> read() {
         return session.createQuery("from Aktivnosti").list();
     }
 

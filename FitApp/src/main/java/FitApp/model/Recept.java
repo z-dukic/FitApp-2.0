@@ -11,12 +11,12 @@ import javax.persistence.Entity;
  *
  * @author PC
  */
-
 //Služi samo za blog feature, nije povezan s izračunima
 @Entity
 public class Recept extends MakroNutrijenti {
 
     private String nazivRecepta;
+    private String opisPripreme;
 
     public String getNazivRecepta() {
         return nazivRecepta;

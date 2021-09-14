@@ -3,25 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FitApp.model;
+package fitapp.model;
 
-import fitapp.model.Aktivnosti;
-import fitapp.model.Entitet;
-
-import fitapp.model.Korisnik;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 /**
  *
  * @author PC
  */
+@Entity
 public class DnevnikAktivnosti extends Entitet {
 
     private Date datum;
+    private int vrijemeTrajanjaAktivnosti;
 
-    @ManyToOne
-    private Aktivnosti aktivnost;
+    @ManyToMany
+    private List<Aktivnost> aktivnost;
 
     @ManyToOne
     private Korisnik korisnik;
@@ -34,11 +35,11 @@ public class DnevnikAktivnosti extends Entitet {
         this.datum = datum;
     }
 
-    public Aktivnosti getAktivnost() {
+    public List<Aktivnost> getAktivnost() {
         return aktivnost;
     }
 
-    public void setAktivnost(Aktivnosti aktivnost) {
+    public void setAktivnost(List<Aktivnost> aktivnost) {
         this.aktivnost = aktivnost;
     }
 
@@ -48,6 +49,14 @@ public class DnevnikAktivnosti extends Entitet {
 
     public void setKorisnik(Korisnik korisnik) {
         this.korisnik = korisnik;
+    }
+
+    public int getVrijemeTrajanjaAktivnosti() {
+        return vrijemeTrajanjaAktivnosti;
+    }
+
+    public void setVrijemeTrajanjaAktivnosti(int vrijemeTrajanjaAktivnosti) {
+        this.vrijemeTrajanjaAktivnosti = vrijemeTrajanjaAktivnosti;
     }
 
 }

@@ -42,11 +42,12 @@
         <property name="hibernate.dbcp.maxWaitMillis">-1</property>
         
         
-        <mapping class="FitApp.Model.Aktivnosti" />
-        <mapping class="FitApp.Model.Hrana" />
-        <mapping class="FitApp.Model.Korisnik" />
-        <mapping class="FitApp.Model.Recept" />
-        <mapping class="FitApp.Model.Dnevnik" />
+        <mapping class="fitapp.model.Aktivnost" />
+        <mapping class="fitapp.model.Hrana" />
+        <mapping class="fitapp.model.Korisnik" />
+        <mapping class="fitapp.model.Recept" />
+        <mapping class="fitapp.model.DnevnikHrane" />
+        <mapping class="fitapp.model.DnevnikAktivnosti" />
         
 
     </session-factory>

@@ -6,7 +6,7 @@
 package fitapp.util;
 
 import com.github.javafaker.Faker;
-import fitapp.model.Aktivnosti;
+import fitapp.model.Aktivnost;
 import fitapp.model.Hrana;
 import java.util.List;
 import org.hibernate.Session;
@@ -29,14 +29,14 @@ public class HibernateSession {
         s.save(banana);
 
         //Dodavanje više aktivnosti u bazu
-        List<Aktivnosti> aktivnosti;
+        List<Aktivnost> aktivnosti;
 
         Faker faker = new Faker();
 
         //Program prebačen sa rubya pa ne poštuje OOP principe
-        Aktivnosti aktivnost;
+        Aktivnost aktivnost;
         for (int i = 0; i < 20; i++) {
-            aktivnost = new Aktivnosti();
+            aktivnost = new Aktivnost();
             int suma = +i;
             int z = 0;
 

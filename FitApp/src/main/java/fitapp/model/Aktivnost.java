@@ -12,7 +12,7 @@ import javax.persistence.Entity;
  * @author PC
  */
 @Entity
-public class Aktivnosti extends Entitet {
+public class Aktivnost extends Entitet {
 
     private String imeAktivnosti;
     private int potroseneKalorijePoSatu;

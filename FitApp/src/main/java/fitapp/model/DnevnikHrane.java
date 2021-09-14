@@ -6,7 +6,9 @@
 package fitapp.model;
 
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 /**
@@ -18,8 +20,10 @@ public class DnevnikHrane extends Entitet {
 
     private Date datum;
 
-    @ManyToOne
-    private Hrana hrana;
+    @ManyToMany
+    private List<Hrana> hrana;
+
+    private int kolicinaUneseneHrane;
 
     @ManyToOne
     private Korisnik korisnik;
@@ -32,11 +36,11 @@ public class DnevnikHrane extends Entitet {
         this.datum = datum;
     }
 
-    public Hrana getHrana() {
+    public List<Hrana> getHrana() {
         return hrana;
     }
 
-    public void setHrana(Hrana hrana) {
+    public void setHrana(List<Hrana> hrana) {
         this.hrana = hrana;
     }
 
@@ -46,6 +50,14 @@ public class DnevnikHrane extends Entitet {
 
     public void setKorisnik(Korisnik korisnik) {
         this.korisnik = korisnik;
+    }
+
+    public int getKolicinaUneseneHrane() {
+        return kolicinaUneseneHrane;
+    }
+
+    public void setKolicinaUneseneHrane(int kolicinaUneseneHrane) {
+        this.kolicinaUneseneHrane = kolicinaUneseneHrane;
     }
 
 }
