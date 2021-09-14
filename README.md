@@ -4,4 +4,4 @@ FitApp as desktop application made with Java, Java.Swing, MariaDB, Maven &amp; H
 
 # Baza podataka:
 
-![alt text](https://github.com/z-dukic/FitApp-2.0/blob/main/Baza%20fitapp%202.0.png?raw=true)
+![alt text](https://github.com/z-dukic/FitApp-2.0/blob/main/FitApp2.0%20era.png?raw=true)
