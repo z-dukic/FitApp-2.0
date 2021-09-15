@@ -6,6 +6,7 @@
 package fitapp.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 
 /**
  *
@@ -16,6 +17,8 @@ import javax.persistence.Entity;
 public class Recept extends MakroNutrijenti {
 
     private String nazivRecepta;
+    
+    @Lob
     private String opisPripreme;
 
     public String getNazivRecepta() {
