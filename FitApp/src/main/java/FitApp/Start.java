@@ -6,6 +6,7 @@
 package fitapp;
 
 import fitapp.util.HibernateSession;
+import fitapp.view.SplashScreen;
 
 /**
  *
@@ -14,7 +15,8 @@ import fitapp.util.HibernateSession;
 public class Start {
     
     public static void main(String[] args) {
-        HibernateSession.odradiPosao();
+        new SplashScreen().setVisible(true);
+        
     }
     
     

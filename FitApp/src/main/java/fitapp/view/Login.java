@@ -9,12 +9,12 @@ package fitapp.view;
  *
  * @author PC
  */
-public class LoginScreen extends javax.swing.JPanel {
+public class Login extends javax.swing.JFrame {
 
     /**
-     * Creates new form LoginScreen
+     * Creates new form ONamaIzbornik
      */
-    public LoginScreen() {
+    public Login() {
         initComponents();
     }
 
@@ -27,7 +27,6 @@ public class LoginScreen extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        iconGoreLijevo = new javax.swing.JLabel();
         DumbellIconLoginScreen = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -38,13 +37,10 @@ public class LoginScreen extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        iconGoreLijevo = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
 
-        setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(800, 600));
-        setRequestFocusEnabled(false);
-
-        iconGoreLijevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FitAppIcon1.png"))); // NOI18N
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         DumbellIconLoginScreen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DumbellIcon1.png"))); // NOI18N
         DumbellIconLoginScreen.setToolTipText("");
@@ -75,8 +71,10 @@ public class LoginScreen extends javax.swing.JPanel {
 
         jButton3.setText("Saznaj više o nama");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        iconGoreLijevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FitAppIcon1.png"))); // NOI18N
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -150,13 +148,49 @@ public class LoginScreen extends javax.swing.JPanel {
                 .addContainerGap(177, Short.MAX_VALUE))
         );
 
-        getAccessibleContext().setAccessibleName("");
+        pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Login().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DumbellIconLoginScreen;
