@@ -5,17 +5,28 @@
  */
 package fitapp.view;
 
+import fitapp.controller.KorisnikController;
+import fitapp.util.Aplikacija;
+
 /**
  *
  * @author PC
  */
 public class Login extends javax.swing.JFrame {
 
+    
+    private KorisnikController korisnikController;
     /**
      * Creates new form ONamaIzbornik
      */
     public Login() {
         initComponents();
+        korisnikController = new KorisnikController();
+        postavke();
+    }
+    
+    private void postavke(){
+        setTitle(Aplikacija.NASLOV_APP + " Login");
     }
 
     /**
