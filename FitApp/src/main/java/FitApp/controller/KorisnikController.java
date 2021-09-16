@@ -10,6 +10,8 @@ import fitapp.util.ControllerException;
 import java.util.List;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import javax.persistence.NoResultException;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -124,4 +126,20 @@ public class KorisnikController extends Controller<Korisnik> {
 
     }
 
+    public Korisnik autoriziraj(String email, String lozinka) {
+        Korisnik korisnik = null;
+
+        try {
+            korisnik = (Korisnik) session.createQuery("from Korisnik korisnik where korisnik.email=:email").setParameter("email", email).getSingleResult();
+
+        } catch (NoResultException e) {
+            return null;
+        }
+        if (korisnik == null) {
+            return null;
+            
+        }
+         return BCrypt.checkpw(lozinka, korisnik.getLozinka()) ? korisnik : null;
+         //   return null;
+    }
 }
