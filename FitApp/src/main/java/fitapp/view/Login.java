@@ -8,6 +8,8 @@ package fitapp.view;
 import fitapp.controller.KorisnikController;
 import fitapp.model.Korisnik;
 import fitapp.util.Aplikacija;
+import java.awt.Desktop;
+import java.net.URI;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,8 +18,8 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
-    
     private KorisnikController korisnikController;
+
     /**
      * Creates new form ONamaIzbornik
      */
@@ -26,9 +28,19 @@ public class Login extends javax.swing.JFrame {
         korisnikController = new KorisnikController();
         postavke();
     }
-    
-    private void postavke(){
+
+    private void postavke() {
         setTitle(Aplikacija.NASLOV_APP + " Login");
+    }
+
+    private void ucitajLink() {
+        try {
+            Desktop desktop = java.awt.Desktop.getDesktop();
+            URI oURL = new URI("https://github.com/z-dukic/FitApp-2.0");
+            desktop.browse(oURL);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -40,30 +52,31 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        DumbellIconLoginScreen = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblDumbellIconLoginScreen = new javax.swing.JLabel();
+        txtRandomText1 = new javax.swing.JLabel();
+        txtRandomText2 = new javax.swing.JLabel();
         txtEMail = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        LoginBtn = new javax.swing.JButton();
-        kreirajRacunBtn = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        lvlEMail = new javax.swing.JLabel();
+        lblLozinka = new javax.swing.JLabel();
+        btnLogin = new javax.swing.JButton();
+        btnKreirajRacun = new javax.swing.JButton();
+        lblZaboravljeniPassword = new javax.swing.JLabel();
+        btnONama = new javax.swing.JButton();
         iconGoreLijevo = new javax.swing.JLabel();
         pswLozinka = new javax.swing.JPasswordField();
+        btnSkipLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        DumbellIconLoginScreen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DumbellIcon1.png"))); // NOI18N
-        DumbellIconLoginScreen.setToolTipText("");
-        DumbellIconLoginScreen.setOpaque(true);
+        lblDumbellIconLoginScreen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DumbellIcon1.png"))); // NOI18N
+        lblDumbellIconLoginScreen.setToolTipText("");
+        lblDumbellIconLoginScreen.setOpaque(true);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Sve što trebaš već je u tebi!");
+        txtRandomText1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtRandomText1.setText("Sve što trebaš već je u tebi!");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Pokreni se!");
+        txtRandomText2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtRandomText2.setText("Pokreni se!");
 
         txtEMail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,31 +84,43 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Nadimak:");
+        lvlEMail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lvlEMail.setText("Email:");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Lozinka");
+        lblLozinka.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblLozinka.setText("Lozinka");
 
-        LoginBtn.setText("Prijavi se");
-        LoginBtn.addActionListener(new java.awt.event.ActionListener() {
+        btnLogin.setText("Prijavi se");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginBtnActionPerformed(evt);
+                btnLoginActionPerformed(evt);
             }
         });
 
-        kreirajRacunBtn.setText("Kreiraj novi račun");
-        kreirajRacunBtn.addActionListener(new java.awt.event.ActionListener() {
+        btnKreirajRacun.setText("Kreiraj novi račun");
+        btnKreirajRacun.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kreirajRacunBtnActionPerformed(evt);
+                btnKreirajRacunActionPerformed(evt);
             }
         });
 
-        jLabel5.setText("Zaboravili ste lozinku?");
+        lblZaboravljeniPassword.setText("Zaboravili ste lozinku?");
 
-        jButton3.setText("Saznaj više o nama");
+        btnONama.setText("Saznaj više o nama");
+        btnONama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnONamaActionPerformed(evt);
+            }
+        });
 
         iconGoreLijevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FitAppIcon1.png"))); // NOI18N
+
+        btnSkipLogin.setText("Skip");
+        btnSkipLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSkipLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,122 +134,138 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(DumbellIconLoginScreen)
+                            .addComponent(lblDumbellIconLoginScreen)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel1)
+                                .addComponent(txtRandomText1)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
+                                    .addComponent(txtRandomText2)
                                     .addGap(64, 64, 64)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnONama, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 305, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(LoginBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblZaboravljeniPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(63, 63, 63))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lvlEMail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblLozinka, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(kreirajRacunBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                            .addComponent(btnKreirajRacun, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
                             .addComponent(txtEMail)
                             .addComponent(pswLozinka))
                         .addGap(36, 36, 36))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(346, 346, 346)
+                .addComponent(btnSkipLogin)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(iconGoreLijevo)
                 .addGap(92, 92, 92)
-                .addComponent(jLabel1)
+                .addComponent(txtRandomText1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(txtRandomText2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
+                        .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lvlEMail, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
                                 .addComponent(txtEMail, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblLozinka, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pswLozinka, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(LoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(DumbellIconLoginScreen)))
+                        .addComponent(lblDumbellIconLoginScreen)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                        .addComponent(lblZaboravljeniPassword)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(kreirajRacunBtn))
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(185, Short.MAX_VALUE))
+                        .addComponent(btnKreirajRacun))
+                    .addComponent(btnONama, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+                .addComponent(btnSkipLogin)
+                .addGap(32, 32, 32))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void kreirajRacunBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kreirajRacunBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_kreirajRacunBtnActionPerformed
+    private void btnKreirajRacunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKreirajRacunActionPerformed
+        new Registracija().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnKreirajRacunActionPerformed
 
-    private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
-        if(txtEMail.getText().trim().length()==0){
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        if (txtEMail.getText().trim().length() == 0) {
             JOptionPane.showMessageDialog(getRootPane(), "Email je obavezan");
             return;
         }
-        
+
         String lozinka = String.valueOf(pswLozinka.getPassword());
-        if(lozinka.trim().length()==0){
+        if (lozinka.trim().length() == 0) {
             JOptionPane.showMessageDialog(getRootPane(), "Password je obavezan");
             return;
         }
-        
+
         Korisnik korisnik = korisnikController.autoriziraj(txtEMail.getText(), lozinka);
-        
-        if(korisnik==null){
+
+        if (korisnik == null) {
             JOptionPane.showMessageDialog(getRootPane(), "Neispravna kombinacija email i lozinka");
             return;
         }
-        
-        Aplikacija.korisnik=korisnik;
+
+        Aplikacija.korisnik = korisnik;
         new GlavniIzbornik().setVisible(true);
         dispose();
-        
-    }//GEN-LAST:event_LoginBtnActionPerformed
+
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtEMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEMailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEMailActionPerformed
 
+    private void btnONamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnONamaActionPerformed
+        ucitajLink();
+    }//GEN-LAST:event_btnONamaActionPerformed
+
+    private void btnSkipLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkipLoginActionPerformed
+        new GlavniIzbornik().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnSkipLoginActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel DumbellIconLoginScreen;
-    private javax.swing.JButton LoginBtn;
+    private javax.swing.JButton btnKreirajRacun;
+    private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnONama;
+    private javax.swing.JButton btnSkipLogin;
     private javax.swing.JLabel iconGoreLijevo;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JButton kreirajRacunBtn;
+    private javax.swing.JLabel lblDumbellIconLoginScreen;
+    private javax.swing.JLabel lblLozinka;
+    private javax.swing.JLabel lblZaboravljeniPassword;
+    private javax.swing.JLabel lvlEMail;
     private javax.swing.JPasswordField pswLozinka;
     private javax.swing.JTextField txtEMail;
+    private javax.swing.JLabel txtRandomText1;
+    private javax.swing.JLabel txtRandomText2;
     // End of variables declaration//GEN-END:variables
 }

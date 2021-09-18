@@ -32,11 +32,11 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="DumbellIconLoginScreen" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDumbellIconLoginScreen" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtRandomText1" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtRandomText2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -44,32 +44,37 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" pref="161" max="-2" attributes="0"/>
+                      <Component id="btnONama" min="-2" pref="161" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="305" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jLabel5" alignment="1" max="32767" attributes="0"/>
-                          <Component id="LoginBtn" alignment="1" max="32767" attributes="0"/>
+                          <Component id="lblZaboravljeniPassword" alignment="1" max="32767" attributes="0"/>
+                          <Component id="btnLogin" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel3" alignment="1" min="-2" pref="65" max="-2" attributes="0"/>
-                          <Component id="jLabel4" alignment="1" min="-2" pref="65" max="-2" attributes="0"/>
+                          <Component id="lvlEMail" alignment="1" min="-2" pref="65" max="-2" attributes="0"/>
+                          <Component id="lblLozinka" alignment="1" min="-2" pref="65" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="kreirajRacunBtn" alignment="0" pref="158" max="32767" attributes="0"/>
+                          <Component id="btnKreirajRacun" alignment="0" pref="158" max="32767" attributes="0"/>
                           <Component id="txtEMail" alignment="0" max="32767" attributes="0"/>
                           <Component id="pswLozinka" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
               </Group>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="346" max="-2" attributes="0"/>
+              <Component id="btnSkipLogin" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -78,14 +83,14 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="iconGoreLijevo" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Component id="txtRandomText1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+              <Component id="txtRandomText2" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel3" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
+                          <Component id="lvlEMail" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                               <Component id="txtEMail" min="-2" pref="32" max="-2" attributes="0"/>
@@ -93,33 +98,35 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel4" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                          <Component id="lblLozinka" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                           <Component id="pswLozinka" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="LoginBtn" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="btnLogin" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="DumbellIconLoginScreen" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblDumbellIconLoginScreen" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblZaboravljeniPassword" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="kreirajRacunBtn" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnKreirajRacun" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jButton3" min="-2" pref="55" max="-2" attributes="0"/>
+                  <Component id="btnONama" min="-2" pref="55" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="185" max="32767" attributes="0"/>
+              <EmptySpace pref="128" max="32767" attributes="0"/>
+              <Component id="btnSkipLogin" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="DumbellIconLoginScreen">
+    <Component class="javax.swing.JLabel" name="lblDumbellIconLoginScreen">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/DumbellIcon1.png"/>
@@ -128,7 +135,7 @@
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="txtRandomText1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="14" style="1"/>
@@ -136,7 +143,7 @@
         <Property name="text" type="java.lang.String" value="Sve &#x161;to treba&#x161; ve&#x107; je u tebi!"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="txtRandomText2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="14" style="1"/>
@@ -149,15 +156,15 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEMailActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="lvlEMail">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Nadimak:"/>
+        <Property name="text" type="java.lang.String" value="Email:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="lblLozinka">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="14" style="0"/>
@@ -165,31 +172,34 @@
         <Property name="text" type="java.lang.String" value="Lozinka"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="LoginBtn">
+    <Component class="javax.swing.JButton" name="btnLogin">
       <Properties>
         <Property name="text" type="java.lang.String" value="Prijavi se"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LoginBtnActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoginActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="kreirajRacunBtn">
+    <Component class="javax.swing.JButton" name="btnKreirajRacun">
       <Properties>
         <Property name="text" type="java.lang.String" value="Kreiraj novi ra&#x10d;un"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kreirajRacunBtnActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnKreirajRacunActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="lblZaboravljeniPassword">
       <Properties>
         <Property name="text" type="java.lang.String" value="Zaboravili ste lozinku?"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="btnONama">
       <Properties>
         <Property name="text" type="java.lang.String" value="Saznaj vi&#x161;e o nama"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnONamaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="iconGoreLijevo">
       <Properties>
@@ -199,6 +209,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="pswLozinka">
+    </Component>
+    <Component class="javax.swing.JButton" name="btnSkipLogin">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Skip"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSkipLoginActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
