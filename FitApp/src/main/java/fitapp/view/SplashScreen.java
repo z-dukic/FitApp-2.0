@@ -50,13 +50,13 @@ public class SplashScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        IkonaFitApp = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FitAppLogo.png"))); // NOI18N
+        IkonaFitApp.setBackground(new java.awt.Color(255, 255, 255));
+        IkonaFitApp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FitAppLogo.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,14 +64,14 @@ public class SplashScreen extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(284, 284, 284)
-                .addComponent(jLabel1)
+                .addComponent(IkonaFitApp)
                 .addContainerGap(310, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(113, 113, 113)
-                .addComponent(jLabel1)
+                .addComponent(IkonaFitApp)
                 .addContainerGap(122, Short.MAX_VALUE))
         );
 
@@ -85,6 +85,6 @@ public class SplashScreen extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel IkonaFitApp;
     // End of variables declaration//GEN-END:variables
 }

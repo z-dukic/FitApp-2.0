@@ -32,9 +32,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel10" min="-2" pref="67" max="-2" attributes="0"/>
-                          <Component id="jLabel13" min="-2" pref="67" max="-2" attributes="0"/>
-                          <Component id="jLabel14" min="-2" pref="67" max="-2" attributes="0"/>
+                          <Component id="lblSpol" min="-2" pref="67" max="-2" attributes="0"/>
+                          <Component id="lblVisina" min="-2" pref="67" max="-2" attributes="0"/>
+                          <Component id="lblTezina" min="-2" pref="67" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="txtVisina" min="-2" pref="201" max="-2" attributes="0"/>
@@ -43,12 +43,12 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel11" min="-2" pref="81" max="-2" attributes="0"/>
+                              <Component id="lblZeljenaTezina" min="-2" pref="81" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txtTezina" min="-2" pref="201" max="-2" attributes="0"/>
                                   <Component id="txtZeljenaTezina" min="-2" pref="201" max="-2" attributes="0"/>
-                                  <Component id="jButton1" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                                  <Component id="btnRegistrirajSe" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                       <Component id="btnOdustani" min="-2" max="-2" attributes="0"/>
@@ -58,10 +58,10 @@
                           <Component id="iconGoreLijevo" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel16" min="-2" pref="67" max="-2" attributes="0"/>
-                                  <Component id="jLabel7" min="-2" pref="67" max="-2" attributes="0"/>
-                                  <Component id="jLabel8" min="-2" pref="67" max="-2" attributes="0"/>
-                                  <Component id="jLabel9" min="-2" pref="67" max="-2" attributes="0"/>
+                                  <Component id="lblEmail" min="-2" pref="67" max="-2" attributes="0"/>
+                                  <Component id="lblNadimak" min="-2" pref="67" max="-2" attributes="0"/>
+                                  <Component id="lblLozinka" min="-2" pref="67" max="-2" attributes="0"/>
+                                  <Component id="lvlDob" min="-2" pref="67" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -89,47 +89,47 @@
               <Component id="iconGoreLijevo" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel16" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="lblEmail" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                   <Component id="txtEMail" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel7" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="lblNadimak" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                   <Component id="txtNadimak" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel8" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="lblLozinka" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                   <Component id="txtLozinka" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel9" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="lvlDob" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                   <Component id="txtDob" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel10" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="lblSpol" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                   <Component id="radioBtnMusko" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="radioBtnZensko" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel13" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="lblVisina" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                   <Component id="txtVisina" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel14" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="lblTezina" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                   <Component id="txtTezina" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel11" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="lblZeljenaTezina" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                   <Component id="txtZeljenaTezina" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="40" max="-2" attributes="0"/>
+              <Component id="btnRegistrirajSe" min="-2" pref="40" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnOdustani" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="156" max="32767" attributes="0"/>
@@ -138,12 +138,12 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnRegistrirajSe">
       <Properties>
         <Property name="text" type="java.lang.String" value="Registriraj se"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistrirajSeActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="iconGoreLijevo">
@@ -153,7 +153,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
+    <Component class="javax.swing.JLabel" name="lblNadimak">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="12" style="0"/>
@@ -168,7 +168,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLozinkaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel8">
+    <Component class="javax.swing.JLabel" name="lblLozinka">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="12" style="0"/>
@@ -178,7 +178,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtDob">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel9">
+    <Component class="javax.swing.JLabel" name="lvlDob">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="12" style="0"/>
@@ -186,7 +186,7 @@
         <Property name="text" type="java.lang.String" value="Dob:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel10">
+    <Component class="javax.swing.JLabel" name="lblSpol">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="12" style="0"/>
@@ -194,7 +194,7 @@
         <Property name="text" type="java.lang.String" value="Spol:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel11">
+    <Component class="javax.swing.JLabel" name="lblZeljenaTezina">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="12" style="0"/>
@@ -206,7 +206,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtTezina">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel13">
+    <Component class="javax.swing.JLabel" name="lblVisina">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="12" style="0"/>
@@ -214,7 +214,7 @@
         <Property name="text" type="java.lang.String" value="Visina:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel14">
+    <Component class="javax.swing.JLabel" name="lblTezina">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="12" style="0"/>
@@ -226,7 +226,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtEMail">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel16">
+    <Component class="javax.swing.JLabel" name="lblEmail">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="12" style="0"/>
