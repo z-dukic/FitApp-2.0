@@ -35,56 +35,52 @@ public class GlavniIzbornik extends javax.swing.JFrame {
     private void initComponents() {
 
         iconGoreLijevo1 = new javax.swing.JLabel();
-        lblIzbornikHrana = new javax.swing.JLabel();
-        lblIzbornikAktivnost = new javax.swing.JLabel();
-        lblIzbornikIzvjestaj = new javax.swing.JLabel();
-        lblIzbornikBlog = new javax.swing.JLabel();
-        lblIzbornikONama = new javax.swing.JLabel();
-        lblIzbornikPostavke = new javax.swing.JLabel();
+        lblHrana = new javax.swing.JLabel();
+        lblAktivnost = new javax.swing.JLabel();
+        lblIzvjestaj = new javax.swing.JLabel();
+        lblDnevnik = new javax.swing.JLabel();
+        lblONama = new javax.swing.JLabel();
+        lblPostavke = new javax.swing.JLabel();
         lblIzbornikOdjaviSe = new javax.swing.JLabel();
+        lblBlog1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         iconGoreLijevo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FitAppIcon1.png"))); // NOI18N
-        iconGoreLijevo1.addMouseListener(new java.awt.event.MouseAdapter() {
+
+        lblHrana.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblHrana.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHrana.setText("Hrana");
+        lblHrana.setToolTipText("");
+        lblHrana.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                iconGoreLijevo1MouseClicked(evt);
+                lblHranaMouseClicked(evt);
             }
         });
 
-        lblIzbornikHrana.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblIzbornikHrana.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblIzbornikHrana.setText("Hrana");
-        lblIzbornikHrana.setToolTipText("");
+        lblAktivnost.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblAktivnost.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAktivnost.setText("Aktivnost");
 
-        lblIzbornikAktivnost.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblIzbornikAktivnost.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblIzbornikAktivnost.setText("Aktivnost");
+        lblIzvjestaj.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblIzvjestaj.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIzvjestaj.setText("Izvještaj");
+        lblIzvjestaj.setToolTipText("");
 
-        lblIzbornikIzvjestaj.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblIzbornikIzvjestaj.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblIzbornikIzvjestaj.setText("Izvještaj");
-        lblIzbornikIzvjestaj.setToolTipText("");
+        lblDnevnik.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblDnevnik.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDnevnik.setText("Dnevnik");
+        lblDnevnik.setToolTipText("");
 
-        lblIzbornikBlog.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblIzbornikBlog.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblIzbornikBlog.setText("Blog");
-        lblIzbornikBlog.setToolTipText("");
+        lblONama.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblONama.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblONama.setText("O nama");
+        lblONama.setToolTipText("");
 
-        lblIzbornikONama.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblIzbornikONama.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblIzbornikONama.setText("O nama");
-        lblIzbornikONama.setToolTipText("");
-        lblIzbornikONama.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblIzbornikONamaMouseClicked(evt);
-            }
-        });
-
-        lblIzbornikPostavke.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblIzbornikPostavke.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblIzbornikPostavke.setText("Postavke");
-        lblIzbornikPostavke.setToolTipText("");
+        lblPostavke.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblPostavke.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPostavke.setText("Postavke");
+        lblPostavke.setToolTipText("");
 
         lblIzbornikOdjaviSe.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblIzbornikOdjaviSe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -96,40 +92,48 @@ public class GlavniIzbornik extends javax.swing.JFrame {
             }
         });
 
+        lblBlog1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblBlog1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBlog1.setText("Blog");
+        lblBlog1.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(iconGoreLijevo1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblIzbornikHrana, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(lblDnevnik, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblIzbornikAktivnost, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblHrana, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblAktivnost, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblIzbornikIzvjestaj, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblIzvjestaj, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblIzbornikBlog, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblBlog1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblIzbornikONama, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblONama, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblIzbornikPostavke, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblPostavke, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblIzbornikOdjaviSe, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 217, Short.MAX_VALUE))
+                .addGap(0, 152, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(lblIzbornikAktivnost, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblIzbornikOdjaviSe, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblPostavke, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblAktivnost, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(iconGoreLijevo1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblIzbornikHrana, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblIzbornikIzvjestaj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblIzbornikBlog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblIzbornikONama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblIzbornikPostavke, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblIzbornikOdjaviSe, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblDnevnik, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblHrana, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblIzvjestaj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblBlog1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblONama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(549, Short.MAX_VALUE))
         );
 
@@ -140,18 +144,12 @@ public class GlavniIzbornik extends javax.swing.JFrame {
     private void lblIzbornikOdjaviSeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIzbornikOdjaviSeMouseClicked
         new Login().setVisible(true);
         dispose();
-
     }//GEN-LAST:event_lblIzbornikOdjaviSeMouseClicked
 
-    private void iconGoreLijevo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconGoreLijevo1MouseClicked
-        new GlavniIzbornik().setVisible(true);
+    private void lblHranaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHranaMouseClicked
+        new HranaBaza().setVisible(true);
         dispose();
-    }//GEN-LAST:event_iconGoreLijevo1MouseClicked
-
-    private void lblIzbornikONamaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIzbornikONamaMouseClicked
-        new ONama().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_lblIzbornikONamaMouseClicked
+    }//GEN-LAST:event_lblHranaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -159,12 +157,13 @@ public class GlavniIzbornik extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel iconGoreLijevo1;
-    private javax.swing.JLabel lblIzbornikAktivnost;
-    private javax.swing.JLabel lblIzbornikBlog;
-    private javax.swing.JLabel lblIzbornikHrana;
-    private javax.swing.JLabel lblIzbornikIzvjestaj;
-    private javax.swing.JLabel lblIzbornikONama;
+    private javax.swing.JLabel lblAktivnost;
+    private javax.swing.JLabel lblBlog1;
+    private javax.swing.JLabel lblDnevnik;
+    private javax.swing.JLabel lblHrana;
     private javax.swing.JLabel lblIzbornikOdjaviSe;
-    private javax.swing.JLabel lblIzbornikPostavke;
+    private javax.swing.JLabel lblIzvjestaj;
+    private javax.swing.JLabel lblONama;
+    private javax.swing.JLabel lblPostavke;
     // End of variables declaration//GEN-END:variables
 }

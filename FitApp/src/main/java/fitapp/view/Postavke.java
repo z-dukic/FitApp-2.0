@@ -31,10 +31,11 @@ public class Postavke extends javax.swing.JFrame {
         lblHrana = new javax.swing.JLabel();
         lblAktivnost = new javax.swing.JLabel();
         lblIzvjestaj = new javax.swing.JLabel();
-        lblBlog = new javax.swing.JLabel();
+        lblDnevnik = new javax.swing.JLabel();
         lblONama = new javax.swing.JLabel();
         lblPostavke = new javax.swing.JLabel();
         lblIzbornikOdjaviSe = new javax.swing.JLabel();
+        lblBlog1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,6 +45,11 @@ public class Postavke extends javax.swing.JFrame {
         lblHrana.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHrana.setText("Hrana");
         lblHrana.setToolTipText("");
+        lblHrana.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHranaMouseClicked(evt);
+            }
+        });
 
         lblAktivnost.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblAktivnost.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -54,10 +60,10 @@ public class Postavke extends javax.swing.JFrame {
         lblIzvjestaj.setText("Izvještaj");
         lblIzvjestaj.setToolTipText("");
 
-        lblBlog.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblBlog.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblBlog.setText("Blog");
-        lblBlog.setToolTipText("");
+        lblDnevnik.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblDnevnik.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDnevnik.setText("Dnevnik");
+        lblDnevnik.setToolTipText("");
 
         lblONama.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblONama.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -79,27 +85,34 @@ public class Postavke extends javax.swing.JFrame {
             }
         });
 
+        lblBlog1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblBlog1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBlog1.setText("Blog");
+        lblBlog1.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(iconGoreLijevo1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(1, 1, 1)
+                .addComponent(lblDnevnik, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblHrana, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblAktivnost, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblIzvjestaj, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblBlog, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblBlog1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblONama, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblPostavke, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblIzbornikOdjaviSe, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 217, Short.MAX_VALUE))
+                .addGap(0, 152, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,9 +122,10 @@ public class Postavke extends javax.swing.JFrame {
                     .addComponent(lblPostavke, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblAktivnost, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(iconGoreLijevo1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblDnevnik, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblHrana, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblIzvjestaj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblBlog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblBlog1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblONama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(549, Short.MAX_VALUE))
         );
@@ -125,45 +139,17 @@ public class Postavke extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_lblIzbornikOdjaviSeMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Postavke.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Postavke.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Postavke.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Postavke.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void lblHranaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHranaMouseClicked
+        new HranaBaza().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblHranaMouseClicked
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Postavke().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel iconGoreLijevo1;
     private javax.swing.JLabel lblAktivnost;
-    private javax.swing.JLabel lblBlog;
+    private javax.swing.JLabel lblBlog1;
+    private javax.swing.JLabel lblDnevnik;
     private javax.swing.JLabel lblHrana;
     private javax.swing.JLabel lblIzbornikOdjaviSe;
     private javax.swing.JLabel lblIzvjestaj;
