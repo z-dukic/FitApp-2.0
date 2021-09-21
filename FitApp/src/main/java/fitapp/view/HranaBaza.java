@@ -138,8 +138,18 @@ public class HranaBaza extends javax.swing.JFrame {
         });
 
         btnIzmjeniHranuBaza.setText("Izmjeni");
+        btnIzmjeniHranuBaza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIzmjeniHranuBazaActionPerformed(evt);
+            }
+        });
 
         btnObrišiHranuBaza.setText("Obriši");
+        btnObrišiHranuBaza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObrišiHranuBazaActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Ime hrane");
@@ -315,17 +325,38 @@ public class HranaBaza extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnDodajHranuBazaActionPerformed
+
+    private void btnIzmjeniHranuBazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIzmjeniHranuBazaActionPerformed
+        postaviVrijednostEntiteta();
+        try {
+            hranaController.update();
+            ucitajHranu();
+        } catch (ControllerException e) {
+            JOptionPane.showMessageDialog(getParent(), e.getPoruka());
+        }
+
+
+    }//GEN-LAST:event_btnIzmjeniHranuBazaActionPerformed
+
+    private void btnObrišiHranuBazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrišiHranuBazaActionPerformed
+        try {
+            hranaController.delete();
+            ucitajHranu();
+        } catch (ControllerException e) {
+            JOptionPane.showMessageDialog(getParent(), e.getPoruka());
+        }
+    }//GEN-LAST:event_btnObrišiHranuBazaActionPerformed
     private void postaviVrijednostEntiteta() {
-        
+
         var h = hranaController.getEntitet();
         h.setImeHrane(txtBazaImeHrane.getText());
         try {
-           h.setKalorije(Integer.parseInt(txtBazaKcalHrana.getText()));
+            h.setKalorije(Integer.parseInt(txtBazaKcalHrana.getText()));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(getParent(), "Broj kalorija mora biti cijeli broj");
             return;
         }
-        
+
         try {
             h.setProteini(Integer.parseInt(txtBazaProteiniHrana.getText()));
         } catch (Exception e) {
@@ -338,14 +369,14 @@ public class HranaBaza extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(getParent(), "Broj ugljikohidrata mora biti cijeli broj");
             return;
         }
-        
+
         try {
             h.setMasti(Integer.parseInt(txtBazaMastiHrana.getText()));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(getParent(), "Broj ugljikohidrata mora biti cijeli broj");
             return;
         }
-        
+
     }
 
 
