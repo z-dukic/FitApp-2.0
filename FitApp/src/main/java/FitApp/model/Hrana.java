@@ -24,4 +24,11 @@ public class Hrana extends MakroNutrijenti {
         this.imeHrane = imeHrane;
     }
 
+    @Override
+    public String toString() {
+        return imeHrane;
+    }
+    
+    
+
 }

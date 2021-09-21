@@ -5,17 +5,37 @@
  */
 package fitapp.view;
 
+import fitapp.controller.HranaController;
+import fitapp.model.Hrana;
+import fitapp.util.ControllerException;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author PC
  */
 public class HranaBaza extends javax.swing.JFrame {
 
-    /**
-     * Creates new form HranaBaza
-     */
+    private HranaController hranaController;
+
     public HranaBaza() {
         initComponents();
+        hranaController = new HranaController();
+        ucitajHranu();
+
+    }
+
+    private void ucitajHranu() {
+
+        DefaultListModel<Hrana> h = new DefaultListModel<>();
+
+        hranaController.read().forEach(s -> {
+            h.addElement(s);
+        });
+
+        lstHraneBaza.setModel(h);
+
     }
 
     /**
@@ -37,11 +57,11 @@ public class HranaBaza extends javax.swing.JFrame {
         lblPostavke = new javax.swing.JLabel();
         lblIzbornikOdjaviSe = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        lstHraneBaza = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnDodajHranuBaza = new javax.swing.JButton();
+        btnIzmjeniHranuBaza = new javax.swing.JButton();
+        btnObrišiHranuBaza = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtBazaImeHrane = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -105,16 +125,21 @@ public class HranaBaza extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(lstHraneBaza);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Dodavanje hrane u bazu:");
 
-        jButton1.setText("Dodaj");
+        btnDodajHranuBaza.setText("Dodaj");
+        btnDodajHranuBaza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDodajHranuBazaActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Izmjeni");
+        btnIzmjeniHranuBaza.setText("Izmjeni");
 
-        jButton3.setText("Obriši");
+        btnObrišiHranuBaza.setText("Obriši");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Ime hrane");
@@ -175,44 +200,43 @@ public class HranaBaza extends javax.swing.JFrame {
                         .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(btnDodajHranuBaza)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2)
+                                .addComponent(btnIzmjeniHranuBaza)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton3))
+                                .addComponent(btnObrišiHranuBaza)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtBazaMastiHrana, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtBazaImeHrane, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtBazaUgljikohidratiHrana, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(txtBazaMastiHrana, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(jLabel5)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(txtBazaUgljikohidratiHrana, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(txtBazaKcalHrana, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                                                    .addComponent(txtBazaProteiniHrana))))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtBazaKcalHrana, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                                            .addComponent(txtBazaProteiniHrana))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel8)
-                                                    .addComponent(jLabel9))
-                                                .addComponent(jLabel10))
-                                            .addComponent(jLabel7))
-                                        .addGap(102, 102, 102)))
+                                            .addComponent(jLabel8)
+                                            .addComponent(jLabel9))
+                                        .addComponent(jLabel10))
+                                    .addComponent(jLabel7))
+                                .addGap(135, 135, 135))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(32, 32, 32)
+                                .addComponent(txtBazaImeHrane)
                                 .addGap(33, 33, 33)))))
                 .addGap(0, 152, Short.MAX_VALUE))
         );
@@ -259,9 +283,9 @@ public class HranaBaza extends javax.swing.JFrame {
                             .addComponent(jLabel10))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3)))
+                            .addComponent(btnDodajHranuBaza)
+                            .addComponent(btnIzmjeniHranuBaza)
+                            .addComponent(btnObrišiHranuBaza)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(197, Short.MAX_VALUE))
         );
@@ -276,12 +300,60 @@ public class HranaBaza extends javax.swing.JFrame {
     }//GEN-LAST:event_lblIzbornikOdjaviSeMouseClicked
 
 
+    private void btnDodajHranuBazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajHranuBazaActionPerformed
+
+        hranaController.setEntitet(new Hrana());
+        postaviVrijednostEntiteta();
+        ucitajHranu();
+
+        try {
+            hranaController.create();
+            ucitajHranu();
+        } catch (ControllerException e) {
+            JOptionPane.showMessageDialog(getParent(), e.getPoruka());
+        }
+
+
+    }//GEN-LAST:event_btnDodajHranuBazaActionPerformed
+    private void postaviVrijednostEntiteta() {
+        
+        var h = hranaController.getEntitet();
+        h.setImeHrane(txtBazaImeHrane.getText());
+        try {
+           h.setKalorije(Integer.parseInt(txtBazaKcalHrana.getText()));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(getParent(), "Broj kalorija mora biti cijeli broj");
+            return;
+        }
+        
+        try {
+            h.setProteini(Integer.parseInt(txtBazaProteiniHrana.getText()));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(getParent(), "Broj proteina mora biti cijeli broj");
+            return;
+        }
+        try {
+            h.setUgljikohidrati(Integer.parseInt(txtBazaUgljikohidratiHrana.getText()));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(getParent(), "Broj ugljikohidrata mora biti cijeli broj");
+            return;
+        }
+        
+        try {
+            h.setMasti(Integer.parseInt(txtBazaMastiHrana.getText()));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(getParent(), "Broj ugljikohidrata mora biti cijeli broj");
+            return;
+        }
+        
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDodajHranuBaza;
+    private javax.swing.JButton btnIzmjeniHranuBaza;
+    private javax.swing.JButton btnObrišiHranuBaza;
     private javax.swing.JLabel iconGoreLijevo1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -292,7 +364,6 @@ public class HranaBaza extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<Hrana> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAktivnost;
     private javax.swing.JLabel lblBlog1;
@@ -302,10 +373,12 @@ public class HranaBaza extends javax.swing.JFrame {
     private javax.swing.JLabel lblIzvjestaj;
     private javax.swing.JLabel lblONama;
     private javax.swing.JLabel lblPostavke;
+    private javax.swing.JList<Hrana> lstHraneBaza;
     private javax.swing.JTextField txtBazaImeHrane;
     private javax.swing.JTextField txtBazaKcalHrana;
     private javax.swing.JTextField txtBazaMastiHrana;
     private javax.swing.JTextField txtBazaProteiniHrana;
     private javax.swing.JTextField txtBazaUgljikohidratiHrana;
     // End of variables declaration//GEN-END:variables
+
 }

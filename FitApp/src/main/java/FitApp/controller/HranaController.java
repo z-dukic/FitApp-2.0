@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author PC
  */
-public abstract class HranaController extends Controller<Hrana> {
+public class HranaController extends Controller<Hrana> {
 
     //Izlistanje sve hrane
     @Override
