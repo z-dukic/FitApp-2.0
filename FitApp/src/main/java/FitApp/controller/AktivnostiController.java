@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author PC
  */
-public abstract class AktivnostiController extends Controller<Aktivnost> {
+public class AktivnostiController extends Controller<Aktivnost> {
 
     //Izlistanje svih aktivnosti
     @Override

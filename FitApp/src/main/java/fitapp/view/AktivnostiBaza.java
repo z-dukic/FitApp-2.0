@@ -5,17 +5,25 @@
  */
 package fitapp.view;
 
+import fitapp.controller.AktivnostiController;
+import fitapp.model.Aktivnost;
+import fitapp.util.ControllerException;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author PC
  */
 public class AktivnostiBaza extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AktivnostiBaza
-     */
+    private AktivnostiController aktivnostiController;
+
     public AktivnostiBaza() {
         initComponents();
+        aktivnostiController = new AktivnostiController();
+        ucitajAktivnosti();
+
     }
 
     /**
@@ -42,13 +50,13 @@ public class AktivnostiBaza extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtImeAktivnostiBaza = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtBazaKcalHrana = new javax.swing.JTextField();
+        txtBazaKcalAktivnost = new javax.swing.JTextField();
         lblBlog1 = new javax.swing.JLabel();
         iconGoreLijevo1 = new javax.swing.JLabel();
         lblHrana = new javax.swing.JLabel();
         lblAktivnost = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblIzvjestaj.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblIzvjestaj.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -183,17 +191,18 @@ public class AktivnostiBaza extends javax.swing.JFrame {
                                 .addComponent(btnObrisiAktivnostBaza)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtBazaKcalHrana, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel7)
-                                .addGap(147, 147, 147))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(32, 32, 32)
-                                .addComponent(txtImeAktivnostiBaza)
-                                .addGap(33, 33, 33)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(32, 32, 32)
+                                        .addComponent(txtImeAktivnostiBaza))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtBazaKcalAktivnost, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel7)))
+                                .addGap(147, 147, 147)))))
                 .addGap(0, 24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -220,7 +229,7 @@ public class AktivnostiBaza extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(txtBazaKcalHrana, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtBazaKcalAktivnost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -232,7 +241,20 @@ public class AktivnostiBaza extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ucitajAktivnosti() {
+
+        DefaultListModel<Aktivnost> a = new DefaultListModel<>();
+
+        aktivnostiController.read().forEach(s -> {
+            a.addElement(s);
+        });
+
+        lstAktivnostiBaza.setModel(a);
+    }
+
 
     private void lblIzbornikOdjaviSeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIzbornikOdjaviSeMouseClicked
         new Login().setVisible(true);
@@ -241,37 +263,41 @@ public class AktivnostiBaza extends javax.swing.JFrame {
 
     private void btnDodajAktivnostBazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajAktivnostBazaActionPerformed
 
-        hranaController.setEntitet(new Hrana());
+        aktivnostiController.setEntitet(new Aktivnost());
         postaviVrijednostEntiteta();
-        ucitajHranu();
-
-        try {
-            hranaController.create();
-            ucitajHranu();
+        ucitajAktivnosti();
+        
+       try {
+           aktivnostiController.update();
+           ucitajAktivnosti();
+            
         } catch (ControllerException e) {
             JOptionPane.showMessageDialog(getParent(), e.getPoruka());
         }
 
     }//GEN-LAST:event_btnDodajAktivnostBazaActionPerformed
 
+     private void postaviVrijednostEntiteta() {
+         
+         var a = aktivnostiController.getEntitet();
+         a.setImeAktivnosti(txtImeAktivnostiBaza.getText());
+         try {
+             a.setPotroseneKalorijePoSatu(Integer.parseInt(txtBazaKcalAktivnost.getText()));
+         } catch (Exception e) {
+             JOptionPane.showMessageDialog(getParent(), "Broj kalorija mora biti cijeli broj");
+         }
+         
+         
+     }
+    
+    
     private void btnIzmjeniAktivnostiBazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIzmjeniAktivnostiBazaActionPerformed
-        postaviVrijednostEntiteta();
-        try {
-            hranaController.update();
-            ucitajHranu();
-        } catch (ControllerException e) {
-            JOptionPane.showMessageDialog(getParent(), e.getPoruka());
-        }
+
 
     }//GEN-LAST:event_btnIzmjeniAktivnostiBazaActionPerformed
 
     private void btnObrisiAktivnostBazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiAktivnostBazaActionPerformed
-        try {
-            hranaController.delete();
-            ucitajHranu();
-        } catch (ControllerException e) {
-            JOptionPane.showMessageDialog(getParent(), e.getPoruka());
-        }
+
     }//GEN-LAST:event_btnObrisiAktivnostBazaActionPerformed
 
     private void lblHranaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHranaMouseClicked
@@ -284,40 +310,6 @@ public class AktivnostiBaza extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_lblAktivnostMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AktivnostiBaza.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AktivnostiBaza.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AktivnostiBaza.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AktivnostiBaza.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AktivnostiBaza().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodajAktivnostBaza;
@@ -337,8 +329,11 @@ public class AktivnostiBaza extends javax.swing.JFrame {
     private javax.swing.JLabel lblIzvjestaj;
     private javax.swing.JLabel lblONama;
     private javax.swing.JLabel lblPostavke;
-    private javax.swing.JList<Hrana> lstAktivnostiBaza;
-    private javax.swing.JTextField txtBazaKcalHrana;
+    private javax.swing.JList<Aktivnost> lstAktivnostiBaza;
+    private javax.swing.JTextField txtBazaKcalAktivnost;
     private javax.swing.JTextField txtImeAktivnostiBaza;
     // End of variables declaration//GEN-END:variables
+
+   
+
 }
