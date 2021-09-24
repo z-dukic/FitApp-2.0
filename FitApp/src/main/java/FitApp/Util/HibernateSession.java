@@ -24,17 +24,27 @@ public class HibernateSession {
         Session s = HibernateUtil.getSession();
 
         s.beginTransaction();
-        
+
         //Dodavanje korisnika
         Korisnik korisnik = new Korisnik();
         korisnik.setNadimak("korisnik");
         korisnik.setLozinka(BCrypt.hashpw("korisnik", BCrypt.gensalt()));
-        korisnik.setEmail("korisnik@gmail.com"); 
+        korisnik.setEmail("korisnik@gmail.com");
+        korisnik.setVisina(183);
+        korisnik.setDob(20);
+        korisnik.setSpol("m");
+        korisnik.setTezina(120);
+        korisnik.setZeljenaTezina(100);
+
         s.save(korisnik);
 
         //Dodavanje jedne hrane u bazu hrana
         Hrana banana = new Hrana();
         banana.setImeHrane("Banana");
+        banana.setKalorije(20);
+        banana.setProteini(20);
+        banana.setUgljikohidrati(20);
+        banana.setMasti(20);
         s.save(banana);
 
         //Dodavanje više aktivnosti u bazu

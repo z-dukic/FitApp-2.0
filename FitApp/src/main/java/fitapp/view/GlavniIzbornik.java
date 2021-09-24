@@ -81,6 +81,11 @@ public class GlavniIzbornik extends javax.swing.JFrame {
         lblPostavke.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPostavke.setText("Postavke");
         lblPostavke.setToolTipText("");
+        lblPostavke.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblPostavkeMouseClicked(evt);
+            }
+        });
 
         lblIzbornikOdjaviSe.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblIzbornikOdjaviSe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -150,6 +155,11 @@ public class GlavniIzbornik extends javax.swing.JFrame {
         new HranaBaza().setVisible(true);
         dispose();
     }//GEN-LAST:event_lblHranaMouseClicked
+
+    private void lblPostavkeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPostavkeMouseClicked
+        new PostavkeKorisnika().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblPostavkeMouseClicked
 
     /**
      * @param args the command line arguments

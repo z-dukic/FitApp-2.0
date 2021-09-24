@@ -88,6 +88,13 @@ public class Korisnik extends Entitet {
         this.spol = spol;
     }
 
-    
+    @Override
+    public String toString() {
+        return nadimak;
+    }
+
+
+
+
 
 }

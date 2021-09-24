@@ -20,7 +20,7 @@ public class Start {
         new SplashScreen().setVisible(true);
 
         //Ubacivanje korisnika, hrane po potrebi
-        //HibernateSession.odradiPosao();
+      // HibernateSession.odradiPosao();
     }
 
 }
