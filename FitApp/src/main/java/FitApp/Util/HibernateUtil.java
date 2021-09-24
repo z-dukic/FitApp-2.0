@@ -17,7 +17,8 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
  * @author PC
  */
 public class HibernateUtil {
-
+//Hibernate default program
+    
     private static StandardServiceRegistry registry;
     private static Session session;
 

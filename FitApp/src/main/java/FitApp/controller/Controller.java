@@ -63,6 +63,7 @@ public abstract class Controller<T> {
     //Brisanje entiteta
     //CRU(D)
     public void delete() throws ControllerException {
+        kontrolaDelete();
         session.beginTransaction();
         session.delete(entitet);
         session.getTransaction().commit();

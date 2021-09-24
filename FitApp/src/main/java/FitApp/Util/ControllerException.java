@@ -11,6 +11,7 @@ package fitapp.util;
  */
 public class ControllerException extends Exception {
 
+    //Poruka u exceptionu
     private String poruka;
 
     public ControllerException(String poruka) {

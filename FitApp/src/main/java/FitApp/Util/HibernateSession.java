@@ -18,7 +18,8 @@ import org.mindrot.jbcrypt.BCrypt;
  * @author PC
  */
 public class HibernateSession {
-
+//Ubacivanje inicialnih podataka
+    
     public static void odradiPosao() {
 
         Session s = HibernateUtil.getSession();
