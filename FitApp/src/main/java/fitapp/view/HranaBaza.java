@@ -17,24 +17,24 @@ import javax.swing.JOptionPane;
  */
 public class HranaBaza extends javax.swing.JFrame {
 
-    private HranaController hranaController;
+    private HranaController controller;
 
-    public HranaBaza() {
+    public HranaBaza() { //1
         initComponents();
-        hranaController = new HranaController();
-        ucitajHranu();
+        controller = new HranaController();
+        ucitajEntitet();
 
     }
 
-    private void ucitajHranu() {
+    private void ucitajEntitet() { //2
 
         DefaultListModel<Hrana> h = new DefaultListModel<>();
 
-        hranaController.read().forEach(s -> {
+        controller.read().forEach(s -> {
             h.addElement(s);
         });
 
-        lstHraneBaza.setModel(h);
+        lstEntiteta.setModel(h);
 
     }
 
@@ -57,7 +57,7 @@ public class HranaBaza extends javax.swing.JFrame {
         lblPostavke = new javax.swing.JLabel();
         lblIzbornikOdjaviSe = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        lstHraneBaza = new javax.swing.JList<>();
+        lstEntiteta = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         btnDodajHranuBaza = new javax.swing.JButton();
         btnIzmjeniHranuBaza = new javax.swing.JButton();
@@ -135,7 +135,7 @@ public class HranaBaza extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane1.setViewportView(lstHraneBaza);
+        jScrollPane1.setViewportView(lstEntiteta);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Dodavanje hrane u bazu:");
@@ -321,14 +321,14 @@ public class HranaBaza extends javax.swing.JFrame {
 
 
     private void btnDodajHranuBazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajHranuBazaActionPerformed
-
-        hranaController.setEntitet(new Hrana());
+        //3
+        controller.setEntitet(new Hrana());
         postaviVrijednostEntiteta();
-        ucitajHranu();
+        ucitajEntitet();
 
         try {
-            hranaController.create();
-            ucitajHranu();
+            controller.create();
+            ucitajEntitet();
         } catch (ControllerException e) {
             JOptionPane.showMessageDialog(getParent(), e.getPoruka());
         }
@@ -337,10 +337,11 @@ public class HranaBaza extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDodajHranuBazaActionPerformed
 
     private void btnIzmjeniHranuBazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIzmjeniHranuBazaActionPerformed
+       //6
         postaviVrijednostEntiteta();
         try {
-            hranaController.update();
-            ucitajHranu();
+            controller.update();
+            ucitajEntitet();
         } catch (ControllerException e) {
             JOptionPane.showMessageDialog(getParent(), e.getPoruka());
         }
@@ -349,9 +350,10 @@ public class HranaBaza extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIzmjeniHranuBazaActionPerformed
 
     private void btnObrišiHranuBazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrišiHranuBazaActionPerformed
-        try {
-            hranaController.delete();
-            ucitajHranu();
+        //5
+        try { 
+            controller.delete();
+            ucitajEntitet();
         } catch (ControllerException e) {
             JOptionPane.showMessageDialog(getParent(), e.getPoruka());
         }
@@ -366,9 +368,10 @@ public class HranaBaza extends javax.swing.JFrame {
         new HranaBaza().setVisible(true);
         dispose();
     }//GEN-LAST:event_lblHranaMouseClicked
-    private void postaviVrijednostEntiteta() {
+    private void postaviVrijednostEntiteta() { //4
 
-        var h = hranaController.getEntitet();
+        var h = controller.getEntitet();
+        
         h.setImeHrane(txtBazaImeHrane.getText());
         try {
             h.setKalorije(Integer.parseInt(txtBazaKcalHrana.getText()));
@@ -424,7 +427,7 @@ public class HranaBaza extends javax.swing.JFrame {
     private javax.swing.JLabel lblIzvjestaj;
     private javax.swing.JLabel lblONama;
     private javax.swing.JLabel lblPostavke;
-    private javax.swing.JList<Hrana> lstHraneBaza;
+    private javax.swing.JList<Hrana> lstEntiteta;
     private javax.swing.JTextField txtBazaImeHrane;
     private javax.swing.JTextField txtBazaKcalHrana;
     private javax.swing.JTextField txtBazaMastiHrana;

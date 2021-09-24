@@ -56,7 +56,7 @@ public class KorisnikController extends Controller<Korisnik> {
         if (entitet.getNadimak() == null || entitet.getNadimak().trim().length() == 0) {
             throw new ControllerException("Dodati ime hrane je obavezno.");
         }
-        if (entitet.getNadimak().trim().length() < 6 || entitet.getNadimak().trim().length() < 20) {
+        if (entitet.getNadimak().trim().length() < 1 && entitet.getNadimak().trim().length() < 20) {
             throw new ControllerException("Vaš nadimak može biti minimalno dugačak 5 znakova, a maksimalno 20.");
         }
 

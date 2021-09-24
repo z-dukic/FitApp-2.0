@@ -19,23 +19,32 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
 
     private KorisnikController controller;
 
-    public PostavkeKorisnika() {
+    public PostavkeKorisnika() { //1
         initComponents();
         controller = new KorisnikController();
-        ucitaj();
+        ucitajEntitet();
     }
 
-    private void ucitaj() {
-        DefaultListModel<Korisnik> m = new DefaultListModel<>();
+    private void ucitajEntitet() { //2
+        
+       DefaultListModel<Korisnik> m = new DefaultListModel<>();
 
-        controller.read().forEach(s -> { m.addElement(s);});
+        controller.read().forEach(s -> {
+            m.addElement(s);
+        });
 
-        lstSadasnjeVrijednostiKorisnika.setModel(m);
+        lstEntiteta.setModel(m);
     }
 
-    public void postaviVrijednostiUEntitet() {
+    //3, 5
+    
+    public void postaviVrijednostEntiteta() { //4
         var s = controller.getEntitet();
+
         s.setNadimak(txtNadimak.getText());
+        s.setLozinka(txtLozinka.getText());
+        s.setEmail(txtEmail.getText());
+        s.setSpol(txtSpol.getText());
 
         try {
             s.setDob(Integer.parseInt(txtDob.getText()));
@@ -44,26 +53,24 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
             return;
         }
 
-        s.setEmail(txtEMail.getText());
-
         try {
             s.setTezina(Integer.parseInt(txtTezina.getText()));
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(getParent(), "Vaša dob mora biti cijeli broj");
+            JOptionPane.showMessageDialog(getParent(), "Vaša težina mora biti cijeli broj");
             return;
         }
 
         try {
             s.setZeljenaTezina(Integer.parseInt(txtZeljenaTezina.getText()));
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(getParent(), "Vaša dob mora biti cijeli broj");
+            JOptionPane.showMessageDialog(getParent(), "Vaša željena težina mora biti cijeli broj");
             return;
         }
 
         try {
             s.setVisina(Integer.parseInt(txtVisina.getText()));
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(getParent(), "Vaša dob mora biti cijeli broj");
+            JOptionPane.showMessageDialog(getParent(), "Vaša visina mora biti cijeli broj");
             return;
         }
 
@@ -78,70 +85,42 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblPostavke = new javax.swing.JLabel();
+        lblIzbornikOdjaviSe = new javax.swing.JLabel();
+        btnDodajHranuBaza = new javax.swing.JButton();
+        btnIzmjeniHranuBaza = new javax.swing.JButton();
+        btnObrišiHranuBaza = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtNadimak = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtLozinka = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtDob = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtSpol = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lstEntiteta = new javax.swing.JList<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txtVisina = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtTezina = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txtZeljenaTezina = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        lblBlog1 = new javax.swing.JLabel();
         iconGoreLijevo1 = new javax.swing.JLabel();
         lblHrana = new javax.swing.JLabel();
         lblAktivnost = new javax.swing.JLabel();
         lblIzvjestaj = new javax.swing.JLabel();
         lblDnevnik = new javax.swing.JLabel();
         lblONama = new javax.swing.JLabel();
-        lblPostavke = new javax.swing.JLabel();
-        lblIzbornikOdjaviSe = new javax.swing.JLabel();
-        lblBlog1 = new javax.swing.JLabel();
-        btnPromjeni = new javax.swing.JButton();
-        txtTezina = new javax.swing.JTextField();
-        lblVisina = new javax.swing.JLabel();
-        lblNadimak = new javax.swing.JLabel();
-        lblTezina = new javax.swing.JLabel();
-        txtNadimak = new javax.swing.JTextField();
-        txtZeljenaTezina = new javax.swing.JTextField();
-        txtLozinka = new javax.swing.JTextField();
-        txtEMail = new javax.swing.JTextField();
-        lblLozinka = new javax.swing.JLabel();
-        lblEmail = new javax.swing.JLabel();
-        txtDob = new javax.swing.JTextField();
-        radioBtnMusko = new javax.swing.JRadioButton();
-        lvlDob = new javax.swing.JLabel();
-        radioBtnZensko = new javax.swing.JRadioButton();
-        lblSpol = new javax.swing.JLabel();
-        lblZeljenaTezina = new javax.swing.JLabel();
-        txtVisina = new javax.swing.JTextField();
-        btnPromjenaIzvrsena = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        lstSadasnjeVrijednostiKorisnika = new javax.swing.JList<>();
-        lblTrenutnoPodaci = new javax.swing.JLabel();
+        lblPostavke1 = new javax.swing.JLabel();
+        lblIzbornikOdjaviSe1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        iconGoreLijevo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FitAppIcon1.png"))); // NOI18N
-
-        lblHrana.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblHrana.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHrana.setText("Hrana");
-        lblHrana.setToolTipText("");
-        lblHrana.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblHranaMouseClicked(evt);
-            }
-        });
-
-        lblAktivnost.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblAktivnost.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAktivnost.setText("Aktivnost");
-
-        lblIzvjestaj.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblIzvjestaj.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblIzvjestaj.setText("Izvještaj");
-        lblIzvjestaj.setToolTipText("");
-
-        lblDnevnik.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblDnevnik.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDnevnik.setText("Dnevnik");
-        lblDnevnik.setToolTipText("");
-
-        lblONama.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblONama.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblONama.setText("O nama");
-        lblONama.setToolTipText("");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblPostavke.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblPostavke.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -158,88 +137,214 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
             }
         });
 
+        btnDodajHranuBaza.setText("Dodaj");
+        btnDodajHranuBaza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDodajHranuBazaActionPerformed(evt);
+            }
+        });
+
+        btnIzmjeniHranuBaza.setText("Izmjeni");
+        btnIzmjeniHranuBaza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIzmjeniHranuBazaActionPerformed(evt);
+            }
+        });
+
+        btnObrišiHranuBaza.setText("Obriši");
+        btnObrišiHranuBaza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObrišiHranuBazaActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel2.setText("Nadimak:");
+
+        txtNadimak.setText("peropero");
+        txtNadimak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNadimakActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel3.setText("Email:");
+
+        txtEmail.setText("peropero@pero.com");
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel4.setText("Lozinka:");
+
+        txtLozinka.setText("peropero123");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel5.setText("Dob:");
+
+        txtDob.setText("25");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel6.setText("Spol:");
+
+        txtSpol.setText("m");
+        txtSpol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSpolActionPerformed(evt);
+            }
+        });
+
+        jScrollPane1.setViewportView(lstEntiteta);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Promjena postavka:");
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel7.setText("Visina:");
+
+        txtVisina.setText("183");
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel8.setText("Težina:");
+
+        txtTezina.setText("130");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        txtZeljenaTezina.setText("100");
+        txtZeljenaTezina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtZeljenaTezinaActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel10.setText("Željena težina:");
+
         lblBlog1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblBlog1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBlog1.setText("Blog");
         lblBlog1.setToolTipText("");
 
-        btnPromjeni.setText("Promjeni");
-        btnPromjeni.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPromjeniActionPerformed(evt);
+        iconGoreLijevo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FitAppIcon1.png"))); // NOI18N
+
+        lblHrana.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblHrana.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHrana.setText("Hrana");
+        lblHrana.setToolTipText("");
+        lblHrana.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHranaMouseClicked(evt);
             }
         });
 
-        lblVisina.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblVisina.setText("Visina:");
-
-        lblNadimak.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblNadimak.setText("Nadimak:");
-
-        lblTezina.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblTezina.setText("Težina:");
-
-        txtLozinka.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLozinkaActionPerformed(evt);
+        lblAktivnost.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblAktivnost.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAktivnost.setText("Aktivnost");
+        lblAktivnost.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAktivnostMouseClicked(evt);
             }
         });
 
-        txtEMail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEMailActionPerformed(evt);
+        lblIzvjestaj.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblIzvjestaj.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIzvjestaj.setText("Izvještaj");
+        lblIzvjestaj.setToolTipText("");
+
+        lblDnevnik.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblDnevnik.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDnevnik.setText("Dnevnik");
+        lblDnevnik.setToolTipText("");
+
+        lblONama.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblONama.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblONama.setText("O nama");
+        lblONama.setToolTipText("");
+
+        lblPostavke1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblPostavke1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPostavke1.setText("Postavke");
+        lblPostavke1.setToolTipText("");
+
+        lblIzbornikOdjaviSe1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblIzbornikOdjaviSe1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIzbornikOdjaviSe1.setText("Odjavi se");
+        lblIzbornikOdjaviSe1.setToolTipText("");
+        lblIzbornikOdjaviSe1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIzbornikOdjaviSe1MouseClicked(evt);
             }
         });
-
-        lblLozinka.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblLozinka.setText("Lozinka:");
-
-        lblEmail.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblEmail.setText("E-mail:");
-
-        radioBtnMusko.setText("Muško");
-
-        lvlDob.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lvlDob.setText("Dob:");
-
-        radioBtnZensko.setText("Žensko");
-
-        lblSpol.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblSpol.setText("Spol:");
-
-        lblZeljenaTezina.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblZeljenaTezina.setText("Željena težina:");
-
-        lstSadasnjeVrijednostiKorisnika.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                lstSadasnjeVrijednostiKorisnikaValueChanged(evt);
-            }
-        });
-        jScrollPane1.setViewportView(lstSadasnjeVrijednostiKorisnika);
-
-        lblTrenutnoPodaci.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblTrenutnoPodaci.setText("Vaši trenutno podaci su:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(141, 141, 141)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(201, 201, 201))
+                                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabel5))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(106, 106, 106)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtNadimak, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(txtVisina, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(94, 94, 94)
+                                            .addComponent(txtSpol, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtTezina, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(99, 99, 99)
+                                            .addComponent(txtLozinka, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtZeljenaTezina, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(90, 90, 90)
+                                .addComponent(btnDodajHranuBaza)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnIzmjeniHranuBaza)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnObrišiHranuBaza))))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(iconGoreLijevo1)
                         .addGap(1, 1, 1)
                         .addComponent(lblDnevnik, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblHrana, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTrenutnoPodaci, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblHrana, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblAktivnost, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblIzvjestaj, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -248,42 +353,14 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblONama, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblPostavke, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblSpol, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblVisina, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblTezina, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(34, 34, 34)
-                            .addComponent(txtVisina, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblZeljenaTezina, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtTezina, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtZeljenaTezina, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnPromjeni, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnPromjenaIzvrsena, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblNadimak, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblLozinka, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lvlDob, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(34, 34, 34)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtNadimak, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtEMail, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtLozinka, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(radioBtnMusko)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(radioBtnZensko))))))
+                        .addComponent(lblPostavke1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblIzbornikOdjaviSe1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(281, 387, Short.MAX_VALUE)
+                .addComponent(lblPostavke, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblIzbornikOdjaviSe, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(152, 152, 152))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,55 +368,59 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(lblIzbornikOdjaviSe, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblPostavke, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblIzbornikOdjaviSe1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblPostavke1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblAktivnost, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(iconGoreLijevo1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblDnevnik, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblHrana, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblIzvjestaj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblBlog1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblONama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTrenutnoPodaci, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addComponent(lblONama, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblNadimak, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
                             .addComponent(txtNadimak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblLozinka, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtLozinka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lvlDob, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSpol, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(radioBtnMusko)
-                    .addComponent(radioBtnZensko))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblVisina, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtVisina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTezina, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTezina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblZeljenaTezina, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtZeljenaTezina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addComponent(btnPromjeni, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnPromjenaIzvrsena, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(158, Short.MAX_VALUE))
+                            .addComponent(jLabel3)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtLozinka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(txtSpol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(txtVisina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(txtTezina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(txtZeljenaTezina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnDodajHranuBaza)
+                            .addComponent(btnIzmjeniHranuBaza)
+                            .addComponent(btnObrišiHranuBaza)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(208, Short.MAX_VALUE))
         );
 
         pack();
@@ -351,79 +432,107 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_lblIzbornikOdjaviSeMouseClicked
 
+    private void btnDodajHranuBazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajHranuBazaActionPerformed
+        //3
+        controller.setEntitet(new Korisnik());
+        postaviVrijednostEntiteta();
+        ucitajEntitet();
+
+        try {
+            controller.create();
+            ucitajEntitet();
+        } catch (ControllerException e) {
+            JOptionPane.showMessageDialog(getParent(), e.getPoruka());
+        }
+
+    }//GEN-LAST:event_btnDodajHranuBazaActionPerformed
+
+    private void btnIzmjeniHranuBazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIzmjeniHranuBazaActionPerformed
+        //6
+        postaviVrijednostEntiteta();
+        try {
+            controller.update();
+            ucitajEntitet();
+        } catch (ControllerException e) {
+            JOptionPane.showMessageDialog(getParent(), e.getPoruka());
+        }
+
+    }//GEN-LAST:event_btnIzmjeniHranuBazaActionPerformed
+
+    private void btnObrišiHranuBazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrišiHranuBazaActionPerformed
+        //5
+        try {
+            controller.delete();
+            ucitajEntitet();
+        } catch (ControllerException e) {
+            JOptionPane.showMessageDialog(getParent(), e.getPoruka());
+        }
+    }//GEN-LAST:event_btnObrišiHranuBazaActionPerformed
+
     private void lblHranaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHranaMouseClicked
         new HranaBaza().setVisible(true);
         dispose();
     }//GEN-LAST:event_lblHranaMouseClicked
 
-    private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
-        ucitaj();
-        postaviVrijednostiUEntitet();
-        try {
-            controller.update();
-            ucitaj();
-        } catch (ControllerException ex) {
-            JOptionPane.showMessageDialog(getParent(), ex.getPoruka());
-        }
+    private void lblAktivnostMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAktivnostMouseClicked
+        new AktivnostiBaza().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblAktivnostMouseClicked
 
+    private void lblIzbornikOdjaviSe1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIzbornikOdjaviSe1MouseClicked
+        new Login().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblIzbornikOdjaviSe1MouseClicked
 
-    }//GEN-LAST:event_btnPromjeniActionPerformed
-
-    private void txtLozinkaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLozinkaActionPerformed
+    private void txtNadimakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNadimakActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtLozinkaActionPerformed
+    }//GEN-LAST:event_txtNadimakActionPerformed
 
-    private void txtEMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEMailActionPerformed
+    private void txtZeljenaTezinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtZeljenaTezinaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtEMailActionPerformed
+    }//GEN-LAST:event_txtZeljenaTezinaActionPerformed
 
-    private void lstSadasnjeVrijednostiKorisnikaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstSadasnjeVrijednostiKorisnikaValueChanged
-        ucitaj();
-        if (evt.getValueIsAdjusting() || lstSadasnjeVrijednostiKorisnika.getSelectedValue() == null) {
-            return;
-        }
-        
-        controller.setEntitet(lstSadasnjeVrijednostiKorisnika.getSelectedValue());
-        var k = controller.getEntitet();
-        txtNadimak.setText(k.getNadimak());
-        txtEMail.setText(k.getNadimak());
-        txtTezina.setText(String.valueOf(k.getTezina()));
-        txtZeljenaTezina.setText(String.valueOf(k.getZeljenaTezina()));
-        txtDob.setText(String.valueOf(k.getDob()));
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
 
-
-    }//GEN-LAST:event_lstSadasnjeVrijednostiKorisnikaValueChanged
+    private void txtSpolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSpolActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSpolActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnPromjenaIzvrsena;
-    private javax.swing.JButton btnPromjeni;
+    private javax.swing.JButton btnDodajHranuBaza;
+    private javax.swing.JButton btnIzmjeniHranuBaza;
+    private javax.swing.JButton btnObrišiHranuBaza;
     private javax.swing.JLabel iconGoreLijevo1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAktivnost;
     private javax.swing.JLabel lblBlog1;
     private javax.swing.JLabel lblDnevnik;
-    private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblHrana;
     private javax.swing.JLabel lblIzbornikOdjaviSe;
+    private javax.swing.JLabel lblIzbornikOdjaviSe1;
     private javax.swing.JLabel lblIzvjestaj;
-    private javax.swing.JLabel lblLozinka;
-    private javax.swing.JLabel lblNadimak;
     private javax.swing.JLabel lblONama;
     private javax.swing.JLabel lblPostavke;
-    private javax.swing.JLabel lblSpol;
-    private javax.swing.JLabel lblTezina;
-    private javax.swing.JLabel lblTrenutnoPodaci;
-    private javax.swing.JLabel lblVisina;
-    private javax.swing.JLabel lblZeljenaTezina;
-    private javax.swing.JList<Korisnik> lstSadasnjeVrijednostiKorisnika;
-    private javax.swing.JLabel lvlDob;
-    private javax.swing.JRadioButton radioBtnMusko;
-    private javax.swing.JRadioButton radioBtnZensko;
+    private javax.swing.JLabel lblPostavke1;
+    private javax.swing.JList<Korisnik> lstEntiteta;
     private javax.swing.JTextField txtDob;
-    private javax.swing.JTextField txtEMail;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtLozinka;
     private javax.swing.JTextField txtNadimak;
+    private javax.swing.JTextField txtSpol;
     private javax.swing.JTextField txtTezina;
     private javax.swing.JTextField txtVisina;
     private javax.swing.JTextField txtZeljenaTezina;
