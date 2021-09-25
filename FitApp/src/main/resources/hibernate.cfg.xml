@@ -48,6 +48,7 @@
         <mapping class="fitapp.model.Recept" />
         <mapping class="fitapp.model.DnevnikHrane" />
         <mapping class="fitapp.model.DnevnikAktivnosti" />
+        <mapping class="fitapp.model.Blog" />
         
 
     </session-factory>

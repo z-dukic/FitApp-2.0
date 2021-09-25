@@ -61,6 +61,11 @@ public class GlavniIzbornik extends javax.swing.JFrame {
         lblAktivnost.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblAktivnost.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAktivnost.setText("Aktivnost");
+        lblAktivnost.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAktivnostMouseClicked(evt);
+            }
+        });
 
         lblIzvjestaj.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblIzvjestaj.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -101,6 +106,11 @@ public class GlavniIzbornik extends javax.swing.JFrame {
         lblBlog1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBlog1.setText("Blog");
         lblBlog1.setToolTipText("");
+        lblBlog1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblBlog1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -160,6 +170,16 @@ public class GlavniIzbornik extends javax.swing.JFrame {
         new PostavkeKorisnika().setVisible(true);
         dispose();
     }//GEN-LAST:event_lblPostavkeMouseClicked
+
+    private void lblBlog1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBlog1MouseClicked
+        new BlogView().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblBlog1MouseClicked
+
+    private void lblAktivnostMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAktivnostMouseClicked
+        new AktivnostiBaza().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblAktivnostMouseClicked
 
     /**
      * @param args the command line arguments
