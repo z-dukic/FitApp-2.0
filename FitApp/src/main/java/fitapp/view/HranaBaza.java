@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  *
  * @author PC
  */
-public class HranaBaza extends javax.swing.JFrame {
+public class HranaBaza extends javax.swing.JFrame implements Sucelje{
 
     private HranaController controller;
 
@@ -23,16 +23,20 @@ public class HranaBaza extends javax.swing.JFrame {
         initComponents();
         controller = new HranaController();
         ucitajEntitet();
+        postavke();
 
     }
+    
+     @Override
+    public void postavke() {
+     }
 
-    private void ucitajEntitet() { //2
+    @Override
+    public void ucitajEntitet() { //2
 
         DefaultListModel<Hrana> h = new DefaultListModel<>();
 
-        controller.read().forEach(s -> {
-            h.addElement(s);
-        });
+       controller.read(txtUvjet.getText()).forEach(s->{h.addElement(s);});
 
         lstEntiteta.setModel(h);
 
@@ -47,15 +51,6 @@ public class HranaBaza extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblBlog1 = new javax.swing.JLabel();
-        iconGoreLijevo1 = new javax.swing.JLabel();
-        lblHrana = new javax.swing.JLabel();
-        lblAktivnost = new javax.swing.JLabel();
-        lblIzvjestaj = new javax.swing.JLabel();
-        lblDnevnik = new javax.swing.JLabel();
-        lblONama = new javax.swing.JLabel();
-        lblPostavke = new javax.swing.JLabel();
-        lblIzbornikOdjaviSe = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstEntiteta = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
@@ -76,64 +71,19 @@ public class HranaBaza extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        lblAktivnost = new javax.swing.JLabel();
+        lblIzvjestaj = new javax.swing.JLabel();
+        lblDnevnik = new javax.swing.JLabel();
+        lblONama = new javax.swing.JLabel();
+        lblPostavke = new javax.swing.JLabel();
+        lblIzbornikOdjaviSe = new javax.swing.JLabel();
+        lblBlog1 = new javax.swing.JLabel();
+        iconGoreLijevo1 = new javax.swing.JLabel();
+        lblHrana = new javax.swing.JLabel();
+        btnTrazi = new javax.swing.JButton();
+        txtUvjet = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        lblBlog1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblBlog1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblBlog1.setText("Blog");
-        lblBlog1.setToolTipText("");
-
-        iconGoreLijevo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FitAppIcon1.png"))); // NOI18N
-
-        lblHrana.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblHrana.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHrana.setText("Hrana");
-        lblHrana.setToolTipText("");
-        lblHrana.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblHranaMouseClicked(evt);
-            }
-        });
-
-        lblAktivnost.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblAktivnost.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAktivnost.setText("Aktivnost");
-        lblAktivnost.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblAktivnostMouseClicked(evt);
-            }
-        });
-
-        lblIzvjestaj.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblIzvjestaj.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblIzvjestaj.setText("Izvještaj");
-        lblIzvjestaj.setToolTipText("");
-
-        lblDnevnik.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblDnevnik.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDnevnik.setText("Dnevnik");
-        lblDnevnik.setToolTipText("");
-
-        lblONama.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblONama.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblONama.setText("O nama");
-        lblONama.setToolTipText("");
-
-        lblPostavke.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblPostavke.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPostavke.setText("Postavke");
-        lblPostavke.setToolTipText("");
-
-        lblIzbornikOdjaviSe.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblIzbornikOdjaviSe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblIzbornikOdjaviSe.setText("Odjavi se");
-        lblIzbornikOdjaviSe.setToolTipText("");
-        lblIzbornikOdjaviSe.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblIzbornikOdjaviSeMouseClicked(evt);
-            }
-        });
 
         jScrollPane1.setViewportView(lstEntiteta);
 
@@ -184,15 +134,111 @@ public class HranaBaza extends javax.swing.JFrame {
 
         jLabel7.setText("kcal");
 
+        lblAktivnost.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblAktivnost.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAktivnost.setText("Aktivnost");
+        lblAktivnost.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAktivnostMouseClicked(evt);
+            }
+        });
+
+        lblIzvjestaj.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblIzvjestaj.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIzvjestaj.setText("Izvještaj");
+        lblIzvjestaj.setToolTipText("");
+        lblIzvjestaj.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIzvjestajMouseClicked(evt);
+            }
+        });
+
+        lblDnevnik.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblDnevnik.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDnevnik.setText("Dnevnik");
+        lblDnevnik.setToolTipText("");
+        lblDnevnik.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDnevnikMouseClicked(evt);
+            }
+        });
+
+        lblONama.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblONama.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblONama.setText("O nama");
+        lblONama.setToolTipText("");
+        lblONama.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblONamaMouseClicked(evt);
+            }
+        });
+
+        lblPostavke.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblPostavke.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPostavke.setText("Postavke");
+        lblPostavke.setToolTipText("");
+        lblPostavke.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblPostavkeMouseClicked(evt);
+            }
+        });
+
+        lblIzbornikOdjaviSe.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblIzbornikOdjaviSe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIzbornikOdjaviSe.setText("Odjavi se");
+        lblIzbornikOdjaviSe.setToolTipText("");
+        lblIzbornikOdjaviSe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIzbornikOdjaviSeMouseClicked(evt);
+            }
+        });
+
+        lblBlog1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblBlog1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBlog1.setText("Blog");
+        lblBlog1.setToolTipText("");
+        lblBlog1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblBlog1MouseClicked(evt);
+            }
+        });
+
+        iconGoreLijevo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FitAppIcon1.png"))); // NOI18N
+        iconGoreLijevo1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                iconGoreLijevo1MouseClicked(evt);
+            }
+        });
+
+        lblHrana.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblHrana.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHrana.setText("Hrana");
+        lblHrana.setToolTipText("");
+        lblHrana.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHranaMouseClicked(evt);
+            }
+        });
+
+        btnTrazi.setText("Traži");
+        btnTrazi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTraziActionPerformed(evt);
+            }
+        });
+
+        txtUvjet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUvjetActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(iconGoreLijevo1)
                         .addGap(1, 1, 1)
@@ -200,12 +246,7 @@ public class HranaBaza extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblHrana, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblAktivnost, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblAktivnost, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblIzvjestaj, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -217,47 +258,54 @@ public class HranaBaza extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblIzbornikOdjaviSe, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
+                        .addGap(83, 83, 83)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnDodajHranuBaza)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnIzmjeniHranuBaza)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnObrišiHranuBaza)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(23, 23, 23)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtBazaMastiHrana, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtBazaUgljikohidratiHrana, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtBazaKcalHrana, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                                            .addComponent(txtBazaProteiniHrana))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(btnDodajHranuBaza)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnIzmjeniHranuBaza)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnObrišiHranuBaza))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(txtBazaMastiHrana, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addComponent(jLabel5)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(txtBazaUgljikohidratiHrana, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(txtBazaKcalHrana)
+                                                    .addComponent(txtBazaProteiniHrana, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel8)
-                                            .addComponent(jLabel9))
-                                        .addComponent(jLabel10))
-                                    .addComponent(jLabel7))
-                                .addGap(135, 135, 135))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel8)
+                                                    .addComponent(jLabel9))
+                                                .addComponent(jLabel10))
+                                            .addComponent(jLabel7))
+                                        .addGap(102, 102, 102))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(32, 32, 32)
+                                        .addComponent(txtBazaImeHrane, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(32, 32, 32)
-                                .addComponent(txtBazaImeHrane)
-                                .addGap(33, 33, 33)))))
+                                .addComponent(txtUvjet, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnTrazi, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(0, 152, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -272,9 +320,15 @@ public class HranaBaza extends javax.swing.JFrame {
                     .addComponent(lblHrana, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblIzvjestaj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblBlog1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblONama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblONama, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnTrazi)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtUvjet)
+                        .addGap(2, 2, 2)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -307,17 +361,12 @@ public class HranaBaza extends javax.swing.JFrame {
                             .addComponent(btnIzmjeniHranuBaza)
                             .addComponent(btnObrišiHranuBaza)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(197, Short.MAX_VALUE))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void lblIzbornikOdjaviSeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIzbornikOdjaviSeMouseClicked
-        new Login().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_lblIzbornikOdjaviSeMouseClicked
 
 
     private void btnDodajHranuBazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajHranuBazaActionPerformed
@@ -364,11 +413,55 @@ public class HranaBaza extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_lblAktivnostMouseClicked
 
+    private void lblIzvjestajMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIzvjestajMouseClicked
+        new IzvjestajView().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblIzvjestajMouseClicked
+
+    private void lblDnevnikMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDnevnikMouseClicked
+        new DnevnikView().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblDnevnikMouseClicked
+
+    private void lblONamaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblONamaMouseClicked
+        new ONama().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblONamaMouseClicked
+
+    private void lblPostavkeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPostavkeMouseClicked
+        new PostavkeKorisnika().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblPostavkeMouseClicked
+
+    private void lblIzbornikOdjaviSeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIzbornikOdjaviSeMouseClicked
+        new Login().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblIzbornikOdjaviSeMouseClicked
+
+    private void lblBlog1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBlog1MouseClicked
+        new BlogView().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblBlog1MouseClicked
+
+    private void iconGoreLijevo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconGoreLijevo1MouseClicked
+        new GlavniIzbornik().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_iconGoreLijevo1MouseClicked
+
     private void lblHranaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHranaMouseClicked
         new HranaBaza().setVisible(true);
         dispose();
     }//GEN-LAST:event_lblHranaMouseClicked
-    private void postaviVrijednostEntiteta() { //4
+
+    private void btnTraziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraziActionPerformed
+        ucitajEntitet();
+    }//GEN-LAST:event_btnTraziActionPerformed
+
+    private void txtUvjetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUvjetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUvjetActionPerformed
+    @Override
+    public void postaviVrijednostEntiteta() { //4
 
         var h = controller.getEntitet();
         
@@ -407,6 +500,7 @@ public class HranaBaza extends javax.swing.JFrame {
     private javax.swing.JButton btnDodajHranuBaza;
     private javax.swing.JButton btnIzmjeniHranuBaza;
     private javax.swing.JButton btnObrišiHranuBaza;
+    private javax.swing.JButton btnTrazi;
     private javax.swing.JLabel iconGoreLijevo1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -433,6 +527,9 @@ public class HranaBaza extends javax.swing.JFrame {
     private javax.swing.JTextField txtBazaMastiHrana;
     private javax.swing.JTextField txtBazaProteiniHrana;
     private javax.swing.JTextField txtBazaUgljikohidratiHrana;
+    private javax.swing.JTextField txtUvjet;
     // End of variables declaration//GEN-END:variables
+
+
 
 }

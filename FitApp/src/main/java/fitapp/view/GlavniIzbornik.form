@@ -71,6 +71,9 @@
           <Image iconType="3" name="/FitAppIcon1.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="iconGoreLijevo1MouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblHrana">
       <Properties>
@@ -106,6 +109,9 @@
         <Property name="text" type="java.lang.String" value="Izvje&#x161;taj"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblIzvjestajMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblDnevnik">
       <Properties>
@@ -116,6 +122,9 @@
         <Property name="text" type="java.lang.String" value="Dnevnik"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblDnevnikMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblONama">
       <Properties>
@@ -126,6 +135,9 @@
         <Property name="text" type="java.lang.String" value="O nama"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblONamaMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblPostavke">
       <Properties>

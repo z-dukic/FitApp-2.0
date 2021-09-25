@@ -47,6 +47,11 @@ public class GlavniIzbornik extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         iconGoreLijevo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FitAppIcon1.png"))); // NOI18N
+        iconGoreLijevo1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                iconGoreLijevo1MouseClicked(evt);
+            }
+        });
 
         lblHrana.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblHrana.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -71,16 +76,31 @@ public class GlavniIzbornik extends javax.swing.JFrame {
         lblIzvjestaj.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblIzvjestaj.setText("Izvještaj");
         lblIzvjestaj.setToolTipText("");
+        lblIzvjestaj.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIzvjestajMouseClicked(evt);
+            }
+        });
 
         lblDnevnik.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblDnevnik.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDnevnik.setText("Dnevnik");
         lblDnevnik.setToolTipText("");
+        lblDnevnik.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDnevnikMouseClicked(evt);
+            }
+        });
 
         lblONama.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblONama.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblONama.setText("O nama");
         lblONama.setToolTipText("");
+        lblONama.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblONamaMouseClicked(evt);
+            }
+        });
 
         lblPostavke.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblPostavke.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -180,6 +200,26 @@ public class GlavniIzbornik extends javax.swing.JFrame {
         new AktivnostiBaza().setVisible(true);
         dispose();
     }//GEN-LAST:event_lblAktivnostMouseClicked
+
+    private void lblDnevnikMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDnevnikMouseClicked
+        new DnevnikView().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblDnevnikMouseClicked
+
+    private void lblIzvjestajMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIzvjestajMouseClicked
+        new IzvjestajView().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblIzvjestajMouseClicked
+
+    private void lblONamaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblONamaMouseClicked
+       new ONama().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblONamaMouseClicked
+
+    private void iconGoreLijevo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconGoreLijevo1MouseClicked
+        new GlavniIzbornik().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_iconGoreLijevo1MouseClicked
 
     /**
      * @param args the command line arguments

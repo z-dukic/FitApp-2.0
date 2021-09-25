@@ -18,7 +18,7 @@ public class AktivnostiController extends Controller<Aktivnost> {
     //Izlistanje svih aktivnosti
     @Override
     public List<Aktivnost> read() {
-        return session.createQuery("from Aktivnosti").list();
+        return session.createQuery("from Aktivnost").list();
     }
 
     //Kreiranje aktivnosti

@@ -52,7 +52,7 @@ public class Registracija extends javax.swing.JFrame {
         radioBtnZensko = new javax.swing.JRadioButton();
         btnOdustani = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnRegistrirajSe.setText("Registriraj se");
         btnRegistrirajSe.addActionListener(new java.awt.event.ActionListener() {

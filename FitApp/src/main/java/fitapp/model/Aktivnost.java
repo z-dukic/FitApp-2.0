@@ -42,4 +42,11 @@ public class Aktivnost extends Entitet {
         this.vrijemeTrajanjaUMinutama = vrijemeTrajanjaUMinutama;
     }
 
+    @Override
+    public String toString() {
+        return  imeAktivnosti +" " +  potroseneKalorijePoSatu + " kcal";
+    }
+    
+    
+
 }

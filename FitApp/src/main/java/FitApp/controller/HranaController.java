@@ -20,6 +20,15 @@ public class HranaController extends Controller<Hrana> {
     public List<Hrana> read() {
         return session.createQuery("from Hrana").list();
     }
+    
+    public List<Hrana> read(String uvjet){
+        return session.createQuery("from Hrana h"
+                +" where concat (h.imeHrane) " 
+                + "like :uvjet order by h.imeHrane") 
+         .setParameter("uvjet", "%" + uvjet + "%")
+                .setMaxResults(50)
+                .list();
+    }
 
     //Kreiranje hrane
     @Override
