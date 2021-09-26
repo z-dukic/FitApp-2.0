@@ -17,12 +17,12 @@ import javax.swing.JOptionPane;
  */
 public class AktivnostiBaza extends javax.swing.JFrame {
 
-    private AktivnostiController aktivnostiController;
+    private AktivnostiController controller;
 
     public AktivnostiBaza() {
         initComponents();
-        aktivnostiController = new AktivnostiController();
-        ucitajAktivnosti();
+        controller = new AktivnostiController();
+        ucitajEntitet();
 
     }
 
@@ -37,7 +37,7 @@ public class AktivnostiBaza extends javax.swing.JFrame {
 
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        lstAktivnostiBaza = new javax.swing.JList<>();
+        lstEntiteta = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         btnDodajAktivnostBaza = new javax.swing.JButton();
         btnIzmjeniAktivnostiBaza = new javax.swing.JButton();
@@ -55,12 +55,19 @@ public class AktivnostiBaza extends javax.swing.JFrame {
         lblBlog1 = new javax.swing.JLabel();
         iconGoreLijevo1 = new javax.swing.JLabel();
         lblHrana = new javax.swing.JLabel();
+        btnTrazi = new javax.swing.JButton();
+        txtUvjet = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel7.setText("kcal");
 
-        jScrollPane1.setViewportView(lstAktivnostiBaza);
+        lstEntiteta.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstEntitetaValueChanged(evt);
+            }
+        });
+        jScrollPane1.setViewportView(lstEntiteta);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Dodavanje aktivnosti u bazu:");
@@ -178,6 +185,19 @@ public class AktivnostiBaza extends javax.swing.JFrame {
             }
         });
 
+        btnTrazi.setText("Traži");
+        btnTrazi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTraziActionPerformed(evt);
+            }
+        });
+
+        txtUvjet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUvjetActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -191,8 +211,13 @@ public class AktivnostiBaza extends javax.swing.JFrame {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(83, 83, 83)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(23, 23, 23)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtUvjet, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnTrazi, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnDodajAktivnostBaza)
@@ -200,17 +225,16 @@ public class AktivnostiBaza extends javax.swing.JFrame {
                                 .addComponent(btnIzmjeniAktivnostiBaza)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnObrisiAktivnostBaza))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(32, 32, 32)
-                                    .addComponent(txtImeAktivnostiBaza, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txtBazaKcalAktivnost, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel7)))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(32, 32, 32)
+                                .addComponent(txtImeAktivnostiBaza, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtBazaKcalAktivnost, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel7))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(iconGoreLijevo1)
                         .addGap(1, 1, 1)
@@ -246,9 +270,14 @@ public class AktivnostiBaza extends javax.swing.JFrame {
                     .addComponent(lblONama, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnTrazi)
+                    .addComponent(txtUvjet, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(txtImeAktivnostiBaza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -261,63 +290,74 @@ public class AktivnostiBaza extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnDodajAktivnostBaza)
                             .addComponent(btnIzmjeniAktivnostiBaza)
-                            .addComponent(btnObrisiAktivnostBaza)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(197, Short.MAX_VALUE))
+                            .addComponent(btnObrisiAktivnostBaza))))
+                .addContainerGap(171, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ucitajAktivnosti() {
+    private void ucitajEntitet() {
 
         DefaultListModel<Aktivnost> a = new DefaultListModel<>();
 
-        aktivnostiController.read().forEach(s -> {
+        controller.read(txtUvjet.getText()).forEach(s -> {
             a.addElement(s);
         });
 
-        lstAktivnostiBaza.setModel(a);
+        lstEntiteta.setModel(a);
     }
 
 
     private void btnDodajAktivnostBazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajAktivnostBazaActionPerformed
 
-        aktivnostiController.setEntitet(new Aktivnost());
+        controller.setEntitet(new Aktivnost());
         postaviVrijednostEntiteta();
-        ucitajAktivnosti();
-        
-       try {
-           aktivnostiController.update();
-           ucitajAktivnosti();
-            
+        ucitajEntitet();
+
+        try {
+            controller.update();
+            ucitajEntitet();
+
         } catch (ControllerException e) {
             JOptionPane.showMessageDialog(getParent(), e.getPoruka());
         }
 
     }//GEN-LAST:event_btnDodajAktivnostBazaActionPerformed
 
-     private void postaviVrijednostEntiteta() {
-         
-         var a = aktivnostiController.getEntitet();
-         a.setImeAktivnosti(txtImeAktivnostiBaza.getText());
-         try {
-             a.setPotroseneKalorijePoSatu(Integer.parseInt(txtBazaKcalAktivnost.getText()));
-         } catch (Exception e) {
-             JOptionPane.showMessageDialog(getParent(), "Broj kalorija mora biti cijeli broj");
-         }
-         
-         
-     }
-    
-    
+    private void postaviVrijednostEntiteta() {
+
+        var a = controller.getEntitet();
+        a.setImeAktivnosti(txtImeAktivnostiBaza.getText());
+        try {
+            a.setPotroseneKalorijePoSatu(Integer.parseInt(txtBazaKcalAktivnost.getText()));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(getParent(), "Broj kalorija mora biti cijeli broj");
+        }
+
+    }
+
+
     private void btnIzmjeniAktivnostiBazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIzmjeniAktivnostiBazaActionPerformed
+        postaviVrijednostEntiteta();
+        try {
+            controller.update();
+            ucitajEntitet();
+        } catch (ControllerException e) {
+            JOptionPane.showMessageDialog(getParent(), e.getPoruka());
+        }
 
 
     }//GEN-LAST:event_btnIzmjeniAktivnostiBazaActionPerformed
 
     private void btnObrisiAktivnostBazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiAktivnostBazaActionPerformed
+        try {
+            controller.delete();
+            ucitajEntitet();
+        } catch (ControllerException e) {
+            JOptionPane.showMessageDialog(getParent(), e.getPoruka());
+        }
 
     }//GEN-LAST:event_btnObrisiAktivnostBazaActionPerformed
 
@@ -366,11 +406,31 @@ public class AktivnostiBaza extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_lblHranaMouseClicked
 
+    private void btnTraziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraziActionPerformed
+        ucitajEntitet();
+    }//GEN-LAST:event_btnTraziActionPerformed
+
+    private void txtUvjetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUvjetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUvjetActionPerformed
+
+    private void lstEntitetaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstEntitetaValueChanged
+          if(evt.getValueIsAdjusting() || lstEntiteta.getSelectedValue()==null){
+            return;
+        }
+          controller.setEntitet(lstEntiteta.getSelectedValue());
+          var s = controller.getEntitet();
+          txtImeAktivnostiBaza.setText(s.getImeAktivnosti());
+          txtBazaKcalAktivnost.setText(String.valueOf(s.getPotroseneKalorijePoSatu()));
+          
+    }//GEN-LAST:event_lstEntitetaValueChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodajAktivnostBaza;
     private javax.swing.JButton btnIzmjeniAktivnostiBaza;
     private javax.swing.JButton btnObrisiAktivnostBaza;
+    private javax.swing.JButton btnTrazi;
     private javax.swing.JLabel iconGoreLijevo1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -385,11 +445,10 @@ public class AktivnostiBaza extends javax.swing.JFrame {
     private javax.swing.JLabel lblIzvjestaj;
     private javax.swing.JLabel lblONama;
     private javax.swing.JLabel lblPostavke;
-    private javax.swing.JList<Aktivnost> lstAktivnostiBaza;
+    private javax.swing.JList<Aktivnost> lstEntiteta;
     private javax.swing.JTextField txtBazaKcalAktivnost;
     private javax.swing.JTextField txtImeAktivnostiBaza;
+    private javax.swing.JTextField txtUvjet;
     // End of variables declaration//GEN-END:variables
-
-   
 
 }

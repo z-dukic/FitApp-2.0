@@ -85,6 +85,11 @@ public class HranaBaza extends javax.swing.JFrame implements Sucelje{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        lstEntiteta.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstEntitetaValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(lstEntiteta);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -329,7 +334,6 @@ public class HranaBaza extends javax.swing.JFrame implements Sucelje{
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtUvjet)
                         .addGap(2, 2, 2)))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -460,6 +464,19 @@ public class HranaBaza extends javax.swing.JFrame implements Sucelje{
     private void txtUvjetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUvjetActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUvjetActionPerformed
+
+    private void lstEntitetaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstEntitetaValueChanged
+             if(evt.getValueIsAdjusting() || lstEntiteta.getSelectedValue()==null){
+            return;
+        }
+          controller.setEntitet(lstEntiteta.getSelectedValue());
+          var s = controller.getEntitet();
+          txtBazaImeHrane.setText(s.getImeHrane());
+          txtBazaKcalHrana.setText(String.valueOf(s.getKalorije()));
+          txtBazaProteiniHrana.setText(String.valueOf(s.getProteini()));
+          txtBazaUgljikohidratiHrana.setText(String.valueOf(s.getUgljikohidrati()));
+          txtBazaMastiHrana.setText(String.valueOf(s.getMasti()));
+    }//GEN-LAST:event_lstEntitetaValueChanged
     @Override
     public void postaviVrijednostEntiteta() { //4
 

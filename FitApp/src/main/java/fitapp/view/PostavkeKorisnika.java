@@ -417,7 +417,7 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
                             .addComponent(btnDodajHranuBaza)
                             .addComponent(btnIzmjeniHranuBaza)
                             .addComponent(btnObrišiHranuBaza))))
-                .addContainerGap(600, Short.MAX_VALUE))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
 
         pack();
@@ -488,6 +488,7 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
           txtEmail.setText(s.getEmail());
           txtLozinka.setText(s.getLozinka());
           txtSpol.setText(s.getSpol());
+          txtDob.setText(String.valueOf(s.getDob()));
           txtVisina.setText(String.valueOf(s.getVisina()));
           txtTezina.setText(String.valueOf(s.getTezina()));
           txtZeljenaTezina.setText(String.valueOf(s.getZeljenaTezina()));

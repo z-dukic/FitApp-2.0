@@ -24,6 +24,8 @@ public class Korisnik extends Entitet {
     private int dob;
     private String spol;
 
+ 
+
     public String getNadimak() {
         return nadimak;
     }
@@ -92,6 +94,16 @@ public class Korisnik extends Entitet {
     public String toString() {
         return nadimak;
     }
+
+    public Korisnik(String nadimak) {
+        this.nadimak = nadimak;
+    
+    }
+       public Korisnik() {
+    }
+    
+    
+    
 
 
 

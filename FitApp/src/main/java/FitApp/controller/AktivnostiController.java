@@ -21,6 +21,15 @@ public class AktivnostiController extends Controller<Aktivnost> {
         return session.createQuery("from Aktivnost").list();
     }
 
+    public List<Aktivnost> read(String uvjet) {
+        return session.createQuery("from Aktivnost a"
+                + " where concat (a.imeAktivnosti) "
+                + "like :uvjet order by a.imeAktivnosti")
+                .setParameter("uvjet", "%" + uvjet + "%")
+                .setMaxResults(50)
+                .list();
+    }
+
     //Kreiranje aktivnosti
     @Override
     protected void kontrolaCreate() throws ControllerException {
