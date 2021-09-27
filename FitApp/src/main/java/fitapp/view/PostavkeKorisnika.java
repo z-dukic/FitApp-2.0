@@ -7,7 +7,10 @@ package fitapp.view;
 
 import fitapp.controller.KorisnikController;
 import fitapp.model.Korisnik;
+import fitapp.util.Aplikacija;
 import fitapp.util.ControllerException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -23,11 +26,45 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
         initComponents();
         controller = new KorisnikController();
         ucitajEntitet();
+        postavke();
+        datum();
+        vrijeme();
+
+    }
+
+    private void postavke() {
+        setTitle(Aplikacija.NASLOV_APP + " O nama");
+    }
+
+    public void datum() {
+        Date datum = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        String datumIzbornik = sdf.format(datum);
+        txtDatum.setText(datumIzbornik);
+
+    }
+
+    private void vrijeme() {
+        Thread t1;
+        t1 = new Thread(() -> {
+            while (true) {
+                Date datum = new Date();
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+                txtVrijeme.setText(sdf.format(datum));
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ex) {
+                    System.out.println("Error with clock update");
+                }
+            }
+        });
+        t1.start();
+
     }
 
     private void ucitajEntitet() { //2
-        
-       DefaultListModel<Korisnik> m = new DefaultListModel<>();
+
+        DefaultListModel<Korisnik> m = new DefaultListModel<>();
 
         controller.read().forEach(s -> {
             m.addElement(s);
@@ -37,7 +74,6 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
     }
 
     //3, 5
-    
     public void postaviVrijednostEntiteta() { //4
         var s = controller.getEntitet();
 
@@ -117,6 +153,8 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
         lblBlog1 = new javax.swing.JLabel();
         iconGoreLijevo1 = new javax.swing.JLabel();
         lblHrana = new javax.swing.JLabel();
+        txtDatum = new javax.swing.JTextField();
+        txtVrijeme = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -287,6 +325,24 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
             }
         });
 
+        txtDatum.setEditable(false);
+        txtDatum.setBackground(new java.awt.Color(255, 255, 255));
+        txtDatum.setText("Datum");
+        txtDatum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDatumActionPerformed(evt);
+            }
+        });
+
+        txtVrijeme.setEditable(false);
+        txtVrijeme.setBackground(new java.awt.Color(255, 255, 255));
+        txtVrijeme.setText("Vrijeme");
+        txtVrijeme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtVrijemeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -339,23 +395,29 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(106, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(iconGoreLijevo1)
-                .addGap(1, 1, 1)
-                .addComponent(lblDnevnik, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblHrana, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblAktivnost, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblIzvjestaj, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblBlog1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblONama, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblPostavke, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblIzbornikOdjaviSe, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(iconGoreLijevo1)
+                        .addGap(1, 1, 1)
+                        .addComponent(lblDnevnik, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblHrana, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblAktivnost, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblIzvjestaj, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblBlog1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblONama, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblPostavke, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblIzbornikOdjaviSe, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtVrijeme, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -417,7 +479,10 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
                             .addComponent(btnDodajHranuBaza)
                             .addComponent(btnIzmjeniHranuBaza)
                             .addComponent(btnObrišiHranuBaza))))
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtVrijeme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pack();
@@ -478,21 +543,21 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSpolActionPerformed
 
     private void lstEntitetaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstEntitetaValueChanged
-          //7
-        if(evt.getValueIsAdjusting() || lstEntiteta.getSelectedValue()==null){
+        //7
+        if (evt.getValueIsAdjusting() || lstEntiteta.getSelectedValue() == null) {
             return;
         }
-          controller.setEntitet(lstEntiteta.getSelectedValue());
-          var s = controller.getEntitet();
-          txtNadimak.setText(s.getNadimak());
-          txtEmail.setText(s.getEmail());
-          txtLozinka.setText(s.getLozinka());
-          txtSpol.setText(s.getSpol());
-          txtDob.setText(String.valueOf(s.getDob()));
-          txtVisina.setText(String.valueOf(s.getVisina()));
-          txtTezina.setText(String.valueOf(s.getTezina()));
-          txtZeljenaTezina.setText(String.valueOf(s.getZeljenaTezina()));
-          txtVisina.setText(String.valueOf(s.getVisina()));
+        controller.setEntitet(lstEntiteta.getSelectedValue());
+        var s = controller.getEntitet();
+        txtNadimak.setText(s.getNadimak());
+        txtEmail.setText(s.getEmail());
+        txtLozinka.setText(s.getLozinka());
+        txtSpol.setText(s.getSpol());
+        txtDob.setText(String.valueOf(s.getDob()));
+        txtVisina.setText(String.valueOf(s.getVisina()));
+        txtTezina.setText(String.valueOf(s.getTezina()));
+        txtZeljenaTezina.setText(String.valueOf(s.getZeljenaTezina()));
+        txtVisina.setText(String.valueOf(s.getVisina()));
     }//GEN-LAST:event_lstEntitetaValueChanged
 
     private void lblAktivnostMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAktivnostMouseClicked
@@ -540,6 +605,14 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_lblHranaMouseClicked
 
+    private void txtDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDatumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDatumActionPerformed
+
+    private void txtVrijemeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVrijemeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtVrijemeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodajHranuBaza;
@@ -566,6 +639,7 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
     private javax.swing.JLabel lblONama;
     private javax.swing.JLabel lblPostavke;
     private javax.swing.JList<Korisnik> lstEntiteta;
+    private javax.swing.JTextField txtDatum;
     private javax.swing.JTextField txtDob;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtLozinka;
@@ -573,6 +647,7 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
     private javax.swing.JTextField txtSpol;
     private javax.swing.JTextField txtTezina;
     private javax.swing.JTextField txtVisina;
+    private javax.swing.JTextField txtVrijeme;
     private javax.swing.JTextField txtZeljenaTezina;
     // End of variables declaration//GEN-END:variables
 }

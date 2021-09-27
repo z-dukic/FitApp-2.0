@@ -7,7 +7,10 @@ package fitapp.view;
 
 import fitapp.controller.AktivnostiController;
 import fitapp.model.Aktivnost;
+import fitapp.util.Aplikacija;
 import fitapp.util.ControllerException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -23,6 +26,39 @@ public class AktivnostiBaza extends javax.swing.JFrame {
         initComponents();
         controller = new AktivnostiController();
         ucitajEntitet();
+        postavke();
+        datum();
+        vrijeme();
+
+    }
+    
+        private void postavke() {
+        setTitle(Aplikacija.NASLOV_APP + " Baza aktivnosti");
+    }
+    
+        public void datum() {
+        Date datum = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        String datumIzbornik = sdf.format(datum);
+        txtDatum.setText(datumIzbornik);
+
+    }
+
+    private void vrijeme() {
+                Thread t1;
+        t1 = new Thread(() -> {
+            while (true) {
+        Date datum = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        txtVrijeme.setText(sdf.format(datum));
+        try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ex) {
+                    System.out.println("Error with clock update");
+                }
+            }
+        });
+        t1.start();
 
     }
 
@@ -57,6 +93,8 @@ public class AktivnostiBaza extends javax.swing.JFrame {
         lblHrana = new javax.swing.JLabel();
         btnTrazi = new javax.swing.JButton();
         txtUvjet = new javax.swing.JTextField();
+        txtDatum = new javax.swing.JTextField();
+        txtVrijeme = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -198,6 +236,24 @@ public class AktivnostiBaza extends javax.swing.JFrame {
             }
         });
 
+        txtDatum.setEditable(false);
+        txtDatum.setBackground(new java.awt.Color(255, 255, 255));
+        txtDatum.setText("Datum");
+        txtDatum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDatumActionPerformed(evt);
+            }
+        });
+
+        txtVrijeme.setEditable(false);
+        txtVrijeme.setBackground(new java.awt.Color(255, 255, 255));
+        txtVrijeme.setText("Vrijeme");
+        txtVrijeme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtVrijemeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -252,7 +308,11 @@ public class AktivnostiBaza extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblPostavke, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblIzbornikOdjaviSe, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblIzbornikOdjaviSe, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtVrijeme, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 152, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -291,7 +351,10 @@ public class AktivnostiBaza extends javax.swing.JFrame {
                             .addComponent(btnDodajAktivnostBaza)
                             .addComponent(btnIzmjeniAktivnostiBaza)
                             .addComponent(btnObrisiAktivnostBaza))))
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtVrijeme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pack();
@@ -415,15 +478,23 @@ public class AktivnostiBaza extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUvjetActionPerformed
 
     private void lstEntitetaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstEntitetaValueChanged
-          if(evt.getValueIsAdjusting() || lstEntiteta.getSelectedValue()==null){
+        if (evt.getValueIsAdjusting() || lstEntiteta.getSelectedValue() == null) {
             return;
         }
-          controller.setEntitet(lstEntiteta.getSelectedValue());
-          var s = controller.getEntitet();
-          txtImeAktivnostiBaza.setText(s.getImeAktivnosti());
-          txtBazaKcalAktivnost.setText(String.valueOf(s.getPotroseneKalorijePoSatu()));
-          
+        controller.setEntitet(lstEntiteta.getSelectedValue());
+        var s = controller.getEntitet();
+        txtImeAktivnostiBaza.setText(s.getImeAktivnosti());
+        txtBazaKcalAktivnost.setText(String.valueOf(s.getPotroseneKalorijePoSatu()));
+
     }//GEN-LAST:event_lstEntitetaValueChanged
+
+    private void txtDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDatumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDatumActionPerformed
+
+    private void txtVrijemeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVrijemeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtVrijemeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -447,8 +518,10 @@ public class AktivnostiBaza extends javax.swing.JFrame {
     private javax.swing.JLabel lblPostavke;
     private javax.swing.JList<Aktivnost> lstEntiteta;
     private javax.swing.JTextField txtBazaKcalAktivnost;
+    private javax.swing.JTextField txtDatum;
     private javax.swing.JTextField txtImeAktivnostiBaza;
     private javax.swing.JTextField txtUvjet;
+    private javax.swing.JTextField txtVrijeme;
     // End of variables declaration//GEN-END:variables
 
 }

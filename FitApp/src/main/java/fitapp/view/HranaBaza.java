@@ -7,7 +7,10 @@ package fitapp.view;
 
 import fitapp.controller.HranaController;
 import fitapp.model.Hrana;
+import fitapp.util.Aplikacija;
 import fitapp.util.ControllerException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -15,7 +18,7 @@ import javax.swing.JOptionPane;
  *
  * @author PC
  */
-public class HranaBaza extends javax.swing.JFrame implements Sucelje{
+public class HranaBaza extends javax.swing.JFrame implements Sucelje {
 
     private HranaController controller;
 
@@ -24,19 +27,50 @@ public class HranaBaza extends javax.swing.JFrame implements Sucelje{
         controller = new HranaController();
         ucitajEntitet();
         postavke();
+        datum();
+        vrijeme();
 
     }
     
-     @Override
+    public void datum() {
+        Date datum = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        String datumIzbornik = sdf.format(datum);
+        txtDatum.setText(datumIzbornik);
+
+    }
+
+    private void vrijeme() {
+                Thread t1;
+        t1 = new Thread(() -> {
+            while (true) {
+        Date datum = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        txtVrijeme.setText(sdf.format(datum));
+        try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ex) {
+                    System.out.println("Error with clock update");
+                }
+            }
+        });
+        t1.start();
+
+    }
+
+    @Override
     public void postavke() {
-     }
+        setTitle(Aplikacija.NASLOV_APP + " Baza hrane");
+    }
 
     @Override
     public void ucitajEntitet() { //2
 
         DefaultListModel<Hrana> h = new DefaultListModel<>();
 
-       controller.read(txtUvjet.getText()).forEach(s->{h.addElement(s);});
+        controller.read(txtUvjet.getText()).forEach(s -> {
+            h.addElement(s);
+        });
 
         lstEntiteta.setModel(h);
 
@@ -82,6 +116,8 @@ public class HranaBaza extends javax.swing.JFrame implements Sucelje{
         lblHrana = new javax.swing.JLabel();
         btnTrazi = new javax.swing.JButton();
         txtUvjet = new javax.swing.JTextField();
+        txtDatum = new javax.swing.JTextField();
+        txtVrijeme = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -238,6 +274,24 @@ public class HranaBaza extends javax.swing.JFrame implements Sucelje{
             }
         });
 
+        txtDatum.setEditable(false);
+        txtDatum.setBackground(new java.awt.Color(255, 255, 255));
+        txtDatum.setText("Datum");
+        txtDatum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDatumActionPerformed(evt);
+            }
+        });
+
+        txtVrijeme.setEditable(false);
+        txtVrijeme.setBackground(new java.awt.Color(255, 255, 255));
+        txtVrijeme.setText("Vrijeme");
+        txtVrijeme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtVrijemeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -310,7 +364,11 @@ public class HranaBaza extends javax.swing.JFrame implements Sucelje{
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtUvjet, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnTrazi, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btnTrazi, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtVrijeme, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 152, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -365,7 +423,10 @@ public class HranaBaza extends javax.swing.JFrame implements Sucelje{
                             .addComponent(btnIzmjeniHranuBaza)
                             .addComponent(btnObrišiHranuBaza)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtVrijeme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pack();
@@ -390,7 +451,7 @@ public class HranaBaza extends javax.swing.JFrame implements Sucelje{
     }//GEN-LAST:event_btnDodajHranuBazaActionPerformed
 
     private void btnIzmjeniHranuBazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIzmjeniHranuBazaActionPerformed
-       //6
+        //6
         postaviVrijednostEntiteta();
         try {
             controller.update();
@@ -404,7 +465,7 @@ public class HranaBaza extends javax.swing.JFrame implements Sucelje{
 
     private void btnObrišiHranuBazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrišiHranuBazaActionPerformed
         //5
-        try { 
+        try {
             controller.delete();
             ucitajEntitet();
         } catch (ControllerException e) {
@@ -466,22 +527,30 @@ public class HranaBaza extends javax.swing.JFrame implements Sucelje{
     }//GEN-LAST:event_txtUvjetActionPerformed
 
     private void lstEntitetaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstEntitetaValueChanged
-             if(evt.getValueIsAdjusting() || lstEntiteta.getSelectedValue()==null){
+        if (evt.getValueIsAdjusting() || lstEntiteta.getSelectedValue() == null) {
             return;
         }
-          controller.setEntitet(lstEntiteta.getSelectedValue());
-          var s = controller.getEntitet();
-          txtBazaImeHrane.setText(s.getImeHrane());
-          txtBazaKcalHrana.setText(String.valueOf(s.getKalorije()));
-          txtBazaProteiniHrana.setText(String.valueOf(s.getProteini()));
-          txtBazaUgljikohidratiHrana.setText(String.valueOf(s.getUgljikohidrati()));
-          txtBazaMastiHrana.setText(String.valueOf(s.getMasti()));
+        controller.setEntitet(lstEntiteta.getSelectedValue());
+        var s = controller.getEntitet();
+        txtBazaImeHrane.setText(s.getImeHrane());
+        txtBazaKcalHrana.setText(String.valueOf(s.getKalorije()));
+        txtBazaProteiniHrana.setText(String.valueOf(s.getProteini()));
+        txtBazaUgljikohidratiHrana.setText(String.valueOf(s.getUgljikohidrati()));
+        txtBazaMastiHrana.setText(String.valueOf(s.getMasti()));
     }//GEN-LAST:event_lstEntitetaValueChanged
+
+    private void txtDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDatumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDatumActionPerformed
+
+    private void txtVrijemeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVrijemeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtVrijemeActionPerformed
     @Override
     public void postaviVrijednostEntiteta() { //4
 
         var h = controller.getEntitet();
-        
+
         h.setImeHrane(txtBazaImeHrane.getText());
         try {
             h.setKalorije(Integer.parseInt(txtBazaKcalHrana.getText()));
@@ -544,9 +613,9 @@ public class HranaBaza extends javax.swing.JFrame implements Sucelje{
     private javax.swing.JTextField txtBazaMastiHrana;
     private javax.swing.JTextField txtBazaProteiniHrana;
     private javax.swing.JTextField txtBazaUgljikohidratiHrana;
+    private javax.swing.JTextField txtDatum;
     private javax.swing.JTextField txtUvjet;
+    private javax.swing.JTextField txtVrijeme;
     // End of variables declaration//GEN-END:variables
-
-
 
 }

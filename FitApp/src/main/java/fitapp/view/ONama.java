@@ -5,6 +5,10 @@
  */
 package fitapp.view;
 
+import fitapp.util.Aplikacija;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author PC
@@ -17,6 +21,41 @@ public class ONama extends javax.swing.JFrame {
     public ONama() {
         initComponents();
         areaONama();
+        postavke();
+        datum();
+        vrijeme();
+        
+    }
+    
+      private void postavke() {
+        setTitle(Aplikacija.NASLOV_APP + " O nama");
+    }
+    
+    
+    public void datum() {
+        Date datum = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        String datumIzbornik = sdf.format(datum);
+        txtDatum.setText(datumIzbornik);
+
+    }
+
+    private void vrijeme() {
+                Thread t1;
+        t1 = new Thread(() -> {
+            while (true) {
+        Date datum = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        txtVrijeme.setText(sdf.format(datum));
+        try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ex) {
+                    System.out.println("Error with clock update");
+                }
+            }
+        });
+        t1.start();
+
     }
 
     /**
@@ -41,6 +80,8 @@ public class ONama extends javax.swing.JFrame {
         lblBlog1 = new javax.swing.JLabel();
         iconGoreLijevo1 = new javax.swing.JLabel();
         lblHrana = new javax.swing.JLabel();
+        txtDatum = new javax.swing.JTextField();
+        txtVrijeme = new javax.swing.JTextField();
 
         iconGoreLijevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FitAppIcon1.png"))); // NOI18N
 
@@ -141,6 +182,24 @@ public class ONama extends javax.swing.JFrame {
             }
         });
 
+        txtDatum.setEditable(false);
+        txtDatum.setBackground(new java.awt.Color(255, 255, 255));
+        txtDatum.setText("Datum");
+        txtDatum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDatumActionPerformed(evt);
+            }
+        });
+
+        txtVrijeme.setEditable(false);
+        txtVrijeme.setBackground(new java.awt.Color(255, 255, 255));
+        txtVrijeme.setText("Vrijeme");
+        txtVrijeme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtVrijemeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -168,7 +227,11 @@ public class ONama extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblPostavke, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblIzbornikOdjaviSe, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblIzbornikOdjaviSe, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtVrijeme, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 152, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -188,7 +251,10 @@ public class ONama extends javax.swing.JFrame {
                 .addComponent(lvlONamaONama, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(118, 118, 118))
+                .addGap(98, 98, 98)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtVrijeme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pack();
@@ -240,6 +306,14 @@ public class ONama extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_lblHranaMouseClicked
 
+    private void txtDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDatumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDatumActionPerformed
+
+    private void txtVrijemeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVrijemeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtVrijemeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaOnama;
@@ -255,6 +329,8 @@ public class ONama extends javax.swing.JFrame {
     private javax.swing.JLabel lblONama;
     private javax.swing.JLabel lblPostavke;
     private javax.swing.JLabel lvlONamaONama;
+    private javax.swing.JTextField txtDatum;
+    private javax.swing.JTextField txtVrijeme;
     // End of variables declaration//GEN-END:variables
 
     private void areaONama() {
