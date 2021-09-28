@@ -21,7 +21,7 @@ import javax.mail.internet.MimeMessage;
  */
 public class EmailUtil {
     
-    EmailUtil send = new EmailUtil("perop8406@gmail.com", "Primjedba", "");
+    //EmailUtil send = new EmailUtil("perop8406@gmail.com", "Primjedba", "");
     
     final String senderEmail = "perop8406@gmail.com"; // change email address
     final String senderPassword = "Peromajstor69."; // change password
