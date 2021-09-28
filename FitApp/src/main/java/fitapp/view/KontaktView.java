@@ -5,29 +5,42 @@
  */
 package fitapp.view;
 
+import fitapp.controller.KorisnikController;
+import fitapp.model.Korisnik;
 import fitapp.util.Aplikacija;
+import fitapp.util.EmailUtil;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.swing.DefaultListModel;
 
 /**
  *
  * @author PC
  */
-public class IzvjestajView extends javax.swing.JFrame {
+public class KontaktView extends javax.swing.JFrame {
+
+    private KorisnikController controller;
 
     /**
-     * Creates new form IzvjestajView
+     * Creates new form KontaktView
      */
-    public IzvjestajView() {
+    public KontaktView() {
         initComponents();
         postavke();
-        vrijeme();
         datum();
-
+        vrijeme();
     }
 
     private void postavke() {
-        setTitle(Aplikacija.NASLOV_APP + " Izvještaj");
+        setTitle(Aplikacija.NASLOV_APP + " O nama");
     }
 
     public void datum() {
@@ -65,19 +78,62 @@ public class IzvjestajView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblIzbornikOdjaviSe = new javax.swing.JLabel();
+        lblBlog1 = new javax.swing.JLabel();
+        iconGoreLijevo1 = new javax.swing.JLabel();
+        lblHrana = new javax.swing.JLabel();
         lblAktivnost = new javax.swing.JLabel();
         lblIzvjestaj = new javax.swing.JLabel();
         lblDnevnik = new javax.swing.JLabel();
         lblONama = new javax.swing.JLabel();
         lblPostavke = new javax.swing.JLabel();
-        lblIzbornikOdjaviSe = new javax.swing.JLabel();
-        lblBlog1 = new javax.swing.JLabel();
-        iconGoreLijevo1 = new javax.swing.JLabel();
-        lblHrana = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txtEmailImePrezime = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtEmailPoruka = new javax.swing.JTextArea();
         txtDatum = new javax.swing.JTextField();
         txtVrijeme = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        lblIzbornikOdjaviSe.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblIzbornikOdjaviSe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIzbornikOdjaviSe.setText("Odjavi se");
+        lblIzbornikOdjaviSe.setToolTipText("");
+        lblIzbornikOdjaviSe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIzbornikOdjaviSeMouseClicked(evt);
+            }
+        });
+
+        lblBlog1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblBlog1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBlog1.setText("Blog");
+        lblBlog1.setToolTipText("");
+        lblBlog1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblBlog1MouseClicked(evt);
+            }
+        });
+
+        iconGoreLijevo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FitAppIcon1.png"))); // NOI18N
+        iconGoreLijevo1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                iconGoreLijevo1MouseClicked(evt);
+            }
+        });
+
+        lblHrana.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblHrana.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHrana.setText("Hrana");
+        lblHrana.setToolTipText("");
+        lblHrana.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHranaMouseClicked(evt);
+            }
+        });
 
         lblAktivnost.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblAktivnost.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -128,42 +184,16 @@ public class IzvjestajView extends javax.swing.JFrame {
             }
         });
 
-        lblIzbornikOdjaviSe.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblIzbornikOdjaviSe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblIzbornikOdjaviSe.setText("Odjavi se");
-        lblIzbornikOdjaviSe.setToolTipText("");
-        lblIzbornikOdjaviSe.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblIzbornikOdjaviSeMouseClicked(evt);
-            }
-        });
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("Kontaktirajte nas:");
 
-        lblBlog1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblBlog1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblBlog1.setText("Blog");
-        lblBlog1.setToolTipText("");
-        lblBlog1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblBlog1MouseClicked(evt);
-            }
-        });
+        jLabel2.setText("Ime i prezime:");
 
-        iconGoreLijevo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FitAppIcon1.png"))); // NOI18N
-        iconGoreLijevo1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                iconGoreLijevo1MouseClicked(evt);
-            }
-        });
+        jLabel3.setText("Vaša poruka:");
 
-        lblHrana.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblHrana.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHrana.setText("Hrana");
-        lblHrana.setToolTipText("");
-        lblHrana.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblHranaMouseClicked(evt);
-            }
-        });
+        txtEmailPoruka.setColumns(20);
+        txtEmailPoruka.setRows(5);
+        jScrollPane1.setViewportView(txtEmailPoruka);
 
         txtDatum.setEditable(false);
         txtDatum.setBackground(new java.awt.Color(255, 255, 255));
@@ -188,10 +218,11 @@ public class IzvjestajView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(iconGoreLijevo1)
+                .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(iconGoreLijevo1)
-                        .addGap(1, 1, 1)
                         .addComponent(lblDnevnik, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblHrana, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -207,11 +238,23 @@ public class IzvjestajView extends javax.swing.JFrame {
                         .addComponent(lblPostavke, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblIzbornikOdjaviSe, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtVrijeme, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 152, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                                .addGap(18, 18, 18))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(55, 55, 55)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtEmailImePrezime, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(108, 108, 108))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtVrijeme, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,7 +269,17 @@ public class IzvjestajView extends javax.swing.JFrame {
                     .addComponent(lblIzvjestaj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblBlog1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblONama, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 529, Short.MAX_VALUE)
+                .addGap(80, 80, 80)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEmailImePrezime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtVrijeme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -235,6 +288,26 @@ public class IzvjestajView extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lblIzbornikOdjaviSeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIzbornikOdjaviSeMouseClicked
+        new Login().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblIzbornikOdjaviSeMouseClicked
+
+    private void lblBlog1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBlog1MouseClicked
+        new BlogView().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblBlog1MouseClicked
+
+    private void iconGoreLijevo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconGoreLijevo1MouseClicked
+        new GlavniIzbornik().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_iconGoreLijevo1MouseClicked
+
+    private void lblHranaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHranaMouseClicked
+        new HranaBaza().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblHranaMouseClicked
 
     private void lblAktivnostMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAktivnostMouseClicked
         new AktivnostiBaza().setVisible(true);
@@ -261,26 +334,6 @@ public class IzvjestajView extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_lblPostavkeMouseClicked
 
-    private void lblIzbornikOdjaviSeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIzbornikOdjaviSeMouseClicked
-        new Login().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_lblIzbornikOdjaviSeMouseClicked
-
-    private void lblBlog1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBlog1MouseClicked
-        new BlogView().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_lblBlog1MouseClicked
-
-    private void iconGoreLijevo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconGoreLijevo1MouseClicked
-        new GlavniIzbornik().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_iconGoreLijevo1MouseClicked
-
-    private void lblHranaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHranaMouseClicked
-        new HranaBaza().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_lblHranaMouseClicked
-
     private void txtDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDatumActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDatumActionPerformed
@@ -289,9 +342,18 @@ public class IzvjestajView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtVrijemeActionPerformed
 
+    
+
+    /**
+     * @param args the command line arguments
+     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel iconGoreLijevo1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAktivnost;
     private javax.swing.JLabel lblBlog1;
     private javax.swing.JLabel lblDnevnik;
@@ -301,6 +363,8 @@ public class IzvjestajView extends javax.swing.JFrame {
     private javax.swing.JLabel lblONama;
     private javax.swing.JLabel lblPostavke;
     private javax.swing.JTextField txtDatum;
+    private javax.swing.JTextField txtEmailImePrezime;
+    private javax.swing.JTextArea txtEmailPoruka;
     private javax.swing.JTextField txtVrijeme;
     // End of variables declaration//GEN-END:variables
 }

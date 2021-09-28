@@ -581,7 +581,7 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
     }//GEN-LAST:event_lblONamaMouseClicked
 
     private void lblPostavkeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPostavkeMouseClicked
-        new PostavkeKorisnika().setVisible(true);
+        new OpcePostavke().setVisible(true);
         dispose();
     }//GEN-LAST:event_lblPostavkeMouseClicked
 

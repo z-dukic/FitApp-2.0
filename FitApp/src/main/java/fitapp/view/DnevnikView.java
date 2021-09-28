@@ -24,12 +24,12 @@ public class DnevnikView extends javax.swing.JFrame {
         datum();
         vrijeme();
     }
-    
-        private void postavke() {
+
+    private void postavke() {
         setTitle(Aplikacija.NASLOV_APP + " Dnevnik");
     }
-    
-        public void datum() {
+
+    public void datum() {
         Date datum = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         String datumIzbornik = sdf.format(datum);
@@ -38,13 +38,13 @@ public class DnevnikView extends javax.swing.JFrame {
     }
 
     private void vrijeme() {
-                Thread t1;
+        Thread t1;
         t1 = new Thread(() -> {
             while (true) {
-        Date datum = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-        txtVrijeme.setText(sdf.format(datum));
-        try {
+                Date datum = new Date();
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+                txtVrijeme.setText(sdf.format(datum));
+                try {
                     Thread.sleep(1000);
                 } catch (InterruptedException ex) {
                     System.out.println("Error with clock update");
@@ -256,7 +256,7 @@ public class DnevnikView extends javax.swing.JFrame {
     }//GEN-LAST:event_lblONamaMouseClicked
 
     private void lblPostavkeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPostavkeMouseClicked
-        new PostavkeKorisnika().setVisible(true);
+        new OpcePostavke().setVisible(true);
         dispose();
     }//GEN-LAST:event_lblPostavkeMouseClicked
 
@@ -288,8 +288,6 @@ public class DnevnikView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDatumActionPerformed
 
-    
-     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel iconGoreLijevo1;

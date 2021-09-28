@@ -30,16 +30,12 @@ public class GlavniIzbornik extends javax.swing.JFrame {
         postavke();
         datum();
         vrijeme();
-        
 
     }
 
     private void postavke() {
         setTitle(Aplikacija.NASLOV_APP + " Glavni Izbornik");
     }
-    
-    
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -71,7 +67,6 @@ public class GlavniIzbornik extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         linkPostavke = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -220,42 +215,45 @@ public class GlavniIzbornik extends javax.swing.JFrame {
 
         linkIzvještaj.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         linkIzvještaj.setText("Izvještaj");
+        linkIzvještaj.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                linkIzvještajMouseClicked(evt);
+            }
+        });
 
         jLabel9.setText("Pogledajte svoje izvještaje iz prošlih dana");
 
         linkBlog.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         linkBlog.setText("Blog");
+        linkBlog.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                linkBlogMouseClicked(evt);
+            }
+        });
 
         jLabel11.setText("Saznajte novosti iz svijeta fitnessa");
 
         linkONama.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         linkONama.setText("O nama");
+        linkONama.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                linkONamaMouseClicked(evt);
+            }
+        });
 
         jLabel13.setText("Saznajte više o aplikaciji");
 
         linkPostavke.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         linkPostavke.setText("Postavke");
+        linkPostavke.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                linkPostavkeMouseClicked(evt);
+            }
+        });
 
         jLabel15.setText("Postavke aplikacije");
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/benchpressgif.gif"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(131, Short.MAX_VALUE))
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -305,9 +303,9 @@ public class GlavniIzbornik extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblIzbornikOdjaviSe, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(49, 49, 49)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -322,13 +320,11 @@ public class GlavniIzbornik extends javax.swing.JFrame {
                     .addComponent(lblIzvjestaj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblBlog1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblONama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(30, 30, 30)
+                .addGap(42, 42, 42)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(linkDnevnik)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3)
@@ -347,16 +343,17 @@ public class GlavniIzbornik extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(linkBlog)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel11)
-                        .addGap(18, 18, 18)
-                        .addComponent(linkONama)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel13)
-                        .addGap(18, 18, 18)
-                        .addComponent(linkPostavke)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel15)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                        .addComponent(jLabel11))
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(linkONama)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel13)
+                .addGap(18, 18, 18)
+                .addComponent(linkPostavke)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtVrijeme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -377,7 +374,7 @@ public class GlavniIzbornik extends javax.swing.JFrame {
     }//GEN-LAST:event_lblHranaMouseClicked
 
     private void lblPostavkeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPostavkeMouseClicked
-        new PostavkeKorisnika().setVisible(true);
+        new OpcePostavke().setVisible(true);
         dispose();
     }//GEN-LAST:event_lblPostavkeMouseClicked
 
@@ -407,7 +404,7 @@ public class GlavniIzbornik extends javax.swing.JFrame {
     }//GEN-LAST:event_lblONamaMouseClicked
 
     private void iconGoreLijevo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconGoreLijevo1MouseClicked
-        new GlavniIzbornik().setVisible(true);
+        new OpcePostavke().setVisible(true);
         dispose();
     }//GEN-LAST:event_iconGoreLijevo1MouseClicked
 
@@ -429,7 +426,7 @@ public class GlavniIzbornik extends javax.swing.JFrame {
     }//GEN-LAST:event_linkDnevnikMouseClicked
 
     private void linkBazaHraneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_linkBazaHraneMouseClicked
-       new HranaBaza().setVisible(true);
+        new HranaBaza().setVisible(true);
         dispose();
     }//GEN-LAST:event_linkBazaHraneMouseClicked
 
@@ -437,6 +434,26 @@ public class GlavniIzbornik extends javax.swing.JFrame {
         new AktivnostiBaza().setVisible(true);
         dispose();
     }//GEN-LAST:event_linkBazaAktivnostiMouseClicked
+
+    private void linkIzvještajMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_linkIzvještajMouseClicked
+        new IzvjestajView().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_linkIzvještajMouseClicked
+
+    private void linkBlogMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_linkBlogMouseClicked
+        new BlogView().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_linkBlogMouseClicked
+
+    private void linkONamaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_linkONamaMouseClicked
+        new ONama().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_linkONamaMouseClicked
+
+    private void linkPostavkeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_linkPostavkeMouseClicked
+        new OpcePostavke().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_linkPostavkeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -453,7 +470,6 @@ public class GlavniIzbornik extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblAktivnost;
     private javax.swing.JLabel lblBlog1;
     private javax.swing.JLabel lblDnevnik;
@@ -482,13 +498,13 @@ public class GlavniIzbornik extends javax.swing.JFrame {
     }
 
     private void vrijeme() {
-                Thread t1;
+        Thread t1;
         t1 = new Thread(() -> {
             while (true) {
-        Date datum = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-        txtVrijeme.setText(sdf.format(datum));
-        try {
+                Date datum = new Date();
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+                txtVrijeme.setText(sdf.format(datum));
+                try {
                     Thread.sleep(1000);
                 } catch (InterruptedException ex) {
                     System.out.println("Error with clock update");

@@ -133,7 +133,6 @@ public class Registracija extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(20, 20, 20)
                                         .addComponent(btnOdustani))))
-                            .addComponent(iconGoreLijevo)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -151,6 +150,9 @@ public class Registracija extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(radioBtnZensko)))))
                         .addContainerGap(426, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(iconGoreLijevo)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,7 +195,7 @@ public class Registracija extends javax.swing.JFrame {
                 .addComponent(btnRegistrirajSe, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnOdustani)
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
 
         pack();
