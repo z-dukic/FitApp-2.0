@@ -5,6 +5,8 @@
  */
 package fitapp.view;
 
+
+
 /**
  *
  * @author PC
@@ -16,6 +18,8 @@ public class ChatBot extends javax.swing.JFrame {
      */
     public ChatBot() {
         initComponents();
+        Chatarea.append("BOT ->" + "Pozdrav, moje ime je Botko. Kako ti mogu pomoći?" + "\n");
+        
     }
 
     /**
@@ -34,8 +38,6 @@ public class ChatBot extends javax.swing.JFrame {
         Chatarea = new javax.swing.JTextArea();
         btnPosalji = new javax.swing.JButton();
         btnIzadi = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        chatbot = new javax.swing.JTextArea();
         txtVrijeme = new javax.swing.JTextField();
         lblHrana = new javax.swing.JLabel();
         lblAktivnost = new javax.swing.JLabel();
@@ -45,6 +47,10 @@ public class ChatBot extends javax.swing.JFrame {
         lblPostavke = new javax.swing.JLabel();
         lblIzbornikOdjaviSe = new javax.swing.JLabel();
         lblBlog1 = new javax.swing.JLabel();
+        chatbot = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -67,26 +73,25 @@ public class ChatBot extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Korisnička služba:");
 
+        Chatarea.setEditable(false);
         Chatarea.setColumns(5);
         Chatarea.setLineWrap(true);
         Chatarea.setRows(5);
-        Chatarea.setText("Pozdrav, moje ime je Botko. Kako ti mogu pomoći? ");
         jScrollPane1.setViewportView(Chatarea);
 
         btnPosalji.setText("Pošalji");
-
-        btnIzadi.setText("Izađi");
-
-        chatbot.setColumns(5);
-        chatbot.setLineWrap(true);
-        chatbot.setRows(5);
-        chatbot.setText("Upišite svoju poruku...");
-        chatbot.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                chatbotKeyPressed(evt);
+        btnPosalji.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPosaljiMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(chatbot);
+        btnPosalji.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnPosaljiKeyPressed(evt);
+            }
+        });
+
+        btnIzadi.setText("Izađi");
 
         txtVrijeme.setEditable(false);
         txtVrijeme.setBackground(new java.awt.Color(255, 255, 255));
@@ -176,6 +181,19 @@ public class ChatBot extends javax.swing.JFrame {
             }
         });
 
+        chatbot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chatbotActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/botIcon.png"))); // NOI18N
+
+        jLabel3.setText("Botko - status:");
+
+        jLabel4.setForeground(new java.awt.Color(0, 102, 0));
+        jLabel4.setText("Online");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -207,13 +225,21 @@ public class ChatBot extends javax.swing.JFrame {
                                 .addComponent(lblPostavke, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblIzbornikOdjaviSe, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(64, 64, 64)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel4))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnPosalji)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnIzadi)))))
-                .addContainerGap(147, Short.MAX_VALUE))
+                                .addComponent(btnIzadi))
+                            .addComponent(chatbot, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,9 +257,17 @@ public class ChatBot extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(chatbot, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPosalji)
@@ -257,21 +291,7 @@ public class ChatBot extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_iconGoreLijevo1MouseClicked
 
-    private void chatbotKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_chatbotKeyPressed
-        String gtext = chatbot.getText();
-        Chatarea.append("You ->" + gtext + "\n");
-        chatbot.setText("");
 
-        if (gtext.contains("Hi")){
-            bot("holla");
-        }
-
-    }//GEN-LAST:event_chatbotKeyPressed
-   private void bot (String string){
-        Chatarea.append("BOT ->" +string+ "\n");
-    }
-    
-    
     private void txtVrijemeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVrijemeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtVrijemeActionPerformed
@@ -316,6 +336,41 @@ public class ChatBot extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_lblBlog1MouseClicked
 
+    private void btnPosaljiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPosaljiKeyPressed
+
+
+    }//GEN-LAST:event_btnPosaljiKeyPressed
+
+    private void btnPosaljiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPosaljiMouseClicked
+        
+        
+        String gtext = chatbot.getText();
+        
+        Chatarea.append("You ->" + gtext + "\n");
+        chatbot.setText("");
+
+        if (gtext.toLowerCase().trim().contains("hi")) {
+            bot("holla");
+        }
+        else if (gtext.toLowerCase().trim().contains("hrana")) {
+            bot("Ako te zanima kako se zbrajaju kalorije posjeti sljedeći link: ");
+        }
+        else if (gtext.toLowerCase().trim().contains("aktivnosti")) {
+            bot("Odlično pitanje. Više informacija možeš nać na stranici aktivnosti. ");
+
+        } else {
+            bot("Ne razumijem te. Možeš li preformulirat pitanje?");
+        }
+
+    }//GEN-LAST:event_btnPosaljiMouseClicked
+
+    private void chatbotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chatbotActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chatbotActionPerformed
+
+    private void bot(String string) {
+        Chatarea.append("BOT ->" + string + "\n");
+    }
     /**
      * @param args the command line arguments
      */
@@ -325,11 +380,13 @@ public class ChatBot extends javax.swing.JFrame {
     private javax.swing.JTextArea Chatarea;
     private javax.swing.JButton btnIzadi;
     private javax.swing.JButton btnPosalji;
-    private javax.swing.JTextArea chatbot;
+    private javax.swing.JTextField chatbot;
     private javax.swing.JLabel iconGoreLijevo1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblAktivnost;
     private javax.swing.JLabel lblBlog1;
     private javax.swing.JLabel lblDnevnik;
