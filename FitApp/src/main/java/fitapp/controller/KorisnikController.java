@@ -61,12 +61,13 @@ public class KorisnikController extends Controller<Korisnik> {
         }
 
         //Pregledava sve korisnike, ako postoji odbije
-        List<Korisnik> sviKorisnici = read();
-        for (Korisnik k : sviKorisnici) {
-            if (k.getNadimak().equals(entitet.getNadimak())) {
-                throw new ControllerException("Naziv već postoji");
-            }
-        }
+        //Ne postoji dva korisnika
+      //  List<Korisnik> sviKorisnici = read();
+      //  for (Korisnik k : sviKorisnici) {
+      //      if (k.getNadimak().equals(entitet.getNadimak())) {
+      //          throw new ControllerException("Naziv već postoji");
+       //     }
+      //  }
 
     }
 
@@ -95,7 +96,7 @@ public class KorisnikController extends Controller<Korisnik> {
     //Visina korisnika mora biti u normalnim parametrima radi izračuna BMR
     private void kontrolaVisine() throws ControllerException {
 
-        if (entitet.getTezina() <= 120 || entitet.getTezina() >= 225) {
+        if (entitet.getTezina() <= 120 && entitet.getTezina() >= 225) {
             throw new ControllerException("Vaša visina mora biti minimalno 120cm, a maksimalna 225cm.");
 
         }
@@ -104,14 +105,14 @@ public class KorisnikController extends Controller<Korisnik> {
     //Kontrola tezina radi izračuna BMR i ostalih parametara
     private void kontrolaZeljeneTezine() throws ControllerException {
 
-        if (entitet.getZeljenaTezina() <= 40 || entitet.getZeljenaTezina() >= 200) {
+        if (entitet.getZeljenaTezina() <= 40 && entitet.getZeljenaTezina() >= 200) {
             throw new ControllerException("Vaša željena težina mora biti minimalno 40kg, a maksimalno 200kg.");
         }
     }
 
     //Kontrola godina
     private void kontrolaDatumaRodenja() throws ControllerException {
-        if (entitet.getDob() <= 16 || entitet.getDob() >= 99) {
+        if (entitet.getDob() <= 16 && entitet.getDob() >= 99) {
             throw new ControllerException("Da bi koristili aplikaciju morate imati minimalno 16 godina.");
         }
 

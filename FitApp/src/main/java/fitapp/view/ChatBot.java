@@ -353,8 +353,8 @@ public class ChatBot extends javax.swing.JFrame {
         Chatarea.append("You ->" + gtext + "\n");
         chatbot.setText("");
 
-        if (gtext.toLowerCase().trim().contains("hi")) {
-            bot("holla");
+        if (gtext.toLowerCase().trim().contains("Bok")) {
+            bot("Bok! Kako ti mogu pomoći?");
         }
         else if (gtext.toLowerCase().trim().contains("hrana")) {
             bot("Ako te zanima kako se zbrajaju kalorije posjeti sljedeći link: ");

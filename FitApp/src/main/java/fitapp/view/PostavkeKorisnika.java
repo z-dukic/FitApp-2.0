@@ -109,6 +109,7 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(getParent(), "Vaša visina mora biti cijeli broj");
             return;
         }
+        ucitajEntitet();
 
     }
 
@@ -121,9 +122,7 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnDodajHranuBaza = new javax.swing.JButton();
         btnIzmjeniHranuBaza = new javax.swing.JButton();
-        btnObrišiHranuBaza = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtNadimak = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -158,24 +157,10 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        btnDodajHranuBaza.setText("Dodaj");
-        btnDodajHranuBaza.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDodajHranuBazaActionPerformed(evt);
-            }
-        });
-
         btnIzmjeniHranuBaza.setText("Izmjeni");
         btnIzmjeniHranuBaza.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIzmjeniHranuBazaActionPerformed(evt);
-            }
-        });
-
-        btnObrišiHranuBaza.setText("Obriši");
-        btnObrišiHranuBaza.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnObrišiHranuBazaActionPerformed(evt);
             }
         });
 
@@ -383,13 +368,7 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
                                 .addGap(99, 99, 99)
                                 .addComponent(txtLozinka, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addComponent(txtZeljenaTezina, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(67, 67, 67)
-                            .addComponent(btnDodajHranuBaza)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnIzmjeniHranuBaza)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnObrišiHranuBaza)))
+                        .addComponent(btnIzmjeniHranuBaza, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -473,13 +452,10 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtZeljenaTezina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10))
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnDodajHranuBaza)
-                            .addComponent(btnIzmjeniHranuBaza)
-                            .addComponent(btnObrišiHranuBaza))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
+                            .addComponent(jLabel10))))
+                .addGap(37, 37, 37)
+                .addComponent(btnIzmjeniHranuBaza)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtVrijeme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -488,22 +464,22 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+    //public static void dodaj(){
+   //             //3
+    //    controller.setEntitet(new Korisnik());
+    //    postaviVrijednostEntiteta();
+     //   ucitajEntitet();
 
-    private void btnDodajHranuBazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajHranuBazaActionPerformed
-        //3
-        controller.setEntitet(new Korisnik());
-        postaviVrijednostEntiteta();
-        ucitajEntitet();
-
-        try {
-            controller.create();
-            ucitajEntitet();
-        } catch (ControllerException e) {
-            JOptionPane.showMessageDialog(getParent(), e.getPoruka());
-        }
-
-    }//GEN-LAST:event_btnDodajHranuBazaActionPerformed
-
+      //  try {
+      //      controller.create();
+      //      ucitajEntitet();
+      //  } catch (ControllerException e) {
+      //      JOptionPane.showMessageDialog(getParent(), e.getPoruka());
+      //  }
+        
+    //}
+    
+    
     private void btnIzmjeniHranuBazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIzmjeniHranuBazaActionPerformed
         //6
         postaviVrijednostEntiteta();
@@ -515,17 +491,18 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnIzmjeniHranuBazaActionPerformed
-
-    private void btnObrišiHranuBazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrišiHranuBazaActionPerformed
-        //5
-        try {
-            controller.delete();
-            ucitajEntitet();
-        } catch (ControllerException e) {
-            JOptionPane.showMessageDialog(getParent(), e.getPoruka());
-        }
-    }//GEN-LAST:event_btnObrišiHranuBazaActionPerformed
-
+    //Dodaj u obriši button kad app bude imao više usera 
+//public static void obrisi(){
+     //         //5
+     //   try {
+      //      controller.delete();
+      //      ucitajEntitet();
+      //  } catch (ControllerException e) {
+      //      JOptionPane.showMessageDialog(getParent(), e.getPoruka());
+      //  }
+   // }
+    
+    
     private void txtNadimakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNadimakActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNadimakActionPerformed
@@ -615,9 +592,7 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDodajHranuBaza;
     private javax.swing.JButton btnIzmjeniHranuBaza;
-    private javax.swing.JButton btnObrišiHranuBaza;
     private javax.swing.JLabel iconGoreLijevo1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

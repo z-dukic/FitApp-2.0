@@ -69,14 +69,7 @@
                           </Group>
                       </Group>
                       <Component id="txtZeljenaTezina" alignment="1" min="-2" pref="173" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                          <Component id="btnDodajHranuBaza" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnIzmjeniHranuBaza" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnObrišiHranuBaza" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="btnIzmjeniHranuBaza" alignment="1" min="-2" pref="97" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane1" min="-2" pref="398" max="-2" attributes="0"/>
               </Group>
@@ -180,15 +173,11 @@
                           <Component id="txtZeljenaTezina" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnDodajHranuBaza" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnIzmjeniHranuBaza" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnObrišiHranuBaza" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="141" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+              <Component id="btnIzmjeniHranuBaza" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="136" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtDatum" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtVrijeme" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -198,28 +187,12 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="btnDodajHranuBaza">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Dodaj"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDodajHranuBazaActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="btnIzmjeniHranuBaza">
       <Properties>
         <Property name="text" type="java.lang.String" value="Izmjeni"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIzmjeniHranuBazaActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnObri&#x161;iHranuBaza">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Obri&#x161;i"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnObri&#x161;iHranuBazaActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">

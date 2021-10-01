@@ -104,6 +104,7 @@ public class KontaktView extends javax.swing.JFrame {
         txtDatum = new javax.swing.JTextField();
         txtVrijeme = new javax.swing.JTextField();
         btnPosalji = new javax.swing.JButton();
+        txtPoslano = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -229,6 +230,8 @@ public class KontaktView extends javax.swing.JFrame {
             }
         });
 
+        txtPoslano.setEditable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -248,7 +251,10 @@ public class KontaktView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtEmailImePrezime, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnPosalji))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnPosalji)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtPoslano, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(202, 202, 202))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,7 +306,9 @@ public class KontaktView extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnPosalji)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPosalji)
+                    .addComponent(txtPoslano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -366,6 +374,7 @@ public class KontaktView extends javax.swing.JFrame {
 
     private void btnPosaljiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPosaljiMouseClicked
         EmailUtil send = new EmailUtil("perop8406@gmail.com", "Primjedba", "Ime pošiljatelja: " + txtEmailImePrezime.getText() + " Poruka pošiljatelja: " +  txtEmailPoruka.getText());
+        txtPoslano.setText("Poslano.");
         
         
     }//GEN-LAST:event_btnPosaljiMouseClicked
@@ -394,6 +403,7 @@ public class KontaktView extends javax.swing.JFrame {
     private javax.swing.JTextField txtDatum;
     private javax.swing.JTextField txtEmailImePrezime;
     private javax.swing.JTextArea txtEmailPoruka;
+    private javax.swing.JTextField txtPoslano;
     private javax.swing.JTextField txtVrijeme;
     // End of variables declaration//GEN-END:variables
 }

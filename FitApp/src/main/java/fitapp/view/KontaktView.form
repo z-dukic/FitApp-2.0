@@ -41,7 +41,11 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtEmailImePrezime" min="-2" pref="276" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="358" max="-2" attributes="0"/>
-                          <Component id="btnPosalji" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="btnPosalji" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="txtPoslano" min="-2" pref="104" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="-2" pref="202" max="-2" attributes="0"/>
                   </Group>
@@ -105,7 +109,10 @@
                   <Component id="jScrollPane1" min="-2" pref="250" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnPosalji" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnPosalji" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPoslano" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace pref="99" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtDatum" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -295,6 +302,11 @@
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnPosaljiMouseClicked"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtPoslano">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

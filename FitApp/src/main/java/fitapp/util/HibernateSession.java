@@ -39,7 +39,7 @@ public class HibernateSession {
         korisnik.setZeljenaTezina(100);
         s.save(korisnik);
 
-        //Dodavanje jedne hrane u bazu hrana
+        //Dodavanje hrane u bazu hrana
         Hrana banana = new Hrana();
         banana.setImeHrane("Banana");
         banana.setKalorije(20);
@@ -47,6 +47,78 @@ public class HibernateSession {
         banana.setUgljikohidrati(20);
         banana.setMasti(20);
         s.save(banana);
+
+        Hrana mrkva = new Hrana();
+        mrkva.setImeHrane("Mrkva");
+        mrkva.setKalorije(35);
+        mrkva.setProteini(0);
+        mrkva.setUgljikohidrati(8);
+        mrkva.setMasti(0);
+        s.save(mrkva);
+
+        Hrana jabuka = new Hrana();
+        jabuka.setImeHrane("Jabuka");
+        jabuka.setKalorije(48);
+        jabuka.setProteini(0);
+        jabuka.setUgljikohidrati(13);
+        jabuka.setMasti(0);
+        s.save(jabuka);
+
+        Hrana breskva = new Hrana();
+        breskva.setImeHrane("Breskva");
+        breskva.setKalorije(39);
+        breskva.setProteini(10);
+        breskva.setUgljikohidrati(0);
+        breskva.setMasti(0);
+        s.save(breskva);
+
+        Hrana luk = new Hrana();
+        luk.setImeHrane("Luk");
+        luk.setKalorije(40);
+        luk.setProteini(0);
+        luk.setUgljikohidrati(10);
+        luk.setMasti(0);
+        s.save(luk);
+
+        Hrana cocaCola = new Hrana();
+        cocaCola.setImeHrane("Coca-cola");
+        cocaCola.setKalorije(41);
+        cocaCola.setProteini(0);
+        cocaCola.setUgljikohidrati(10);
+        cocaCola.setMasti(0);
+        s.save(cocaCola);
+
+        Hrana cips = new Hrana();
+        cips.setImeHrane("Čips");
+        cips.setKalorije(547);
+        cips.setProteini(7);
+        cips.setUgljikohidrati(50);
+        cips.setMasti(37);
+        s.save(cips);
+
+        Hrana bigMac = new Hrana();
+        bigMac.setImeHrane("Big Mac");
+        bigMac.setKalorije(257);
+        bigMac.setProteini(12);
+        bigMac.setUgljikohidrati(20);
+        bigMac.setMasti(15);
+        s.save(bigMac);
+
+        Hrana bolognese = new Hrana();
+        bolognese.setImeHrane("Špagete Bolognese");
+        bolognese.setKalorije(113);
+        bolognese.setProteini(7);
+        bolognese.setUgljikohidrati(9);
+        bolognese.setMasti(7);
+        s.save(bolognese);
+
+        Hrana sir = new Hrana();
+        sir.setImeHrane("Sir gauda");
+        sir.setKalorije(356);
+        sir.setProteini(25);
+        sir.setUgljikohidrati(2);
+        sir.setMasti(27);
+        s.save(sir);
 
         Blog blog1 = new Blog();
         blog1.setNazivClanka("Vodič kroz zdravi doručak: Što jesti, a što izbjegavati?");
@@ -121,25 +193,50 @@ public class HibernateSession {
                 + "Naime, upravo zbog sadržaja masti i kalorijske vrijednosti, kikiriki duže vremena daje osjećaj sitosti pa s njihovim unosom ne dolazi da značajnog povećanja energije.");
 
         s.save(blog2);
-        
+
         //Dodavanje više aktivnosti u bazu
         List<Aktivnost> aktivnosti;
 
         Faker faker = new Faker();
 
         //Program prebačen sa rubya pa ne poštuje OOP principe
+        // Aktivnost aktivnost;
+        //for (int i = 0; i < 20; i++) {
+        //   aktivnost = new Aktivnost();
+        //   int suma = +i;
+        //   int z = 0;
+        //   aktivnost.setImeAktivnosti(faker.name().firstName());
+        //  aktivnost.setPotroseneKalorijePoSatu(suma);
+        //   aktivnost.setVrijemeTrajanjaUMinutama(60);
+        //  s.save(aktivnost);
+        // }
         Aktivnost aktivnost;
-        for (int i = 0; i < 20; i++) {
-            aktivnost = new Aktivnost();
-            int suma = +i;
-            int z = 0;
+        aktivnost = new Aktivnost();
+        
+        Aktivnost trcanje = new Aktivnost();
+        trcanje.setImeAktivnosti("Trcanje");
+        trcanje.setPotroseneKalorijePoSatu(600);
+        s.save(trcanje);
 
-            aktivnost.setImeAktivnosti(faker.name().firstName());
-            aktivnost.setPotroseneKalorijePoSatu(suma);
-            aktivnost.setVrijemeTrajanjaUMinutama(60);
-            s.save(aktivnost);
+        Aktivnost nogomet = new Aktivnost();
+        nogomet.setImeAktivnosti("Nogomet");
+        nogomet.setPotroseneKalorijePoSatu(500);
+        s.save(nogomet);
 
-        }
+        Aktivnost skijanje = new Aktivnost();
+        skijanje.setImeAktivnosti("Skijanje");
+        skijanje.setPotroseneKalorijePoSatu(350);
+        s.save(skijanje);
+
+        Aktivnost bicikliranje = new Aktivnost();
+        bicikliranje.setImeAktivnosti("Bicikliranje");
+        bicikliranje.setPotroseneKalorijePoSatu(300);
+        s.save(bicikliranje);
+
+        Aktivnost rukomet = new Aktivnost();
+        rukomet.setImeAktivnosti("Rukomet");
+        rukomet.setPotroseneKalorijePoSatu(450);
+        s.save(rukomet);
 
         s.getTransaction().commit();
     }
