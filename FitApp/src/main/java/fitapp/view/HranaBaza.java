@@ -31,7 +31,7 @@ public class HranaBaza extends javax.swing.JFrame implements Sucelje {
         vrijeme();
 
     }
-    
+
     public void datum() {
         Date datum = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
@@ -41,13 +41,13 @@ public class HranaBaza extends javax.swing.JFrame implements Sucelje {
     }
 
     private void vrijeme() {
-                Thread t1;
+        Thread t1;
         t1 = new Thread(() -> {
             while (true) {
-        Date datum = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-        txtVrijeme.setText(sdf.format(datum));
-        try {
+                Date datum = new Date();
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+                txtVrijeme.setText(sdf.format(datum));
+                try {
                     Thread.sleep(1000);
                 } catch (InterruptedException ex) {
                     System.out.println("Error with clock update");
@@ -66,13 +66,13 @@ public class HranaBaza extends javax.swing.JFrame implements Sucelje {
     @Override
     public void ucitajEntitet() { //2
 
-        DefaultListModel<Hrana> h = new DefaultListModel<>();
+        DefaultListModel<Hrana> m = new DefaultListModel<>();
 
-        controller.read(txtUvjet.getText()).forEach(s -> {
-            h.addElement(s);
+        controller.read().forEach(s -> {
+            m.addElement(s);
         });
 
-        lstEntiteta.setModel(h);
+        lstEntiteta.setModel(m);
 
     }
 

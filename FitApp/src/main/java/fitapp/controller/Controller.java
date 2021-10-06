@@ -16,64 +16,65 @@ import fitapp.util.HibernateUtil;
  */
 public abstract class Controller<T> {
 
+    //Hibernate session
     protected Session session;
 
-    //Vrsta klase
-    protected T entitet;
+    //Type of class
+    protected T modelEntity;
 
     //(C(R)UD
     public abstract List<T> read();
 
-    protected abstract void kontrolaCreate() throws ControllerException;
+    protected abstract void controlCreate() throws ControllerException;
 
-    protected abstract void kontrolaUpdate() throws ControllerException;
+    protected abstract void controlUpdate() throws ControllerException;
 
-    protected abstract void kontrolaDelete() throws ControllerException;
+    protected abstract void controlDelete() throws ControllerException;
 
-    //Konstruktor Controllera
+    //Constructor
     public Controller() {
         this.session = HibernateUtil.getSession();
     }
 
-    //Getter i setteri entiteta
+    //Getters and setters
     public T getEntitet() {
-        return entitet;
+        return modelEntity;
     }
 
     public void setEntitet(T entitet) {
-        this.entitet = entitet;
+        this.modelEntity = entitet;
     }
 
-    //Novi entitet
+    //New entity
     //(C)RUD
     public T create() throws ControllerException {
-        kontrolaCreate();
+        controlCreate();
         save();
-        return entitet;
+        return modelEntity;
     }
 
-    //Update postojecih entiteta
+    //Update existing entity
     //CR(U)D
     public T update() throws ControllerException {
-        kontrolaUpdate();
+        controlUpdate();
         save();
-        return entitet;
+        return modelEntity;
     }
 
-    //Brisanje entiteta
+    //Delete entity
     //CRU(D)
     public void delete() throws ControllerException {
-        kontrolaDelete();
+        controlDelete();
         session.beginTransaction();
-        session.delete(entitet);
+        session.delete(modelEntity);
         session.getTransaction().commit();
 
     }
 
-    //Save novih entiteta
+    //Save new entity
     private void save() {
         session.beginTransaction();
-        session.save(entitet);
+        session.save(modelEntity);
         session.getTransaction().commit();
     }
 

@@ -5,8 +5,7 @@
  */
 package fitapp.controller;
 
-import fitapp.model.Blog;
-import fitapp.model.Hrana;
+import fitapp.model.DnevnikHrane;
 import fitapp.util.ControllerException;
 import java.util.List;
 
@@ -14,23 +13,26 @@ import java.util.List;
  *
  * @author PC
  */
-public class BlogController extends Controller<Blog>{
+public class DnevnikHraneController extends Controller<DnevnikHrane>{
 
     @Override
-    public List<Blog> read() {
-        return session.createQuery("from Blog").list();
+    public List<DnevnikHrane> read() {
+         return session.createQuery("from DnevnikHrane").list();
     }
 
     @Override
     protected void controlCreate() throws ControllerException {
+       
     }
 
     @Override
     protected void controlUpdate() throws ControllerException {
+        
     }
 
     @Override
     protected void controlDelete() throws ControllerException {
+        
     }
     
 }

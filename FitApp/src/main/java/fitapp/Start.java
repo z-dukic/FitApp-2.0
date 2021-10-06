@@ -15,6 +15,8 @@ import fitapp.view.SplashScreen;
 public class Start {
 
     public static void main(String[] args) {
+        
+    
 
        //Pokretanje aplikacije
         new SplashScreen().setVisible(true);

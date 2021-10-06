@@ -32,7 +32,7 @@ public class HranaController extends Controller<Hrana> {
 
     //Kreiranje hrane
     @Override
-    protected void kontrolaCreate() throws ControllerException {
+    protected void controlCreate() throws ControllerException {
         kontrolaImenaHrane();
         kontrolaKolicinaHrane();
 
@@ -40,7 +40,7 @@ public class HranaController extends Controller<Hrana> {
 
     //Update hrane
     @Override
-    protected void kontrolaUpdate() throws ControllerException {
+    protected void controlUpdate() throws ControllerException {
         kontrolaImenaHrane();
         kontrolaKolicinaHrane();
 
@@ -48,13 +48,13 @@ public class HranaController extends Controller<Hrana> {
 
     //Brisanje hrane
     @Override
-    protected void kontrolaDelete() throws ControllerException {
+    protected void controlDelete() throws ControllerException {
 
     }
 
     //Dodati ime hrane je obavezno
     private void kontrolaImenaHrane() throws ControllerException {
-        if (entitet.getImeHrane() == null || entitet.getImeHrane().trim().length() == 0) {
+        if (modelEntity.getImeHrane() == null || modelEntity.getImeHrane().trim().length() == 0) {
             throw new ControllerException("Dodati ime hrane je obavezno.");
         }
 
@@ -62,7 +62,7 @@ public class HranaController extends Controller<Hrana> {
 
     //Nemoguce dodati vise od 1000g
     private void kontrolaKolicinaHrane() throws ControllerException {
-        if (entitet.getKolicina() > 1000) {
+        if (modelEntity.getKolicina() > 1000) {
             throw new ControllerException("Količina hrane ne može biti veća od 1000g (odnosno 1kg).");
         }
 
