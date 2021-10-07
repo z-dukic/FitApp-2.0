@@ -16,6 +16,7 @@ import fitapp.model.DnevnikAktivnosti;
 import fitapp.model.DnevnikHrane;
 import fitapp.model.Hrana;
 import fitapp.util.Aplikacija;
+import fitapp.util.ControllerException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -25,6 +26,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -54,6 +56,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         datum();
         vrijeme();
         ucitaj();
+        ucitajDruguListu();
     }
     
         public void ucitaj() {
@@ -62,7 +65,18 @@ public class DnevnikHraneView extends javax.swing.JFrame {
             m.addElement(g);
         });
         lstDatuma.setModel(m);
+        
+
+        
     }
+        
+        public void ucitajDruguListu(){
+                    DefaultListModel<Hrana> z = new DefaultListModel<>();
+        hranaController.read().forEach(q -> {
+            z.addElement(q);
+        });
+        lstDnevnikHrane.setModel(z);
+        }
 
     private void postavke() {
         setTitle(Aplikacija.NASLOV_APP + " Dnevnik");
@@ -177,6 +191,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         btnTrazi = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        btnDodaj2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -425,6 +440,18 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
         jLabel17.setText("lstPolazniciUBazi");
 
+        btnDodaj2.setText("Dodaj");
+        btnDodaj2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDodaj2MouseClicked(evt);
+            }
+        });
+        btnDodaj2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDodaj2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -463,16 +490,14 @@ public class DnevnikHraneView extends javax.swing.JFrame {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(btnDodaj)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btnObrisi))
+                                            .addComponent(btnDodaj)
                                             .addComponent(txtHranaKolicinaDnevnik, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel2))
-                                        .addGap(0, 95, Short.MAX_VALUE))))
+                                            .addComponent(jLabel2)
+                                            .addComponent(btnDodaj2))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
                             .addComponent(jLabel1)
                             .addComponent(dpDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13)
@@ -531,7 +556,8 @@ public class DnevnikHraneView extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel3)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnObrisi))
                             .addGap(21, 21, 21)))))
         );
         layout.setVerticalGroup(
@@ -560,7 +586,9 @@ public class DnevnikHraneView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnObrisi)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -586,7 +614,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dpDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -603,9 +631,9 @@ public class DnevnikHraneView extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtHranaKolicinaDnevnik, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnDodaj)
-                                    .addComponent(btnObrisi))))
+                                .addComponent(btnDodaj)
+                                .addGap(16, 16, 16)
+                                .addComponent(btnDodaj2)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel12)
                         .addGap(27, 27, 27)))
@@ -666,6 +694,9 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNetoActionPerformed
 
+    
+    
+    
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
         DefaultListModel<Hrana> m = (DefaultListModel<Hrana>) lstDnevnik.getModel();
         for (Hrana h : lstDnevnikHrane.getSelectedValuesList()){
@@ -691,9 +722,31 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     
     
     private void btnObrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiActionPerformed
-        // TODO add your handling code here:
+        List<Hrana> lista = lstDnevnik.getSelectedValuesList();
+        
+        for(Hrana h : lista){
+            obrisiHranuIzDnevnika(h);
+        }
+        lstDnevnik.repaint();
+        
+        
+        
     }//GEN-LAST:event_btnObrisiActionPerformed
 
+    private void obrisiHranuIzDnevnika(Hrana h){
+    DefaultListModel<Hrana> z = (DefaultListModel<Hrana>) lstDnevnik.getModel();
+    for (int i = 0; i < z.getSize(); i++) {
+            if (z.get(i).getSifra().equals(h.getSifra())) {
+                z.removeElementAt(i);
+                return;
+            }
+        }
+    
+        
+    
+    }
+    
+    
     private void lblAktivnostMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAktivnostMouseClicked
         new DnevnikAktivnostiView().setVisible(true);
         dispose();
@@ -776,9 +829,35 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         lstDnevnikHrane.setModel(m);
     }//GEN-LAST:event_btnTraziActionPerformed
 
+    private void btnDodaj2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDodaj2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDodaj2MouseClicked
+
+    private void btnDodaj2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodaj2ActionPerformed
+        dnevnikHranaController.setEntitet(new DnevnikHrane());
+        
+        postaviVrijednostiUEntitet();
+        
+                try {
+            //System.out.println(obrada.getEntitet().getPolaznici().size());
+            dnevnikHranaController.create();
+            ucitaj();
+            pocistiPodatke();
+        } catch (ControllerException ex) {
+            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+        }
+        
+    }//GEN-LAST:event_btnDodaj2ActionPerformed
+
+    
+    private void pocistiPodatke(){
+        dpDatum.setDateToToday();
+        lstDnevnik.setModel(new DefaultListModel<>());  
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
+    private javax.swing.JButton btnDodaj2;
     private javax.swing.JButton btnObrisi;
     private javax.swing.JButton btnTrazi;
     private com.github.lgooddatepicker.components.DatePicker dpDatum;

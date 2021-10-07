@@ -5,6 +5,10 @@
  */
 package fitapp.model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -58,6 +62,11 @@ public class DnevnikHrane extends Entitet {
 
     public void setKolicinaUneseneHrane(int kolicinaUneseneHrane) {
         this.kolicinaUneseneHrane = kolicinaUneseneHrane;
+    }
+
+    @Override
+    public String toString() {
+        return "d: " + datum;
     }
 
 }
