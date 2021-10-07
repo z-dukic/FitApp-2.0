@@ -389,7 +389,7 @@ public class GlavniIzbornik extends javax.swing.JFrame {
     }//GEN-LAST:event_lblAktivnostMouseClicked
 
     private void lblDnevnikMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDnevnikMouseClicked
-        new DnevnikView().setVisible(true);
+        new DnevnikHraneView().setVisible(true);
         dispose();
     }//GEN-LAST:event_lblDnevnikMouseClicked
 
@@ -421,7 +421,7 @@ public class GlavniIzbornik extends javax.swing.JFrame {
     }//GEN-LAST:event_linkDnevnikKeyPressed
 
     private void linkDnevnikMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_linkDnevnikMouseClicked
-        new DnevnikView().setVisible(true);
+        new DnevnikHraneView().setVisible(true);
         dispose();
     }//GEN-LAST:event_linkDnevnikMouseClicked
 

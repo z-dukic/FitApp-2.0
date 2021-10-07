@@ -286,7 +286,7 @@ public class OpcePostavke extends javax.swing.JFrame {
     }//GEN-LAST:event_lblIzvjestajMouseClicked
 
     private void lblDnevnikMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDnevnikMouseClicked
-        new DnevnikView().setVisible(true);
+        new DnevnikHraneView().setVisible(true);
         dispose();
     }//GEN-LAST:event_lblDnevnikMouseClicked
 
