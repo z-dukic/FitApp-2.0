@@ -966,13 +966,13 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTrenutniDatumViseActionPerformed
 
     private void btnPokaziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPokaziActionPerformed
-        DefaultListModel<DnevnikHraneController> m = new DefaultListModel<>();
-        dnevnikAktivnostController.read(txtUvjet.getText()).forEach(p -> {
-            m.addElement(p);
-        });
-        lstDnevnik.setModel(m);
-    
-                                      
+//        DefaultListModel<DnevnikHraneController> m = new DefaultListModel<>();
+//        dnevnikAktivnostController.read(txtUvjet.getText()).forEach(p -> {
+//            m.addElement(p);
+//        });
+//        lstDnevnik.setModel(m);
+
+
     }//GEN-LAST:event_btnPokaziActionPerformed
 
     private boolean postojiDatumUModelu(DefaultListModel<DnevnikHrane> m, DnevnikHrane p) {

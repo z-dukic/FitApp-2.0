@@ -6,17 +6,12 @@
 package fitapp.model;
 
 import fitapp.util.Aplikacija;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import static org.hibernate.type.descriptor.java.DateTypeDescriptor.DATE_FORMAT;
 
 /**
  *

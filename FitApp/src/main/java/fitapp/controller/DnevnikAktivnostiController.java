@@ -34,5 +34,9 @@ public class DnevnikAktivnostiController extends Controller<DnevnikAktivnosti>{
     protected void controlDelete() throws ControllerException {
         
     }
+
+    public Object read(String text) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
