@@ -40,11 +40,6 @@ public class HibernateSession {
         s.save(korisnik);
 
         //Dodavanje hrane u bazu hrana
-     
-        Hrana pizza = new Hrana("Pizza", 350, 20, 30, 20);
-        s.save(pizza);
-        
-        
         Hrana banana = new Hrana();
         banana.setImeHrane("Banana");
         banana.setKalorije(20);

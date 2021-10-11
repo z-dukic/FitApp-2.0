@@ -78,7 +78,11 @@
                               <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
+<<<<<<< HEAD
                           <EmptySpace min="0" pref="225" max="32767" attributes="0"/>
+=======
+                          <EmptySpace min="0" pref="162" max="32767" attributes="0"/>
+>>>>>>> parent of 076721c (Prepravak datuma.)
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -805,6 +809,7 @@
         </Component>
       </SubComponents>
     </Container>
+<<<<<<< HEAD
     <Component class="javax.swing.JLabel" name="lblTrenutniDatum">
       <Properties>
         <Property name="text" type="java.lang.String" value="TrenutnoDatum"/>
@@ -836,5 +841,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtUvjet">
     </Component>
+=======
+>>>>>>> parent of 076721c (Prepravak datuma.)
   </SubComponents>
 </Form>

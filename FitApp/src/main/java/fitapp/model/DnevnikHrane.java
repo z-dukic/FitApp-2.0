@@ -5,7 +5,11 @@
  */
 package fitapp.model;
 
+<<<<<<< HEAD
 import fitapp.util.Aplikacija;
+=======
+import java.text.DateFormat;
+>>>>>>> parent of 076721c (Prepravak datuma.)
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -62,9 +66,23 @@ public class DnevnikHrane extends Entitet {
         this.kolicinaUneseneHrane = kolicinaUneseneHrane;
     }
 
-    @Override
+    
+    //date must not be null error
+//    public static final String DATE_FORMAT = "d.M.yyyy.";
+//    private static SimpleDateFormat dateFormat;
+//    
+//    	private static String formatDate(Date datum) {
+//		dateFormat = new SimpleDateFormat(DATE_FORMAT);
+//                return dateFormat.format(datum);
+//	}
+        
+//    @Override
+//    public String toString() {
+//        return "d: " + formatDate(datum);
+//    }
+
+        @Override
     public String toString() {
-        SimpleDateFormat df = new SimpleDateFormat(Aplikacija.FORMAT_DATUMA);
-        return df.format(datum);
+        return "d: " + datum;
     }
 }

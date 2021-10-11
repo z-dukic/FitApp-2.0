@@ -16,7 +16,5 @@ public class Aplikacija {
     public static final String NASLOV_APP = "FitApp 2.0";
 
     public static Korisnik korisnik;
-    
-    public static final String FORMAT_DATUMA="EEE, dd. MM. YYYY";
 
 }

@@ -13,11 +13,11 @@ import java.util.List;
  *
  * @author PC
  */
-public class DnevnikHraneController extends Controller<DnevnikHrane> {
+public class DnevnikHraneController extends Controller<DnevnikHrane>{
 
     @Override
     public List<DnevnikHrane> read() {
-        return session.createQuery("from DnevnikHrane").list();
+         return session.createQuery("from DnevnikHrane").list();
     }
 
 //    public List<DnevnikHrane> read(String uvjet) {
@@ -26,17 +26,17 @@ public class DnevnikHraneController extends Controller<DnevnikHrane> {
 
     @Override
     protected void controlCreate() throws ControllerException {
-
+       
     }
 
     @Override
     protected void controlUpdate() throws ControllerException {
-
+        
     }
 
     @Override
     protected void controlDelete() throws ControllerException {
-
+        
     }
-
+    
 }

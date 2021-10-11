@@ -14,13 +14,19 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public abstract class MakroNutrijenti extends Entitet {
 
-    
+    private int kolicina;
     private int kalorije;
     private int proteini;
     private int ugljikohidrati;
     private int masti;
 
+    public int getKolicina() {
+        return kolicina;
+    }
 
+    public void setKolicina(int kolicina) {
+        this.kolicina = kolicina;
+    }
 
     public int getKalorije() {
         return kalorije;
@@ -53,18 +59,5 @@ public abstract class MakroNutrijenti extends Entitet {
     public void setMasti(int masti) {
         this.masti = masti;
     }
-
-    public MakroNutrijenti(int kalorije, int proteini, int ugljikohidrati, int masti) {
-        
-        this.kalorije = kalorije;
-        this.proteini = proteini;
-        this.ugljikohidrati = ugljikohidrati;
-        this.masti = masti;
-    }
-
-    public MakroNutrijenti() {
-    }
-    
-    
 
 }
