@@ -20,6 +20,10 @@ public class DnevnikHraneController extends Controller<DnevnikHrane> {
         return session.createQuery("from DnevnikHrane").list();
     }
 
+    public List<DnevnikHrane> read(String uvjet) {
+        return session.createQuery("from DnevnikHrane dh" + " where concat(ph.imeHrane)" + " like :uvjet order by ph.imeHrane").setParameter("uvjet", "%" + uvjet + "%").setMaxResults(50).list();
+    }
+
     @Override
     protected void controlCreate() throws ControllerException {
 
