@@ -28,7 +28,17 @@ public class Hrana extends MakroNutrijenti {
     public String toString() {
         return imeHrane;
     }
-    
-    
+
+    public Hrana(String imeHrane, int kalorije, int proteini, int ugljikohidrati, int masti) {
+        super(kalorije, proteini, ugljikohidrati, masti);
+        this.imeHrane = imeHrane;
+    }
+
+    public Hrana(String imeHrane) {
+        this.imeHrane = imeHrane;
+    }
+
+    public Hrana() {
+    }
 
 }

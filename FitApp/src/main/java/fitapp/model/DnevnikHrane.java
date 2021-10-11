@@ -5,6 +5,7 @@
  */
 package fitapp.model;
 
+import fitapp.util.Aplikacija;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -66,23 +67,9 @@ public class DnevnikHrane extends Entitet {
         this.kolicinaUneseneHrane = kolicinaUneseneHrane;
     }
 
-    
-    //date must not be null error
-//    public static final String DATE_FORMAT = "d.M.yyyy.";
-//    private static SimpleDateFormat dateFormat;
-//    
-//    	private static String formatDate(Date datum) {
-//		dateFormat = new SimpleDateFormat(DATE_FORMAT);
-//                return dateFormat.format(datum);
-//	}
-        
-//    @Override
-//    public String toString() {
-//        return "d: " + formatDate(datum);
-//    }
-
-        @Override
+    @Override
     public String toString() {
-        return "d: " + datum;
+        SimpleDateFormat df = new SimpleDateFormat(Aplikacija.FORMAT_DATUMA);
+        return df.format(datum);
     }
 }

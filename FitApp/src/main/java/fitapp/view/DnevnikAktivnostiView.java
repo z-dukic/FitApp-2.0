@@ -63,22 +63,24 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtKcal = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        dpCalendar = new com.github.lgooddatepicker.components.CalendarPanel();
+        datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
+        btnDanprije = new javax.swing.JButton();
+        btnDanKasnije = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        lblAktivnost.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblAktivnost.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAktivnost.setText("Aktivnost");
+        lblAktivnost.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblAktivnost.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblAktivnostMouseClicked(evt);
             }
         });
 
-        lblIzvjestaj.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblIzvjestaj.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblIzvjestaj.setText("Izvještaj");
+        lblIzvjestaj.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblIzvjestaj.setToolTipText("");
         lblIzvjestaj.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -86,9 +88,9 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
             }
         });
 
-        lblDnevnik.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblDnevnik.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDnevnik.setText("Baza");
+        lblDnevnik.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblDnevnik.setToolTipText("");
         lblDnevnik.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -96,9 +98,9 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
             }
         });
 
-        lblONama.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblONama.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblONama.setText("O nama");
+        lblONama.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblONama.setToolTipText("");
         lblONama.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -106,9 +108,9 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
             }
         });
 
-        lblPostavke.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblPostavke.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPostavke.setText("Postavke");
+        lblPostavke.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblPostavke.setToolTipText("");
         lblPostavke.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -116,9 +118,9 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
             }
         });
 
-        lblIzbornikOdjaviSe.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblIzbornikOdjaviSe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblIzbornikOdjaviSe.setText("Odjavi se");
+        lblIzbornikOdjaviSe.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblIzbornikOdjaviSe.setToolTipText("");
         lblIzbornikOdjaviSe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -126,9 +128,9 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
             }
         });
 
-        lblBlog1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblBlog1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBlog1.setText("Blog");
+        lblBlog1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblBlog1.setToolTipText("");
         lblBlog1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -143,9 +145,9 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
             }
         });
 
-        lblHrana.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblHrana.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHrana.setText("Hrana");
+        lblHrana.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblHrana.setToolTipText("");
         lblHrana.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -154,8 +156,8 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
         });
 
         txtVrijeme.setEditable(false);
-        txtVrijeme.setBackground(new java.awt.Color(255, 255, 255));
         txtVrijeme.setText("Vrijeme");
+        txtVrijeme.setBackground(new java.awt.Color(255, 255, 255));
         txtVrijeme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtVrijemeActionPerformed(evt);
@@ -163,8 +165,8 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
         });
 
         txtDatum.setEditable(false);
-        txtDatum.setBackground(new java.awt.Color(255, 255, 255));
         txtDatum.setText("Datum");
+        txtDatum.setBackground(new java.awt.Color(255, 255, 255));
         txtDatum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDatumActionPerformed(evt);
@@ -172,28 +174,28 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
         });
 
         txtProtein.setEditable(false);
-        txtProtein.setBackground(new java.awt.Color(255, 255, 255));
         txtProtein.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtProtein.setBackground(new java.awt.Color(255, 255, 255));
         txtProtein.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtProteinActionPerformed(evt);
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Proteini:");
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         txtUH.setEditable(false);
-        txtUH.setBackground(new java.awt.Color(255, 255, 255));
         txtUH.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtUH.setBackground(new java.awt.Color(255, 255, 255));
         txtUH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUHActionPerformed(evt);
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("UH:");
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jScrollPane6.setViewportView(lstDnevnik1);
 
@@ -212,52 +214,52 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
         });
 
         txtMasti.setEditable(false);
-        txtMasti.setBackground(new java.awt.Color(255, 255, 255));
         txtMasti.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtMasti.setBackground(new java.awt.Color(255, 255, 255));
         txtMasti.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMastiActionPerformed(evt);
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("Masti:");
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         txtAktiv.setEditable(false);
-        txtAktiv.setBackground(new java.awt.Color(255, 255, 255));
         txtAktiv.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtAktiv.setBackground(new java.awt.Color(255, 255, 255));
         txtAktiv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAktivActionPerformed(evt);
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("Aktiv:");
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         txtBMR.setEditable(false);
-        txtBMR.setBackground(new java.awt.Color(255, 255, 255));
         txtBMR.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtBMR.setBackground(new java.awt.Color(255, 255, 255));
         txtBMR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBMRActionPerformed(evt);
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setText("BMR:");
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         txtNeto.setEditable(false);
-        txtNeto.setBackground(new java.awt.Color(255, 255, 255));
         txtNeto.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtNeto.setBackground(new java.awt.Color(255, 255, 255));
         txtNeto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNetoActionPerformed(evt);
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel10.setText("Neto:");
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jScrollPane3.setViewportView(lstDnevnikAktivnost);
 
@@ -266,16 +268,20 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
         jLabel3.setText("Dodaj aktivnost:");
 
         txtKcal.setEditable(false);
-        txtKcal.setBackground(new java.awt.Color(255, 255, 255));
         txtKcal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtKcal.setBackground(new java.awt.Color(255, 255, 255));
         txtKcal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtKcalActionPerformed(evt);
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Kcal:");
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        btnDanprije.setText("<<");
+
+        btnDanKasnije.setText(">>");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -305,49 +311,13 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
                         .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtVrijeme, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 160, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtProtein, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtMasti, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtUH, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtKcal, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtAktiv, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtBMR, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtNeto, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
@@ -358,11 +328,54 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnObrisi1)))
                                 .addGap(18, 18, 18)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dpCalendar, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtProtein, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(txtMasti, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(txtUH, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(txtKcal, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtAktiv, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtBMR, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtNeto, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(54, 54, 54)
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(68, 68, 68))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDanprije)
+                        .addGap(18, 18, 18)
+                        .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDanKasnije)
+                        .addGap(38, 38, 38))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -378,10 +391,20 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
                         .addComponent(lblAktivnost, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblDnevnik, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblIzvjestaj, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
+                        .addGap(58, 58, 58)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDanprije)
+                            .addComponent(btnDanKasnije))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -391,11 +414,9 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(btnDodaj1)
                                     .addComponent(btnObrisi1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 385, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 384, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(dpCalendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -426,12 +447,7 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
                                             .addComponent(jLabel7)))
                                     .addComponent(txtNeto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel10))
-                                .addGap(28, 28, 28))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(28, 28, 28)))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtVrijeme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -536,9 +552,11 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDanKasnije;
+    private javax.swing.JButton btnDanprije;
     private javax.swing.JButton btnDodaj1;
     private javax.swing.JButton btnObrisi1;
-    private com.github.lgooddatepicker.components.CalendarPanel dpCalendar;
+    private com.github.lgooddatepicker.components.DatePicker datePicker1;
     private javax.swing.JLabel iconGoreLijevo1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
