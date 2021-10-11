@@ -5,17 +5,18 @@
  */
 package fitapp.model;
 
-<<<<<<< HEAD
 import fitapp.util.Aplikacija;
-=======
 import java.text.DateFormat;
->>>>>>> parent of 076721c (Prepravak datuma.)
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import static org.hibernate.type.descriptor.java.DateTypeDescriptor.DATE_FORMAT;
 
 /**
  *
@@ -83,6 +84,7 @@ public class DnevnikHrane extends Entitet {
 
         @Override
     public String toString() {
-        return "d: " + datum;
+            SimpleDateFormat df = new SimpleDateFormat(Aplikacija.FORMAT_DATUMA);
+        return df.format(datum);
     }
 }

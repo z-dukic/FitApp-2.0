@@ -29,8 +29,6 @@ public class HranaController extends Controller<Hrana> {
                 .setMaxResults(50)
                 .list();
     }
-    
-    
 
     //Kreiranje hrane
     @Override

@@ -4,15 +4,15 @@
         
         <!-- 
         Potrebno je ručno kreirati bazu
-        create database edunovajp24_hib default character set utf8mb4;
+        create database zokifitness_hib default character set utf8mb4;
 -->
 <hibernate-configuration>
     <session-factory>
         <!-- JDBC Database connection settings -->
         <property name="connection.driver_class">org.mariadb.jdbc.Driver</property>
         <property name="connection.url">jdbc:mariadb://localhost:3306/zokifitness_hib</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password">root</property>
+        <property name="connection.username">edunova</property>
+        <property name="connection.password">edunova</property>
         <!-- JDBC connection pool settings ... using built-in test pool -->
         <property name="connection.pool_size">5</property>
         <!-- Select our SQL dialect -->
