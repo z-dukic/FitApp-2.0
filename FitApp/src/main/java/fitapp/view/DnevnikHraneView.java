@@ -131,12 +131,12 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     private void postaviVrijednostiUEntitet() {
         var e = dnevnikHranaController.getEntitet();
 
-        if (dpDatum.getDate() != null) {
-            e.setDatum(Date.from(dpDatum.getDate().atStartOfDay()
-                    .atZone(ZoneId.systemDefault()).toInstant())
-            );
-
-        }
+//        if (dpDatum.getDate() != null) {
+//            e.setDatum(Date.from(dpDatum.getDate().atStartOfDay()
+//                    .atZone(ZoneId.systemDefault()).toInstant())
+//            );
+//
+//        }
 
         DefaultListModel<Hrana> m = (DefaultListModel<Hrana>) lstDnevnik.getModel();
         List<Hrana> lista = new ArrayList<>();
@@ -146,6 +146,8 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         e.setHrana(lista);
 
     }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -910,6 +912,15 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
     private void btnDodajMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDodajMouseClicked
         dnevnikHranaController.setEntitet(new DnevnikHrane());
+        
+        postaviVrijednostiUEntitet();
+                try {
+            dnevnikHranaController.create();
+            ucitaj();
+            pocistiPodatke();
+        } catch (ControllerException ex) {
+            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+        }
 
         //to-do nakon postavljanje vrijednosti u entitet
     }//GEN-LAST:event_btnDodajMouseClicked
