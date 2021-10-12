@@ -15,14 +15,12 @@ import fitapp.view.SplashScreen;
 public class Start {
 
     public static void main(String[] args) {
-        
-    
 
-       //Pokretanje aplikacije
+        //Pokretanje aplikacije
         new SplashScreen().setVisible(true);
-
+        
         //Ubacivanje korisnika, hrane po potrebi
-       //HibernateSession.odradiPosao();
+        //HibernateSession.odradiPosao();
     }
 
 }

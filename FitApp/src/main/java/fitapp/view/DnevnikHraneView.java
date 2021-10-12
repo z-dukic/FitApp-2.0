@@ -42,15 +42,15 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     private DnevnikAktivnostiController dnevnikAktivnostController;
     private DnevnikHraneController dnevnikHranaController;
     private KorisnikController korisnikController;
-    
+
     private Date trenutniDatum;
- private SimpleDateFormat df;
+    private SimpleDateFormat df;
+
     /**
      * Creates new form DnevnikView
      */
     public DnevnikHraneView() {
 
-        
         initComponents();
         dnevnikHranaController = new DnevnikHraneController();
         dnevnikAktivnostController = new DnevnikAktivnostiController();
@@ -97,8 +97,8 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         c.set(Calendar.MINUTE, 0);
         c.set(Calendar.SECOND, 0);
         c.set(Calendar.MILLISECOND, 0);
-        trenutniDatum= c.getTime();
-       
+        trenutniDatum = c.getTime();
+
         lblTrenutniDatum.setText(df.format(trenutniDatum));
     }
 
@@ -795,12 +795,12 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         // Ako želim da se hrana može ponavljati
         //6
         DefaultListModel<Hrana> m = (DefaultListModel<Hrana>) lstDnevnik.getModel();
-        for (Hrana h : lstDnevnikHrane.getSelectedValuesList()){
-            
-                m.addElement(h);
-            
+        for (Hrana h : lstDnevnikHrane.getSelectedValuesList()) {
+
+            m.addElement(h);
+
         }
-        
+
         lstDnevnik.repaint();
 
     }//GEN-LAST:event_btnDodajActionPerformed
@@ -816,7 +816,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
 
     private void btnObrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiActionPerformed
-       //7
+        //7
         List<Hrana> lista = lstDnevnik.getSelectedValuesList();
 
         for (Hrana p : lista) {
@@ -915,7 +915,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDodajMouseClicked
 
     private void btnTraziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraziActionPerformed
-       //5
+        //5
         DefaultListModel<Hrana> m = new DefaultListModel<>();
         hranaController.read(txtUvjet.getText()).forEach(p -> {
             m.addElement(p);
@@ -928,10 +928,21 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDodaj2MouseClicked
 
     private void btnDodaj2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodaj2ActionPerformed
-       //2
+        //2
+        
+        if(dpDatum.getDate() == LocalDate.now()){
+        for(int i=0; i<5; i++){
+        GregorianCalendar c = (GregorianCalendar) Calendar.getInstance();
+        c.setTime(trenutniDatum);
+        c.add(Calendar.DAY_OF_YEAR, +i);
+        trenutniDatum = c.getTime();
+        lblTrenutniDatum.setText(df.format(trenutniDatum));
+            }
+        }
+        
+
         dnevnikHranaController.setEntitet(new DnevnikHrane());
-        
-        
+
         postaviVrijednostiUEntitet();
 
         try {
@@ -944,11 +955,20 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnDodaj2ActionPerformed
 
+    private void dodajDatume() {
+        GregorianCalendar c = (GregorianCalendar) Calendar.getInstance();
+        c.setTime(trenutniDatum);
+        c.add(Calendar.DAY_OF_YEAR, +1);
+        trenutniDatum = c.getTime();
+        lblTrenutniDatum.setText(df.format(trenutniDatum));
+
+    }
+
     private void btnTrenutniDatumManjeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrenutniDatumManjeActionPerformed
         GregorianCalendar c = (GregorianCalendar) Calendar.getInstance();
         c.setTime(trenutniDatum);
         c.add(Calendar.DAY_OF_YEAR, -1);
-        trenutniDatum=c.getTime();
+        trenutniDatum = c.getTime();
         lblTrenutniDatum.setText(df.format(trenutniDatum));
     }//GEN-LAST:event_btnTrenutniDatumManjeActionPerformed
 
@@ -956,7 +976,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         GregorianCalendar c = (GregorianCalendar) Calendar.getInstance();
         c.setTime(trenutniDatum);
         c.add(Calendar.DAY_OF_YEAR, 1);
-        trenutniDatum=c.getTime();
+        trenutniDatum = c.getTime();
         lblTrenutniDatum.setText(df.format(trenutniDatum));
     }//GEN-LAST:event_btnTrenutniDatumViseActionPerformed
 
@@ -964,16 +984,15 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(rootPane, "Radim na: " + df.format(trenutniDatum));
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private boolean postojiDatumUModelu(DefaultListModel<DnevnikHrane> m, DnevnikHrane p){
-        for(int i=0;i<m.getSize();i++){
-            if(m.get(i).getSifra().equals(p.getSifra())){
+    private boolean postojiDatumUModelu(DefaultListModel<DnevnikHrane> m, DnevnikHrane p) {
+        for (int i = 0; i < m.getSize(); i++) {
+            if (m.get(i).getSifra().equals(p.getSifra())) {
                 return true;
             }
         }
         return false;
     }
-    
-    
+
     private void pocistiPodatke() {
         //4
         dpDatum.setDateToToday();
