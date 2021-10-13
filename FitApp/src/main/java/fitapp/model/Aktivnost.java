@@ -46,6 +46,18 @@ public class Aktivnost extends Entitet {
     public String toString() {
         return  imeAktivnosti +" " +  potroseneKalorijePoSatu + " kcal";
     }
+
+    public Aktivnost(String imeAktivnosti, int potroseneKalorijePoSatu, int vrijemeTrajanjaUMinutama) {
+        this.imeAktivnosti = imeAktivnosti;
+        this.potroseneKalorijePoSatu = potroseneKalorijePoSatu;
+        this.vrijemeTrajanjaUMinutama = vrijemeTrajanjaUMinutama;
+    }
+    
+    public Aktivnost(){
+        
+    }
+    
+    
     
     
 

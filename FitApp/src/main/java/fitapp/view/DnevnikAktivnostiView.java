@@ -5,7 +5,19 @@
  */
 package fitapp.view;
 
+import fitapp.controller.AktivnostiController;
+import fitapp.controller.DnevnikAktivnostiController;
 import fitapp.model.Aktivnost;
+import fitapp.model.DnevnikAktivnosti;
+import fitapp.util.ControllerException;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.List;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,11 +25,61 @@ import fitapp.model.Aktivnost;
  */
 public class DnevnikAktivnostiView extends javax.swing.JFrame {
 
+    private DnevnikAktivnostiController dnevnikAktivnostiController;
+    private Aktivnost aktivnost;
+    private AktivnostiController aktivnostController;
+    private int odabraniIndex;
+
     /**
      * Creates new form DnevnikAktivnostiView
      */
     public DnevnikAktivnostiView() {
         initComponents();
+        dnevnikAktivnostiController = new DnevnikAktivnostiController();
+        aktivnost = new Aktivnost();
+        aktivnostController = new AktivnostiController();
+        ucitaj();
+        postavke();
+    }
+
+    public void postavke() {
+    
+    }
+    
+    public void ucitaj() {
+        DefaultListModel<DnevnikAktivnosti> m = new DefaultListModel<>();
+        dnevnikAktivnostiController.read().forEach(g -> {
+            m.addElement(g);
+        });
+        lstEntiteti.setModel(m);
+    }
+
+    private void pocistiPodatke() {
+
+        txtNaziv.setText("");
+        dpDatumPocetka.setDateToToday();
+        lstDnevnikAktivnost.setModel(new DefaultListModel<>());
+
+    }
+
+    public void postaviVrijednostiUEntitet() {
+        var e = dnevnikAktivnostiController.getEntitet();
+
+        e.setNaziv(txtNaziv.getText());
+
+        if (dpDatumPocetka.getDate() != null) {
+            e.setDatum(Date.from(
+                    dpDatumPocetka.getDate().atStartOfDay()
+                            .atZone(ZoneId.systemDefault()).toInstant())
+            );
+        }
+
+        DefaultListModel<Aktivnost> m = (DefaultListModel<Aktivnost>) lstDnevnikAktivnost.getModel();
+        List<Aktivnost> lista = new ArrayList<>();
+        for (int i = 0; i < m.getSize(); i++) {
+            lista.add(m.get(i));
+        }
+        e.setAktivnost(lista);
     }
 
     /**
@@ -76,21 +138,23 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
         dpDatumPocetka = new com.github.lgooddatepicker.components.DatePicker();
         btnDodaj = new javax.swing.JButton();
         btnPromjeni = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txtNaziv = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        lblAktivnost.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblAktivnost.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAktivnost.setText("Aktivnost");
+        lblAktivnost.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblAktivnost.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblAktivnostMouseClicked(evt);
             }
         });
 
-        lblIzvjestaj.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblIzvjestaj.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblIzvjestaj.setText("Izvještaj");
+        lblIzvjestaj.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblIzvjestaj.setToolTipText("");
         lblIzvjestaj.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -98,9 +162,9 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
             }
         });
 
-        lblDnevnik.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblDnevnik.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDnevnik.setText("Baza");
+        lblDnevnik.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblDnevnik.setToolTipText("");
         lblDnevnik.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -108,9 +172,9 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
             }
         });
 
-        lblONama.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblONama.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblONama.setText("O nama");
+        lblONama.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblONama.setToolTipText("");
         lblONama.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -118,9 +182,9 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
             }
         });
 
-        lblPostavke.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblPostavke.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPostavke.setText("Postavke");
+        lblPostavke.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblPostavke.setToolTipText("");
         lblPostavke.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -128,9 +192,9 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
             }
         });
 
-        lblIzbornikOdjaviSe.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblIzbornikOdjaviSe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblIzbornikOdjaviSe.setText("Odjavi se");
+        lblIzbornikOdjaviSe.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblIzbornikOdjaviSe.setToolTipText("");
         lblIzbornikOdjaviSe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -138,9 +202,9 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
             }
         });
 
-        lblBlog1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblBlog1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBlog1.setText("Blog");
+        lblBlog1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblBlog1.setToolTipText("");
         lblBlog1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -155,9 +219,9 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
             }
         });
 
-        lblHrana.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblHrana.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHrana.setText("Hrana");
+        lblHrana.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblHrana.setToolTipText("");
         lblHrana.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -166,8 +230,8 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
         });
 
         txtVrijeme.setEditable(false);
-        txtVrijeme.setBackground(new java.awt.Color(255, 255, 255));
         txtVrijeme.setText("Vrijeme");
+        txtVrijeme.setBackground(new java.awt.Color(255, 255, 255));
         txtVrijeme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtVrijemeActionPerformed(evt);
@@ -175,8 +239,8 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
         });
 
         txtDatum.setEditable(false);
-        txtDatum.setBackground(new java.awt.Color(255, 255, 255));
         txtDatum.setText("Datum");
+        txtDatum.setBackground(new java.awt.Color(255, 255, 255));
         txtDatum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDatumActionPerformed(evt);
@@ -330,6 +394,8 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Naziv");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -403,13 +469,15 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel17)
                                     .addComponent(dpDatumPocetka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(btnDodaj, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(btnPromjeni, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(btnPromjeni, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtNaziv)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel15))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -467,6 +535,10 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtNaziv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(22, 22, 22)
                                         .addComponent(jLabel17)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(dpDatumPocetka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -542,7 +614,7 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
     private void lblIzvjestajMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIzvjestajMouseClicked
         new IzvjestajView().setVisible(true);
         dispose();
-        
+
     }//GEN-LAST:event_lblIzvjestajMouseClicked
 
     private void lblDnevnikMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDnevnikMouseClicked
@@ -609,8 +681,27 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnObrisi1ActionPerformed
 
     private void btnDodaj1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodaj1ActionPerformed
-        // TODO add your handling code here:
+        DefaultListModel<Aktivnost> m = (DefaultListModel<Aktivnost>) lstDnevnikAktivnost.getModel();
+        for (Aktivnost p : lstDnevnik1.getSelectedValuesList()) {
+
+            if (!postojiAktivnostUModelu(m, p)) {
+                m.addElement(p);
+            }
+
+        }
+        lstDnevnikAktivnost.repaint();
+
+
     }//GEN-LAST:event_btnDodaj1ActionPerformed
+
+    private boolean postojiAktivnostUModelu(DefaultListModel<Aktivnost> m, Aktivnost p) {
+        for (int i = 0; i < m.getSize(); i++) {
+            if (m.get(i).getSifra().equals(p.getSifra())) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     private void txtUHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUHActionPerformed
         // TODO add your handling code here:
@@ -629,91 +720,72 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
             return;
         }
 
-        obrada.setEntitet(lstEntiteti.getSelectedValue());
-        var e = obrada.getEntitet();
+        dnevnikAktivnostiController.setEntitet(lstEntiteti.getSelectedValue());
+
+        var e = dnevnikAktivnostiController.getEntitet();
 
         txtNaziv.setText(e.getNaziv());
-        //postaviti smjer u cmb
-        // u modelu klasa Smjer generirao sam equals i hashCode metode - ne bih koristio
-        cmbSmjer.setSelectedItem(e.getSmjer());
 
-        // označavanje predavača "ručno" - nema potrebe za equals i hashcode metode generiranje
-        if (e.getPredavac() == null) {
-            cmbPredavac.setSelectedIndex(0);
+        if (e.getDatum() != null) {
+            dpDatumPocetka.setDate(e.getDatum().toInstant().atZone(ZoneId.systemDefault()).
+                    toLocalDate());
         } else {
-            DefaultComboBoxModel<Predavac> m = (DefaultComboBoxModel<Predavac>) cmbPredavac.getModel();
-            for (int i = 0; i < m.getSize(); i++) {
-                if (m.getElementAt(i).getId().equals(e.getPredavac().getId())) {
-                    cmbPredavac.setSelectedIndex(i);
-                    break;
-                }
-            }
-        }
-
-        // 3. način jest korištenje LOMBOK https://projectlombok.org/ anotacija - ne radi s NetBeans
-        if (e.getDatumPocetka() != null) {
-            dpDatumPocetka.setDate(e.getDatumPocetka().toInstant().atZone(ZoneId.systemDefault()).
-                toLocalDate());
-        }else{
             dpDatumPocetka.setDate(null);
         }
 
-        DefaultListModel<Polaznik> m = new DefaultListModel<>();
+        DefaultListModel<Aktivnost> m = new DefaultListModel<>();
 
-        Collections.sort(e.getPolaznici(), new Comparator<Polaznik>() {
+        Collections.sort(e.getAktivnost(), new Comparator<Aktivnost>() {
             @Override
-            public int compare(Polaznik o1, Polaznik o2) {
-                return o1.getPrezime().compareTo(o2.getPrezime());
+            public int compare(Aktivnost o1, Aktivnost o2) {
+                return o1.getImeAktivnosti().compareTo(o2.getImeAktivnosti());
             }
         });
 
-        e.getPolaznici().forEach(p -> {
+        e.getAktivnost().forEach(p -> {
             m.addElement(p);
         });
-        lstPolazniciNaGrupi.setModel(m);
+        lstDnevnikAktivnost.setModel(m);
     }//GEN-LAST:event_lstEntitetiValueChanged
 
     private void btnTraziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraziActionPerformed
-        DefaultListModel<Polaznik> m = new DefaultListModel<>();
-        obradaPolaznik.read(txtUvjet.getText()).forEach(p -> {
+        DefaultListModel<Aktivnost> m = new DefaultListModel<>();
+        aktivnostController.read(txtUvjet.getText()).forEach(p -> {
             m.addElement(p);
         });
-        lstPolazniciUBazi.setModel(m);
+        lstDnevnik1.setModel(m);
     }//GEN-LAST:event_btnTraziActionPerformed
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
-        obrada.setEntitet(new Grupa());
+        dnevnikAktivnostiController.setEntitet(new DnevnikAktivnosti());
 
         postaviVrijednostiUEntitet();
         try {
-            obrada.create();
+            dnevnikAktivnostiController.create();
             ucitaj();
             pocistiPodatke();
-        } catch (EdunovaException ex) {
+        } catch (ControllerException ex) {
             JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
         }
     }//GEN-LAST:event_btnDodajActionPerformed
 
     private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
-        if (obrada.getEntitet() == null) {
-            JOptionPane.showMessageDialog(getRootPane(), "Prvo odaberite grupu");
+        if (dnevnikAktivnostiController.getEntitet() == null) {
+            JOptionPane.showMessageDialog(getRootPane(), "Prvo odaberite datum");
             return;
         }
         postaviVrijednostiUEntitet();
         try {
-            obrada.update();
+            dnevnikAktivnostiController.update();
             odabraniIndex = lstEntiteti.getSelectedIndex();
             ucitaj();
             lstEntiteti.setSelectedIndex(odabraniIndex);
 
-        } catch (EdunovaException ex) {
+        } catch (ControllerException ex) {
             JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
         }
     }//GEN-LAST:event_btnPromjeniActionPerformed
 
-
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
@@ -723,6 +795,7 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
     private javax.swing.JButton btnTrazi;
     private com.github.lgooddatepicker.components.DatePicker dpDatumPocetka;
     private javax.swing.JLabel iconGoreLijevo1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -751,13 +824,14 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
     private javax.swing.JLabel lblPostavke;
     private javax.swing.JList<Aktivnost> lstDnevnik1;
     private javax.swing.JList<Aktivnost> lstDnevnikAktivnost;
-    private javax.swing.JList<Grupa> lstEntiteti;
+    private javax.swing.JList<DnevnikAktivnosti> lstEntiteti;
     private javax.swing.JTextField txtAktiv;
     private javax.swing.JTextField txtBMR;
     private javax.swing.JTextField txtDatum;
     private javax.swing.JTextField txtKcal;
     private javax.swing.JTextField txtKolicinaAktivnostDnevnik;
     private javax.swing.JTextField txtMasti;
+    private javax.swing.JTextField txtNaziv;
     private javax.swing.JTextField txtNeto;
     private javax.swing.JTextField txtProtein;
     private javax.swing.JTextField txtUH;
