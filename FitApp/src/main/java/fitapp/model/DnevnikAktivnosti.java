@@ -5,6 +5,8 @@
  */
 package fitapp.model;
 
+import fitapp.util.Aplikacija;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -18,7 +20,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class DnevnikAktivnosti extends Entitet {
 
-    private String naziv;
+    //private String naziv;
     private Date datum;
     private int vrijemeTrajanjaAktivnosti;
 
@@ -60,26 +62,30 @@ public class DnevnikAktivnosti extends Entitet {
         this.vrijemeTrajanjaAktivnosti = vrijemeTrajanjaAktivnosti;
     }
 
-    public String getNaziv() {
-        return naziv;
-    }
-
-    public void setNaziv(String naziv) {
-        this.naziv = naziv;
-    }
+//    public String getNaziv() {
+//        return naziv;
+//    }
+//
+//    public void setNaziv(String naziv) {
+//        this.naziv = naziv;
+//    }
 
     public DnevnikAktivnosti(String naziv, Date datum, int vrijemeTrajanjaAktivnosti, List<Aktivnost> aktivnost, Korisnik korisnik) {
-        this.naziv = naziv;
+        //this.naziv = naziv;
         this.datum = datum;
         this.vrijemeTrajanjaAktivnosti = vrijemeTrajanjaAktivnosti;
         this.aktivnost = aktivnost;
         this.korisnik = korisnik;
     }
-    
-    public DnevnikAktivnosti(){
-        
+
+    public DnevnikAktivnosti() {
+
     }
-    
-    
+
+    @Override
+    public String toString() {
+        SimpleDateFormat df = new SimpleDateFormat(Aplikacija.FORMAT_DATUMA);
+        return df.format(datum);
+    }
 
 }

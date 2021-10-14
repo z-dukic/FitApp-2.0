@@ -5,10 +5,12 @@
  */
 package fitapp.view;
 
+import com.github.lgooddatepicker.components.DatePickerSettings;
 import fitapp.controller.AktivnostiController;
 import fitapp.controller.DnevnikAktivnostiController;
 import fitapp.model.Aktivnost;
 import fitapp.model.DnevnikAktivnosti;
+import fitapp.util.Aplikacija;
 import fitapp.util.ControllerException;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -43,6 +46,13 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
     }
 
     public void postavke() {
+        DatePickerSettings dps = new DatePickerSettings(new Locale("hr", "HR"));
+        dps.setFormatForDatesCommonEra("dd.MM.yyyy");
+
+        dpDatumPocetka.setSettings(dps);
+        
+        lstDnevnikAktivnost.setModel(new DefaultListModel<Aktivnost>());
+        
     
     }
     
@@ -65,7 +75,7 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
     public void postaviVrijednostiUEntitet() {
         var e = dnevnikAktivnostiController.getEntitet();
 
-        e.setNaziv(txtNaziv.getText());
+        //e.setNaziv(txtNaziv.getText());
 
         if (dpDatumPocetka.getDate() != null) {
             e.setDatum(Date.from(
@@ -138,8 +148,6 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
         dpDatumPocetka = new com.github.lgooddatepicker.components.DatePicker();
         btnDodaj = new javax.swing.JButton();
         btnPromjeni = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        txtNaziv = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -394,8 +402,6 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Naziv");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -469,15 +475,13 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel17)
                                     .addComponent(dpDatumPocetka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(btnDodaj, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(btnPromjeni, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(txtNaziv)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(btnPromjeni, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(jLabel15))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -535,10 +539,6 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtNaziv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(22, 22, 22)
                                         .addComponent(jLabel17)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(dpDatumPocetka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -724,7 +724,7 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
 
         var e = dnevnikAktivnostiController.getEntitet();
 
-        txtNaziv.setText(e.getNaziv());
+       // txtNaziv.setText(e.getNaziv());
 
         if (e.getDatum() != null) {
             dpDatumPocetka.setDate(e.getDatum().toInstant().atZone(ZoneId.systemDefault()).
@@ -795,7 +795,6 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
     private javax.swing.JButton btnTrazi;
     private com.github.lgooddatepicker.components.DatePicker dpDatumPocetka;
     private javax.swing.JLabel iconGoreLijevo1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -831,7 +830,6 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
     private javax.swing.JTextField txtKcal;
     private javax.swing.JTextField txtKolicinaAktivnostDnevnik;
     private javax.swing.JTextField txtMasti;
-    private javax.swing.JTextField txtNaziv;
     private javax.swing.JTextField txtNeto;
     private javax.swing.JTextField txtProtein;
     private javax.swing.JTextField txtUH;
