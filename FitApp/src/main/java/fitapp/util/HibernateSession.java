@@ -245,10 +245,15 @@ public class HibernateSession {
         rukomet.setPotroseneKalorijePoSatu(450);
         s.save(rukomet);
 
+//        List<DnevnikAktivnosti> dani = new ArrayList<>();
+//        dani.add();
+//        DnevnikAktivnosti dan;
+
         //Upucavanje datuma u listu
-//        DnevnikAktivnosti da = new DnevnikAktivnosti();
-//        da.setDatum(datum);
-//        List<Date> pero = new ArrayList<>();
+//        
+//        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+//        List<Date> datum = new ArrayList<>();
+//        datum.add(new Date());
 //
 //        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
 //
@@ -269,17 +274,23 @@ public class HibernateSession {
 //
 //        Calendar start = Calendar.getInstance();
 //        start.setTime(startDate);
+//
 //        Calendar end = Calendar.getInstance();
 //        end.setTime(endDate);
 //
 //        for (Date date = start.getTime(); start.before(end); start.add(Calendar.DATE, 1), date = start.getTime()) {
-//            pero.add(date);
+//            datum.add(date);
+//            
+//            dan = new DnevnikAktivnosti();
+//            dan.setDatum(datum);
+//            dani.add(dan);
+//            s.save(dan);
 //
 //            System.out.println(formatter.format(date));
 //        }
 //
-//        System.out.println(pero);
-//    }
+//        System.out.println(datum);
+    
 
 //        DnevnikAktivnosti datumAktivnosti = new DnevnikAktivnosti();
 //        Date datumAkt = new Date();
@@ -325,8 +336,7 @@ public class HibernateSession {
 ////            datum.setDatum(datum);
 ////            int suma = +i;
 //        }
-    s.getTransaction ()
 
-.commit();
+    s.getTransaction().commit();
     }
 }

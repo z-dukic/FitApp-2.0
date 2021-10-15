@@ -7,6 +7,7 @@ package fitapp.model;
 
 import fitapp.util.Aplikacija;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -21,7 +22,8 @@ import javax.persistence.ManyToOne;
 public class DnevnikAktivnosti extends Entitet {
 
     //private String naziv;
-    private Date datum;
+    private List<Date> datum = new ArrayList<>();
+    
     private int vrijemeTrajanjaAktivnosti;
 
     @ManyToMany
@@ -30,13 +32,15 @@ public class DnevnikAktivnosti extends Entitet {
     @ManyToOne
     private Korisnik korisnik;
 
-    public Date getDatum() {
+    public List<Date> getDatum() {
         return datum;
     }
 
-    public void setDatum(Date datum) {
+    public void setDatum(List<Date> datum) {
         this.datum = datum;
     }
+
+
 
     public List<Aktivnost> getAktivnost() {
         return aktivnost;
@@ -62,14 +66,15 @@ public class DnevnikAktivnosti extends Entitet {
         this.vrijemeTrajanjaAktivnosti = vrijemeTrajanjaAktivnosti;
     }
 
-
-    public DnevnikAktivnosti(Date datum, int vrijemeTrajanjaAktivnosti, List<Aktivnost> aktivnost, Korisnik korisnik) {
-        //this.naziv = naziv;
+    public DnevnikAktivnosti(List<Date> datum, int vrijemeTrajanjaAktivnosti, List<Aktivnost> aktivnost, Korisnik korisnik) {
         this.datum = datum;
         this.vrijemeTrajanjaAktivnosti = vrijemeTrajanjaAktivnosti;
         this.aktivnost = aktivnost;
         this.korisnik = korisnik;
     }
+
+
+    
 
     public DnevnikAktivnosti() {
 

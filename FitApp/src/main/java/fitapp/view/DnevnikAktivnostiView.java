@@ -34,6 +34,7 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
     private AktivnostiController aktivnostController;
     private DnevnikAktivnosti dnvAkt;
     private int odabraniIndex;
+    
 
     /**
      * Creates new form DnevnikAktivnostiView
