@@ -8,15 +8,8 @@ package fitapp.util;
 import com.github.javafaker.Faker;
 import fitapp.model.Aktivnost;
 import fitapp.model.Blog;
-import fitapp.model.DnevnikAktivnosti;
 import fitapp.model.Hrana;
 import fitapp.model.Korisnik;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 import org.hibernate.Session;
 import org.mindrot.jbcrypt.BCrypt;
@@ -219,7 +212,7 @@ public class HibernateSession {
         // }
         Aktivnost aktivnost;
         aktivnost = new Aktivnost();
-
+        
         Aktivnost trcanje = new Aktivnost();
         trcanje.setImeAktivnosti("Trcanje");
         trcanje.setPotroseneKalorijePoSatu(600);
@@ -245,6 +238,7 @@ public class HibernateSession {
         rukomet.setPotroseneKalorijePoSatu(450);
         s.save(rukomet);
 
+<<<<<<< HEAD
 //        List<DnevnikAktivnosti> dani = new ArrayList<>();
 //        dani.add();
 //        DnevnikAktivnosti dan;
@@ -338,5 +332,8 @@ public class HibernateSession {
 //        }
 
     s.getTransaction().commit();
+=======
+        s.getTransaction().commit();
+>>>>>>> parent of 211ae12 (Save prije testiranja novog unosa datuma.)
     }
 }

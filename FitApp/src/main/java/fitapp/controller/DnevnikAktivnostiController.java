@@ -32,7 +32,6 @@ public class DnevnikAktivnostiController extends Controller<DnevnikAktivnosti> {
     @Override
     protected void controlUpdate() throws ControllerException {
 
-
     }
 
     @Override

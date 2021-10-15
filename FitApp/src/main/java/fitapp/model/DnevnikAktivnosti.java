@@ -86,6 +86,4 @@ public class DnevnikAktivnosti extends Entitet {
         return df.format(datum);
     }
 
-
-
 }

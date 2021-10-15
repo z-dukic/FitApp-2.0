@@ -17,6 +17,6 @@ public class Aplikacija {
 
     public static Korisnik korisnik;
     
-    public static final String FORMAT_DATUMA="dd. MM. YYYY";
+    public static final String FORMAT_DATUMA="EEE, dd. MM. YYYY";
 
 }
