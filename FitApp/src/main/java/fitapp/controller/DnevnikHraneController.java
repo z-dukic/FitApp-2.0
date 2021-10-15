@@ -24,13 +24,14 @@ public class DnevnikHraneController extends Controller<DnevnikHrane> {
 
     @Override
     protected void controlCreate() throws ControllerException {
-      kontrolaDatumaAkoJeNull();
-       kontrolaDatumaAkoPostoji();
+        kontrolaDatumaAkoJeNull();
+        kontrolaDatumaAkoPostoji();
 
     }
 
     @Override
     protected void controlUpdate() throws ControllerException {
+        kontrolaDatumaAkoPostoji();
 
     }
 

@@ -8,8 +8,15 @@ package fitapp.util;
 import com.github.javafaker.Faker;
 import fitapp.model.Aktivnost;
 import fitapp.model.Blog;
+import fitapp.model.DnevnikAktivnosti;
 import fitapp.model.Hrana;
 import fitapp.model.Korisnik;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import org.hibernate.Session;
 import org.mindrot.jbcrypt.BCrypt;
@@ -212,7 +219,7 @@ public class HibernateSession {
         // }
         Aktivnost aktivnost;
         aktivnost = new Aktivnost();
-        
+
         Aktivnost trcanje = new Aktivnost();
         trcanje.setImeAktivnosti("Trcanje");
         trcanje.setPotroseneKalorijePoSatu(600);
@@ -238,6 +245,88 @@ public class HibernateSession {
         rukomet.setPotroseneKalorijePoSatu(450);
         s.save(rukomet);
 
-        s.getTransaction().commit();
+        //Upucavanje datuma u listu
+//        DnevnikAktivnosti da = new DnevnikAktivnosti();
+//        da.setDatum(datum);
+//        List<Date> pero = new ArrayList<>();
+//
+//        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+//
+//        Date startDate = null;
+//
+//        try {
+//            startDate = formatter.parse("9.12.2021.");
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//
+//        Date endDate = null;
+//        try {
+//            endDate = formatter.parse("15.12.2021.");
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//
+//        Calendar start = Calendar.getInstance();
+//        start.setTime(startDate);
+//        Calendar end = Calendar.getInstance();
+//        end.setTime(endDate);
+//
+//        for (Date date = start.getTime(); start.before(end); start.add(Calendar.DATE, 1), date = start.getTime()) {
+//            pero.add(date);
+//
+//            System.out.println(formatter.format(date));
+//        }
+//
+//        System.out.println(pero);
+//    }
+
+//        DnevnikAktivnosti datumAktivnosti = new DnevnikAktivnosti();
+//        Date datumAkt = new Date();
+//        datumAkt.setTime(10);
+//        System.out.println(datumAkt); //Thu Jan 01 01:00:00 CET 1970
+//
+//        DnevnikAktivnosti datumNeki = new DnevnikAktivnosti();
+//        SimpleDateFormat df = new SimpleDateFormat("dd. MM. yyyy.");
+//        System.out.println(df.format(datumNeki));
+//        
+//        DnevnikAktivnosti treciPokusaj = new DnevnikAktivnosti();
+//       // treciPokusaj.setDatum(10. 10. 2010.);
+//        
+//        
+//        
+//        
+//        
+////        Calendar gc = GregorianCalendar.getInstance();
+////        gc.set(Calendar.YEAR, 2020);
+////        gc.set(Calendar.MONTH, 9);
+////        gc.set(Calendar.DAY_OF_MONTH, 15);
+////        datumNeki = gc.getTime();
+//
+//        datumNeki.setDatum(datumAkt);
+//        s.save(datumAkt);
+//
+////        DnevnikAktivnosti datum = new DnevnikAktivnosti();
+////        SimpleDateFormat df = new SimpleDateFormat(Aplikacija.FORMAT_DATUMA);
+////        Date pokusajDatuma = new Date();
+////        df.format(pokusajDatuma);
+////        
+////        
+////        
+////        datum.setDatum(pokusajDatuma);
+////        
+////        
+////        for (int i=0; i<20;i++){
+////            
+////            
+////        }
+////        for (int i = 0; i < 20; i++) {
+////            
+////            datum.setDatum(datum);
+////            int suma = +i;
+//        }
+    s.getTransaction ()
+
+.commit();
     }
 }

@@ -11,6 +11,8 @@ import fitapp.controller.DnevnikAktivnostiController;
 import fitapp.model.Aktivnost;
 import fitapp.model.DnevnikAktivnosti;
 import fitapp.util.ControllerException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,7 +46,41 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
         dnvAkt = new DnevnikAktivnosti();
         ucitaj();
         ucitaj2();
+
+        provjeraDatuma();
         postavke();
+    }
+
+
+    //Ovdje treba napraviti provjeru datuma da ako ima datum da doda datum između zadnjeg datuma unesenog u tablici i danas
+    private void provjeraDatuma() {
+        var e = dnevnikAktivnostiController.getEntitet();
+        System.out.println();
+        
+        
+        Date datum = new Date();
+        List<Date>datumi = new ArrayList<>();
+        datumi.add(datum);
+        System.out.println(datum);
+        System.out.println();
+        
+        Date danas = Date.from(Instant.now());
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+
+        String datumIzbornik = sdf.format(datum);
+        String datumPero = sdf.format(danas);
+        
+        System.out.println(datumIzbornik);
+        System.out.println();
+        System.out.println(datumPero);
+        System.out.println();
+        
+        if (datumIzbornik.equals(datumPero)) {
+            System.out.println("PEROPEROPEROPERO");
+        }
+ 
+        
     }
 
     public void postavke() {
@@ -92,6 +128,8 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
                             .atZone(ZoneId.systemDefault()).toInstant())
             );
         }
+        
+        
 
         DefaultListModel<Aktivnost> m = (DefaultListModel<Aktivnost>) lstDnevnikAktivnost.getModel();
         List<Aktivnost> lista = new ArrayList<>();
@@ -674,9 +712,9 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
         DefaultListModel<Aktivnost> m = (DefaultListModel<Aktivnost>) lstDnevnikAktivnost.getModel();
         for (Aktivnost p : lstDnevnik1.getSelectedValuesList()) {
 
-            if (!postojiAktivnostUModelu(m, p)) {
-                m.addElement(p);
-            }
+            //if (!postojiAktivnostUModelu(m, p)) {
+            m.addElement(p);
+            // }
 
         }
         lstDnevnikAktivnost.repaint();
