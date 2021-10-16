@@ -22,35 +22,32 @@ public class SplashScreen extends javax.swing.JFrame {
      */
     public SplashScreen() {
         initComponents();
-        
         postavke();
-        
         Ucitanje ucitanje = new Ucitanje();
         ucitanje.start();
-        
-        
+
     }
-    
-    private void postavke(){
+
+    private void postavke() {
         setTitle(Aplikacija.NASLOV_APP + " Welcome to FitApp!");
-        
+
         ImageIcon icon = new ImageIcon("C:\\Users\\PC\\Desktop\\FitApp-2.0\\FitApp\\src\\main\\resources\\FitAppLogo.png");
         this.setIconImage(icon.getImage());
     }
-    
-    private class Ucitanje extends Thread{
-        
+
+    private class Ucitanje extends Thread {
+
         @Override
-        public void run(){
+        public void run() {
             Session s = HibernateUtil.getSession();
-            if(s.getMetamodel().getEntities().size()>0){
+            if (s.getMetamodel().getEntities().size() > 0) {
                 new Login().setVisible(true);
                 dispose();
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(getRootPane(), "Problem s bazom podataka");
             }
         }
-        
+
     }
 
     /**
@@ -88,7 +85,6 @@ public class SplashScreen extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IkonaFitApp;
