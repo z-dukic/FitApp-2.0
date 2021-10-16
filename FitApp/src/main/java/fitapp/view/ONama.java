@@ -9,6 +9,7 @@ import fitapp.util.Aplikacija;
 import fitapp.util.MapaUtil;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -25,14 +26,16 @@ public class ONama extends javax.swing.JFrame {
         postavke();
         datum();
         vrijeme();
-        
+
     }
-    
-      private void postavke() {
+
+    private void postavke() {
         setTitle(Aplikacija.NASLOV_APP + " O nama");
+
+        ImageIcon icon = new ImageIcon("C:\\Users\\PC\\Desktop\\FitApp-2.0\\FitApp\\src\\main\\resources\\FitAppLogo.png");
+        this.setIconImage(icon.getImage());
     }
-    
-    
+
     public void datum() {
         Date datum = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
@@ -42,13 +45,13 @@ public class ONama extends javax.swing.JFrame {
     }
 
     private void vrijeme() {
-                Thread t1;
+        Thread t1;
         t1 = new Thread(() -> {
             while (true) {
-        Date datum = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-        txtVrijeme.setText(sdf.format(datum));
-        try {
+                Date datum = new Date();
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+                txtVrijeme.setText(sdf.format(datum));
+                try {
                     Thread.sleep(1000);
                 } catch (InterruptedException ex) {
                     System.out.println("Error with clock update");
@@ -297,12 +300,11 @@ public class ONama extends javax.swing.JFrame {
     }//GEN-LAST:event_txtVrijemeActionPerformed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        
-        
+
         MapaUtil pozovi = new MapaUtil();
         pozovi.mapa();
-        
-        
+
+
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void lblAktivnostMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAktivnostMouseClicked

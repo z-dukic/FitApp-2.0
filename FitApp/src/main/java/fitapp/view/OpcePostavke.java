@@ -5,6 +5,9 @@
  */
 package fitapp.view;
 
+import fitapp.util.Aplikacija;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author PC
@@ -16,6 +19,14 @@ public class OpcePostavke extends javax.swing.JFrame {
      */
     public OpcePostavke() {
         initComponents();
+        postavke();
+    }
+
+    private void postavke() {
+        setTitle(Aplikacija.NASLOV_APP + " Opće postavke");
+        
+        ImageIcon icon = new ImageIcon("C:\\Users\\PC\\Desktop\\FitApp-2.0\\FitApp\\src\\main\\resources\\FitAppLogo.png");
+        this.setIconImage(icon.getImage());
     }
 
     /**
@@ -356,7 +367,6 @@ public class OpcePostavke extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel iconGoreLijevo1;

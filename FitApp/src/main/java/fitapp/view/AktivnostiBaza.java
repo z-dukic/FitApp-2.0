@@ -12,6 +12,7 @@ import fitapp.util.ControllerException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,12 +32,15 @@ public class AktivnostiBaza extends javax.swing.JFrame {
         vrijeme();
 
     }
-    
-        private void postavke() {
+
+    private void postavke() {
         setTitle(Aplikacija.NASLOV_APP + " Baza aktivnosti");
+
+        ImageIcon icon = new ImageIcon("C:\\Users\\PC\\Desktop\\FitApp-2.0\\FitApp\\src\\main\\resources\\FitAppLogo.png");
+        this.setIconImage(icon.getImage());
     }
-    
-        public void datum() {
+
+    public void datum() {
         Date datum = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         String datumIzbornik = sdf.format(datum);
@@ -45,13 +49,13 @@ public class AktivnostiBaza extends javax.swing.JFrame {
     }
 
     private void vrijeme() {
-                Thread t1;
+        Thread t1;
         t1 = new Thread(() -> {
             while (true) {
-        Date datum = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-        txtVrijeme.setText(sdf.format(datum));
-        try {
+                Date datum = new Date();
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+                txtVrijeme.setText(sdf.format(datum));
+                try {
                     Thread.sleep(1000);
                 } catch (InterruptedException ex) {
                     System.out.println("Error with clock update");

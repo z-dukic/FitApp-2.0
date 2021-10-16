@@ -20,6 +20,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -39,16 +40,17 @@ public class KontaktView extends javax.swing.JFrame {
         datum();
         vrijeme();
     }
-    
+
     public void postaviVrijednostEntiteta() { //4
         var s = controller.getEntitet();
 
-        
-        
     }
 
     private void postavke() {
         setTitle(Aplikacija.NASLOV_APP + " O nama");
+
+        ImageIcon icon = new ImageIcon("C:\\Users\\PC\\Desktop\\FitApp-2.0\\FitApp\\src\\main\\resources\\FitAppLogo.png");
+        this.setIconImage(icon.getImage());
     }
 
     public void datum() {
@@ -331,10 +333,10 @@ public class KontaktView extends javax.swing.JFrame {
     }//GEN-LAST:event_txtVrijemeActionPerformed
 
     private void btnPosaljiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPosaljiMouseClicked
-        EmailUtil send = new EmailUtil("perop8406@gmail.com", "Primjedba", "Ime pošiljatelja: " + txtEmailImePrezime.getText() + " Poruka pošiljatelja: " +  txtEmailPoruka.getText());
+        EmailUtil send = new EmailUtil("perop8406@gmail.com", "Primjedba", "Ime pošiljatelja: " + txtEmailImePrezime.getText() + " Poruka pošiljatelja: " + txtEmailPoruka.getText());
         txtPoslano.setText("Poslano.");
-        
-        
+
+
     }//GEN-LAST:event_btnPosaljiMouseClicked
 
     private void lblAktivnostMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAktivnostMouseClicked
@@ -381,8 +383,6 @@ public class KontaktView extends javax.swing.JFrame {
         new DnevnikHraneView().setVisible(true);
         dispose();
     }//GEN-LAST:event_lblHranaMouseClicked
-
-    
 
     /**
      * @param args the command line arguments

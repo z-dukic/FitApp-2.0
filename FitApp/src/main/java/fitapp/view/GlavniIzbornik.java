@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.Executors;
+import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
 /**
@@ -35,6 +36,9 @@ public class GlavniIzbornik extends javax.swing.JFrame {
 
     private void postavke() {
         setTitle(Aplikacija.NASLOV_APP + " Glavni Izbornik");
+
+        ImageIcon icon = new ImageIcon("C:\\Users\\PC\\Desktop\\FitApp-2.0\\FitApp\\src\\main\\resources\\FitAppLogo.png");
+        this.setIconImage(icon.getImage());
     }
 
     @SuppressWarnings("unchecked")

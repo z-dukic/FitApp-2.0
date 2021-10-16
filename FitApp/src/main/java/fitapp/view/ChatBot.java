@@ -5,9 +5,9 @@
  */
 package fitapp.view;
 
+import fitapp.util.Aplikacija;
 import java.awt.event.KeyEvent;
-
-
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -20,13 +20,21 @@ public class ChatBot extends javax.swing.JFrame {
      */
     public ChatBot() {
         initComponents();
+        postavke();
         Chatarea.append("BOT ->" + "Pozdrav, moje ime je Botko. Kako ti mogu pomoći?" + "\n");
-        
+
     }
-    
+
+    private void postavke() {
+        setTitle(Aplikacija.NASLOV_APP + " Podrška");
+        
+        ImageIcon icon = new ImageIcon("C:\\Users\\PC\\Desktop\\FitApp-2.0\\FitApp\\src\\main\\resources\\FitAppLogo.png");
+        this.setIconImage(icon.getImage());
+    }
+
     public void keyPressed(KeyEvent e) {
-    
-}
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -305,18 +313,16 @@ public class ChatBot extends javax.swing.JFrame {
     }//GEN-LAST:event_txtVrijemeActionPerformed
 
     private void btnPosaljiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPosaljiKeyPressed
-                String gtext = chatbot.getText();
-        
+        String gtext = chatbot.getText();
+
         Chatarea.append("You ->" + gtext + "\n");
         chatbot.setText("");
 
         if (gtext.toLowerCase().trim().contains("Bok")) {
             bot("Bok! Kako ti mogu pomoći?");
-        }
-        else if (gtext.toLowerCase().trim().contains("hrana")) {
+        } else if (gtext.toLowerCase().trim().contains("hrana")) {
             bot("Ako te zanima kako se zbrajaju kalorije posjeti sljedeći link: ");
-        }
-        else if (gtext.toLowerCase().trim().contains("aktivnosti")) {
+        } else if (gtext.toLowerCase().trim().contains("aktivnosti")) {
             bot("Odlično pitanje. Više informacija možeš nać na stranici aktivnosti. ");
 
         } else {
@@ -327,25 +333,22 @@ public class ChatBot extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPosaljiKeyPressed
 
     private void btnPosaljiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPosaljiMouseClicked
-               String gtext = chatbot.getText();
-        
+        String gtext = chatbot.getText();
+
         Chatarea.append("You ->" + gtext + "\n");
         chatbot.setText("");
 
         if (gtext.toLowerCase().trim().contains("hi")) {
             bot("holla");
-        }
-        else if (gtext.toLowerCase().trim().contains("hrana")) {
+        } else if (gtext.toLowerCase().trim().contains("hrana")) {
             bot("Ako te zanima kako se zbrajaju kalorije posjeti sljedeći link: ");
-        }
-        else if (gtext.toLowerCase().trim().contains("aktivnosti")) {
+        } else if (gtext.toLowerCase().trim().contains("aktivnosti")) {
             bot("Odlično pitanje. Više informacija možeš nać na stranici aktivnosti. ");
 
         } else {
             bot("Ne razumijem te. Možeš li preformulirat pitanje?");
         }
-       
-   
+
 
     }//GEN-LAST:event_btnPosaljiMouseClicked
 
@@ -354,30 +357,26 @@ public class ChatBot extends javax.swing.JFrame {
     }//GEN-LAST:event_chatbotActionPerformed
 
     private void chatbotKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_chatbotKeyPressed
-             if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-             String gtext = chatbot.getText();
-        
-        Chatarea.append("You ->" + gtext + "\n");
-        chatbot.setText("");
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String gtext = chatbot.getText();
 
-        if (gtext.toLowerCase().trim().contains("hi")) {
-            bot("holla");
-        }
-        else if (gtext.toLowerCase().trim().contains("hrana")) {
-            bot("Ako te zanima kako se zbrajaju kalorije posjeti sljedeći link: ");
-        }
-        else if (gtext.toLowerCase().trim().contains("aktivnosti")) {
-            bot("Odlično pitanje. Više informacija možeš nać na stranici aktivnosti. ");
+            Chatarea.append("You ->" + gtext + "\n");
+            chatbot.setText("");
 
-        } else {
-            bot("Ne razumijem te. Možeš li preformulirat pitanje?");
+            if (gtext.toLowerCase().trim().contains("hi")) {
+                bot("holla");
+            } else if (gtext.toLowerCase().trim().contains("hrana")) {
+                bot("Ako te zanima kako se zbrajaju kalorije posjeti sljedeći link: ");
+            } else if (gtext.toLowerCase().trim().contains("aktivnosti")) {
+                bot("Odlično pitanje. Više informacija možeš nać na stranici aktivnosti. ");
+
+            } else {
+                bot("Ne razumijem te. Možeš li preformulirat pitanje?");
+            }
+
         }
- 
-        
-    }   
-        
-        
-       
+
+
     }//GEN-LAST:event_chatbotKeyPressed
 
     private void lblAktivnostMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAktivnostMouseClicked

@@ -12,8 +12,6 @@ import fitapp.controller.DnevnikAktivnostiController;
 import fitapp.controller.DnevnikHraneController;
 import fitapp.controller.HranaController;
 import fitapp.controller.KorisnikController;
-import fitapp.model.Aktivnost;
-import fitapp.model.DnevnikAktivnosti;
 import fitapp.model.DnevnikHrane;
 import fitapp.model.Hrana;
 import fitapp.util.Aplikacija;
@@ -23,12 +21,12 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -42,7 +40,6 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     private DnevnikAktivnostiController dnevnikAktivnostController;
     private DnevnikHraneController dnevnikHranaController;
     private KorisnikController korisnikController;
-
     private Date trenutniDatum;
     private SimpleDateFormat df;
 
@@ -83,23 +80,16 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }
 
     private void postavke() {
-        setTitle(Aplikacija.NASLOV_APP + " Dnevnik");
+        setTitle(Aplikacija.NASLOV_APP + " Dnevnik hrane");
 
         DatePickerSettings dps = new DatePickerSettings(new Locale("hr", "HR"));
         dps.setFormatForDatesCommonEra("dd.MM.yyyy");
 
         dpDatum.setSettings(dps);
 
-        lstDnevnik.setModel(new DefaultListModel<Hrana>());
-        GregorianCalendar c = (GregorianCalendar) Calendar.getInstance();
-        c.setTime(new Date());
-        c.set(Calendar.HOUR_OF_DAY, 0);
-        c.set(Calendar.MINUTE, 0);
-        c.set(Calendar.SECOND, 0);
-        c.set(Calendar.MILLISECOND, 0);
-        trenutniDatum = c.getTime();
+        ImageIcon icon = new ImageIcon("C:\\Users\\PC\\Desktop\\FitApp-2.0\\FitApp\\src\\main\\resources\\FitAppLogo.png");
+        this.setIconImage(icon.getImage());
 
-        lblTrenutniDatum.setText(df.format(trenutniDatum));
     }
 
     public void datum() {
@@ -137,7 +127,6 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 //            );
 //
 //        }
-
         DefaultListModel<Hrana> m = (DefaultListModel<Hrana>) lstDnevnik.getModel();
         List<Hrana> lista = new ArrayList<>();
         for (int i = 0; i < m.getSize(); i++) {
@@ -146,8 +135,6 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         e.setHrana(lista);
 
     }
-    
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -912,9 +899,9 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
     private void btnDodajMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDodajMouseClicked
         dnevnikHranaController.setEntitet(new DnevnikHrane());
-        
+
         postaviVrijednostiUEntitet();
-                try {
+        try {
             dnevnikHranaController.create();
             ucitaj();
             pocistiPodatke();
@@ -940,17 +927,16 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
     private void btnDodaj2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodaj2ActionPerformed
         //2
-        
-        if(dpDatum.getDate() == LocalDate.now()){
-        for(int i=0; i<5; i++){
-        GregorianCalendar c = (GregorianCalendar) Calendar.getInstance();
-        c.setTime(trenutniDatum);
-        c.add(Calendar.DAY_OF_YEAR, +i);
-        trenutniDatum = c.getTime();
-        lblTrenutniDatum.setText(df.format(trenutniDatum));
+
+        if (dpDatum.getDate() == LocalDate.now()) {
+            for (int i = 0; i < 5; i++) {
+                GregorianCalendar c = (GregorianCalendar) Calendar.getInstance();
+                c.setTime(trenutniDatum);
+                c.add(Calendar.DAY_OF_YEAR, +i);
+                trenutniDatum = c.getTime();
+                lblTrenutniDatum.setText(df.format(trenutniDatum));
             }
         }
-        
 
         dnevnikHranaController.setEntitet(new DnevnikHrane());
 

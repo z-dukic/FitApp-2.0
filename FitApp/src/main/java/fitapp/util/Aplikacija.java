@@ -6,6 +6,7 @@
 package fitapp.util;
 
 import fitapp.model.Korisnik;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -18,5 +19,8 @@ public class Aplikacija {
     public static Korisnik korisnik;
     
     public static final String FORMAT_DATUMA="EEE, dd. MM. YYYY";
+    
+        
+   
 
 }

@@ -22,8 +22,8 @@ import javax.persistence.ManyToOne;
 public class DnevnikAktivnosti extends Entitet {
 
     //private String naziv;
-    private List<Date> datum = new ArrayList<>();
-    
+    private Date datum;
+
     private int vrijemeTrajanjaAktivnosti;
 
     @ManyToMany
@@ -32,15 +32,13 @@ public class DnevnikAktivnosti extends Entitet {
     @ManyToOne
     private Korisnik korisnik;
 
-    public List<Date> getDatum() {
+    public Date getDatum() {
         return datum;
     }
 
-    public void setDatum(List<Date> datum) {
+    public void setDatum(Date datum) {
         this.datum = datum;
     }
-
-
 
     public List<Aktivnost> getAktivnost() {
         return aktivnost;
@@ -66,15 +64,14 @@ public class DnevnikAktivnosti extends Entitet {
         this.vrijemeTrajanjaAktivnosti = vrijemeTrajanjaAktivnosti;
     }
 
-    public DnevnikAktivnosti(List<Date> datum, int vrijemeTrajanjaAktivnosti, List<Aktivnost> aktivnost, Korisnik korisnik) {
+    public DnevnikAktivnosti(Date datum, int vrijemeTrajanjaAktivnosti, List<Aktivnost> aktivnost, Korisnik korisnik) {
         this.datum = datum;
         this.vrijemeTrajanjaAktivnosti = vrijemeTrajanjaAktivnosti;
         this.aktivnost = aktivnost;
         this.korisnik = korisnik;
     }
 
-
-    
+ 
 
     public DnevnikAktivnosti() {
 

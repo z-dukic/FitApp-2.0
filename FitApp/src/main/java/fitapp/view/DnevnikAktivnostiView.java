@@ -10,6 +10,7 @@ import fitapp.controller.AktivnostiController;
 import fitapp.controller.DnevnikAktivnostiController;
 import fitapp.model.Aktivnost;
 import fitapp.model.DnevnikAktivnosti;
+import fitapp.util.Aplikacija;
 import fitapp.util.ControllerException;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -32,7 +34,6 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
     private AktivnostiController aktivnostController;
     private DnevnikAktivnosti dnvAkt;
     private int odabraniIndex;
-    
 
     /**
      * Creates new form DnevnikAktivnostiView
@@ -49,12 +50,17 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
     }
 
     public void postavke() {
+        setTitle(Aplikacija.NASLOV_APP + " Dnevnik aktivnosti");
+        
         DatePickerSettings dps = new DatePickerSettings(new Locale("hr", "HR"));
         dps.setFormatForDatesCommonEra("dd.MM.yyyy");
 
         dpDatumPocetka.setSettings(dps);
 
         lstDnevnikAktivnost.setModel(new DefaultListModel<Aktivnost>());
+
+        ImageIcon icon = new ImageIcon("C:\\Users\\PC\\Desktop\\FitApp-2.0\\FitApp\\src\\main\\resources\\FitAppLogo.png");
+        this.setIconImage(icon.getImage());
 
     }
 
@@ -664,20 +670,36 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAktivActionPerformed
 
     private void txtMastiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMastiActionPerformed
-        // TODO add your handling code here:
+        // TODO add your  handling code here:
     }//GEN-LAST:event_txtMastiActionPerformed
 
     private void btnObrisi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisi1ActionPerformed
-        // TODO add your handling code here:
+        List<Aktivnost> lista = lstDnevnikAktivnost.getSelectedValuesList();
+
+        for (Aktivnost a : lista) {
+            obrisiAktivnostIzGrupe(a);
+
+        }
+        lstDnevnikAktivnost.repaint();
     }//GEN-LAST:event_btnObrisi1ActionPerformed
+
+    private void obrisiAktivnostIzGrupe(Aktivnost a) {
+        DefaultListModel<Aktivnost> m = (DefaultListModel<Aktivnost>) lstDnevnikAktivnost.getModel();
+        for (int i = 0; i < m.getSize(); i++) {
+            if (m.get(i).getSifra().equals(a.getSifra())) {
+                m.removeElementAt(i);
+                return;
+            }
+        }
+    }
 
     private void btnDodaj1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodaj1ActionPerformed
         DefaultListModel<Aktivnost> m = (DefaultListModel<Aktivnost>) lstDnevnikAktivnost.getModel();
         for (Aktivnost p : lstDnevnik1.getSelectedValuesList()) {
 
-            if (!postojiAktivnostUModelu(m, p)) {
-                m.addElement(p);
-            }
+            //if (!postojiAktivnostUModelu(m, p)) {
+            m.addElement(p);
+            //}
 
         }
         lstDnevnikAktivnost.repaint();

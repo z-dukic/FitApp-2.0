@@ -10,6 +10,7 @@ import fitapp.model.Korisnik;
 import fitapp.util.Aplikacija;
 import java.awt.Desktop;
 import java.net.URI;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,6 +32,9 @@ public class Login extends javax.swing.JFrame {
 
     private void postavke() {
         setTitle(Aplikacija.NASLOV_APP + " Login");
+
+        ImageIcon icon = new ImageIcon("C:\\Users\\PC\\Desktop\\FitApp-2.0\\FitApp\\src\\main\\resources\\FitAppLogo.png");
+        this.setIconImage(icon.getImage());
     }
 
     private void ucitajLink() {

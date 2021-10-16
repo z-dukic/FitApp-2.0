@@ -12,6 +12,7 @@ import fitapp.util.ControllerException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -34,6 +35,9 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
 
     private void postavke() {
         setTitle(Aplikacija.NASLOV_APP + " O nama");
+
+        ImageIcon icon = new ImageIcon("C:\\Users\\PC\\Desktop\\FitApp-2.0\\FitApp\\src\\main\\resources\\FitAppLogo.png");
+        this.setIconImage(icon.getImage());
     }
 
     public void datum() {
@@ -466,21 +470,19 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     //public static void dodaj(){
-   //             //3
+    //             //3
     //    controller.setEntitet(new Korisnik());
     //    postaviVrijednostEntiteta();
-     //   ucitajEntitet();
+    //   ucitajEntitet();
 
-      //  try {
-      //      controller.create();
-      //      ucitajEntitet();
-      //  } catch (ControllerException e) {
-      //      JOptionPane.showMessageDialog(getParent(), e.getPoruka());
-      //  }
-        
+    //  try {
+    //      controller.create();
+    //      ucitajEntitet();
+    //  } catch (ControllerException e) {
+    //      JOptionPane.showMessageDialog(getParent(), e.getPoruka());
+    //  }
     //}
-    
-    
+
     private void btnIzmjeniHranuBazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIzmjeniHranuBazaActionPerformed
         //6
         postaviVrijednostEntiteta();
@@ -494,16 +496,16 @@ public class PostavkeKorisnika extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIzmjeniHranuBazaActionPerformed
     //Dodaj u obriši button kad app bude imao više usera 
 //public static void obrisi(){
-     //         //5
-     //   try {
-      //      controller.delete();
-      //      ucitajEntitet();
-      //  } catch (ControllerException e) {
-      //      JOptionPane.showMessageDialog(getParent(), e.getPoruka());
-      //  }
-   // }
-    
-    
+    //         //5
+    //   try {
+    //      controller.delete();
+    //      ucitajEntitet();
+    //  } catch (ControllerException e) {
+    //      JOptionPane.showMessageDialog(getParent(), e.getPoruka());
+    //  }
+    // }
+
+
     private void txtNadimakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNadimakActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNadimakActionPerformed

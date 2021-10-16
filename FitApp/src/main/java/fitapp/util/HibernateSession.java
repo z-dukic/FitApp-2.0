@@ -238,7 +238,7 @@ public class HibernateSession {
         rukomet.setPotroseneKalorijePoSatu(450);
         s.save(rukomet);
 
-<<<<<<< HEAD
+
 //        List<DnevnikAktivnosti> dani = new ArrayList<>();
 //        dani.add();
 //        DnevnikAktivnosti dan;
@@ -332,8 +332,6 @@ public class HibernateSession {
 //        }
 
     s.getTransaction().commit();
-=======
-        s.getTransaction().commit();
->>>>>>> parent of 211ae12 (Save prije testiranja novog unosa datuma.)
+
     }
 }

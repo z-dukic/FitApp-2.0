@@ -12,6 +12,7 @@ import fitapp.util.ControllerException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -61,6 +62,9 @@ public class HranaBaza extends javax.swing.JFrame implements Sucelje {
     @Override
     public void postavke() {
         setTitle(Aplikacija.NASLOV_APP + " Baza hrane");
+
+        ImageIcon icon = new ImageIcon("C:\\Users\\PC\\Desktop\\FitApp-2.0\\FitApp\\src\\main\\resources\\FitAppLogo.png");
+        this.setIconImage(icon.getImage());
     }
 
     @Override

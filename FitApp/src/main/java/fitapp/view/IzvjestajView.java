@@ -8,6 +8,7 @@ package fitapp.view;
 import fitapp.util.Aplikacija;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -28,6 +29,9 @@ public class IzvjestajView extends javax.swing.JFrame {
 
     private void postavke() {
         setTitle(Aplikacija.NASLOV_APP + " Izvještaj");
+
+        ImageIcon icon = new ImageIcon("C:\\Users\\PC\\Desktop\\FitApp-2.0\\FitApp\\src\\main\\resources\\FitAppLogo.png");
+        this.setIconImage(icon.getImage());
     }
 
     public void datum() {

@@ -5,7 +5,9 @@
  */
 package fitapp.view;
 
+import fitapp.util.Aplikacija;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JRadioButton;
 
 /**
@@ -19,6 +21,14 @@ public class Registracija extends javax.swing.JFrame {
      */
     public Registracija() {
         initComponents();
+        postavke();
+    }
+    
+    private void postavke(){        
+        setTitle(Aplikacija.NASLOV_APP + " Registracija");
+        
+        ImageIcon icon = new ImageIcon("C:\\Users\\PC\\Desktop\\FitApp-2.0\\FitApp\\src\\main\\resources\\FitAppLogo.png");
+        this.setIconImage(icon.getImage());
     }
 
     /**

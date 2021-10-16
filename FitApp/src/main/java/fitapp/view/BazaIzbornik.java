@@ -5,6 +5,9 @@
  */
 package fitapp.view;
 
+import fitapp.util.Aplikacija;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author PC
@@ -16,6 +19,15 @@ public class BazaIzbornik extends javax.swing.JFrame {
      */
     public BazaIzbornik() {
         initComponents();
+        postavke();
+    }
+
+    public void postavke() {
+
+        setTitle(Aplikacija.NASLOV_APP + " Baza izbornik");
+        
+        ImageIcon icon = new ImageIcon("C:\\Users\\PC\\Desktop\\FitApp-2.0\\FitApp\\src\\main\\resources\\FitAppLogo.png");
+        this.setIconImage(icon.getImage());
     }
 
     /**
@@ -340,7 +352,6 @@ public class BazaIzbornik extends javax.swing.JFrame {
         new GlavniIzbornik().setVisible(true);
         dispose();
     }//GEN-LAST:event_lblPovratakNaGlavniIzbornikMouseClicked
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

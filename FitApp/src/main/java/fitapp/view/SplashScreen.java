@@ -5,9 +5,10 @@
  */
 package fitapp.view;
 
+import fitapp.util.Aplikacija;
 import fitapp.util.HibernateUtil;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 
 /**
@@ -22,8 +23,19 @@ public class SplashScreen extends javax.swing.JFrame {
     public SplashScreen() {
         initComponents();
         
+        postavke();
+        
         Ucitanje ucitanje = new Ucitanje();
         ucitanje.start();
+        
+        
+    }
+    
+    private void postavke(){
+        setTitle(Aplikacija.NASLOV_APP + " Welcome to FitApp!");
+        
+        ImageIcon icon = new ImageIcon("C:\\Users\\PC\\Desktop\\FitApp-2.0\\FitApp\\src\\main\\resources\\FitAppLogo.png");
+        this.setIconImage(icon.getImage());
     }
     
     private class Ucitanje extends Thread{
@@ -62,17 +74,11 @@ public class SplashScreen extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(284, 284, 284)
-                .addComponent(IkonaFitApp)
-                .addContainerGap(221, Short.MAX_VALUE))
+            .addComponent(IkonaFitApp)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(113, 113, 113)
-                .addComponent(IkonaFitApp)
-                .addContainerGap(210, Short.MAX_VALUE))
+            .addComponent(IkonaFitApp)
         );
 
         pack();
