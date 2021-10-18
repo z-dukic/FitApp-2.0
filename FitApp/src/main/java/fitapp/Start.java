@@ -5,6 +5,7 @@
  */
 package fitapp;
 
+import fitapp.util.HibernateSession;
 import fitapp.view.SplashScreen;
 
 /**

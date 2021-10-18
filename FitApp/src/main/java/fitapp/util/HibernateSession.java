@@ -29,6 +29,7 @@ public class HibernateSession {
 
         //Dodavanje korisnika
         Korisnik korisnik = new Korisnik();
+        korisnik.setSifra(Long.valueOf(1));
         korisnik.setNadimak("korisnik");
         korisnik.setLozinka(BCrypt.hashpw("korisnik", BCrypt.gensalt()));
         korisnik.setEmail("korisnik@gmail.com");

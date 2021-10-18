@@ -27,7 +27,7 @@ public class ChatBot extends javax.swing.JFrame {
 
     private void postavke() {
         setTitle(Aplikacija.NASLOV_APP + " Podrška");
-        
+
         ImageIcon icon = new ImageIcon("C:\\Users\\PC\\Desktop\\FitApp-2.0\\FitApp\\src\\main\\resources\\FitAppLogo.png");
         this.setIconImage(icon.getImage());
     }
@@ -324,6 +324,12 @@ public class ChatBot extends javax.swing.JFrame {
             bot("Ako te zanima kako se zbrajaju kalorije posjeti sljedeći link: ");
         } else if (gtext.toLowerCase().trim().contains("aktivnosti")) {
             bot("Odlično pitanje. Više informacija možeš nać na stranici aktivnosti. ");
+        } else if (gtext.toLowerCase().trim().contains("sport")) {
+            bot("Više o aktivnosti možeš naći na stranici s aktivnostima");
+        } else if (gtext.toLowerCase().trim().contains("Izaći")) {
+            bot("Ako želiš izaći samo izaberi drugi prozor");
+        } else if (gtext.toLowerCase().trim().contains("Doviđenja")) {
+            bot("Doviđenja ");
 
         } else {
             bot("Ne razumijem te. Možeš li preformulirat pitanje?");
