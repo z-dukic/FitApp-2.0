@@ -524,7 +524,7 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Hrana&gt;"/>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;IzracunMakroHrane&gt;"/>
           </AuxValues>
         </Component>
       </SubComponents>
@@ -533,7 +533,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel12">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Trajanje u minutama:"/>
+        <Property name="text" type="java.lang.String" value="Koli&#x10d;ina:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">

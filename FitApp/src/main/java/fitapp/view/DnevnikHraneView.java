@@ -10,11 +10,13 @@ import fitapp.controller.AktivnostiController;
 import fitapp.controller.DnevnikAktivnostiController;
 import fitapp.controller.DnevnikHraneController;
 import fitapp.controller.HranaController;
+import fitapp.controller.IzracunMakroHraneController;
 import fitapp.controller.KorisnikController;
 import fitapp.model.Aktivnost;
 import fitapp.model.DnevnikAktivnosti;
 import fitapp.model.DnevnikHrane;
 import fitapp.model.Hrana;
+import fitapp.model.IzracunMakroHrane;
 import fitapp.util.Aplikacija;
 import fitapp.util.ControllerException;
 import java.text.SimpleDateFormat;
@@ -40,6 +42,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     private DnevnikAktivnostiController dnevnikAktivnostController;
     private DnevnikHraneController dnevnikHranaController;
     private KorisnikController korisnikController;
+    private IzracunMakroHraneController izracunMakroHraneController;
     private Date trenutniDatum;
     private SimpleDateFormat df;
     private int odabraniIndex;
@@ -55,6 +58,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         hranaController = new HranaController();
         aktivnostController = new AktivnostiController();
         korisnikController = new KorisnikController();
+        izracunMakroHraneController = new IzracunMakroHraneController();
         df = new SimpleDateFormat(Aplikacija.FORMAT_DATUMA);
         postavke();
         vrijeme();
@@ -64,6 +68,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }
 
     private void ucitaj() {
+        //Works
         DefaultListModel<DnevnikHrane> m = new DefaultListModel<>();
         dnevnikHranaController.read().forEach(g -> {
             m.addElement(g);
@@ -73,6 +78,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }
 
     private void ucitaj2() {
+        //Works
         DefaultListModel<Hrana> m = new DefaultListModel<>();
 
         hranaController.read().forEach(s -> {
@@ -84,13 +90,14 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }
 
     private void pocistiPodatke() {
-
+        //works
         dpDatumPocetka.setDateToToday();
         lstDnevnikHrane.setModel(new DefaultListModel<>());
 
     }
 
     private void postavke() {
+        //works
         setTitle(Aplikacija.NASLOV_APP + " Dnevnik hrane");
 
         DatePickerSettings dps = new DatePickerSettings(new Locale("hr", "HR"));
@@ -98,7 +105,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
         dpDatumPocetka.setSettings(dps);
 
-        lstDnevnikHrane.setModel(new DefaultListModel<Hrana>());
+        lstDnevnikHrane.setModel(new DefaultListModel<IzracunMakroHrane>());
 
         ImageIcon icon = new ImageIcon("C:\\Users\\PC\\Desktop\\FitApp-2.0\\FitApp\\src\\main\\resources\\FitAppLogo.png");
         this.setIconImage(icon.getImage());
@@ -106,6 +113,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }
 
     public void postaviVrijednostiUEntitet() {
+        //ne radi
         var e = dnevnikHranaController.getEntitet();
 
         if (dpDatumPocetka.getDate() != null) {
@@ -115,8 +123,8 @@ public class DnevnikHraneView extends javax.swing.JFrame {
             );
         }
 
-        DefaultListModel<Hrana> m = (DefaultListModel<Hrana>) lstDnevnikHrane.getModel();
-        List<Hrana> lista = new ArrayList<>();
+        DefaultListModel<IzracunMakroHrane> m = (DefaultListModel<IzracunMakroHrane>) lstDnevnikHrane.getModel();
+        List<IzracunMakroHrane> lista = new ArrayList<>();
         for (int i = 0; i < m.getSize(); i++) {
             lista.add(m.get(i));
         }
@@ -124,6 +132,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }
 
     public void datum() {
+        //works
         Date datum = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         String datumIzbornik = sdf.format(datum);
@@ -132,6 +141,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }
 
     private void vrijeme() {
+        //works
         Thread t1;
         t1 = new Thread(() -> {
             while (true) {
@@ -149,8 +159,9 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
     }
 
-    private void obrisiHranuIzGrupe(Hrana a) {
-        DefaultListModel<Hrana> m = (DefaultListModel<Hrana>) lstDnevnikHrane.getModel();
+    private void obrisiHranuIzGrupe(IzracunMakroHrane a) {
+        //works
+        DefaultListModel<IzracunMakroHrane> m = (DefaultListModel<IzracunMakroHrane>) lstDnevnikHrane.getModel();
         for (int i = 0; i < m.getSize(); i++) {
             if (m.get(i).getSifra().equals(a.getSifra())) {
                 m.removeElementAt(i);
@@ -387,7 +398,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
         jScrollPane3.setViewportView(lstDnevnikHrane);
 
-        jLabel12.setText("Trajanje u minutama:");
+        jLabel12.setText("Količina:");
 
         jLabel3.setText("Datum hrane:");
 
@@ -855,7 +866,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     private javax.swing.JLabel lblONama;
     private javax.swing.JLabel lblPostavke;
     private javax.swing.JList<Hrana> lstDnevnik1;
-    private javax.swing.JList<Hrana> lstDnevnikHrane;
+    private javax.swing.JList<IzracunMakroHrane> lstDnevnikHrane;
     private javax.swing.JList<DnevnikHrane> lstEntiteti;
     private javax.swing.JTextField txtAktiv;
     private javax.swing.JTextField txtBMR;
