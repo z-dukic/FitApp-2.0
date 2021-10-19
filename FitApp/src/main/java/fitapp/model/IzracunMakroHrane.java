@@ -13,10 +13,13 @@ import javax.persistence.ManyToOne;
  * @author PC
  */
 @Entity
-public class IzracunMakroHrane extends Entitet{
+public class IzracunMakroHrane extends Entitet {
 
     @ManyToOne
     private DnevnikHrane dnevnikHrane;
+
+    @ManyToOne
+    private Hrana hranaMakro;
 
     private int kalorije;
 
@@ -66,8 +69,17 @@ public class IzracunMakroHrane extends Entitet{
         this.masti = masti;
     }
 
+    public Hrana getHranaMakro() {
+        return hranaMakro;
+    }
+
+    public void setHranaMakro(Hrana hranaMakro) {
+        this.hranaMakro = hranaMakro;
+    }
+
     @Override
     public String toString() {
+
         return dnevnikHrane.toString();
     }
 

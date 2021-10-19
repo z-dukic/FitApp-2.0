@@ -98,4 +98,7 @@ public class DnevnikHrane extends Entitet {
 //    public String toString() {
 //        return "d" + datum;
 //    }
+
+
+ 
 }
