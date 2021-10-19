@@ -92,7 +92,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     private void pocistiPodatke() {
         //works
         dpDatumPocetka.setDateToToday();
-        lstDnevnikHrane.setModel(new DefaultListModel<>());
+        lstDnevnikHrane.setModel(new DefaultListModel<IzracunMakroHrane>());
 
     }
 
@@ -128,7 +128,8 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         for (int i = 0; i < m.getSize(); i++) {
             lista.add(m.get(i));
         }
-        e.setHrana(lista);
+        //Provjeri dali radi
+        e.setHrana((Hrana) lista);
     }
 
     public void datum() {
@@ -728,6 +729,8 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         } catch (ControllerException ex) {
             JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
         }
+        
+        updateZbroja();
     }//GEN-LAST:event_btnDodajActionPerformed
 
     private void txtAktivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAktivActionPerformed
@@ -749,6 +752,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         } catch (ControllerException ex) {
             JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
         }
+        updateZbroja();
     }//GEN-LAST:event_btnPromjeniActionPerformed
 
     private void txtBMRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBMRActionPerformed
@@ -773,7 +777,6 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         }
 
         dnevnikHranaController.setEntitet(lstEntiteti.getSelectedValue());
-
         var e = dnevnikHranaController.getEntitet();
 
         if (e.getDatum() != null) {
@@ -783,20 +786,43 @@ public class DnevnikHraneView extends javax.swing.JFrame {
             dpDatumPocetka.setDate(null);
         }
 
-        DefaultListModel<Hrana> m = new DefaultListModel<>();
+        DefaultListModel<IzracunMakroHrane> m = new DefaultListModel<>();
 
-        Collections.sort(e.getHrana(), new Comparator<Hrana>() {
-            @Override
-            public int compare(Hrana o1, Hrana o2) {
-                return o1.getImeHrane().compareTo(o2.getImeHrane());
-            }
-        });
+//        Collections.sort(e.getHrana(), new Comparator<IzracunMakroHrane>() {
+//            @Override
+//            public int compare(IzracunMakroHrane o1, IzracunMakroHrane o2) {
+//                return o1.getDnevnikHrane().getHrana().getImeHrane().compareTo(o2.getDnevnikHrane().getHrana().getImeHrane());
+//            }
+//        });
+//
+//        e.getHrana().getImeHrane().forEach(p -> {
+//            m.addElement(p);
+//        });
+//        lstDnevnikHrane.setModel(m);
 
-        e.getHrana().forEach(p -> {
-            m.addElement(p);
-        });
-        lstDnevnikHrane.setModel(m);
+        updateZbroja();
     }//GEN-LAST:event_lstEntitetiValueChanged
+
+    private void updateZbroja() {
+        DefaultListModel<IzracunMakroHrane> m = (DefaultListModel<IzracunMakroHrane>) lstDnevnikHrane.getModel();
+        int ukupnoKcal = 0;
+        int ukupnoProt = 0;
+        int ukupnoUH = 0;
+        int ukupnoM = 0;
+
+        for (int i = 0; i < m.getSize(); i++) {
+            ukupnoKcal += m.get(i).getKalorije();
+            ukupnoProt += m.get(i).getProteini();
+            ukupnoUH += m.get(i).getUgljikohidrati();
+            ukupnoM += m.get(i).getMasti();
+
+        }
+        txtKcal.setText(String.valueOf(ukupnoKcal));
+        txtProtein.setText(String.valueOf(ukupnoProt));
+        txtUH.setText(String.valueOf(ukupnoUH));
+        txtMasti.setText(String.valueOf(ukupnoM));
+
+    }
 
     private void txtUHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUHActionPerformed
         // TODO add your handling code here:
@@ -811,26 +837,35 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTraziActionPerformed
 
     private void btnDodaj1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodaj1ActionPerformed
-        DefaultListModel<Hrana> m = (DefaultListModel<Hrana>) lstDnevnikHrane.getModel();
+        //Tu sam stao 
+        DefaultListModel<IzracunMakroHrane> m = (DefaultListModel<IzracunMakroHrane>) lstDnevnikHrane.getModel();
         for (Hrana p : lstDnevnik1.getSelectedValuesList()) {
+            IzracunMakroHrane c = new IzracunMakroHrane();
+            c.setKalorije(Integer.parseInt(txtKcal.getText()));
+            c.setMasti(Integer.parseInt(txtMasti.getText()));
+            c.setUgljikohidrati(Integer.parseInt(txtUH.getText()));
+            c.setProteini(Integer.parseInt(txtProtein.getText()));
 
             //if (!postojiAktivnostUModelu(m, p)) {
-            m.addElement(p);
+            m.addElement(c);
             //}
 
         }
         lstDnevnikHrane.repaint();
+        updateZbroja();
 
     }//GEN-LAST:event_btnDodaj1ActionPerformed
 
     private void btnObrisi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisi1ActionPerformed
-        List<Hrana> lista = lstDnevnikHrane.getSelectedValuesList();
+        //works
+        List<IzracunMakroHrane> lista = lstDnevnikHrane.getSelectedValuesList();
 
-        for (Hrana a : lista) {
+        for (IzracunMakroHrane a : lista) {
             obrisiHranuIzGrupe(a);
 
         }
         lstDnevnikHrane.repaint();
+        updateZbroja();
     }//GEN-LAST:event_btnObrisi1ActionPerformed
 
 

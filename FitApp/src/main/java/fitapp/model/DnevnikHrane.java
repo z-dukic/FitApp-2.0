@@ -9,6 +9,7 @@ import fitapp.util.Aplikacija;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -16,6 +17,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import static org.hibernate.type.descriptor.java.DateTypeDescriptor.DATE_FORMAT;
 
 /**
@@ -27,14 +29,24 @@ public class DnevnikHrane extends Entitet {
 
     private Date datum;
 
-    
-    @ManyToMany 
-    private List<Hrana> hrana;
+    @ManyToOne
+    private Hrana hrana;
 
     private int kolicinaUneseneHrane;
 
     @ManyToOne
     private Korisnik korisnik;
+
+    @OneToMany
+    private List<IzracunMakroHrane> izracunMakroHrane = new ArrayList<>();
+
+    public List<IzracunMakroHrane> getIzracunMakroHrane() {
+        return izracunMakroHrane;
+    }
+
+    public void setIzracunMakroHrane(List<IzracunMakroHrane> izracunMakroHrane) {
+        this.izracunMakroHrane = izracunMakroHrane;
+    }
 
     public Date getDatum() {
         return datum;
@@ -44,11 +56,11 @@ public class DnevnikHrane extends Entitet {
         this.datum = datum;
     }
 
-    public List<Hrana> getHrana() {
+    public Hrana getHrana() {
         return hrana;
     }
 
-    public void setHrana(List<Hrana> hrana) {
+    public void setHrana(Hrana hrana) {
         this.hrana = hrana;
     }
 
@@ -76,16 +88,14 @@ public class DnevnikHrane extends Entitet {
 //		dateFormat = new SimpleDateFormat(DATE_FORMAT);
 //                return dateFormat.format(datum);
 //	}
-    
-        @Override
+    @Override
     public String toString() {
-            SimpleDateFormat df = new SimpleDateFormat(Aplikacija.FORMAT_DATUMA);
-            return df.format(datum);
+        SimpleDateFormat df = new SimpleDateFormat(Aplikacija.FORMAT_DATUMA);
+        return df.format(datum);
     }
-    
+
 //    @Override
 //    public String toString() {
 //        return "d" + datum;
 //    }
-
 }

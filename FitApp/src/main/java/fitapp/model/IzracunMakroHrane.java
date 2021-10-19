@@ -5,12 +5,14 @@
  */
 package fitapp.model;
 
+import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 /**
  *
  * @author PC
  */
+@Entity
 public class IzracunMakroHrane extends Entitet{
 
     @ManyToOne
