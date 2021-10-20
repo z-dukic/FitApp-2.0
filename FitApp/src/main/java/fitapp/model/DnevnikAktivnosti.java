@@ -21,6 +21,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class DnevnikAktivnosti extends Entitet {
 
+    //private String naziv;
     private Date datum;
 
     private int vrijemeTrajanjaAktivnosti;
@@ -69,6 +70,8 @@ public class DnevnikAktivnosti extends Entitet {
         this.aktivnost = aktivnost;
         this.korisnik = korisnik;
     }
+
+ 
 
     public DnevnikAktivnosti() {
 

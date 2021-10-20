@@ -20,7 +20,7 @@ public abstract class Controller<T> {
     protected Session session;
 
     //Type of class
-    protected T entitet;
+    protected T modelEntity;
 
     //(C(R)UD
     public abstract List<T> read();
@@ -38,11 +38,11 @@ public abstract class Controller<T> {
 
     //Getters and setters
     public T getEntitet() {
-        return entitet;
+        return modelEntity;
     }
 
     public void setEntitet(T entitet) {
-        this.entitet = entitet;
+        this.modelEntity = entitet;
     }
 
     //New entity
@@ -50,7 +50,7 @@ public abstract class Controller<T> {
     public T create() throws ControllerException {
         controlCreate();
         save();
-        return entitet;
+        return modelEntity;
     }
 
     //Update existing entity
@@ -58,7 +58,7 @@ public abstract class Controller<T> {
     public T update() throws ControllerException {
         controlUpdate();
         save();
-        return entitet;
+        return modelEntity;
     }
 
     //Delete entity
@@ -66,7 +66,7 @@ public abstract class Controller<T> {
     public void delete() throws ControllerException {
         controlDelete();
         session.beginTransaction();
-        session.delete(entitet);
+        session.delete(modelEntity);
         session.getTransaction().commit();
 
     }
@@ -74,7 +74,7 @@ public abstract class Controller<T> {
     //Save new entity
     private void save() {
         session.beginTransaction();
-        session.save(entitet);
+        session.save(modelEntity);
         session.getTransaction().commit();
     }
 

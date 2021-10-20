@@ -78,7 +78,10 @@ public class IzracunMakroHrane extends Entitet {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     //Baca error da je string "";
+=======
+>>>>>>> parent of 5c3b4fc (Save, prije vraćanje commita.)
 //    @Override
 //    public String toString() {
 //

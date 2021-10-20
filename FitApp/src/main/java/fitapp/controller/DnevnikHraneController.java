@@ -6,8 +6,6 @@
 package fitapp.controller;
 
 import fitapp.model.DnevnikHrane;
-import fitapp.model.Entitet;
-import fitapp.model.IzracunMakroHrane;
 import fitapp.util.ControllerException;
 import java.math.BigInteger;
 import java.util.List;
@@ -22,35 +20,6 @@ public class DnevnikHraneController extends Controller<DnevnikHrane> {
     @Override
     public List<DnevnikHrane> read() {
         return session.createQuery("from DnevnikHrane").list();
-    }
-
-    public DnevnikHrane create() throws ControllerException {
-
-        for(IzracunMakroHrane c : entitet.getIzracunMakroHrane()) {
-            c.setDnevnikHrane(entitet);
-            session.save(c);
-        }
-
-        return super.create();
-    }
-
-    public DnevnikHrane update() throws ControllerException {
-
-        for (IzracunMakroHrane c : entitet.getIzracunMakroHrane()) {
-            c.setDnevnikHrane(entitet);
-            session.save(c);
-        }
-        session.getTransaction().commit();
-        return super.create();
-    }
-
-    public void delete() throws ControllerException {
-        session.beginTransaction();
-        for (IzracunMakroHrane c : entitet.getIzracunMakroHrane()) {
-            session.delete(c);
-        }
-        session.getTransaction().commit();
-        super.delete();
     }
 
     @Override
@@ -71,14 +40,14 @@ public class DnevnikHraneController extends Controller<DnevnikHrane> {
     }
 
     private void kontrolaDatumaAkoJeNull() throws ControllerException {
-        if (entitet.getDatum() == null) {
+        if (modelEntity.getDatum() == null) {
             throw new ControllerException("Morate dodati datum");
         }
     }
 
     private void kontrolaDatumaAkoPostoji() throws ControllerException {
         Query q = session.createNativeQuery("select count(*) from dnevnikhrane where datum=:nazivParametar");
-        q.setParameter("nazivParametar", entitet.getDatum());
+        q.setParameter("nazivParametar", modelEntity.getDatum());
 
         BigInteger ukupno = (BigInteger) q.getSingleResult();
 

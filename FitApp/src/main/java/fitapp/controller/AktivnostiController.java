@@ -50,13 +50,13 @@ public class AktivnostiController extends Controller<Aktivnost> {
 
     //Dodati ime je obavezno
     private void kontrolaImenaAktivnosti() throws ControllerException {
-        if (entitet.getImeAktivnosti() == null || entitet.getImeAktivnosti().trim().length() == 0) {
+        if (modelEntity.getImeAktivnosti() == null || modelEntity.getImeAktivnosti().trim().length() == 0) {
             throw new ControllerException("Dodati ime aktivnosti je obavezno.");
         }
     }
 
     private void kontrolaTrajanjeAktivnosti() throws ControllerException {
-        if (entitet.getPotroseneKalorijePoSatu() > 1000) {
+        if (modelEntity.getPotroseneKalorijePoSatu() > 1000) {
             throw new ControllerException("Aktivnost ne može imati više od 1000 kcal po satu");
 
         }

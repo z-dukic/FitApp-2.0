@@ -41,7 +41,7 @@ public class DnevnikAktivnostiController extends Controller<DnevnikAktivnosti> {
 
     private void kontrolaDatuma() throws ControllerException {
         Query q = session.createNativeQuery("select count(*) from dnevnikaktivnosti where datum=:nazivParametar");
-        q.setParameter("nazivParametar", entitet.getDatum());
+        q.setParameter("nazivParametar", modelEntity.getDatum());
 
         BigInteger ukupno = (BigInteger) q.getSingleResult();
 
@@ -52,7 +52,7 @@ public class DnevnikAktivnostiController extends Controller<DnevnikAktivnosti> {
     }
 
     private void kontrolaNullDatuma() throws ControllerException {
-        if (entitet.getDatum() == null) {
+        if (modelEntity.getDatum() == null) {
             throw new ControllerException("Morate obavezno izabrati datum.");
         }
     }
