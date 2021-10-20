@@ -47,6 +47,7 @@ public class IzracunMakroHrane extends Entitet {
         this.hranaMakro = hranaMakro;
     }
 
+    //Baca error da je string "";
 //    @Override
 //    public String toString() {
 //

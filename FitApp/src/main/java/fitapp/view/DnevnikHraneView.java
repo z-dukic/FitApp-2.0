@@ -86,7 +86,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
             m.addElement(s);
         });
 
-        lstDnevnik1.setModel(m);
+        lstBazaHrane.setModel(m);
 
     }
 
@@ -220,7 +220,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        lstDnevnik1 = new javax.swing.JList<>();
+        lstBazaHrane = new javax.swing.JList<>();
         txtUvjet = new javax.swing.JTextField();
         btnTrazi = new javax.swing.JButton();
         btnDodaj1 = new javax.swing.JButton();
@@ -457,7 +457,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
         jLabel11.setText("Baza hrane");
 
-        jScrollPane6.setViewportView(lstDnevnik1);
+        jScrollPane6.setViewportView(lstBazaHrane);
 
         btnTrazi.setText("Traži");
         btnTrazi.addActionListener(new java.awt.event.ActionListener() {
@@ -748,10 +748,6 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_lblHranaMouseClicked
 
-    private void txtMastiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMastiActionPerformed
-        // TODO add your  handling code here:
-    }//GEN-LAST:event_txtMastiActionPerformed
-
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
         dnevnikHranaController.setEntitet(new DnevnikHrane());
 
@@ -766,10 +762,6 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
         updateZbroja();
     }//GEN-LAST:event_btnDodajActionPerformed
-
-    private void txtAktivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAktivActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAktivActionPerformed
 
     private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
         if (dnevnikHranaController.getEntitet() == null) {
@@ -788,22 +780,6 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         }
         updateZbroja();
     }//GEN-LAST:event_btnPromjeniActionPerformed
-
-    private void txtBMRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBMRActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBMRActionPerformed
-
-    private void txtNetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNetoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNetoActionPerformed
-
-    private void txtKcalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKcalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtKcalActionPerformed
-
-    private void txtProteinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProteinActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtProteinActionPerformed
 
     private void lstEntitetiValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstEntitetiValueChanged
         if (evt.getValueIsAdjusting() || lstEntiteti.getSelectedValue() == null) {
@@ -845,22 +821,18 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         lblUkupno.setText("Ukupno: " + ukupno);
     }
 
-    private void txtUHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUHActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUHActionPerformed
-
     private void btnTraziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraziActionPerformed
         DefaultListModel<Hrana> m = new DefaultListModel<>();
         hranaController.read(txtUvjet.getText()).forEach(p -> {
             m.addElement(p);
         });
-        lstDnevnik1.setModel(m);
+        lstBazaHrane.setModel(m);
     }//GEN-LAST:event_btnTraziActionPerformed
 
     private void btnDodaj1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodaj1ActionPerformed
         //Tu sam stao 
         DefaultListModel<IzracunMakroHrane> m = (DefaultListModel<IzracunMakroHrane>) lstDnevnikHrane.getModel();
-        for (Hrana p : lstDnevnik1.getSelectedValuesList()) {
+        for (Hrana p : lstBazaHrane.getSelectedValuesList()) {
             IzracunMakroHrane c = new IzracunMakroHrane();
             c.setHranaMakro(p);
             c.setDnevnikHrane(dnevnikHranaController.getEntitet());
@@ -869,6 +841,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
         }
         lstDnevnikHrane.repaint();
+        
         updateZbroja();
 
     }//GEN-LAST:event_btnDodaj1ActionPerformed
@@ -891,9 +864,10 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         if (c == null) {
             return;
         }
+        
         c.setKalorije(Integer.parseInt(txtKolicinaHraneDnevnik.getText()));
-
         izracunMakroHraneController.setEntitet(c);
+        
         try {
             izracunMakroHraneController.update();
         } catch (ControllerException e) {
@@ -914,10 +888,38 @@ public class DnevnikHraneView extends javax.swing.JFrame {
             return;
         }
 
-        txtKcal.setText(String.valueOf(c.getKalorije()));
+        txtKolicinaHraneDnevnik.setText(String.valueOf(c.getKalorije()));
         
 
     }//GEN-LAST:event_lstDnevnikHraneValueChanged
+
+    private void txtNetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNetoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNetoActionPerformed
+
+    private void txtBMRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBMRActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBMRActionPerformed
+
+    private void txtAktivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAktivActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAktivActionPerformed
+
+    private void txtMastiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMastiActionPerformed
+        // TODO add your  handling code here:
+    }//GEN-LAST:event_txtMastiActionPerformed
+
+    private void txtUHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUHActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUHActionPerformed
+
+    private void txtProteinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProteinActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtProteinActionPerformed
+
+    private void txtKcalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKcalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtKcalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -953,7 +955,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     private javax.swing.JLabel lblONama;
     private javax.swing.JLabel lblPostavke;
     private javax.swing.JLabel lblUkupno;
-    private javax.swing.JList<Hrana> lstDnevnik1;
+    private javax.swing.JList<Hrana> lstBazaHrane;
     private javax.swing.JList<IzracunMakroHrane> lstDnevnikHrane;
     private javax.swing.JList<DnevnikHrane> lstEntiteti;
     private javax.swing.JTextField txtAktiv;
