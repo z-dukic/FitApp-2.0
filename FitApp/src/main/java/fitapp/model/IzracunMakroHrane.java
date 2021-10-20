@@ -77,11 +77,9 @@ public class IzracunMakroHrane extends Entitet {
         this.hranaMakro = hranaMakro;
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     //Baca error da je string "";
-=======
->>>>>>> parent of 5c3b4fc (Save, prije vraćanje commita.)
+
 //    @Override
 //    public String toString() {
 //
@@ -91,12 +89,10 @@ public class IzracunMakroHrane extends Entitet {
 
     
     //To dodaje null vrijednost.
-=======
->>>>>>> parent of 77fd253 (Save, ali dodaje uvijek null vrijednost.)
     @Override
     public String toString() {
 
-        return dnevnikHrane.toString();
+        return " "+ dnevnikHrane;
     }
 
 }

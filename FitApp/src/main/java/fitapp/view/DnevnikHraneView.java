@@ -905,20 +905,14 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         if (c == null) {
             return;
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-        
-        c.setKalorije(Integer.parseInt(txtKolicinaHraneDnevnik.getText()));
-=======
+
         c.setKalorije(Integer.parseInt(txtKcal.getText()));
         c.setProteini(Integer.parseInt(txtProtein.getText()));
         c.setUgljikohidrati(Integer.parseInt(txtUH.getText()));
         c.setMasti(Integer.parseInt(txtMasti.getText()));
->>>>>>> parent of 77fd253 (Save, ali dodaje uvijek null vrijednost.)
-=======
+
         c.setKalorije(Integer.parseInt(txtKolicinaHraneDnevnik.getText()));
 
->>>>>>> parent of 5c3b4fc (Save, prije vraćanje commita.)
         izracunMakroHraneController.setEntitet(c);
         try {
             izracunMakroHraneController.update();
@@ -940,19 +934,15 @@ public class DnevnikHraneView extends javax.swing.JFrame {
             return;
         }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
         txtKolicinaHraneDnevnik.setText(String.valueOf(c.getKalorije()));
-=======
+
         txtKcal.setText(String.valueOf(c.getKalorije()));
->>>>>>> parent of 5c3b4fc (Save, prije vraćanje commita.)
-        
-=======
+
         txtKcal.setText(String.valueOf(c.getKalorije()));
         txtProtein.setText(String.valueOf(c.getProteini()));
         txtUH.setText(String.valueOf(c.getUgljikohidrati()));
         txtMasti.setText(String.valueOf(c.getMasti()));
->>>>>>> parent of 77fd253 (Save, ali dodaje uvijek null vrijednost.)
+
 
     }//GEN-LAST:event_lstDnevnikHraneValueChanged
 

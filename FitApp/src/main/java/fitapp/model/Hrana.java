@@ -28,7 +28,5 @@ public class Hrana extends MakroNutrijenti {
     public String toString() {
         return imeHrane;
     }
-    
-    
 
 }
