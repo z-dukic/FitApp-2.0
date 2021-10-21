@@ -38,10 +38,7 @@ import javax.swing.JOptionPane;
 public class DnevnikHraneView extends javax.swing.JFrame {
 
     private HranaController hranaController;
-    private AktivnostiController aktivnostController;
-    private DnevnikAktivnostiController dnevnikAktivnostController;
     private DnevnikHraneController dnevnikHranaController;
-    private KorisnikController korisnikController;
     private IzracunMakroHraneController izracunMakroHraneController;
     private Date trenutniDatum;
     private SimpleDateFormat df;
@@ -54,10 +51,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
         initComponents();
         dnevnikHranaController = new DnevnikHraneController();
-        dnevnikAktivnostController = new DnevnikAktivnostiController();
         hranaController = new HranaController();
-        aktivnostController = new AktivnostiController();
-        korisnikController = new KorisnikController();
         izracunMakroHraneController = new IzracunMakroHraneController();
         df = new SimpleDateFormat(Aplikacija.FORMAT_DATUMA);
         postavke();
@@ -68,7 +62,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }
 
     private void ucitaj() {
-        //Works
+        //Works #1
         DefaultListModel<DnevnikHrane> m = new DefaultListModel<>();
         dnevnikHranaController.read().forEach(g -> {
             m.addElement(g);
@@ -78,7 +72,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }
 
     private void ucitaj2() {
-        //Works
+        //Works #1
         DefaultListModel<Hrana> m = new DefaultListModel<>();
 
         hranaController.read().forEach(s -> {
@@ -91,12 +85,14 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
     private void pocistiPodatke() {
         //works
+        //#9
         dpDatumPocetka.setDateToToday();
         lstDnevnikHrane.setModel(new DefaultListModel<IzracunMakroHrane>());
 
     }
 
     private void postavke() {
+        //#10
         //works
         setTitle(Aplikacija.NASLOV_APP + " Dnevnik hrane");
 
@@ -193,30 +189,16 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         lblHrana = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        txtMasti = new javax.swing.JTextField();
         dpDatumPocetka = new com.github.lgooddatepicker.components.DatePicker();
-        jLabel6 = new javax.swing.JLabel();
         btnDodaj = new javax.swing.JButton();
-        txtAktiv = new javax.swing.JTextField();
         btnPromjeni = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        txtBMR = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        txtNeto = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         lstDnevnikHrane = new javax.swing.JList<>();
         txtKolicinaHraneDnevnik = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtKcal = new javax.swing.JTextField();
-        txtProtein = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstEntiteti = new javax.swing.JList<>();
-        txtUH = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         lstDnevnik1 = new javax.swing.JList<>();
@@ -337,31 +319,10 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
         jLabel17.setText("Datum");
 
-        txtMasti.setEditable(false);
-        txtMasti.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtMasti.setBackground(new java.awt.Color(255, 255, 255));
-        txtMasti.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMastiActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setText("Masti:");
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
         btnDodaj.setText("Dodaj");
         btnDodaj.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDodajActionPerformed(evt);
-            }
-        });
-
-        txtAktiv.setEditable(false);
-        txtAktiv.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtAktiv.setBackground(new java.awt.Color(255, 255, 255));
-        txtAktiv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAktivActionPerformed(evt);
             }
         });
 
@@ -371,33 +332,6 @@ public class DnevnikHraneView extends javax.swing.JFrame {
                 btnPromjeniActionPerformed(evt);
             }
         });
-
-        jLabel8.setText("Aktiv:");
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
-        txtBMR.setEditable(false);
-        txtBMR.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtBMR.setBackground(new java.awt.Color(255, 255, 255));
-        txtBMR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBMRActionPerformed(evt);
-            }
-        });
-
-        jLabel9.setText("BMR:");
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
-        txtNeto.setEditable(false);
-        txtNeto.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtNeto.setBackground(new java.awt.Color(255, 255, 255));
-        txtNeto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNetoActionPerformed(evt);
-            }
-        });
-
-        jLabel10.setText("Neto:");
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         lstDnevnikHrane.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -410,30 +344,6 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
         jLabel3.setText("Datum hrane:");
 
-        txtKcal.setEditable(false);
-        txtKcal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtKcal.setBackground(new java.awt.Color(255, 255, 255));
-        txtKcal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtKcalActionPerformed(evt);
-            }
-        });
-
-        txtProtein.setEditable(false);
-        txtProtein.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtProtein.setBackground(new java.awt.Color(255, 255, 255));
-        txtProtein.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtProteinActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setText("Kcal:");
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
-        jLabel4.setText("Proteini:");
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
         lstEntiteti.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lstEntiteti.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -441,18 +351,6 @@ public class DnevnikHraneView extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(lstEntiteti);
-
-        txtUH.setEditable(false);
-        txtUH.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtUH.setBackground(new java.awt.Color(255, 255, 255));
-        txtUH.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUHActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setText("UH:");
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabel11.setText("Baza hrane");
 
@@ -519,51 +417,15 @@ public class DnevnikHraneView extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
                                     .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel17)
+                                            .addComponent(dpDatumPocetka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel17)
-                                                    .addComponent(dpDatumPocetka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(btnDodaj, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(btnPromjeni, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                            .addComponent(txtMasti, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                            .addComponent(txtKcal, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                            .addComponent(txtProtein, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                            .addComponent(txtUH, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(txtAktiv, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(txtBMR, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(txtNeto, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                .addComponent(btnDodaj, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(btnPromjeni, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
@@ -623,24 +485,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtProtein, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtUH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtMasti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtKcal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(197, 197, 197)
@@ -665,23 +510,13 @@ public class DnevnikHraneView extends javax.swing.JFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(btnDodaj)
                                         .addComponent(btnPromjeni))
-                                    .addGap(152, 152, 152)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(txtAktiv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel8))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(txtBMR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel9))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel10)
-                                        .addComponent(txtNeto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addGap(218, 218, 218)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(73, 73, 73)
                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(btnSPremiKalorije)
                 .addGap(86, 86, 86)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -747,11 +582,8 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_lblHranaMouseClicked
 
-    private void txtMastiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMastiActionPerformed
-        // TODO add your  handling code here:
-    }//GEN-LAST:event_txtMastiActionPerformed
-
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
+        //#3
         dnevnikHranaController.setEntitet(new DnevnikHrane());
 
         postaviVrijednostiUEntitet();
@@ -766,11 +598,8 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         updateZbroja();
     }//GEN-LAST:event_btnDodajActionPerformed
 
-    private void txtAktivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAktivActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAktivActionPerformed
-
     private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
+       //#4
         if (dnevnikHranaController.getEntitet() == null) {
             JOptionPane.showMessageDialog(getRootPane(), "Prvo odaberite datum");
             return;
@@ -788,23 +617,8 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         updateZbroja();
     }//GEN-LAST:event_btnPromjeniActionPerformed
 
-    private void txtBMRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBMRActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBMRActionPerformed
-
-    private void txtNetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNetoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNetoActionPerformed
-
-    private void txtKcalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKcalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtKcalActionPerformed
-
-    private void txtProteinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProteinActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtProteinActionPerformed
-
     private void lstEntitetiValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstEntitetiValueChanged
+        //#2
         if (evt.getValueIsAdjusting() || lstEntiteti.getSelectedValue() == null) {
             return;
         }
@@ -838,29 +652,17 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     private void updateZbroja() {
         DefaultListModel<IzracunMakroHrane> m = (DefaultListModel<IzracunMakroHrane>) lstDnevnikHrane.getModel();
         int ukupnoKcal = 0;
-        int ukupnoProt = 0;
-        int ukupnoUH = 0;
-        int ukupnoM = 0;
 
         for (int i = 0; i < m.getSize(); i++) {
             ukupnoKcal += m.get(i).getKalorije();
-            ukupnoProt += m.get(i).getProteini();
-            ukupnoUH += m.get(i).getUgljikohidrati();
-            ukupnoM += m.get(i).getMasti();
-
         }
-        txtKcal.setText(String.valueOf(ukupnoKcal));
-        txtProtein.setText(String.valueOf(ukupnoProt));
-        txtUH.setText(String.valueOf(ukupnoUH));
-        txtMasti.setText(String.valueOf(ukupnoM));
+        lblUkupno.setText(String.valueOf(ukupnoKcal));
+
 
     }
 
-    private void txtUHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUHActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUHActionPerformed
-
     private void btnTraziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraziActionPerformed
+        //#8
         DefaultListModel<Hrana> m = new DefaultListModel<>();
         hranaController.read(txtUvjet.getText()).forEach(p -> {
             m.addElement(p);
@@ -870,15 +672,16 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
     private void btnDodaj1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodaj1ActionPerformed
         //Tu sam stao 
+        //#7
         DefaultListModel<IzracunMakroHrane> m = (DefaultListModel<IzracunMakroHrane>) lstDnevnikHrane.getModel();
         for (Hrana p : lstDnevnik1.getSelectedValuesList()) {
             IzracunMakroHrane c = new IzracunMakroHrane();
             c.setHranaMakro(p);
             c.setDnevnikHrane(dnevnikHranaController.getEntitet());
-            c.setKalorije(Integer.parseInt(txtKcal.getText()));
-            c.setMasti(Integer.parseInt(txtMasti.getText()));
-            c.setUgljikohidrati(Integer.parseInt(txtUH.getText()));
-            c.setProteini(Integer.parseInt(txtProtein.getText()));
+            c.setKalorije(Integer.parseInt(txtKolicinaHraneDnevnik.getText()));
+//            c.setMasti(Integer.parseInt(txtMasti.getText()));
+//            c.setUgljikohidrati(Integer.parseInt(txtUH.getText()));
+//            c.setProteini(Integer.parseInt(txtProtein.getText())); 
             m.addElement(c);
 
         }
@@ -889,6 +692,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
     private void btnObrisi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisi1ActionPerformed
         //works
+        //#6
         List<IzracunMakroHrane> lista = lstDnevnikHrane.getSelectedValuesList();
 
         for (IzracunMakroHrane a : lista) {
@@ -906,10 +710,10 @@ public class DnevnikHraneView extends javax.swing.JFrame {
             return;
         }
 
-        c.setKalorije(Integer.parseInt(txtKcal.getText()));
-        c.setProteini(Integer.parseInt(txtProtein.getText()));
-        c.setUgljikohidrati(Integer.parseInt(txtUH.getText()));
-        c.setMasti(Integer.parseInt(txtMasti.getText()));
+        c.setKalorije(Integer.parseInt(txtKolicinaHraneDnevnik.getText()));
+//        c.setProteini(Integer.parseInt(txtProtein.getText()));
+//        c.setUgljikohidrati(Integer.parseInt(txtUH.getText()));
+//        c.setMasti(Integer.parseInt(txtMasti.getText()));
 
         c.setKalorije(Integer.parseInt(txtKolicinaHraneDnevnik.getText()));
 
@@ -936,12 +740,12 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
         txtKolicinaHraneDnevnik.setText(String.valueOf(c.getKalorije()));
 
-        txtKcal.setText(String.valueOf(c.getKalorije()));
+        txtKolicinaHraneDnevnik.setText(String.valueOf(c.getKalorije()));
 
-        txtKcal.setText(String.valueOf(c.getKalorije()));
-        txtProtein.setText(String.valueOf(c.getProteini()));
-        txtUH.setText(String.valueOf(c.getUgljikohidrati()));
-        txtMasti.setText(String.valueOf(c.getMasti()));
+        txtKolicinaHraneDnevnik.setText(String.valueOf(c.getKalorije()));
+//        txtProtein.setText(String.valueOf(c.getProteini()));
+//        txtUH.setText(String.valueOf(c.getUgljikohidrati()));
+//        txtMasti.setText(String.valueOf(c.getMasti()));
 
 
     }//GEN-LAST:event_lstDnevnikHraneValueChanged
@@ -956,18 +760,11 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     private javax.swing.JButton btnTrazi;
     private com.github.lgooddatepicker.components.DatePicker dpDatumPocetka;
     private javax.swing.JLabel iconGoreLijevo1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane6;
@@ -983,15 +780,8 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     private javax.swing.JList<Hrana> lstDnevnik1;
     private javax.swing.JList<IzracunMakroHrane> lstDnevnikHrane;
     private javax.swing.JList<DnevnikHrane> lstEntiteti;
-    private javax.swing.JTextField txtAktiv;
-    private javax.swing.JTextField txtBMR;
     private javax.swing.JTextField txtDatum;
-    private javax.swing.JTextField txtKcal;
     private javax.swing.JTextField txtKolicinaHraneDnevnik;
-    private javax.swing.JTextField txtMasti;
-    private javax.swing.JTextField txtNeto;
-    private javax.swing.JTextField txtProtein;
-    private javax.swing.JTextField txtUH;
     private javax.swing.JTextField txtUvjet;
     private javax.swing.JTextField txtVrijeme;
     // End of variables declaration//GEN-END:variables

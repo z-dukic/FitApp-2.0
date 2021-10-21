@@ -32,11 +32,6 @@ public class DnevnikHrane extends Entitet {
     @ManyToOne
     private Hrana hrana;
 
-    private int kolicinaUneseneHrane;
-
-    @ManyToOne
-    private Korisnik korisnik;
-
     @OneToMany
     private List<IzracunMakroHrane> izracunMakroHrane = new ArrayList<>();
 
@@ -64,22 +59,6 @@ public class DnevnikHrane extends Entitet {
         this.hrana = hrana;
     }
 
-    public Korisnik getKorisnik() {
-        return korisnik;
-    }
-
-    public void setKorisnik(Korisnik korisnik) {
-        this.korisnik = korisnik;
-    }
-
-    public int getKolicinaUneseneHrane() {
-        return kolicinaUneseneHrane;
-    }
-
-    public void setKolicinaUneseneHrane(int kolicinaUneseneHrane) {
-        this.kolicinaUneseneHrane = kolicinaUneseneHrane;
-    }
-
     //date must not be null error
 //    public static final String DATE_FORMAT = "d.M.yyyy.";
 //    private static SimpleDateFormat dateFormat;
@@ -98,7 +77,4 @@ public class DnevnikHrane extends Entitet {
 //    public String toString() {
 //        return "d" + datum;
 //    }
-
-
- 
 }

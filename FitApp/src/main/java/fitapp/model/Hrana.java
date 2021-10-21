@@ -12,7 +12,7 @@ import javax.persistence.Entity;
  * @author PC
  */
 @Entity
-public class Hrana extends MakroNutrijenti {
+public class Hrana extends Entitet {
 
     private String imeHrane;
 

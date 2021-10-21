@@ -18,11 +18,9 @@ public class Start {
 
         //Pokretanje aplikacije
         new SplashScreen().setVisible(true);
-        
+
         //Ubacivanje korisnika, hrane po potrebi
         //HibernateSession.odradiPosao();
-        
-        
     }
 
 }

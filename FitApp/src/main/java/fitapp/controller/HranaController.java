@@ -20,12 +20,12 @@ public class HranaController extends Controller<Hrana> {
     public List<Hrana> read() {
         return session.createQuery("from Hrana").list();
     }
-    
-    public List<Hrana> read(String uvjet){
+
+    public List<Hrana> read(String uvjet) {
         return session.createQuery("from Hrana h"
-                +" where concat (h.imeHrane) " 
-                + "like :uvjet order by h.imeHrane") 
-         .setParameter("uvjet", "%" + uvjet + "%")
+                + " where concat (h.imeHrane) "
+                + "like :uvjet order by h.imeHrane")
+                .setParameter("uvjet", "%" + uvjet + "%")
                 .setMaxResults(50)
                 .list();
     }
@@ -34,7 +34,6 @@ public class HranaController extends Controller<Hrana> {
     @Override
     protected void controlCreate() throws ControllerException {
         kontrolaImenaHrane();
-        kontrolaKolicinaHrane();
 
     }
 
@@ -42,7 +41,6 @@ public class HranaController extends Controller<Hrana> {
     @Override
     protected void controlUpdate() throws ControllerException {
         kontrolaImenaHrane();
-        kontrolaKolicinaHrane();
 
     }
 
@@ -54,16 +52,8 @@ public class HranaController extends Controller<Hrana> {
 
     //Dodati ime hrane je obavezno
     private void kontrolaImenaHrane() throws ControllerException {
-        if (modelEntity.getImeHrane() == null || modelEntity.getImeHrane().trim().length() == 0) {
+        if (entitet.getImeHrane() == null || entitet.getImeHrane().trim().length() == 0) {
             throw new ControllerException("Dodati ime hrane je obavezno.");
-        }
-
-    }
-
-    //Nemoguce dodati vise od 1000g
-    private void kontrolaKolicinaHrane() throws ControllerException {
-        if (modelEntity.getKolicina() > 1000) {
-            throw new ControllerException("Količina hrane ne može biti veća od 1000g (odnosno 1kg).");
         }
 
     }

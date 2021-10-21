@@ -23,12 +23,6 @@ public class IzracunMakroHrane extends Entitet {
 
     private int kalorije;
 
-    private int proteini;
-
-    private int ugljikohidrati;
-
-    private int masti;
-
     public DnevnikHrane getDnevnikHrane() {
         return dnevnikHrane;
     }
@@ -45,30 +39,6 @@ public class IzracunMakroHrane extends Entitet {
         this.kalorije = kalorije;
     }
 
-    public int getProteini() {
-        return proteini;
-    }
-
-    public void setProteini(int proteini) {
-        this.proteini = proteini;
-    }
-
-    public int getUgljikohidrati() {
-        return ugljikohidrati;
-    }
-
-    public void setUgljikohidrati(int ugljikohidrati) {
-        this.ugljikohidrati = ugljikohidrati;
-    }
-
-    public int getMasti() {
-        return masti;
-    }
-
-    public void setMasti(int masti) {
-        this.masti = masti;
-    }
-
     public Hrana getHranaMakro() {
         return hranaMakro;
     }
@@ -77,22 +47,18 @@ public class IzracunMakroHrane extends Entitet {
         this.hranaMakro = hranaMakro;
     }
 
-
     //Baca error da je string "";
-
 //    @Override
 //    public String toString() {
 //
 //        
 //        return dnevnikHrane.toString();
 //    }
-
-    
     //To dodaje null vrijednost.
     @Override
     public String toString() {
 
-        return " "+ dnevnikHrane;
+        return " " + dnevnikHrane;
     }
 
 }
