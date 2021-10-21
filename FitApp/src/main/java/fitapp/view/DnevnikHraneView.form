@@ -58,7 +58,7 @@
                                           <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="dpDatumPocetka" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="btnDodajDatum" min="-2" pref="73" max="-2" attributes="0"/>
+                                              <Component id="btnDodaj" min="-2" pref="73" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Component id="btnPromjeni" min="-2" pref="95" max="-2" attributes="0"/>
                                           </Group>
@@ -66,7 +66,7 @@
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Component id="btnDodajHranuMakro" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btnDodaj1" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="btnObrisi1" min="-2" max="-2" attributes="0"/>
                                           </Group>
@@ -151,7 +151,7 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="59" pref="59" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="btnDodajHranuMakro" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btnDodaj1" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="btnObrisi1" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -169,7 +169,7 @@
                                   <Component id="dpDatumPocetka" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="btnDodajDatum" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnDodaj" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnPromjeni" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="218" max="-2" attributes="0"/>
@@ -345,12 +345,12 @@
     </Component>
     <Component class="com.github.lgooddatepicker.components.DatePicker" name="dpDatumPocetka">
     </Component>
-    <Component class="javax.swing.JButton" name="btnDodajDatum">
+    <Component class="javax.swing.JButton" name="btnDodaj">
       <Properties>
         <Property name="text" type="java.lang.String" value="Dodaj"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDodajDatumActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDodajActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnPromjeni">
@@ -436,9 +436,6 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="lstDnevnik1ValueChanged"/>
-          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Hrana&gt;"/>
           </AuxValues>
@@ -455,12 +452,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTraziActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnDodajHranuMakro">
+    <Component class="javax.swing.JButton" name="btnDodaj1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Dodaj"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDodajHranuMakroActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDodaj1ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnObrisi1">

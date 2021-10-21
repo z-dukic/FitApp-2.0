@@ -6,9 +6,14 @@
 package fitapp.view;
 
 import com.github.lgooddatepicker.components.DatePickerSettings;
+import fitapp.controller.AktivnostiController;
+import fitapp.controller.DnevnikAktivnostiController;
 import fitapp.controller.DnevnikHraneController;
 import fitapp.controller.HranaController;
 import fitapp.controller.IzracunMakroHraneController;
+import fitapp.controller.KorisnikController;
+import fitapp.model.Aktivnost;
+import fitapp.model.DnevnikAktivnosti;
 import fitapp.model.DnevnikHrane;
 import fitapp.model.Hrana;
 import fitapp.model.IzracunMakroHrane;
@@ -17,6 +22,8 @@ import fitapp.util.ControllerException;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -103,7 +110,6 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
     public void postaviVrijednostiUEntitet() {
         //ne radi
-        //#11
         var e = dnevnikHranaController.getEntitet();
 
         if (dpDatumPocetka.getDate() != null) {
@@ -184,7 +190,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         dpDatumPocetka = new com.github.lgooddatepicker.components.DatePicker();
-        btnDodajDatum = new javax.swing.JButton();
+        btnDodaj = new javax.swing.JButton();
         btnPromjeni = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         lstDnevnikHrane = new javax.swing.JList<>();
@@ -198,7 +204,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         lstDnevnik1 = new javax.swing.JList<>();
         txtUvjet = new javax.swing.JTextField();
         btnTrazi = new javax.swing.JButton();
-        btnDodajHranuMakro = new javax.swing.JButton();
+        btnDodaj1 = new javax.swing.JButton();
         btnObrisi1 = new javax.swing.JButton();
         btnSPremiKalorije = new javax.swing.JButton();
         lblUkupno = new javax.swing.JLabel();
@@ -313,10 +319,10 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
         jLabel17.setText("Datum");
 
-        btnDodajDatum.setText("Dodaj");
-        btnDodajDatum.addActionListener(new java.awt.event.ActionListener() {
+        btnDodaj.setText("Dodaj");
+        btnDodaj.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDodajDatumActionPerformed(evt);
+                btnDodajActionPerformed(evt);
             }
         });
 
@@ -348,11 +354,6 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
         jLabel11.setText("Baza hrane");
 
-        lstDnevnik1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                lstDnevnik1ValueChanged(evt);
-            }
-        });
         jScrollPane6.setViewportView(lstDnevnik1);
 
         btnTrazi.setText("Traži");
@@ -362,10 +363,10 @@ public class DnevnikHraneView extends javax.swing.JFrame {
             }
         });
 
-        btnDodajHranuMakro.setText("Dodaj");
-        btnDodajHranuMakro.addActionListener(new java.awt.event.ActionListener() {
+        btnDodaj1.setText("Dodaj");
+        btnDodaj1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDodajHranuMakroActionPerformed(evt);
+                btnDodaj1ActionPerformed(evt);
             }
         });
 
@@ -422,13 +423,13 @@ public class DnevnikHraneView extends javax.swing.JFrame {
                                             .addComponent(jLabel17)
                                             .addComponent(dpDatumPocetka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(btnDodajDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(btnDodaj, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(btnPromjeni, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(btnDodajHranuMakro)
+                                                .addComponent(btnDodaj1)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(btnObrisi1))
                                             .addComponent(jLabel16)
@@ -494,7 +495,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
                                         .addGroup(layout.createSequentialGroup()
                                             .addGap(59, 59, 59)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(btnDodajHranuMakro)
+                                                .addComponent(btnDodaj1)
                                                 .addComponent(btnObrisi1)))
                                         .addGroup(layout.createSequentialGroup()
                                             .addGap(20, 20, 20)
@@ -507,7 +508,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
                                     .addComponent(dpDatumPocetka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnDodajDatum)
+                                        .addComponent(btnDodaj)
                                         .addComponent(btnPromjeni))
                                     .addGap(218, 218, 218)))))
                     .addGroup(layout.createSequentialGroup()
@@ -581,7 +582,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_lblHranaMouseClicked
 
-    private void btnDodajDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajDatumActionPerformed
+    private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
         //#3
         dnevnikHranaController.setEntitet(new DnevnikHrane());
 
@@ -594,8 +595,8 @@ public class DnevnikHraneView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
         }
 
-       
-    }//GEN-LAST:event_btnDodajDatumActionPerformed
+        updateZbroja();
+    }//GEN-LAST:event_btnDodajActionPerformed
 
     private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
        //#4
@@ -649,7 +650,6 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }//GEN-LAST:event_lstEntitetiValueChanged
 
     private void updateZbroja() {
-        //#13 
         DefaultListModel<IzracunMakroHrane> m = (DefaultListModel<IzracunMakroHrane>) lstDnevnikHrane.getModel();
         int ukupnoKcal = 0;
 
@@ -670,7 +670,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         lstDnevnik1.setModel(m);
     }//GEN-LAST:event_btnTraziActionPerformed
 
-    private void btnDodajHranuMakroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajHranuMakroActionPerformed
+    private void btnDodaj1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodaj1ActionPerformed
         //Tu sam stao 
         //#7
         DefaultListModel<IzracunMakroHrane> m = (DefaultListModel<IzracunMakroHrane>) lstDnevnikHrane.getModel();
@@ -688,7 +688,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         lstDnevnikHrane.repaint();
         updateZbroja();
 
-    }//GEN-LAST:event_btnDodajHranuMakroActionPerformed
+    }//GEN-LAST:event_btnDodaj1ActionPerformed
 
     private void btnObrisi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisi1ActionPerformed
         //works
@@ -704,7 +704,6 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnObrisi1ActionPerformed
 
     private void btnSPremiKalorijeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSPremiKalorijeActionPerformed
-        //#12
         IzracunMakroHrane c = lstDnevnikHrane.getSelectedValue();
 
         if (c == null) {
@@ -715,6 +714,8 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 //        c.setProteini(Integer.parseInt(txtProtein.getText()));
 //        c.setUgljikohidrati(Integer.parseInt(txtUH.getText()));
 //        c.setMasti(Integer.parseInt(txtMasti.getText()));
+
+        c.setKalorije(Integer.parseInt(txtKolicinaHraneDnevnik.getText()));
 
         izracunMakroHraneController.setEntitet(c);
         try {
@@ -727,7 +728,6 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSPremiKalorijeActionPerformed
 
     private void lstDnevnikHraneValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstDnevnikHraneValueChanged
-        //#14
         if (evt.getValueIsAdjusting()) {
             return;
         }
@@ -740,7 +740,9 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
         txtKolicinaHraneDnevnik.setText(String.valueOf(c.getKalorije()));
 
+        txtKolicinaHraneDnevnik.setText(String.valueOf(c.getKalorije()));
 
+        txtKolicinaHraneDnevnik.setText(String.valueOf(c.getKalorije()));
 //        txtProtein.setText(String.valueOf(c.getProteini()));
 //        txtUH.setText(String.valueOf(c.getUgljikohidrati()));
 //        txtMasti.setText(String.valueOf(c.getMasti()));
@@ -748,27 +750,10 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_lstDnevnikHraneValueChanged
 
-    private void lstDnevnik1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstDnevnik1ValueChanged
-                //#14
-                //Mislim da ovo ne treba
-//        if (evt.getValueIsAdjusting()) {
-//            return;
-//        }
-//        
-//        Hrana c = lstDnevnik1.getSelectedValue();
-//        
-//           if (c == null) {
-//            return;
-//        }
-//           
-//           txtKolicinaHraneDnevnik.setText(String.valueOf(c.getKalorije()));
-//        
-    }//GEN-LAST:event_lstDnevnik1ValueChanged
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDodajDatum;
-    private javax.swing.JButton btnDodajHranuMakro;
+    private javax.swing.JButton btnDodaj;
+    private javax.swing.JButton btnDodaj1;
     private javax.swing.JButton btnObrisi1;
     private javax.swing.JButton btnPromjeni;
     private javax.swing.JButton btnSPremiKalorije;
