@@ -6,7 +6,7 @@
 package fitapp.view;
 
 import fitapp.controller.KorisnikController;
-import fitapp.model.Dnevnik;
+import fitapp.model.DnevnikHrane;
 import fitapp.model.Korisnik;
 import fitapp.util.Aplikacija;
 import fitapp.util.ControllerException;

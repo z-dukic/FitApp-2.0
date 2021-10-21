@@ -6,35 +6,41 @@
 package fitapp.model;
 
 import fitapp.util.Aplikacija;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import static org.hibernate.type.descriptor.java.DateTypeDescriptor.DATE_FORMAT;
 
 /**
  *
  * @author PC
  */
 @Entity
-public class Dnevnik extends Entitet {
+public class DnevnikHrane extends Entitet {
 
     private Date datum;
 
     @ManyToOne
     private Hrana hrana;
 
-    @OneToMany//(mappedBy = "dnevnik")
-    private List<Makrohrana> makrohrana = new ArrayList<>();
+    @OneToMany
+    private List<IzracunMakroHrane> izracunMakroHrane = new ArrayList<>();
 
-    public List<Makrohrana> getMakrohrana() {
-        return makrohrana;
+    public List<IzracunMakroHrane> getIzracunMakroHrane() {
+        return izracunMakroHrane;
     }
 
-    public void setMakrohrana(List<Makrohrana> makrohrana) {
-        this.makrohrana = makrohrana;
+    public void setIzracunMakroHrane(List<IzracunMakroHrane> izracunMakroHrane) {
+        this.izracunMakroHrane = izracunMakroHrane;
     }
 
     public Date getDatum() {
