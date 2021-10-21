@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class IzracunMakroHrane extends Entitet {
 
-    @ManyToOne
+    @ManyToOne()
     private DnevnikHrane dnevnikHrane;
 
     @ManyToOne
@@ -55,10 +55,11 @@ public class IzracunMakroHrane extends Entitet {
 //        return dnevnikHrane.toString();
 //    }
     //To dodaje null vrijednost.
+
     @Override
     public String toString() {
-
-        return " " + dnevnikHrane;
+        return " " + hranaMakro + " " + kalorije + "g";
     }
 
+    
 }

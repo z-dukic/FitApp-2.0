@@ -14,7 +14,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -32,7 +34,7 @@ public class DnevnikHrane extends Entitet {
     @ManyToOne
     private Hrana hrana;
 
-    @OneToMany
+    @OneToMany(mappedBy="dnevnikHrane")
     private List<IzracunMakroHrane> izracunMakroHrane = new ArrayList<>();
 
     public List<IzracunMakroHrane> getIzracunMakroHrane() {
