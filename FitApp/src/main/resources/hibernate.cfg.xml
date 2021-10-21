@@ -46,11 +46,11 @@
         <mapping class="fitapp.model.Hrana" />
         <mapping class="fitapp.model.Korisnik" />
         <mapping class="fitapp.model.Recept" />
-        <mapping class="fitapp.model.DnevnikHrane" />
+        <mapping class="fitapp.model.Dnevnik" />
         <mapping class="fitapp.model.DnevnikAktivnosti" />
         <mapping class="fitapp.model.Blog" />
-        <mapping class="fitapp.model.IzracunMakroHrane" />
-        <mapping class="fitapp.model.IzracunMakroAktivnost" />
+        <mapping class="fitapp.model.Makrohrana" />
+        <mapping class="fitapp.model.Makroaktivnost" />
         
         
         

@@ -5,8 +5,8 @@
  */
 package fitapp.controller;
 
-import fitapp.model.DnevnikHrane;
-import fitapp.model.IzracunMakroHrane;
+import fitapp.model.Dnevnik;
+import fitapp.model.Makrohrana;
 import fitapp.util.ControllerException;
 import java.math.BigInteger;
 import java.util.List;
@@ -16,16 +16,16 @@ import javax.persistence.Query;
  *
  * @author PC
  */
-public class DnevnikHraneController extends Controller<DnevnikHrane> {
+public class DnevnikHraneController extends Controller<Dnevnik> {
 
     @Override
-    public List<DnevnikHrane> read() {
-        return session.createQuery("from DnevnikHrane").list();
+    public List<Dnevnik> read() {
+        return session.createQuery("from Dnevnik").list();
     }
 
-    public DnevnikHrane create() throws ControllerException {
+    public Dnevnik create() throws ControllerException {
 
-        for (IzracunMakroHrane c : entitet.getIzracunMakroHrane()) {
+        for (Makrohrana c : entitet.getMakrohrana()) {
             c.setDnevnikHrane(entitet);
             session.save(c);
         }
@@ -33,9 +33,9 @@ public class DnevnikHraneController extends Controller<DnevnikHrane> {
         return super.create();
     }
 
-    public DnevnikHrane update() throws ControllerException {
+    public Dnevnik update() throws ControllerException {
         session.beginTransaction();
-        for (IzracunMakroHrane c : entitet.getIzracunMakroHrane()) {
+        for (Makrohrana c : entitet.getMakrohrana()) {
             session.save(c);
         }
         session.getTransaction().commit();
@@ -44,7 +44,7 @@ public class DnevnikHraneController extends Controller<DnevnikHrane> {
 
     public void delete() throws ControllerException {
         session.beginTransaction();
-        for (IzracunMakroHrane c : entitet.getIzracunMakroHrane()) {
+        for (Makrohrana c : entitet.getMakrohrana()) {
             session.delete(c);
         }
         session.getTransaction().commit();

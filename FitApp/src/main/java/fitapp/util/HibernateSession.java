@@ -9,7 +9,7 @@ import com.github.javafaker.Faker;
 import fitapp.model.Aktivnost;
 import fitapp.model.Blog;
 import fitapp.model.Hrana;
-import fitapp.model.IzracunMakroHrane;
+import fitapp.model.Makrohrana;
 import fitapp.model.Korisnik;
 import java.util.List;
 import org.hibernate.Session;
@@ -77,16 +77,16 @@ public class HibernateSession {
         Hrana sir = new Hrana();
         s.save(sir);
 
-        IzracunMakroHrane pizza = new IzracunMakroHrane();
-        pizza.setKalorije(200);
+        Makrohrana pizza = new Makrohrana();
+        pizza.setKolicina(200);
         s.save(pizza);
 
-        IzracunMakroHrane hotdog = new IzracunMakroHrane();
-        pizza.setKalorije(500);
+        Makrohrana hotdog = new Makrohrana();
+        pizza.setKolicina(500);
         s.save(hotdog);
 
-        IzracunMakroHrane kelj = new IzracunMakroHrane();
-        pizza.setKalorije(150);
+        Makrohrana kelj = new Makrohrana();
+        pizza.setKolicina(150);
         s.save(kelj);
 
         Blog blog1 = new Blog();

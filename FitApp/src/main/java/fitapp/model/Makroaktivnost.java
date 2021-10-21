@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
  *
  * @author PC
  */
-public class IzracunMakroAktivnost extends Entitet{
+public class Makroaktivnost extends Entitet{
     
     @ManyToOne
     private DnevnikAktivnosti dnevnikAktivnosti;

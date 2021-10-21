@@ -5,8 +5,8 @@
  */
 package fitapp.controller;
 
-import fitapp.model.DnevnikHrane;
-import fitapp.model.IzracunMakroHrane;
+import fitapp.model.Dnevnik;
+import fitapp.model.Makrohrana;
 import fitapp.util.ControllerException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +17,10 @@ import java.util.List;
  *
  * @author PC
  */
-public class IzracunMakroHraneController extends Controller<IzracunMakroHrane> {
+public class IzracunMakroHraneController extends Controller<Makrohrana> {
 
     @Override
-    public List<IzracunMakroHrane> read() {
+    public List<Makrohrana> read() {
        return new ArrayList<>();
     }
 
