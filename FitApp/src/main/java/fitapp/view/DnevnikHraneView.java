@@ -120,7 +120,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
                             .atZone(ZoneId.systemDefault()).toInstant())
             );
         }
-
+        izbrisiMakro();
         DefaultListModel<IzracunMakroHrane> m = (DefaultListModel<IzracunMakroHrane>) lstDnevnikHrane.getModel();
         List<IzracunMakroHrane> lista = new ArrayList<>();
         for (int i = 0; i < m.getSize(); i++) {
@@ -128,6 +128,19 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         }
         //Provjeri dali radi
         e.setIzracunMakroHrane(lista);
+    }
+
+    public void izbrisiMakro() {
+        for (IzracunMakroHrane c : izracunMakroHraneController.svi()) {
+            if (c.getDnevnikHrane().getDatum() == dnevnikHranaController.getEntitet().getDatum()) {
+                izracunMakroHraneController.setEntitet(c);
+                try {
+                    izracunMakroHraneController.delete();
+                } catch (ControllerException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getPoruka());
+                }
+            }
+        }
     }
 
     public void datum() {
@@ -210,7 +223,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         btnObrisiMakrohranu = new javax.swing.JButton();
         btnSPremiKalorije = new javax.swing.JButton();
         lblUkupno = new javax.swing.JLabel();
-        btnObrisi = new javax.swing.JButton();
+        btnObrisiDatum = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -394,10 +407,10 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
         lblUkupno.setText("Ukupno: 0");
 
-        btnObrisi.setText("Obriši");
-        btnObrisi.addActionListener(new java.awt.event.ActionListener() {
+        btnObrisiDatum.setText("Obriši");
+        btnObrisiDatum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnObrisiActionPerformed(evt);
+                btnObrisiDatumActionPerformed(evt);
             }
         });
 
@@ -444,8 +457,8 @@ public class DnevnikHraneView extends javax.swing.JFrame {
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                         .addComponent(btnPromjeniDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(61, 61, 61)
-                                                .addComponent(btnObrisi)))
+                                                .addGap(59, 59, 59)
+                                                .addComponent(btnObrisiDatum)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
@@ -531,7 +544,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
                                         .addComponent(btnDodajDatum)
                                         .addComponent(btnPromjeniDatum))
                                     .addGap(18, 18, 18)
-                                    .addComponent(btnObrisi)
+                                    .addComponent(btnObrisiDatum)
                                     .addGap(178, 178, 178)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(73, 73, 73)
@@ -639,8 +652,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         updateZbroja();
     }//GEN-LAST:event_btnPromjeniDatumActionPerformed
 
-    
-    
+
     private void lstEntitetiValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstEntitetiValueChanged
         //#2
         if (evt.getValueIsAdjusting() || lstEntiteti.getSelectedValue() == null) {
@@ -768,7 +780,6 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         txtKolicinaHraneDnevnik.setText(String.valueOf(c.getKalorije()));
 
 
-
     }//GEN-LAST:event_lstDnevnikHraneValueChanged
 
     private void lstDnevnikBazeValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstDnevnikBazeValueChanged
@@ -787,22 +798,22 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 //           txtKolicinaHraneDnevnik.setText(String.valueOf(c.getKalorije()));
     }//GEN-LAST:event_lstDnevnikBazeValueChanged
 
-    private void btnObrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiActionPerformed
+    private void btnObrisiDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiDatumActionPerformed
+        //#5
         if (dnevnikHranaController.getEntitet() == null) {
             JOptionPane.showMessageDialog(getRootPane(), "Prvo odaberite grupu");
             return;
         }
-        
         boolean brisanje = true;
-        
-        if(lstDnevnikHrane.getModel().getSize()>0){
-            if (JOptionPane.showConfirmDialog(getParent(), "Ima hrane. Ne možete obrisati.",
+        if (lstDnevnikHrane.getModel().getSize() > 0) {
+            if (JOptionPane.showConfirmDialog(getParent(), "Grupa ima polaznike. Sigurno sve obrisati",
                     "Brisanje grupe", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 dnevnikHranaController.getEntitet().setIzracunMakroHrane(new ArrayList<IzracunMakroHrane>());
-            }else{
+            } else {
                 brisanje = false;
             }
-        }if (brisanje) {
+        }
+        if (brisanje) {
             try {
                 dnevnikHranaController.delete();
                 ucitaj();
@@ -811,15 +822,15 @@ public class DnevnikHraneView extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
             }
         }
-        
-        
-    }//GEN-LAST:event_btnObrisiActionPerformed
+
+
+    }//GEN-LAST:event_btnObrisiDatumActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodajDatum;
     private javax.swing.JButton btnDodajMakroHranu;
-    private javax.swing.JButton btnObrisi;
+    private javax.swing.JButton btnObrisiDatum;
     private javax.swing.JButton btnObrisiMakrohranu;
     private javax.swing.JButton btnPromjeniDatum;
     private javax.swing.JButton btnSPremiKalorije;

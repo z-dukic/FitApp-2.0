@@ -12,10 +12,10 @@ import javax.persistence.ManyToOne;
  *
  * @author PC
  */
-@Entity
+@Entity(name = "makro")
 public class IzracunMakroHrane extends Entitet {
 
-    @ManyToOne()
+    @ManyToOne
     private DnevnikHrane dnevnikHrane;
 
     @ManyToOne

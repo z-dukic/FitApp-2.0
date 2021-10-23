@@ -21,6 +21,10 @@ public class IzracunMakroHraneController extends Controller<IzracunMakroHrane> {
     public List<IzracunMakroHrane> read() {
         return new ArrayList<>();
     }
+    
+        public List<IzracunMakroHrane> svi() {
+       return session.createQuery("from makro").list();
+    }
 
     @Override
     protected void controlCreate() throws ControllerException {

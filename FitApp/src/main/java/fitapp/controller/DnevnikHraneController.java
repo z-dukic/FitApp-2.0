@@ -60,7 +60,7 @@ public class DnevnikHraneController extends Controller<DnevnikHrane> {
 
     @Override
     protected void controlUpdate() throws ControllerException {
-        
+       kontrolaDatumaAkoJeNull();
         
     }
 

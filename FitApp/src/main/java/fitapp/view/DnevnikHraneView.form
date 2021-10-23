@@ -67,8 +67,8 @@
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                                              <Component id="btnObrisi" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                                              <Component id="btnObrisiDatum" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -181,7 +181,7 @@
                                       <Component id="btnPromjeniDatum" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btnObrisi" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnObrisiDatum" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -494,12 +494,12 @@
         <Property name="text" type="java.lang.String" value="Ukupno: 0"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnObrisi">
+    <Component class="javax.swing.JButton" name="btnObrisiDatum">
       <Properties>
         <Property name="text" type="java.lang.String" value="Obri&#x161;i"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnObrisiActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnObrisiDatumActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
