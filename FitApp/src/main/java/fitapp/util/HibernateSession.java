@@ -44,49 +44,97 @@ public class HibernateSession {
         //Dodavanje hrane u bazu hrana
         Hrana banana = new Hrana();
         banana.setImeHrane("Banana");
+        banana.setKalorije(89);
+        banana.setProteini(0);
+        banana.setUgljikohidrati(23);
+        banana.setMasti(0);
         s.save(banana);
 
         Hrana mrkva = new Hrana();
         mrkva.setImeHrane("Mrkva");
+        mrkva.setKalorije(35);
+        mrkva.setProteini(0);
+        mrkva.setUgljikohidrati(8);
+        mrkva.setMasti(0);
         s.save(mrkva);
 
         Hrana jabuka = new Hrana();
         jabuka.setImeHrane("Jabuka");
+        jabuka.setKalorije(48);
+        jabuka.setProteini(0);
+        jabuka.setUgljikohidrati(13);
+        jabuka.setMasti(0);
         s.save(jabuka);
 
         Hrana breskva = new Hrana();
         breskva.setImeHrane("Breskva");
+        breskva.setKalorije(39);
+        breskva.setProteini(10);
+        breskva.setUgljikohidrati(0);
+        breskva.setMasti(0);
         s.save(breskva);
 
         Hrana luk = new Hrana();
+        luk.setKalorije(40);
+        luk.setProteini(0);
+        luk.setUgljikohidrati(10);
+        luk.setMasti(0);
         s.save(luk);
 
         Hrana cocaCola = new Hrana();
         cocaCola.setImeHrane("Coca-cola");
+        cocaCola.setImeHrane("Coca-cola");
+        cocaCola.setKalorije(41);
+        cocaCola.setProteini(0);
+        cocaCola.setUgljikohidrati(10);
+        cocaCola.setMasti(0);
         s.save(cocaCola);
 
         Hrana cips = new Hrana();
+        cips.setImeHrane("Čips");
+        cips.setKalorije(547);
+        cips.setProteini(7);
+        cips.setUgljikohidrati(50);
+        cips.setMasti(37);
         s.save(cips);
 
         Hrana bigMac = new Hrana();
+        bigMac.setImeHrane("Big Mac");
+        bigMac.setKalorije(257);
+        bigMac.setProteini(12);
+        bigMac.setUgljikohidrati(20);
+        bigMac.setMasti(15);
         s.save(bigMac);
 
         Hrana bolognese = new Hrana();
+        bolognese.setImeHrane("Špagete Bolognese");
+        bolognese.setKalorije(113);
+        bolognese.setProteini(7);
+        bolognese.setUgljikohidrati(9);
+        bolognese.setMasti(7);
         s.save(bolognese);
 
         Hrana sir = new Hrana();
+        sir.setKalorije(356);
+        sir.setProteini(25);
+        sir.setUgljikohidrati(2);
+        sir.setMasti(27);
         s.save(sir);
 
         IzracunMakroHrane pizza = new IzracunMakroHrane();
         pizza.setKalorije(200);
+        pizza.setKolicina(100);
+        pizza.setProteini(20);
+        pizza.setUgljikohidrati(50);
+        pizza.setMasti(30);
         s.save(pizza);
 
         IzracunMakroHrane hotdog = new IzracunMakroHrane();
-        pizza.setKalorije(500);
+        //hotdog.setKalorije(500);
         s.save(hotdog);
 
         IzracunMakroHrane kelj = new IzracunMakroHrane();
-        pizza.setKalorije(150);
+       //kelj.setKalorije(150);
         s.save(kelj);
 
         Blog blog1 = new Blog();
