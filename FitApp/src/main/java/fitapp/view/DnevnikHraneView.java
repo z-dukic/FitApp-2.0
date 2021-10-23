@@ -114,7 +114,8 @@ public class DnevnikHraneView extends javax.swing.JFrame {
                             .atZone(ZoneId.systemDefault()).toInstant())
             );
         }
-        izbrisiMakro();
+        //Tu je error.
+       // izbrisiMakro();
         DefaultListModel<IzracunMakroHrane> m = (DefaultListModel<IzracunMakroHrane>) lstDnevnikHrane.getModel();
         List<IzracunMakroHrane> lista = new ArrayList<>();
         for (int i = 0; i < m.getSize(); i++) {
@@ -222,6 +223,11 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         lblUkupnoProteina = new javax.swing.JLabel();
         lblUkupnoUgljikohidrata = new javax.swing.JLabel();
         lblUkupnoMasti = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -420,6 +426,16 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
         lblUkupnoMasti.setText("Ukupno masti: 0");
 
+        jLabel1.setText("Uk. grama:");
+
+        jLabel2.setText("Uk. Kcal:");
+
+        jLabel4.setText("Uk. Proteina:");
+
+        jLabel5.setText("Uk. UH:");
+
+        jLabel6.setText("Uk. Masti:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -451,7 +467,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -467,10 +483,21 @@ public class DnevnikHraneView extends javax.swing.JFrame {
                                                     .addGroup(layout.createSequentialGroup()
                                                         .addGap(59, 59, 59)
                                                         .addComponent(btnObrisiDatum))))
-                                            .addComponent(lblUkupnaKoličina, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblUkupnoKalorija, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblUkupnoProteina, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblUkupnoUgljikohidrata, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel1)
+                                                    .addComponent(jLabel2)
+                                                    .addComponent(jLabel4)
+                                                    .addComponent(jLabel5)
+                                                    .addComponent(jLabel6))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(lblUkupnaKoličina, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(lblUkupnoKalorija, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(lblUkupnoProteina, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(lblUkupnoUgljikohidrata, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(lblUkupnoMasti, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(34, 34, 34)))
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -497,10 +524,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
                                 .addComponent(lblPostavke, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblIzbornikOdjaviSe, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblUkupnoMasti, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -536,13 +560,25 @@ public class DnevnikHraneView extends javax.swing.JFrame {
                                 .addComponent(btnObrisiDatum))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblUkupnaKoličina)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblUkupnaKoličina)
+                            .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblUkupnoKalorija)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblUkupnoKalorija)
+                            .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblUkupnoProteina)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblUkupnoProteina)
+                            .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblUkupnoUgljikohidrata))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblUkupnoUgljikohidrata)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblUkupnoMasti)
+                            .addComponent(jLabel6)))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel11)
@@ -570,8 +606,6 @@ public class DnevnikHraneView extends javax.swing.JFrame {
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSPremiKalorije)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblUkupnoMasti)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -754,10 +788,10 @@ public class DnevnikHraneView extends javax.swing.JFrame {
             }
             //ovo pokazuje tostring
             c.setKolicina(Integer.parseInt(txtKolicinaHraneDnevnik.getText()));
-            c.setKalorije(Integer.parseInt(txtKolicinaHraneDnevnik.getText())); 
-            c.setMasti(Integer.parseInt(txtKolicinaHraneDnevnik.getText()));
-            c.setUgljikohidrati(Integer.parseInt(txtKolicinaHraneDnevnik.getText()));
-            c.setProteini(Integer.parseInt(txtKolicinaHraneDnevnik.getText()));
+            c.setKalorije((Integer.parseInt(txtKolicinaHraneDnevnik.getText())/100)*p.getKalorije()); 
+            c.setMasti((Integer.parseInt(txtKolicinaHraneDnevnik.getText())/100)*p.getMasti());
+            c.setUgljikohidrati((Integer.parseInt(txtKolicinaHraneDnevnik.getText())/100)*p.getUgljikohidrati());
+            c.setProteini((Integer.parseInt(txtKolicinaHraneDnevnik.getText())/100)*p.getProteini());
             m.addElement(c);
 
         }
@@ -787,11 +821,11 @@ public class DnevnikHraneView extends javax.swing.JFrame {
             return;
         }
 
-        c.setKolicina(Integer.parseInt(txtKolicinaHraneDnevnik.getText()) / 100 * hranaController.getEntitet().getKalorije());
-        c.setKalorije(Integer.parseInt(txtKolicinaHraneDnevnik.getText()) / 100 * hranaController.getEntitet().getKalorije());
-        c.setMasti(Integer.parseInt(txtKolicinaHraneDnevnik.getText()) / 100 * hranaController.getEntitet().getMasti());
-        c.setUgljikohidrati(Integer.parseInt(txtKolicinaHraneDnevnik.getText()) / 100 * hranaController.getEntitet().getUgljikohidrati());
-        c.setProteini(Integer.parseInt(txtKolicinaHraneDnevnik.getText()) / 100 * hranaController.getEntitet().getProteini());
+        c.setKolicina(Integer.parseInt(txtKolicinaHraneDnevnik.getText()));
+        c.setKalorije(Integer.parseInt(txtKolicinaHraneDnevnik.getText()));
+        c.setMasti(Integer.parseInt(txtKolicinaHraneDnevnik.getText()));
+        c.setUgljikohidrati(Integer.parseInt(txtKolicinaHraneDnevnik.getText()));
+        c.setProteini(Integer.parseInt(txtKolicinaHraneDnevnik.getText()) * hranaController.getEntitet().getProteini());
         izracunMakroHraneController.setEntitet(c);
         try {
             izracunMakroHraneController.update();
@@ -818,6 +852,8 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         
         
         
+        
+        
         //Ovdje doradit value change
 //        c.setKalorije(Integer.parseInt(txtKolicinaHraneDnevnik.getText()) / 100 * hranaController.getEntitet().getKalorije());
 //        c.setMasti(Integer.parseInt(txtKolicinaHraneDnevnik.getText()) / 100 * hranaController.getEntitet().getMasti());
@@ -828,19 +864,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }//GEN-LAST:event_lstDnevnikHraneValueChanged
 
     private void lstDnevnikBazeValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstDnevnikBazeValueChanged
-        //#14
-        //Mislim da ovo ne treba
-//        if (evt.getValueIsAdjusting()) {
-//            return;
-//        }
-//        
-//        Hrana c = lstDnevnik1.getSelectedValue();
-//        
-//           if (c == null) {
-//            return;
-//        }
-//           
-//           txtKolicinaHraneDnevnik.setText(String.valueOf(c.getKalorije()));
+
     }//GEN-LAST:event_lstDnevnikBazeValueChanged
 
     private void btnObrisiDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiDatumActionPerformed
@@ -882,11 +906,16 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     private javax.swing.JButton btnTrazi;
     private com.github.lgooddatepicker.components.DatePicker dpDatum;
     private javax.swing.JLabel iconGoreLijevo1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane6;

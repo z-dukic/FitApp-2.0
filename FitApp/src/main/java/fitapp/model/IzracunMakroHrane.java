@@ -83,17 +83,9 @@ public class IzracunMakroHrane extends Entitet {
         this.hranaMakro = hranaMakro;
     }
 
-    //Baca error da je string "";
-//    @Override
-//    public String toString() {
-//
-//        
-//        return dnevnikHrane.toString();
-//    }
-    //To dodaje null vrijednost.
     @Override
     public String toString() {
-        return " " + hranaMakro + " " + kolicina + " " + (kalorije/100*kolicina) + "g " + (proteini/100*kolicina) + "g " + (ugljikohidrati/100*kolicina) + "g " + (masti/100*kolicina) + "g ";
+        return "" + hranaMakro + " " + kolicina + "g " + kalorije + "kcal " + proteini + "p " + ugljikohidrati + "uh " + masti + "m ";
     }
 
 }

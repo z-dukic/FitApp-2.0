@@ -75,6 +75,7 @@ public class HibernateSession {
         s.save(breskva);
 
         Hrana luk = new Hrana();
+        luk.setImeHrane("Luk");
         luk.setKalorije(40);
         luk.setProteini(0);
         luk.setUgljikohidrati(10);
@@ -82,7 +83,6 @@ public class HibernateSession {
         s.save(luk);
 
         Hrana cocaCola = new Hrana();
-        cocaCola.setImeHrane("Coca-cola");
         cocaCola.setImeHrane("Coca-cola");
         cocaCola.setKalorije(41);
         cocaCola.setProteini(0);
@@ -115,6 +115,7 @@ public class HibernateSession {
         s.save(bolognese);
 
         Hrana sir = new Hrana();
+        sir.setImeHrane("sir");
         sir.setKalorije(356);
         sir.setProteini(25);
         sir.setUgljikohidrati(2);
@@ -129,13 +130,13 @@ public class HibernateSession {
         pizza.setMasti(30);
         s.save(pizza);
 
-        IzracunMakroHrane hotdog = new IzracunMakroHrane();
-        //hotdog.setKalorije(500);
-        s.save(hotdog);
-
-        IzracunMakroHrane kelj = new IzracunMakroHrane();
-       //kelj.setKalorije(150);
-        s.save(kelj);
+//        IzracunMakroHrane hotdog = new IzracunMakroHrane();
+//        //hotdog.setKalorije(500);
+//        s.save(hotdog);
+//
+//        IzracunMakroHrane kelj = new IzracunMakroHrane();
+//       //kelj.setKalorije(150);
+//        s.save(kelj);
 
         Blog blog1 = new Blog();
         blog1.setNazivClanka("Vodič kroz zdravi doručak: Što jesti, a što izbjegavati?");
