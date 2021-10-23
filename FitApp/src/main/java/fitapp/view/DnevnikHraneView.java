@@ -115,7 +115,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
             );
         }
         //Tu je error.
-       // izbrisiMakro();
+        izbrisiMakro();
         DefaultListModel<IzracunMakroHrane> m = (DefaultListModel<IzracunMakroHrane>) lstDnevnikHrane.getModel();
         List<IzracunMakroHrane> lista = new ArrayList<>();
         for (int i = 0; i < m.getSize(); i++) {

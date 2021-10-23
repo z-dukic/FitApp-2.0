@@ -122,13 +122,13 @@ public class HibernateSession {
         sir.setMasti(27);
         s.save(sir);
 
-        IzracunMakroHrane pizza = new IzracunMakroHrane();
-        pizza.setKalorije(200);
-        pizza.setKolicina(100);
-        pizza.setProteini(20);
-        pizza.setUgljikohidrati(50);
-        pizza.setMasti(30);
-        s.save(pizza);
+//        IzracunMakroHrane pizza = new IzracunMakroHrane();
+//        pizza.setKalorije(200);
+//        pizza.setKolicina(100);
+//        pizza.setProteini(20);
+//        pizza.setUgljikohidrati(50);
+//        pizza.setMasti(30);
+//        s.save(pizza);
 
 //        IzracunMakroHrane hotdog = new IzracunMakroHrane();
 //        //hotdog.setKalorije(500);
