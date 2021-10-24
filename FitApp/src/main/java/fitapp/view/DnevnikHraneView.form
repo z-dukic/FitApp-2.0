@@ -29,6 +29,11 @@
                       <Component id="txtDatum" min="-2" pref="76" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtVrijeme" min="-2" pref="66" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnObrisiDatum" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnSPremiKalorije" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -55,22 +60,14 @@
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Group type="102" attributes="0">
                                               <Component id="jScrollPane1" min="-2" pref="118" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="dpDatum" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="btnDodajDatum" min="-2" pref="73" max="-2" attributes="0"/>
-                                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                              <Component id="btnPromjeniDatum" min="-2" pref="95" max="-2" attributes="0"/>
-                                                          </Group>
-                                                      </Group>
-                                                  </Group>
+                                                  <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="dpDatum" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Group type="102" alignment="0" attributes="0">
-                                                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                                                      <Component id="btnObrisiDatum" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="btnDodajDatum" min="-2" pref="73" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="btnPromjeniDatum" min="-2" pref="95" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -94,24 +91,15 @@
                                           </Group>
                                       </Group>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jScrollPane3" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="btnDodajMakroHranu" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="btnObrisiMakrohranu" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Component id="txtKolicinaHraneDnevnik" min="-2" pref="91" max="-2" attributes="0"/>
-                                                  <Component id="jLabel12" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
+                                          <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jScrollPane3" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                                              <Component id="btnSPremiKalorije" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btnDodajMakroHranu" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btnObrisiMakrohranu" min="-2" max="-2" attributes="0"/>
                                           </Group>
+                                          <Component id="txtKolicinaHraneDnevnik" min="-2" pref="91" max="-2" attributes="0"/>
+                                          <Component id="jLabel12" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -170,8 +158,6 @@
                                   <Component id="btnDodajDatum" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnPromjeniDatum" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btnObrisiDatum" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane1" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
                       </Group>
@@ -232,14 +218,19 @@
                           </Group>
                           <Component id="jLabel12" alignment="0" min="-2" pref="14" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnSPremiKalorije" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="124" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtDatum" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtVrijeme" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                      <Component id="txtDatum" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtVrijeme" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="btnSPremiKalorije" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnObrisiDatum" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
       </Group>
@@ -523,7 +514,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnSPremiKalorije">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Spremi"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f2" green="f2" red="f2" type="rgb"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSPremiKalorijeActionPerformed"/>
@@ -536,7 +529,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnObrisiDatum">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Obri&#x161;i"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f2" green="f2" red="f2" type="rgb"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnObrisiDatumActionPerformed"/>

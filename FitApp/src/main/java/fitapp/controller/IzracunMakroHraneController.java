@@ -4,11 +4,8 @@
  * and open the template in the editor.
  */
 package fitapp.controller;
-
-import fitapp.model.DnevnikHrane;
 import fitapp.model.IzracunMakroHrane;
 import fitapp.util.ControllerException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +16,7 @@ public class IzracunMakroHraneController extends Controller<IzracunMakroHrane> {
 
     @Override
     public List<IzracunMakroHrane> read() {
-        return new ArrayList<>();
+        return session.createQuery("from makro").list();
     }
     
         public List<IzracunMakroHrane> svi() {

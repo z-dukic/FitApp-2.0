@@ -128,29 +128,15 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
         lblHrana = new javax.swing.JLabel();
         txtVrijeme = new javax.swing.JTextField();
         txtDatum = new javax.swing.JTextField();
-        txtProtein = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txtUH = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         lstDnevnik1 = new javax.swing.JList<>();
         btnDodaj1 = new javax.swing.JButton();
         btnObrisi1 = new javax.swing.JButton();
-        txtMasti = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        txtAktiv = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        txtBMR = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        txtNeto = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         lstDnevnikAktivnost = new javax.swing.JList<>();
         txtKolicinaAktivnostDnevnik = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtKcal = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstEntiteti = new javax.swing.JList<>();
         jLabel11 = new javax.swing.JLabel();
@@ -268,30 +254,6 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
             }
         });
 
-        txtProtein.setEditable(false);
-        txtProtein.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtProtein.setBackground(new java.awt.Color(255, 255, 255));
-        txtProtein.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtProteinActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setText("Proteini:");
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
-        txtUH.setEditable(false);
-        txtUH.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtUH.setBackground(new java.awt.Color(255, 255, 255));
-        txtUH.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUHActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setText("UH:");
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
         jScrollPane6.setViewportView(lstDnevnik1);
 
         btnDodaj1.setText("Dodaj");
@@ -308,71 +270,11 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
             }
         });
 
-        txtMasti.setEditable(false);
-        txtMasti.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtMasti.setBackground(new java.awt.Color(255, 255, 255));
-        txtMasti.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMastiActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setText("Masti:");
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
-        txtAktiv.setEditable(false);
-        txtAktiv.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtAktiv.setBackground(new java.awt.Color(255, 255, 255));
-        txtAktiv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAktivActionPerformed(evt);
-            }
-        });
-
-        jLabel8.setText("Aktiv:");
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
-        txtBMR.setEditable(false);
-        txtBMR.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtBMR.setBackground(new java.awt.Color(255, 255, 255));
-        txtBMR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBMRActionPerformed(evt);
-            }
-        });
-
-        jLabel9.setText("BMR:");
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
-        txtNeto.setEditable(false);
-        txtNeto.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtNeto.setBackground(new java.awt.Color(255, 255, 255));
-        txtNeto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNetoActionPerformed(evt);
-            }
-        });
-
-        jLabel10.setText("Neto:");
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
         jScrollPane3.setViewportView(lstDnevnikAktivnost);
 
         jLabel12.setText("Trajanje u minutama:");
 
         jLabel3.setText("Datum aktivnosti:");
-
-        txtKcal.setEditable(false);
-        txtKcal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtKcal.setBackground(new java.awt.Color(255, 255, 255));
-        txtKcal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtKcalActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setText("Kcal:");
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         lstEntiteti.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lstEntiteti.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -450,41 +352,7 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnDodaj, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnPromjeni, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtMasti, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtKcal, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtProtein, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtUH, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtAktiv, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtBMR, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtNeto, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btnPromjeni, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16)
@@ -530,38 +398,7 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(txtAktiv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel8))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(txtBMR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel9)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(txtProtein, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel4))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(txtUH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel5))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(txtMasti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel6))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(txtKcal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel7)))
-                                    .addComponent(txtNeto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel10)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel17)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -590,7 +427,7 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnDodaj1)
                             .addComponent(btnObrisi1))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtVrijeme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -654,22 +491,6 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDatumActionPerformed
 
-    private void txtNetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNetoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNetoActionPerformed
-
-    private void txtBMRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBMRActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBMRActionPerformed
-
-    private void txtAktivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAktivActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAktivActionPerformed
-
-    private void txtMastiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMastiActionPerformed
-        // TODO add your  handling code here:
-    }//GEN-LAST:event_txtMastiActionPerformed
-
     private void btnObrisi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisi1ActionPerformed
         List<Aktivnost> lista = lstDnevnikAktivnost.getSelectedValuesList();
 
@@ -712,18 +533,6 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
         }
         return false;
     }
-
-    private void txtUHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUHActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUHActionPerformed
-
-    private void txtProteinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProteinActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtProteinActionPerformed
-
-    private void txtKcalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKcalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtKcalActionPerformed
 
     private void lstEntitetiValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstEntitetiValueChanged
         if (evt.getValueIsAdjusting() || lstEntiteti.getSelectedValue() == null) {
@@ -804,18 +613,11 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
     private javax.swing.JButton btnTrazi;
     private com.github.lgooddatepicker.components.DatePicker dpDatumPocetka;
     private javax.swing.JLabel iconGoreLijevo1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane6;
@@ -830,15 +632,8 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
     private javax.swing.JList<Aktivnost> lstDnevnik1;
     private javax.swing.JList<Aktivnost> lstDnevnikAktivnost;
     private javax.swing.JList<DnevnikAktivnosti> lstEntiteti;
-    private javax.swing.JTextField txtAktiv;
-    private javax.swing.JTextField txtBMR;
     private javax.swing.JTextField txtDatum;
-    private javax.swing.JTextField txtKcal;
     private javax.swing.JTextField txtKolicinaAktivnostDnevnik;
-    private javax.swing.JTextField txtMasti;
-    private javax.swing.JTextField txtNeto;
-    private javax.swing.JTextField txtProtein;
-    private javax.swing.JTextField txtUH;
     private javax.swing.JTextField txtUvjet;
     private javax.swing.JTextField txtVrijeme;
     // End of variables declaration//GEN-END:variables

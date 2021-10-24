@@ -5,18 +5,31 @@
  */
 package fitapp.model;
 
+import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 /**
  *
  * @author PC
  */
-public class IzracunMakroAktivnost extends Entitet{
-    
+@Entity(name = "makroakt")
+public class IzracunMakroAktivnost extends Entitet {
+
     @ManyToOne
     private DnevnikAktivnosti dnevnikAktivnosti;
-    
+
+    @ManyToOne
+    private Aktivnost aktivnostMakro;
+
     private int trajanjeAktivnosti;
+
+    public Aktivnost getAktivnostMakro() {
+        return aktivnostMakro;
+    }
+
+    public void setAktivnostMakro(Aktivnost aktivnostMakro) {
+        this.aktivnostMakro = aktivnostMakro;
+    }
 
     public DnevnikAktivnosti getDnevnikAktivnosti() {
         return dnevnikAktivnosti;
@@ -38,7 +51,5 @@ public class IzracunMakroAktivnost extends Entitet{
     public String toString() {
         return dnevnikAktivnosti.toString();
     }
-    
-    
-    
+
 }

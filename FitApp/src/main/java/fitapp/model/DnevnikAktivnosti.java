@@ -13,6 +13,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -26,11 +27,8 @@ public class DnevnikAktivnosti extends Entitet {
 
     private int vrijemeTrajanjaAktivnosti;
 
-    @ManyToMany
-    private List<Aktivnost> aktivnost;
-
-    @ManyToOne
-    private Korisnik korisnik;
+    @OneToMany(mappedBy = "makroakt")
+    private List<IzracunMakroHrane> izracunMakroHrane = new ArrayList<>();
 
     public Date getDatum() {
         return datum;
@@ -40,41 +38,12 @@ public class DnevnikAktivnosti extends Entitet {
         this.datum = datum;
     }
 
-    public List<Aktivnost> getAktivnost() {
-        return aktivnost;
-    }
-
-    public void setAktivnost(List<Aktivnost> aktivnost) {
-        this.aktivnost = aktivnost;
-    }
-
-    public Korisnik getKorisnik() {
-        return korisnik;
-    }
-
-    public void setKorisnik(Korisnik korisnik) {
-        this.korisnik = korisnik;
-    }
-
     public int getVrijemeTrajanjaAktivnosti() {
         return vrijemeTrajanjaAktivnosti;
     }
 
     public void setVrijemeTrajanjaAktivnosti(int vrijemeTrajanjaAktivnosti) {
         this.vrijemeTrajanjaAktivnosti = vrijemeTrajanjaAktivnosti;
-    }
-
-    public DnevnikAktivnosti(Date datum, int vrijemeTrajanjaAktivnosti, List<Aktivnost> aktivnost, Korisnik korisnik) {
-        this.datum = datum;
-        this.vrijemeTrajanjaAktivnosti = vrijemeTrajanjaAktivnosti;
-        this.aktivnost = aktivnost;
-        this.korisnik = korisnik;
-    }
-
- 
-
-    public DnevnikAktivnosti() {
-
     }
 
     @Override
