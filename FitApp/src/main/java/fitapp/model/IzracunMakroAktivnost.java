@@ -23,7 +23,6 @@ public class IzracunMakroAktivnost extends Entitet {
 
     private int trajanjeAktivnosti;
     private int potroseneKcal;
-    
 
     public int getPotroseneKcal() {
         return potroseneKcal;
@@ -59,7 +58,7 @@ public class IzracunMakroAktivnost extends Entitet {
 
     @Override
     public String toString() {
-        return "" + aktivnostMakro + " " + potroseneKcal+ "kcal " + trajanjeAktivnosti+"min";
+        return "" + aktivnostMakro + " " + trajanjeAktivnosti + "min " + potroseneKcal + "kcal ";
     }
 
 }

@@ -22,10 +22,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class DnevnikAktivnosti extends Entitet {
 
-    //private String naziv;
     private Date datum;
-
-    private int vrijemeTrajanjaAktivnosti;
 
     @OneToMany(mappedBy = "dnevnikAktivnosti")
     private List<IzracunMakroAktivnost> izracunMakroAktivnost = new ArrayList<>();
@@ -44,14 +41,6 @@ public class DnevnikAktivnosti extends Entitet {
 
     public void setDatum(Date datum) {
         this.datum = datum;
-    }
-
-    public int getVrijemeTrajanjaAktivnosti() {
-        return vrijemeTrajanjaAktivnosti;
-    }
-
-    public void setVrijemeTrajanjaAktivnosti(int vrijemeTrajanjaAktivnosti) {
-        this.vrijemeTrajanjaAktivnosti = vrijemeTrajanjaAktivnosti;
     }
 
     @Override

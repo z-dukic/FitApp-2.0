@@ -23,7 +23,7 @@ public class IzracunMakroAktivnostController extends Controller<IzracunMakroAkti
         return session.createQuery("from makroakt").list();
     }
 
-    public List<IzracunMakroHrane> svi() {
+    public List<IzracunMakroAktivnost> svi() {
         return session.createQuery("from makroakt").list();
     }
 

@@ -67,7 +67,7 @@
                                   <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="dpDatumPocetka" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="btnDodaj" min="-2" pref="73" max="-2" attributes="0"/>
+                                      <Component id="btnDodajDatum" min="-2" pref="73" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="btnPromjeni" min="-2" pref="95" max="-2" attributes="0"/>
                                   </Group>
@@ -93,9 +93,9 @@
                   <Component id="jScrollPane3" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
                   <Component id="txtKolicinaAktivnostDnevnik" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="btnDodaj1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnDodajMakroAktivnost" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnObrisi1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnObrisiMakroaktivnost" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jLabel12" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
               </Group>
@@ -151,7 +151,7 @@
                               <Component id="dpDatumPocetka" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnDodaj" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnDodajDatum" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnPromjeni" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -187,8 +187,8 @@
                       <Component id="txtKolicinaAktivnostDnevnik" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnDodaj1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnObrisi1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnDodajMakroAktivnost" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnObrisiMakroaktivnost" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -365,20 +365,20 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="btnDodaj1">
+    <Component class="javax.swing.JButton" name="btnDodajMakroAktivnost">
       <Properties>
         <Property name="text" type="java.lang.String" value="Dodaj"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDodaj1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDodajMakroAktivnostActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnObrisi1">
+    <Component class="javax.swing.JButton" name="btnObrisiMakroaktivnost">
       <Properties>
         <Property name="text" type="java.lang.String" value="Obri&#x161;i"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnObrisi1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnObrisiMakroaktivnostActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane3">
@@ -394,6 +394,9 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="lstDnevnikAktivnostValueChanged"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;IzracunMakroAktivnost&gt;"/>
           </AuxValues>
@@ -462,12 +465,12 @@
     </Component>
     <Component class="com.github.lgooddatepicker.components.DatePicker" name="dpDatumPocetka">
     </Component>
-    <Component class="javax.swing.JButton" name="btnDodaj">
+    <Component class="javax.swing.JButton" name="btnDodajDatum">
       <Properties>
         <Property name="text" type="java.lang.String" value="Dodaj"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDodajActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDodajDatumActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnPromjeni">

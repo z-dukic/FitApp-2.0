@@ -58,7 +58,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }
 
     private void ucitaj() {
-        //Works #1
+        //#1
         DefaultListModel<DnevnikHrane> m = new DefaultListModel<>();
         dnevnikHranaController.read().forEach(g -> {
             m.addElement(g);
@@ -68,7 +68,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }
 
     private void ucitaj2() {
-        //Works #1
+        //#1
         DefaultListModel<Hrana> m = new DefaultListModel<>();
 
         hranaController.read().forEach(s -> {
@@ -80,7 +80,6 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }
 
     private void pocistiPodatke() {
-        //works
         //#9
         dpDatum.setDateToToday();
         lstDnevnikHrane.setModel(new DefaultListModel<IzracunMakroHrane>());
@@ -89,7 +88,6 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
     private void postavke() {
         //#10
-        //works
         setTitle(Aplikacija.NASLOV_APP + " Dnevnik hrane");
 
         DatePickerSettings dps = new DatePickerSettings(new Locale("hr", "HR"));
@@ -105,7 +103,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }
 
     public void postaviVrijednostiUEntitet() {
-        //radi
+        //#15
         var e = dnevnikHranaController.getEntitet();
 
         if (dpDatum.getDate() != null) {
@@ -114,18 +112,18 @@ public class DnevnikHraneView extends javax.swing.JFrame {
                             .atZone(ZoneId.systemDefault()).toInstant())
             );
         }
-        //Tu je error.
+        
         izbrisiMakro();
         DefaultListModel<IzracunMakroHrane> m = (DefaultListModel<IzracunMakroHrane>) lstDnevnikHrane.getModel();
         List<IzracunMakroHrane> lista = new ArrayList<>();
         for (int i = 0; i < m.getSize(); i++) {
             lista.add(m.get(i));
         }
-        //Provjeri dali radi
         e.setIzracunMakroHrane(lista);
     }
 
     public void izbrisiMakro() {
+        //#16
         for (IzracunMakroHrane c : izracunMakroHraneController.svi()) {
             if (c.getDnevnikHrane().getDatum() == dnevnikHranaController.getEntitet().getDatum()) {
                 izracunMakroHraneController.setEntitet(c);
@@ -139,7 +137,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }
 
     public void datum() {
-        //works
+        //17
         Date datum = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         String datumIzbornik = sdf.format(datum);
@@ -148,7 +146,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }
 
     private void vrijeme() {
-        //works
+        //18
         Thread t1;
         t1 = new Thread(() -> {
             while (true) {
@@ -167,7 +165,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }
 
     private void obrisiHranuIzGrupe(IzracunMakroHrane a) {
-        //works
+        //#19
         DefaultListModel<IzracunMakroHrane> m = (DefaultListModel<IzracunMakroHrane>) lstDnevnikHrane.getModel();
         for (int i = 0; i < m.getSize(); i++) {
             if (m.get(i).getSifra().equals(a.getSifra())) {
@@ -215,7 +213,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         txtUvjet = new javax.swing.JTextField();
         btnTrazi = new javax.swing.JButton();
         btnDodajMakroHranu = new javax.swing.JButton();
-        btnObrisiMakroaktivnost = new javax.swing.JButton();
+        btnObrisiMakrohranu = new javax.swing.JButton();
         btnSPremiKalorije = new javax.swing.JButton();
         lblUkupnaKoličina = new javax.swing.JLabel();
         btnObrisiDatum = new javax.swing.JButton();
@@ -395,10 +393,10 @@ public class DnevnikHraneView extends javax.swing.JFrame {
             }
         });
 
-        btnObrisiMakroaktivnost.setText("Obriši");
-        btnObrisiMakroaktivnost.addActionListener(new java.awt.event.ActionListener() {
+        btnObrisiMakrohranu.setText("Obriši");
+        btnObrisiMakrohranu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnObrisiMakroaktivnostActionPerformed(evt);
+                btnObrisiMakrohranuActionPerformed(evt);
             }
         });
 
@@ -503,7 +501,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(btnDodajMakroHranu)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btnObrisiMakroaktivnost))
+                                                .addComponent(btnObrisiMakrohranu))
                                             .addComponent(txtKolicinaHraneDnevnik, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -590,7 +588,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
                                 .addGap(59, 59, 59)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(btnDodajMakroHranu)
-                                    .addComponent(btnObrisiMakroaktivnost)))
+                                    .addComponent(btnObrisiMakrohranu)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(20, 20, 20)
                                 .addComponent(txtKolicinaHraneDnevnik, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -735,7 +733,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }//GEN-LAST:event_lstEntitetiValueChanged
 
     private void updateZbroja() {
-
+        //#20
         DefaultListModel<IzracunMakroHrane> m = (DefaultListModel<IzracunMakroHrane>) lstDnevnikHrane.getModel();
         int ukupnoKolicina = 0;
         int ukupnoKcal = 0;
@@ -768,7 +766,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTraziActionPerformed
 
     private void btnDodajMakroHranuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajMakroHranuActionPerformed
-        //Tu sam stao 
+        
         //#7
         DefaultListModel<IzracunMakroHrane> m = (DefaultListModel<IzracunMakroHrane>) lstDnevnikHrane.getModel();
 
@@ -799,8 +797,8 @@ public class DnevnikHraneView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnDodajMakroHranuActionPerformed
 
-    private void btnObrisiMakroaktivnostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiMakroaktivnostActionPerformed
-        //works
+    private void btnObrisiMakrohranuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiMakrohranuActionPerformed
+
         //#6
         List<IzracunMakroHrane> lista = lstDnevnikHrane.getSelectedValuesList();
 
@@ -810,7 +808,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
         }
         lstDnevnikHrane.repaint();
         updateZbroja();
-    }//GEN-LAST:event_btnObrisiMakroaktivnostActionPerformed
+    }//GEN-LAST:event_btnObrisiMakrohranuActionPerformed
 
     private void btnSPremiKalorijeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSPremiKalorijeActionPerformed
         //#12
@@ -899,7 +897,7 @@ public class DnevnikHraneView extends javax.swing.JFrame {
     private javax.swing.JButton btnDodajDatum;
     private javax.swing.JButton btnDodajMakroHranu;
     private javax.swing.JButton btnObrisiDatum;
-    private javax.swing.JButton btnObrisiMakroaktivnost;
+    private javax.swing.JButton btnObrisiMakrohranu;
     private javax.swing.JButton btnPromjeniDatum;
     private javax.swing.JButton btnSPremiKalorije;
     private javax.swing.JButton btnTrazi;
