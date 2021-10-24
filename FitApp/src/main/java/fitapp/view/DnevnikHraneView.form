@@ -96,7 +96,7 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="btnDodajMakroHranu" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="btnObrisiMakrohranu" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btnObrisiMakroaktivnost" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="txtKolicinaHraneDnevnik" min="-2" pref="91" max="-2" attributes="0"/>
                                           <Component id="jLabel12" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
@@ -209,7 +209,7 @@
                               <EmptySpace min="59" pref="59" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="btnDodajMakroHranu" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnObrisiMakrohranu" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnObrisiMakroaktivnost" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -504,12 +504,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDodajMakroHranuActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnObrisiMakrohranu">
+    <Component class="javax.swing.JButton" name="btnObrisiMakroaktivnost">
       <Properties>
         <Property name="text" type="java.lang.String" value="Obri&#x161;i"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnObrisiMakrohranuActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnObrisiMakroaktivnostActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSPremiKalorije">

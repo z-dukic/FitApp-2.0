@@ -27,8 +27,16 @@ public class DnevnikAktivnosti extends Entitet {
 
     private int vrijemeTrajanjaAktivnosti;
 
-    @OneToMany(mappedBy = "makroakt")
-    private List<IzracunMakroHrane> izracunMakroHrane = new ArrayList<>();
+    @OneToMany(mappedBy = "dnevnikAktivnosti")
+    private List<IzracunMakroAktivnost> izracunMakroAktivnost = new ArrayList<>();
+
+    public List<IzracunMakroAktivnost> getIzracunMakroAktivnost() {
+        return izracunMakroAktivnost;
+    }
+
+    public void setIzracunMakroAktivnost(List<IzracunMakroAktivnost> izracunMakroAktivnost) {
+        this.izracunMakroAktivnost = izracunMakroAktivnost;
+    }
 
     public Date getDatum() {
         return datum;

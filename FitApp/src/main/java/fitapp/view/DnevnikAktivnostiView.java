@@ -8,8 +8,11 @@ package fitapp.view;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import fitapp.controller.AktivnostiController;
 import fitapp.controller.DnevnikAktivnostiController;
+import fitapp.controller.IzracunMakroAktivnostController;
 import fitapp.model.Aktivnost;
 import fitapp.model.DnevnikAktivnosti;
+import fitapp.model.IzracunMakroAktivnost;
+import fitapp.model.IzracunMakroHrane;
 import fitapp.util.Aplikacija;
 import fitapp.util.ControllerException;
 import java.time.ZoneId;
@@ -29,6 +32,8 @@ import javax.swing.JOptionPane;
  */
 public class DnevnikAktivnostiView extends javax.swing.JFrame {
 
+    private IzracunMakroAktivnostController izracunMakroAktivnostController;
+    private IzracunMakroAktivnost izracunMakroAktivnost;
     private DnevnikAktivnostiController dnevnikAktivnostiController;
     private Aktivnost aktivnost;
     private AktivnostiController aktivnostController;
@@ -44,6 +49,8 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
         aktivnost = new Aktivnost();
         aktivnostController = new AktivnostiController();
         dnvAkt = new DnevnikAktivnosti();
+        izracunMakroAktivnost = new IzracunMakroAktivnost();
+        izracunMakroAktivnostController = new IzracunMakroAktivnostController();
         ucitaj();
         ucitaj2();
         postavke();
@@ -51,13 +58,13 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
 
     public void postavke() {
         setTitle(Aplikacija.NASLOV_APP + " Dnevnik aktivnosti");
-        
+
         DatePickerSettings dps = new DatePickerSettings(new Locale("hr", "HR"));
         dps.setFormatForDatesCommonEra("dd.MM.yyyy");
 
         dpDatumPocetka.setSettings(dps);
 
-        lstDnevnikAktivnost.setModel(new DefaultListModel<Aktivnost>());
+        lstDnevnikAktivnost.setModel(new DefaultListModel<IzracunMakroAktivnost>());
 
         ImageIcon icon = new ImageIcon("C:\\Users\\PC\\Desktop\\FitApp-2.0\\FitApp\\src\\main\\resources\\FitAppLogo.png");
         this.setIconImage(icon.getImage());
@@ -65,6 +72,7 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
     }
 
     private void ucitaj() {
+        //#1
         DefaultListModel<DnevnikAktivnosti> m = new DefaultListModel<>();
         dnevnikAktivnostiController.read().forEach(g -> {
             m.addElement(g);
@@ -79,7 +87,7 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
             m.addElement(s);
         });
 
-        lstDnevnik1.setModel(m);
+        lstDnevnikBaze.setModel(m);
 
     }
 
@@ -100,12 +108,12 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
             );
         }
 
-        DefaultListModel<Aktivnost> m = (DefaultListModel<Aktivnost>) lstDnevnikAktivnost.getModel();
-        List<Aktivnost> lista = new ArrayList<>();
+        DefaultListModel<IzracunMakroAktivnost> m = (DefaultListModel<IzracunMakroAktivnost>) lstDnevnikAktivnost.getModel();
+        List<IzracunMakroAktivnost> lista = new ArrayList<>();
         for (int i = 0; i < m.getSize(); i++) {
             lista.add(m.get(i));
         }
-        e.setAktivnost(lista);
+        e.setIzracunMakroAktivnost(lista);
     }
 
     /**
@@ -129,7 +137,7 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
         txtVrijeme = new javax.swing.JTextField();
         txtDatum = new javax.swing.JTextField();
         jScrollPane6 = new javax.swing.JScrollPane();
-        lstDnevnik1 = new javax.swing.JList<>();
+        lstDnevnikBaze = new javax.swing.JList<>();
         btnDodaj1 = new javax.swing.JButton();
         btnObrisi1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -147,6 +155,12 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
         dpDatumPocetka = new com.github.lgooddatepicker.components.DatePicker();
         btnDodaj = new javax.swing.JButton();
         btnPromjeni = new javax.swing.JButton();
+        btnSPremiKalorije = new javax.swing.JButton();
+        btnObrisiDatum = new javax.swing.JButton();
+        lblUkupnoTrajanje = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lblUkupnoPotroseneKcal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -254,7 +268,7 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane6.setViewportView(lstDnevnik1);
+        jScrollPane6.setViewportView(lstDnevnikBaze);
 
         btnDodaj1.setText("Dodaj");
         btnDodaj1.addActionListener(new java.awt.event.ActionListener() {
@@ -311,6 +325,28 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
             }
         });
 
+        btnSPremiKalorije.setBackground(new java.awt.Color(242, 242, 242));
+        btnSPremiKalorije.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSPremiKalorijeActionPerformed(evt);
+            }
+        });
+
+        btnObrisiDatum.setBackground(new java.awt.Color(242, 242, 242));
+        btnObrisiDatum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObrisiDatumActionPerformed(evt);
+            }
+        });
+
+        lblUkupnoTrajanje.setText("Ukupno minuta: 0");
+
+        jLabel1.setText("Uk. trajanje:");
+
+        jLabel2.setText("Uk.  potrošenih kcal:");
+
+        lblUkupnoPotroseneKcal.setText("Ukupno kalorija: 0");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -319,6 +355,10 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
                 .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtVrijeme, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnObrisiDatum)
+                    .addComponent(btnSPremiKalorije))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(iconGoreLijevo1)
@@ -342,18 +382,29 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel17)
-                            .addComponent(dpDatumPocetka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnDodaj, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnPromjeni, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel17)
+                                    .addComponent(dpDatumPocetka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnDodaj, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnPromjeni, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 19, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblUkupnoTrajanje, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblUkupnoPotroseneKcal, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -406,7 +457,15 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(btnDodaj)
-                                    .addComponent(btnPromjeni)))))
+                                    .addComponent(btnPromjeni))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblUkupnoTrajanje)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblUkupnoPotroseneKcal)
+                            .addComponent(jLabel2)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -428,9 +487,14 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
                             .addComponent(btnDodaj1)
                             .addComponent(btnObrisi1))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtVrijeme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtVrijeme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnSPremiKalorije)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnObrisiDatum))))
         );
 
         pack();
@@ -492,17 +556,17 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDatumActionPerformed
 
     private void btnObrisi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisi1ActionPerformed
-        List<Aktivnost> lista = lstDnevnikAktivnost.getSelectedValuesList();
+        List<IzracunMakroAktivnost> lista = lstDnevnikAktivnost.getSelectedValuesList();
 
-        for (Aktivnost a : lista) {
+        for (IzracunMakroAktivnost a : lista) {
             obrisiAktivnostIzGrupe(a);
 
         }
         lstDnevnikAktivnost.repaint();
     }//GEN-LAST:event_btnObrisi1ActionPerformed
 
-    private void obrisiAktivnostIzGrupe(Aktivnost a) {
-        DefaultListModel<Aktivnost> m = (DefaultListModel<Aktivnost>) lstDnevnikAktivnost.getModel();
+    private void obrisiAktivnostIzGrupe(IzracunMakroAktivnost a) {
+        DefaultListModel<IzracunMakroAktivnost> m = (DefaultListModel<IzracunMakroAktivnost>) lstDnevnikAktivnost.getModel();
         for (int i = 0; i < m.getSize(); i++) {
             if (m.get(i).getSifra().equals(a.getSifra())) {
                 m.removeElementAt(i);
@@ -512,16 +576,30 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
     }
 
     private void btnDodaj1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodaj1ActionPerformed
-        DefaultListModel<Aktivnost> m = (DefaultListModel<Aktivnost>) lstDnevnikAktivnost.getModel();
-        for (Aktivnost p : lstDnevnik1.getSelectedValuesList()) {
+        DefaultListModel<IzracunMakroAktivnost> m = (DefaultListModel<IzracunMakroAktivnost>) lstDnevnikAktivnost.getModel();
 
-            //if (!postojiAktivnostUModelu(m, p)) {
-            m.addElement(p);
-            //}
+        for (Aktivnost p : lstDnevnikBaze.getSelectedValuesList()) {
+            IzracunMakroAktivnost c = new IzracunMakroAktivnost();
+            c.setAktivnostMakro(p);
+            c.setDnevnikAktivnosti(dnevnikAktivnostiController.getEntitet());
+            if (txtKolicinaAktivnostDnevnik.getText().trim().length() == 0) {
+                JOptionPane.showMessageDialog(getRootPane(), "Količina ne može biti nula");
+                return;
+            }
+            if (Integer.valueOf(txtKolicinaAktivnostDnevnik.getText()) < 0) {
+                JOptionPane.showMessageDialog(getRootPane(), "Količina ne može biti nula");
+                return;
+            }
+
+            //ovo pokazuje tostring
+            c.setTrajanjeAktivnosti(Integer.parseInt(txtKolicinaAktivnostDnevnik.getText()));
+            c.setPotroseneKcal((Integer.parseInt(txtKolicinaAktivnostDnevnik.getText()) / 100) * p.getPotroseneKalorijePoSatu());
+
+            m.addElement(c);
 
         }
         lstDnevnikAktivnost.repaint();
-
+        updateZbroja();
 
     }//GEN-LAST:event_btnDodaj1ActionPerformed
 
@@ -550,16 +628,16 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
             dpDatumPocetka.setDate(null);
         }
 
-        DefaultListModel<Aktivnost> m = new DefaultListModel<>();
+        DefaultListModel<IzracunMakroAktivnost> m = new DefaultListModel<>();
 
-        Collections.sort(e.getAktivnost(), new Comparator<Aktivnost>() {
+        Collections.sort(e.getIzracunMakroAktivnost(), new Comparator<IzracunMakroAktivnost>() {
             @Override
-            public int compare(Aktivnost o1, Aktivnost o2) {
-                return o1.getImeAktivnosti().compareTo(o2.getImeAktivnosti());
+            public int compare(IzracunMakroAktivnost o1, IzracunMakroAktivnost o2) {
+                return o1.getAktivnostMakro().getImeAktivnosti().compareTo(o2.getAktivnostMakro().getImeAktivnosti());
             }
         });
 
-        e.getAktivnost().forEach(p -> {
+        e.getIzracunMakroAktivnost().forEach(p -> {
             m.addElement(p);
         });
         lstDnevnikAktivnost.setModel(m);
@@ -571,7 +649,7 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
         aktivnostController.read(txtUvjet.getText()).forEach(p -> {
             m.addElement(p);
         });
-        lstDnevnik1.setModel(m);
+        lstDnevnikBaze.setModel(m);
     }//GEN-LAST:event_btnTraziActionPerformed
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
@@ -604,19 +682,85 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnPromjeniActionPerformed
 
+    private void btnSPremiKalorijeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSPremiKalorijeActionPerformed
+        //#12
+        IzracunMakroAktivnost c = lstDnevnikAktivnost.getSelectedValue();
+
+        if (c == null) {
+            return;
+        }
+
+        c.setTrajanjeAktivnosti(Integer.parseInt(txtKolicinaAktivnostDnevnik.getText()));
+
+        izracunMakroAktivnostController.setEntitet(c);
+        try {
+            izracunMakroAktivnostController.update();
+        } catch (ControllerException e) {
+            JOptionPane.showMessageDialog(rootPane, e.getPoruka());
+        }
+
+        updateZbroja();
+    }//GEN-LAST:event_btnSPremiKalorijeActionPerformed
+
+    private void updateZbroja() {
+
+        DefaultListModel<IzracunMakroAktivnost> m = (DefaultListModel<IzracunMakroAktivnost>) lstDnevnikAktivnost.getModel();
+
+        int ukupnoTrajanjeAktivnosti = 0;
+        int ukupnoKcal = 0;
+
+        for (int i = 0; i < m.getSize(); i++) {
+            ukupnoTrajanjeAktivnosti += m.get(i).getTrajanjeAktivnosti();
+            ukupnoKcal += m.get(i).getPotroseneKcal();
+        }
+        lblUkupnoTrajanje.setText(String.valueOf(ukupnoTrajanjeAktivnosti));
+        lblUkupnoPotroseneKcal.setText(String.valueOf(ukupnoKcal));
+    }
+
+    private void btnObrisiDatumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiDatumActionPerformed
+        //#5
+        if (dnevnikAktivnostiController.getEntitet() == null) {
+            JOptionPane.showMessageDialog(getRootPane(), "Prvo odaberite grupu");
+            return;
+        }
+        boolean brisanje = true;
+        if (lstDnevnikAktivnost.getModel().getSize() > 0) {
+            if (JOptionPane.showConfirmDialog(getParent(), "Datum ima aktivnosti. Sigurno želite obrisati?",
+                    "Brisanje grupe", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                dnevnikAktivnostiController.getEntitet().setIzracunMakroAktivnost(new ArrayList<IzracunMakroAktivnost>());
+            } else {
+                brisanje = false;
+            }
+        }
+        if (brisanje) {
+            try {
+                dnevnikAktivnostiController.delete();
+                ucitaj();
+                pocistiPodatke();
+            } catch (ControllerException ex) {
+                JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+            }
+        }
+
+    }//GEN-LAST:event_btnObrisiDatumActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
     private javax.swing.JButton btnDodaj1;
     private javax.swing.JButton btnObrisi1;
+    private javax.swing.JButton btnObrisiDatum;
     private javax.swing.JButton btnPromjeni;
+    private javax.swing.JButton btnSPremiKalorije;
     private javax.swing.JButton btnTrazi;
     private com.github.lgooddatepicker.components.DatePicker dpDatumPocetka;
     private javax.swing.JLabel iconGoreLijevo1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
@@ -629,8 +773,10 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
     private javax.swing.JLabel lblIzvjestaj;
     private javax.swing.JLabel lblONama;
     private javax.swing.JLabel lblPostavke;
-    private javax.swing.JList<Aktivnost> lstDnevnik1;
-    private javax.swing.JList<Aktivnost> lstDnevnikAktivnost;
+    private javax.swing.JLabel lblUkupnoPotroseneKcal;
+    private javax.swing.JLabel lblUkupnoTrajanje;
+    private javax.swing.JList<IzracunMakroAktivnost> lstDnevnikAktivnost;
+    private javax.swing.JList<Aktivnost> lstDnevnikBaze;
     private javax.swing.JList<DnevnikAktivnosti> lstEntiteti;
     private javax.swing.JTextField txtDatum;
     private javax.swing.JTextField txtKolicinaAktivnostDnevnik;

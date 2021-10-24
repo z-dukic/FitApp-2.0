@@ -6,6 +6,8 @@
 package fitapp.controller;
 
 import fitapp.model.DnevnikAktivnosti;
+import fitapp.model.IzracunMakroAktivnost;
+import fitapp.model.IzracunMakroHrane;
 import fitapp.util.ControllerException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,26 +16,30 @@ import java.util.List;
  *
  * @author PC
  */
-public class IzracunMakroAktivnostController extends Controller<DnevnikAktivnosti>{
+public class IzracunMakroAktivnostController extends Controller<IzracunMakroAktivnost> {
 
     @Override
-    public List<DnevnikAktivnosti> read() {
-        return new ArrayList<>();
+    public List<IzracunMakroAktivnost> read() {
+        return session.createQuery("from makroakt").list();
+    }
+
+    public List<IzracunMakroHrane> svi() {
+        return session.createQuery("from makroakt").list();
     }
 
     @Override
     protected void controlCreate() throws ControllerException {
-      
+
     }
 
     @Override
     protected void controlUpdate() throws ControllerException {
-        
+
     }
 
     @Override
     protected void controlDelete() throws ControllerException {
-       
+
     }
-    
+
 }
