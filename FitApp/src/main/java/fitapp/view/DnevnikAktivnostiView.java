@@ -648,7 +648,7 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
 
             //ovo pokazuje tostring
             c.setTrajanjeAktivnosti(Integer.parseInt(txtKolicinaAktivnostDnevnik.getText()));
-            c.setPotroseneKcal((Integer.parseInt(txtKolicinaAktivnostDnevnik.getText()) / 100) * p.getPotroseneKalorijePoSatu());
+            c.setPotroseneKcal(Integer.parseInt(txtKolicinaAktivnostDnevnik.getText()) * p.getPotroseneKalorijePoSatu()/100);
 
             m.addElement(c);
 

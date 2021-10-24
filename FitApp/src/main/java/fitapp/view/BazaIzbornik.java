@@ -6,6 +6,8 @@
 package fitapp.view;
 
 import fitapp.util.Aplikacija;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.ImageIcon;
 
 /**
@@ -20,6 +22,8 @@ public class BazaIzbornik extends javax.swing.JFrame {
     public BazaIzbornik() {
         initComponents();
         postavke();
+        vrijeme();
+        datum();
     }
 
     public void postavke() {
@@ -28,6 +32,34 @@ public class BazaIzbornik extends javax.swing.JFrame {
         
         ImageIcon icon = new ImageIcon("C:\\Users\\PC\\Desktop\\FitApp-2.0\\FitApp\\src\\main\\resources\\FitAppLogo.png");
         this.setIconImage(icon.getImage());
+    }
+    
+         public void datum() {
+        //17
+        Date datum = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        String datumIzbornik = sdf.format(datum);
+        txtDatum.setText(datumIzbornik);
+
+    }
+
+    private void vrijeme() {
+        //18
+        Thread t1;
+        t1 = new Thread(() -> {
+            while (true) {
+                Date datum = new Date();
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+                txtVrijeme.setText(sdf.format(datum));
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ex) {
+                    System.out.println("Error with clock update");
+                }
+            }
+        });
+        t1.start();
+
     }
 
     /**
@@ -344,7 +376,7 @@ public class BazaIzbornik extends javax.swing.JFrame {
     }//GEN-LAST:event_lblLinkNaBazuHraneKeyPressed
 
     private void lblLinkNaBazuAktivnostiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLinkNaBazuAktivnostiMouseClicked
-        new KontaktView().setVisible(true);
+        new AktivnostiBaza().setVisible(true);
         dispose();
     }//GEN-LAST:event_lblLinkNaBazuAktivnostiMouseClicked
 
