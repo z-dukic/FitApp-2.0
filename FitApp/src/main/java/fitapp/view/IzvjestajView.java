@@ -5,10 +5,20 @@
  */
 package fitapp.view;
 
+import fitapp.controller.DnevnikHraneController;
+import fitapp.controller.IzracunMakroHraneController;
+import fitapp.model.DnevnikHrane;
+import fitapp.model.IzracunMakroAktivnost;
+import fitapp.model.IzracunMakroHrane;
 import fitapp.util.Aplikacija;
+import java.awt.BorderLayout;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.ImageIcon;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -16,16 +26,48 @@ import javax.swing.ImageIcon;
  */
 public class IzvjestajView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form IzvjestajView
-     */
+   private DnevnikHrane dnevnikHrane;
+   private DnevnikHraneController dnevnikHraneController;
+   private IzracunMakroHrane izracunMakroHrane;
+   private IzracunMakroHraneController izracunMakroHraneController;
+    
     public IzvjestajView() {
         initComponents();
         postavke();
         vrijeme();
         datum();
+        dnevnikHrane = new DnevnikHrane();
+        dnevnikHraneController = new DnevnikHraneController();
+        izracunMakroHrane = new IzracunMakroHrane();
+        izracunMakroHraneController = new IzracunMakroHraneController(); 
+        
+        pripremiGraf();
 
     }
+    
+     private void pripremiGraf(){
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        for(DnevnikHrane g: new DnevnikHraneController().read()){
+            dataset.setValue(sdf.format(g.getDatum()), g.getIzracunMakroHrane().size());
+        }
+        
+        JFreeChart jfc = ChartFactory.createPieChart("Broj kalorija po danima", dataset, 
+                true,true,false);
+        
+        ChartPanel cp = new ChartPanel(jfc);
+        cp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+               pripremiGraf();
+            }
+        });
+        
+        pnlGraf.setLayout(new BorderLayout());
+        pnlGraf.add(cp,BorderLayout.CENTER);
+        pnlGraf.validate();
+        
+    }
+    
 
     private void postavke() {
         setTitle(Aplikacija.NASLOV_APP + " Izvještaj");
@@ -80,6 +122,7 @@ public class IzvjestajView extends javax.swing.JFrame {
         lblBlog1 = new javax.swing.JLabel();
         iconGoreLijevo1 = new javax.swing.JLabel();
         lblHrana = new javax.swing.JLabel();
+        pnlGraf = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -187,6 +230,23 @@ public class IzvjestajView extends javax.swing.JFrame {
             }
         });
 
+        pnlGraf.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlGrafMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlGrafLayout = new javax.swing.GroupLayout(pnlGraf);
+        pnlGraf.setLayout(pnlGrafLayout);
+        pnlGrafLayout.setHorizontalGroup(
+            pnlGrafLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 440, Short.MAX_VALUE)
+        );
+        pnlGrafLayout.setVerticalGroup(
+            pnlGrafLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 397, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -214,7 +274,8 @@ public class IzvjestajView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblPostavke, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblIzbornikOdjaviSe, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblIzbornikOdjaviSe, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnlGraf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 152, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -231,7 +292,9 @@ public class IzvjestajView extends javax.swing.JFrame {
                         .addComponent(lblAktivnost, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblDnevnik, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblIzvjestaj, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 529, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlGraf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtVrijeme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -294,6 +357,10 @@ public class IzvjestajView extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_lblHranaMouseClicked
 
+    private void pnlGrafMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlGrafMouseClicked
+
+    }//GEN-LAST:event_pnlGrafMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel iconGoreLijevo1;
@@ -305,6 +372,7 @@ public class IzvjestajView extends javax.swing.JFrame {
     private javax.swing.JLabel lblIzvjestaj;
     private javax.swing.JLabel lblONama;
     private javax.swing.JLabel lblPostavke;
+    private javax.swing.JPanel pnlGraf;
     private javax.swing.JTextField txtDatum;
     private javax.swing.JTextField txtVrijeme;
     // End of variables declaration//GEN-END:variables
