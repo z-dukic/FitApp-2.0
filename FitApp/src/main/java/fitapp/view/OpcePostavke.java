@@ -24,7 +24,7 @@ public class OpcePostavke extends javax.swing.JFrame {
 
     private void postavke() {
         setTitle(Aplikacija.NASLOV_APP + " Opće postavke");
-        
+
         ImageIcon icon = new ImageIcon("C:\\Users\\PC\\Desktop\\FitApp-2.0\\FitApp\\src\\main\\resources\\FitAppLogo.png");
         this.setIconImage(icon.getImage());
     }
@@ -119,6 +119,11 @@ public class OpcePostavke extends javax.swing.JFrame {
 
         linkIzvještaj.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         linkIzvještaj.setText("Glavni izbornik");
+        linkIzvještaj.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                linkIzvještajMouseClicked(evt);
+            }
+        });
 
         jLabel9.setText("Povratak na glavni izbornik");
 
@@ -363,6 +368,11 @@ public class OpcePostavke extends javax.swing.JFrame {
         new DnevnikHraneView().setVisible(true);
         dispose();
     }//GEN-LAST:event_lblHranaMouseClicked
+
+    private void linkIzvještajMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_linkIzvještajMouseClicked
+        new GlavniIzbornik().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_linkIzvještajMouseClicked
 
     /**
      * @param args the command line arguments
