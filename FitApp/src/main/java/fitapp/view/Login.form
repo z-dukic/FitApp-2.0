@@ -50,10 +50,7 @@
               <EmptySpace pref="305" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="lblZaboravljeniPassword" alignment="1" max="32767" attributes="0"/>
-                          <Component id="btnLogin" alignment="1" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="btnLogin" min="-2" pref="116" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -63,8 +60,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnKreirajRacun" alignment="0" pref="158" max="32767" attributes="0"/>
-                          <Component id="txtEMail" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtEMail" alignment="0" pref="158" max="32767" attributes="0"/>
                           <Component id="pswLozinka" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
@@ -74,7 +70,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="346" max="-2" attributes="0"/>
               <Component id="btnSkipLogin" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="382" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -110,14 +106,7 @@
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="lblZaboravljeniPassword" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnKreirajRacun" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="btnONama" min="-2" pref="55" max="-2" attributes="0"/>
-              </Group>
+              <Component id="btnONama" min="-2" pref="55" max="-2" attributes="0"/>
               <EmptySpace pref="128" max="32767" attributes="0"/>
               <Component id="btnSkipLogin" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
@@ -179,19 +168,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoginActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnKreirajRacun">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Kreiraj novi ra&#x10d;un"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnKreirajRacunActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblZaboravljeniPassword">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Zaboravili ste lozinku?"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnONama">
       <Properties>

@@ -63,8 +63,6 @@ public class Login extends javax.swing.JFrame {
         lvlEMail = new javax.swing.JLabel();
         lblLozinka = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
-        btnKreirajRacun = new javax.swing.JButton();
-        lblZaboravljeniPassword = new javax.swing.JLabel();
         btnONama = new javax.swing.JButton();
         iconGoreLijevo = new javax.swing.JLabel();
         pswLozinka = new javax.swing.JPasswordField();
@@ -100,15 +98,6 @@ public class Login extends javax.swing.JFrame {
                 btnLoginActionPerformed(evt);
             }
         });
-
-        btnKreirajRacun.setText("Kreiraj novi račun");
-        btnKreirajRacun.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKreirajRacunActionPerformed(evt);
-            }
-        });
-
-        lblZaboravljeniPassword.setText("Zaboravili ste lozinku?");
 
         btnONama.setText("Saznaj više o nama");
         btnONama.addActionListener(new java.awt.event.ActionListener() {
@@ -150,9 +139,7 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 305, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lblZaboravljeniPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(63, 63, 63))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,14 +147,13 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(lblLozinka, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnKreirajRacun, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-                            .addComponent(txtEMail)
+                            .addComponent(txtEMail, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
                             .addComponent(pswLozinka))
                         .addGap(36, 36, 36))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(346, 346, 346)
                 .addComponent(btnSkipLogin)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(382, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,12 +181,7 @@ public class Login extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(lblDumbellIconLoginScreen)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblZaboravljeniPassword)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnKreirajRacun))
-                    .addComponent(btnONama, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnONama, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
                 .addComponent(btnSkipLogin)
                 .addGap(32, 32, 32))
@@ -209,11 +190,6 @@ public class Login extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnKreirajRacunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKreirajRacunActionPerformed
-        new Registracija().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnKreirajRacunActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         if (txtEMail.getText().trim().length() == 0) {
@@ -258,14 +234,12 @@ public class Login extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnKreirajRacun;
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnONama;
     private javax.swing.JButton btnSkipLogin;
     private javax.swing.JLabel iconGoreLijevo;
     private javax.swing.JLabel lblDumbellIconLoginScreen;
     private javax.swing.JLabel lblLozinka;
-    private javax.swing.JLabel lblZaboravljeniPassword;
     private javax.swing.JLabel lvlEMail;
     private javax.swing.JPasswordField pswLozinka;
     private javax.swing.JTextField txtEMail;

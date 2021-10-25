@@ -111,7 +111,7 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
                             .atZone(ZoneId.systemDefault()).toInstant())
             );
         }
-        
+
         izbrisiMakro();
         DefaultListModel<IzracunMakroAktivnost> m = (DefaultListModel<IzracunMakroAktivnost>) lstDnevnikAktivnost.getModel();
         List<IzracunMakroAktivnost> lista = new ArrayList<>();
@@ -120,8 +120,8 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
         }
         e.setIzracunMakroAktivnost(lista);
     }
-    
-     public void datum() {
+
+    public void datum() {
         //17
         Date datum = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
@@ -552,7 +552,7 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
             }
         }
     }
-    
+
     private void lblAktivnostMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAktivnostMouseClicked
         new DnevnikAktivnostiView().setVisible(true);
         dispose();
@@ -616,6 +616,7 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
 
         }
         lstDnevnikAktivnost.repaint();
+        updateZbroja();
     }//GEN-LAST:event_btnObrisiMakroaktivnostActionPerformed
 
     private void obrisiAktivnostIzGrupe(IzracunMakroAktivnost a) {
@@ -648,7 +649,7 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
 
             //ovo pokazuje tostring
             c.setTrajanjeAktivnosti(Integer.parseInt(txtKolicinaAktivnostDnevnik.getText()));
-            c.setPotroseneKcal(Integer.parseInt(txtKolicinaAktivnostDnevnik.getText()) * p.getPotroseneKalorijePoSatu()/100);
+            c.setPotroseneKcal(Integer.parseInt(txtKolicinaAktivnostDnevnik.getText()) * p.getPotroseneKalorijePoSatu() / 100);
 
             m.addElement(c);
 
@@ -697,6 +698,8 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
             m.addElement(p);
         });
         lstDnevnikAktivnost.setModel(m);
+        updateZbroja();
+        
     }//GEN-LAST:event_lstEntitetiValueChanged
 
 
@@ -721,6 +724,7 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
         } catch (ControllerException ex) {
             JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
         }
+        updateZbroja();
     }//GEN-LAST:event_btnDodajDatumActionPerformed
 
     private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
@@ -738,6 +742,7 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
         } catch (ControllerException ex) {
             JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
         }
+        updateZbroja();
     }//GEN-LAST:event_btnPromjeniActionPerformed
 
     private void btnSPremiKalorijeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSPremiKalorijeActionPerformed
@@ -799,11 +804,11 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
             }
         }
-
+        updateZbroja();
     }//GEN-LAST:event_btnObrisiDatumActionPerformed
 
     private void lstDnevnikAktivnostValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstDnevnikAktivnostValueChanged
-       //#14
+        //#14
         if (evt.getValueIsAdjusting()) {
             return;
         }
@@ -813,7 +818,7 @@ public class DnevnikAktivnostiView extends javax.swing.JFrame {
         if (c == null) {
             return;
         }
-        
+
         txtKolicinaAktivnostDnevnik.setText(String.valueOf(c.getTrajanjeAktivnosti()));
     }//GEN-LAST:event_lstDnevnikAktivnostValueChanged
 
