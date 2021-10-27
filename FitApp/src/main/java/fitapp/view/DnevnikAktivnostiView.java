@@ -15,6 +15,7 @@ import fitapp.model.IzracunMakroAktivnost;
 import fitapp.model.IzracunMakroHrane;
 import fitapp.util.Aplikacija;
 import fitapp.util.ControllerException;
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ import java.util.Locale;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+
 
 /**
  *
