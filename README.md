@@ -41,7 +41,40 @@ Aplikacija radi na način da korisnik dođe na stranicu i doda datum za koji rad
 Nakon toga (ako postoji) će se pokazati u srednjoj tablici sve što je korisnik dosada unio na taj datum. 
 U desnom kutu se nalazi baza s hranom. U bazi se nalaze par najčešćih hrana koji smo dodali pomoću početnog inserta kako bi lakše koristili aplikaciju. Nakon što korisnik izabere koju je hranu konzumirao mora dodati i količinu. Nakon toga klikne na dodaj i ta količina hrane s pojavi na popisu. Nakon toga mora kliknuti dodaj datum ili promjeni datum ovisno dali datum postoji ili ne.
 
-![alt text](https://github.com/z-dukic/FitApp-2.0/blob/main/GlavniIzbornik.png?raw=true)
+![alt text](https://github.com/z-dukic/FitApp-2.0/blob/main/BazaHrane.png?raw=true)
+
+# Dnevnik aktivnosti:
+Dnevnik aktivnosti radi na isti način kao i dnevnik hrane. Korisnik izabere datum, izabere aktivnost te dodaje na listu koja izračunava koliko je potrošio kalorija.
+![alt text](https://github.com/z-dukic/FitApp-2.0/blob/main/BazaHrane.png?raw=true)
+
+# Baza hrane i aktivnosti:
+U bazi hrane/aktivnosti korisnik može dodati novu hranu ili aktivnost, promjeniti postojeću ili obrisati hranu ili aktivnost pod uvjetom da hrana se ne nalazi u nekom od dnevnika.
+![alt text](https://github.com/z-dukic/FitApp-2.0/blob/main/BazaHrane.png?raw=true)
+
+# Izvještaji:
+U ovom prozoru se može vidjeti na koji način su rasporođene kalorije kroz tjedan. Tako da možete uspoređivati koliko kalorija ste pojeli u prošlim danima.
+![alt text](https://github.com/z-dukic/FitApp-2.0/blob/main/Statistika.png?raw=true)
+
+# Bot:
+https://github.com/z-dukic/FitApp-2.0/blob/main/Bot.png?raw=true
+U ovom prozoru korisnik može razgovarati sa botom ukoliko ima nekih pitanja u vezi aplikacije. Bot sadrži osnovna pitanja, a ukoliko nema odgovor onda korisnik može kontaktirati direktno preko maila.
+
+Aplikacija sadrži još hrpu featurea kao što su: slanje maila (korisnička podrška), export podataka u csv,xml,json itd.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
